@@ -397,7 +397,7 @@ namespace AuctionHouse.Data.Migrations
             modelBuilder.Entity("AuctionHouse.Data.Models.Image", b =>
                 {
                     b.HasOne("AuctionHouse.Data.Models.Auction", "Auction")
-                        .WithMany()
+                        .WithMany("Images")
                         .HasForeignKey("AuctionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -469,6 +469,11 @@ namespace AuctionHouse.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("AuctionHouse.Data.Models.Auction", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Category", b =>

@@ -1,9 +1,21 @@
 ﻿@using AuctionHouse.Common
+@model AuctionHouse.Web.ViewModels.Home.IndexViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="img-fluid.max-width: 100%"
+         style="background-image: url('https://d3jlwjv6gmyigl.cloudfront.net/images/2020/10/auct.jpg'); background-repeat: repeat; ">
+    <div style="height: 36vh;"></div>
+    <div class="text-center">
+        <h1 class="display-2 text-warning">Welcome to @GlobalConstants.SystemName!</h1>
+        <div class="col-md-4 offset-md-4">
+            <p class="text-warning">This is online auction platform, which is easy to use. We have:</p>
+
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">Auctions: @Model.AuctionsCount</li>
+        <li class="list-group-item">Categories: @Model.CategoriesCount</li>
+    </ul>
+</section>
