@@ -1,0 +1,679 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Tests\\Sandbox\\Sandbox.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj",
+        "projectName": "AuctionHouse.Common",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj",
+        "projectName": "AuctionHouse.Data.Common",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj",
+        "projectName": "AuctionHouse.Data.Models",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\AuctionHouse.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\AuctionHouse.Data.csproj",
+        "projectName": "AuctionHouse.Data",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\AuctionHouse.Data.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\AuctionHouse.Services.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\AuctionHouse.Services.Data.csproj",
+        "projectName": "AuctionHouse.Services.Data",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\AuctionHouse.Services.Data.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj",
+        "projectName": "AuctionHouse.Services.Mapping",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\AuctionHouse.Services.Messaging.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\AuctionHouse.Services.Messaging.csproj",
+        "projectName": "AuctionHouse.Services.Messaging",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\AuctionHouse.Services.Messaging.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Sendgrid": {
+              "target": "Package",
+              "version": "[9.23.1, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\AuctionHouse.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\AuctionHouse.Services.csproj",
+        "projectName": "AuctionHouse.Services",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\AuctionHouse.Services.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Tests\\Sandbox\\Sandbox.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Tests\\Sandbox\\Sandbox.csproj",
+        "projectName": "Sandbox",
+        "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Tests\\Sandbox\\Sandbox.csproj",
+        "packagesPath": "C:\\Users\\Goshicha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Tests\\Sandbox\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Goshicha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Models\\AuctionHouse.Data.Models.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\AuctionHouse.Data.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data\\AuctionHouse.Data.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\AuctionHouse.Services.Data.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Data\\AuctionHouse.Services.Data.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\AuctionHouse.Services.Messaging.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Messaging\\AuctionHouse.Services.Messaging.csproj"
+              },
+              "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\AuctionHouse.Services.csproj": {
+                "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services\\AuctionHouse.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "CommandLineParser": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

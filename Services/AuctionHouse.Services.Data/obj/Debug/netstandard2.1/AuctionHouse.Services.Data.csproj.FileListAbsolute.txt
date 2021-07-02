@@ -1,0 +1,16 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Services.Data.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Services.Data.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Services.Data.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Data.Common.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Data.Models.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Services.Mapping.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Data.Common.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Data.Models.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Services.Mapping.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.csproj.CopyComplete
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.pdb

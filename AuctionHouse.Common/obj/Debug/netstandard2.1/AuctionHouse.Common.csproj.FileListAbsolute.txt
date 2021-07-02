@@ -1,0 +1,9 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\bin\Debug\netstandard2.1\AuctionHouse.Common.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\bin\Debug\netstandard2.1\AuctionHouse.Common.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\bin\Debug\netstandard2.1\AuctionHouse.Common.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\AuctionHouse.Common\obj\Debug\netstandard2.1\AuctionHouse.Common.pdb

@@ -1,0 +1,12 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\bin\Debug\netstandard2.1\AuctionHouse.Data.Models.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\bin\Debug\netstandard2.1\AuctionHouse.Data.Models.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\bin\Debug\netstandard2.1\AuctionHouse.Data.Models.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\bin\Debug\netstandard2.1\AuctionHouse.Data.Common.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\bin\Debug\netstandard2.1\AuctionHouse.Data.Common.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.csproj.CopyComplete
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Data\AuctionHouse.Data.Models\obj\Debug\netstandard2.1\AuctionHouse.Data.Models.pdb

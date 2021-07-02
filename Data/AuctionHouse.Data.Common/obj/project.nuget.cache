@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "y1u80peBElZfAFgHta1HRxx5PthK+PAwCQ/6WszhyNMlxO7lnC/Y/dTElz/v50147EHYascjwm/h1NmcB3Aawg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data.Common\\AuctionHouse.Data.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Goshicha\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

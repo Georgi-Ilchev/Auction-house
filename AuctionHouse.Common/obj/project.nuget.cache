@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XSxCGr7vGlQQt/9AprliqUZjbLiu5h3xLK0eOE5C43JtzLbDPt6HETUxOQJa1R8aReNOyoRF+DZVuz4TyRGhkA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\AuctionHouse.Common\\AuctionHouse.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Goshicha\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}
