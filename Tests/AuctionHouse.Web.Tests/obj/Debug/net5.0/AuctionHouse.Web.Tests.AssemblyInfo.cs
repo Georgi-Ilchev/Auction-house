@@ -12,8 +12,8 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("AuctionHouse.Data", "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data", "AuctionHouse.Data.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("AuctionHouse.Web", "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web", "AuctionHouse.Web.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("AuctionHouse.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Data\\AuctionHouse.Data", "AuctionHouse.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("AuctionHouse.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web", "AuctionHouse.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuctionHouse.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

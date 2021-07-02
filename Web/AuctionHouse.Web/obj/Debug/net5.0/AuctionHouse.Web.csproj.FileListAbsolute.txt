@@ -443,13 +443,11 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\AuctionHouse.Web.TagHelpers.input.cache
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\AuctionHouse.Web.TagHelpers.output.cache
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\AuctionHouse.Web.RazorCoreGenerate.cache
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\_ViewImports.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\_ViewStart.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Settings\Index.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -464,3 +462,4 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\ref\AuctionHouse.Web.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\AuctionHouse.Web.pdb
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\AuctionHouse.Web.genruntimeconfig.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

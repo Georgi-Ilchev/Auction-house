@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6"/>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
@@ -35,5 +36,9 @@
     <ProjectReference Include="..\..\Services\AuctionHouse.Services\AuctionHouse.Services.csproj" />
     <ProjectReference Include="..\AuctionHouse.Web.Infrastructure\AuctionHouse.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\AuctionHouse.Web.ViewModels\AuctionHouse.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Views\Dashboard\" />
   </ItemGroup>
 </Project>

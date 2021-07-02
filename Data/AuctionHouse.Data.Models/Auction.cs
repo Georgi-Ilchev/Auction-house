@@ -1,0 +1,31 @@
+﻿namespace AuctionHouse.Data.Models
+{
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using AuctionHouse.Data.Common.Models;
+
+    public class Auction : BaseDeletableModel<int>
+    {
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        public decimal Price { get; set; }
+
+        [Required]
+        public bool IsAuctionOfTheWeek { get; set; }
+
+        public TimeSpan Timer { get; set; }
+
+        public int UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
+    }
+}
