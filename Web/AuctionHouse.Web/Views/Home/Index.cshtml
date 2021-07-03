@@ -10,12 +10,12 @@
     <div class="text-center">
         <h1 class="display-2 text-warning">Welcome to @GlobalConstants.SystemName!</h1>
         <div class="col-md-4 offset-md-4">
-            <p class="text-warning">This is online auction platform, which is easy to use. We have:</p>
+            <p class="text-warning">This is online auction platform, which is easy to use. We have: @Model.AuctionsCount auctions and @Model.CategoriesCount categories</p>
 
         </div>
     </div>
-    <ul class="list-group">
+    @*<ul class="list-group">
         <li class="list-group-item">Auctions: @Model.AuctionsCount</li>
         <li class="list-group-item">Categories: @Model.CategoriesCount</li>
-    </ul>
+    </ul>*@
 </section>

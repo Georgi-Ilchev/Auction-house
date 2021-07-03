@@ -1,28 +1,23 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
     using System.Diagnostics;
-    using System.Linq;
-    using AuctionHouse.Data;
+
+    using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels;
-    using AuctionHouse.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
-        private readonly ApplicationDbContext data;
+        private readonly IGetCountsService getCountsService;
 
-        public HomeController(ApplicationDbContext data)
+        public HomeController(IGetCountsService getCountsService)
         {
-            this.data = data;
+            this.getCountsService = getCountsService;
         }
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
-            {
-                AuctionsCount = this.data.Auctions.Count(),
-                CategoriesCount = this.data.Categories.Count(),
-            };
+            var viewModel = this.getCountsService.GetCounts();
 
             return this.View(viewModel);
         }

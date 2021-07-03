@@ -14,3 +14,5 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.csproj.CopyComplete
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\netstandard2.1\AuctionHouse.Services.Data.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Web.ViewModels.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\bin\Debug\netstandard2.1\AuctionHouse.Web.ViewModels.pdb

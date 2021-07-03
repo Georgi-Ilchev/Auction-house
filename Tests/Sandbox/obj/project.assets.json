@@ -1880,7 +1880,8 @@
         "dependencies": {
           "AuctionHouse.Data.Common": "1.0.0",
           "AuctionHouse.Data.Models": "1.0.0",
-          "AuctionHouse.Services.Mapping": "1.0.0"
+          "AuctionHouse.Services.Mapping": "1.0.0",
+          "AuctionHouse.Web.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/AuctionHouse.Services.Data.dll": {}
@@ -1913,6 +1914,20 @@
         },
         "runtime": {
           "bin/placeholder/AuctionHouse.Services.Messaging.dll": {}
+        }
+      },
+      "AuctionHouse.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "AuctionHouse.Data.Models": "1.0.0",
+          "AuctionHouse.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuctionHouse.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuctionHouse.Web.ViewModels.dll": {}
         }
       }
     }
@@ -6721,6 +6736,11 @@
       "type": "project",
       "path": "../../Services/AuctionHouse.Services.Messaging/AuctionHouse.Services.Messaging.csproj",
       "msbuildProject": "../../Services/AuctionHouse.Services.Messaging/AuctionHouse.Services.Messaging.csproj"
+    },
+    "AuctionHouse.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Web/AuctionHouse.Web.ViewModels/AuctionHouse.Web.ViewModels.csproj",
+      "msbuildProject": "../../Web/AuctionHouse.Web.ViewModels/AuctionHouse.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {

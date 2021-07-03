@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\AuctionHouse.Data.Common\AuctionHouse.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\AuctionHouse.Data.Models\AuctionHouse.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\AuctionHouse.Web.ViewModels\AuctionHouse.Web.ViewModels.csproj" />
     <ProjectReference Include="..\AuctionHouse.Services.Mapping\AuctionHouse.Services.Mapping.csproj" />
   </ItemGroup>
 

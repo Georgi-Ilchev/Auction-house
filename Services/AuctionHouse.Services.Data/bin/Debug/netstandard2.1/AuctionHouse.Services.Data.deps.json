@@ -12,6 +12,7 @@
           "AuctionHouse.Data.Common": "1.0.0",
           "AuctionHouse.Data.Models": "1.0.0",
           "AuctionHouse.Services.Mapping": "1.0.0",
+          "AuctionHouse.Web.ViewModels": "1.0.0",
           "StyleCop.Analyzers": "1.2.0-beta.312"
         },
         "runtime": {
@@ -338,6 +339,15 @@
         "runtime": {
           "AuctionHouse.Services.Mapping.dll": {}
         }
+      },
+      "AuctionHouse.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "AuctionHouse.Data.Models": "1.0.0",
+          "AuctionHouse.Services.Mapping": "1.0.0"
+        },
+        "runtime": {
+          "AuctionHouse.Web.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -568,6 +578,11 @@
       "sha512": ""
     },
     "AuctionHouse.Services.Mapping/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AuctionHouse.Web.ViewModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

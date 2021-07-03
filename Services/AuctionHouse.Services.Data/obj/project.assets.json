@@ -382,6 +382,20 @@
         "runtime": {
           "bin/placeholder/AuctionHouse.Services.Mapping.dll": {}
         }
+      },
+      "AuctionHouse.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "AuctionHouse.Data.Models": "1.0.0",
+          "AuctionHouse.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuctionHouse.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuctionHouse.Web.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -1190,6 +1204,11 @@
       "type": "project",
       "path": "../AuctionHouse.Services.Mapping/AuctionHouse.Services.Mapping.csproj",
       "msbuildProject": "../AuctionHouse.Services.Mapping/AuctionHouse.Services.Mapping.csproj"
+    },
+    "AuctionHouse.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Web/AuctionHouse.Web.ViewModels/AuctionHouse.Web.ViewModels.csproj",
+      "msbuildProject": "../../Web/AuctionHouse.Web.ViewModels/AuctionHouse.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1197,6 +1216,7 @@
       "AuctionHouse.Data.Common >= 1.0.0",
       "AuctionHouse.Data.Models >= 1.0.0",
       "AuctionHouse.Services.Mapping >= 1.0.0",
+      "AuctionHouse.Web.ViewModels >= 1.0.0",
       "StyleCop.Analyzers >= 1.2.0-beta.312"
     ]
   },
@@ -1235,6 +1255,9 @@
             },
             "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj": {
               "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Services\\AuctionHouse.Services.Mapping\\AuctionHouse.Services.Mapping.csproj"
+            },
+            "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web.ViewModels\\AuctionHouse.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web.ViewModels\\AuctionHouse.Web.ViewModels.csproj"
             }
           }
         }
