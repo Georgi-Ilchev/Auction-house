@@ -1,9 +1,9 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using AuctionHouse.Web.ViewModels.Home;
+    using AuctionHouse.Services.Data.Models;
 
     public interface IGetCountsService
     {
-        IndexViewModel GetCounts();
+        CountsDto GetCounts();
     }
 }

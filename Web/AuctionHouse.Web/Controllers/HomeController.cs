@@ -4,6 +4,7 @@
 
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels;
+    using AuctionHouse.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -17,7 +18,12 @@
 
         public IActionResult Index()
         {
-            var viewModel = this.getCountsService.GetCounts();
+            var counts = this.getCountsService.GetCounts();
+            var viewModel = new IndexViewModel
+            {
+                AuctionsCount = counts.AuctionsCount,
+                CategoriesCount = counts.CategoriesCount,
+            };
 
             return this.View(viewModel);
         }
