@@ -18,6 +18,12 @@
 
         public string CategoryName { get; set; }
 
+        public string UserUserName { get; set; }
+
+        public decimal Price { get; set; }
+
+        public decimal Bit { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, ListAuctionViewModel>()

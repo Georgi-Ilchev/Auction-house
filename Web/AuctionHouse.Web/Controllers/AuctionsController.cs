@@ -84,5 +84,12 @@
         {
             return this.View();
         }
+
+        public IActionResult SingleAuction(int auctionId)
+        {
+            var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
+
+            return this.View(auction);
+        }
     }
 }

@@ -12,5 +12,7 @@
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
 
         int GetAuctionsCount();
+
+        T GetById<T>(int id);
     }
 }

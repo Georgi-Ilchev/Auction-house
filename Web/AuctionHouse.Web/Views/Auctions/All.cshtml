@@ -3,7 +3,8 @@
     this.ViewData["Title"] = "Auction list";
 }
 
-<h1>@this.ViewData["Title"]</h1>
+<h1 class="text-center">@this.ViewData["Title"]</h1>
+
 <hr />
 
 <div class="row">
@@ -13,16 +14,17 @@
             <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
             <div class="card-body">
                 <h5 class="card-title">@auction.Name</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Category: @auction.CategoryName</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Starting price: @auction.Price$</li>
+                <li class="list-group-item">Current price: @auction.Bit</li>
+                <li class="list-group-item">Owner: @auction.UserUserName</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a href="/Auctions/SingleAuction?auctionId=@auction.Id" class="btn btn-success">Bit</a>
+
+                @*<a asp-action="SingleAuction" asp-route-id="@auction.Id" class="btn btn-success">Bit</a>*@
             </div>
         </div>
     }

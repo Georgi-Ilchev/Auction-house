@@ -13,7 +13,7 @@
 
     public class AuctionService : IAuctionService
     {
-        private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png" };
+        private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png", "JPG", "PNG" };
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
 
         public AuctionService(IDeletableEntityRepository<Auction> auctionsRepository)
@@ -78,6 +78,16 @@
         public int GetAuctionsCount()
         {
             return this.auctionsRepository.All().Count();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var auction = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>()
+                .FirstOrDefault();
+
+            return auction;
         }
     }
 }
