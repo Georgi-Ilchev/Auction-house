@@ -1,11 +1,8 @@
-﻿using AuctionHouse.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AuctionHouse.Data.Models
+﻿namespace AuctionHouse.Data.Models
 {
-    public class Bit : BaseModel<int>
+    using AuctionHouse.Data.Common.Models;
+
+    public class Bid : BaseModel<int>
     {
         public int AuctionId { get; set; }
 

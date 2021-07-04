@@ -4,14 +4,16 @@ using AuctionHouse.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuctionHouse.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210704170514_AddBitToAuctions")]
+    partial class AddBitToAuctions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +194,7 @@ namespace AuctionHouse.Data.Migrations
                     b.ToTable("Auctions");
                 });
 
-            modelBuilder.Entity("AuctionHouse.Data.Models.Bid", b =>
+            modelBuilder.Entity("AuctionHouse.Data.Models.Bit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +222,7 @@ namespace AuctionHouse.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bids");
+                    b.ToTable("Bits");
                 });
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Category", b =>
@@ -415,16 +417,16 @@ namespace AuctionHouse.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AuctionHouse.Data.Models.Bid", b =>
+            modelBuilder.Entity("AuctionHouse.Data.Models.Bit", b =>
                 {
                     b.HasOne("AuctionHouse.Data.Models.Auction", "Auction")
-                        .WithMany("Bids")
+                        .WithMany("Bits")
                         .HasForeignKey("AuctionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
-                        .WithMany("Bids")
+                        .WithMany("Bits")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Auction");
@@ -509,7 +511,7 @@ namespace AuctionHouse.Data.Migrations
 
             modelBuilder.Entity("AuctionHouse.Data.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Bids");
+                    b.Navigation("Bits");
 
                     b.Navigation("Claims");
 
@@ -520,7 +522,7 @@ namespace AuctionHouse.Data.Migrations
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Auction", b =>
                 {
-                    b.Navigation("Bids");
+                    b.Navigation("Bits");
 
                     b.Navigation("Images");
                 });

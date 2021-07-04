@@ -11,6 +11,7 @@
         public Auction()
         {
             this.Images = new HashSet<Image>();
+            this.Bids = new HashSet<Bid>();
         }
 
         [Required]
@@ -36,5 +37,7 @@
         public virtual Category Category { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
+
+        public virtual ICollection<Bid> Bids { get; set; }
     }
 }
