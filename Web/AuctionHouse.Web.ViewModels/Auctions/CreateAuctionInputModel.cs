@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Auctions
 {
+    using Microsoft.AspNetCore.Http;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -26,5 +27,7 @@
         public int CategoryId { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
+
+        public IEnumerable<IFormFile> Images { get; set; }
     }
 }

@@ -1,0 +1,6 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Data\obj\Debug\net5.0\AuctionHouse.Services.Data.MvcApplicationPartsAssemblyInfo.cache

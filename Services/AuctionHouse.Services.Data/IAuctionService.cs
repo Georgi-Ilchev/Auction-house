@@ -7,7 +7,7 @@
 
     public interface IAuctionService
     {
-        Task CreateAsync(CreateAuctionInputModel input, string userId);
+        Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
 

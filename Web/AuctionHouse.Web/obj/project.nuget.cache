@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5hgLGJ3Lr+aF7fRVifjDs9xad1yr+NFWTJuCWnY748RB8ie96jhHWHFHP7MbM/s9hBTs0dsFxdX17JetDRkGSA==",
+  "dgSpecHash": "0LX2XLlD6ZEMR5D7bB0Pm1AMRoNyVNapfBjqZotCF5TEVdxPo1Qv492Rt/bAWoZ2VTA4P6eGYH+ORpd86fATSg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web\\AuctionHouse.Web.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.6\\microsoft.aspnetcore.cryptography.keyderivation.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.6\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.7\\microsoft.aspnetcore.http.features.5.0.7.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.6\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\5.0.6\\microsoft.aspnetcore.identity.ui.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.6\\microsoft.aspnetcore.mvc.razor.extensions.5.0.6.nupkg.sha512",
@@ -53,7 +54,7 @@
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
-    "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\5.6.0\\microsoft.identitymodel.jsonwebtokens.5.6.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.identitymodel.logging\\5.6.0\\microsoft.identitymodel.logging.5.6.0.nupkg.sha512",
@@ -106,6 +107,7 @@
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

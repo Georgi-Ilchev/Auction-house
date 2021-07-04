@@ -1,22 +1,26 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
+    using System;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
     public class AuctionsController : Controller
     {
         private readonly ICategoriesService categoriesService;
         private readonly IAuctionService auctionService;
+        private readonly IWebHostEnvironment environment;
 
-        public AuctionsController(ICategoriesService categoriesService, IAuctionService auctionService)
+        public AuctionsController(ICategoriesService categoriesService, IAuctionService auctionService, IWebHostEnvironment environment)
         {
             this.categoriesService = categoriesService;
             this.auctionService = auctionService;
+            this.environment = environment;
         }
 
         [Authorize]
@@ -40,7 +44,17 @@
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            await this.auctionService.CreateAsync(input, userId);
+            try
+            {
+                await this.auctionService.CreateAsync(input, userId, $"{this.environment.WebRootPath}/images");
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+
+                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                return this.View(input);
+            }
 
             // TODO
             return this.Redirect("/");

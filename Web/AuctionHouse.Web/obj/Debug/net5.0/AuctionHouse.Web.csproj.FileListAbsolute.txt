@@ -43,7 +43,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Connections.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Extensions.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpOverrides.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Identity.dll
@@ -123,7 +122,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.DataAnnotations.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Primitives.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.WebEncoders.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.JSInterop.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\Microsoft.Net.Http.Headers.dll
@@ -181,7 +179,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.FileSystem.Watcher.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.IsolatedStorage.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.MemoryMappedFiles.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.Pipelines.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.Pipes.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.IO.UnmanagedMemoryStream.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\refs\System.Linq.dll
@@ -467,3 +464,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\All.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\AuctionOfTheWeek.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_PagingPartial.cshtml.g.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\System.IO.Pipelines.dll

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@
 
     public class AuctionService : IAuctionService
     {
+        private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png" };
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
 
         public AuctionService(IDeletableEntityRepository<Auction> auctionsRepository)
@@ -19,7 +21,7 @@
             this.auctionsRepository = auctionsRepository;
         }
 
-        public async Task CreateAsync(CreateAuctionInputModel input, string userId)
+        public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
         {
             var auction = new Auction()
             {
@@ -30,6 +32,32 @@
                 CategoryId = input.CategoryId,
                 UserId = userId,
             };
+
+            Directory.CreateDirectory($"{imagePath}/auctions/");
+
+            foreach (var image in input.Images)
+            {
+                var extension = Path.GetExtension(image.FileName).TrimStart('.');
+
+                if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
+                {
+                    throw new Exception($"Invalid image extension {extension}");
+                }
+
+                var dataImage = new Image
+                {
+                    UserId = userId,
+                    Extension = extension,
+                };
+                auction.Images.Add(dataImage);
+
+                var path = $"{imagePath}/auctions/{dataImage.Id}.{extension}";
+
+                using (Stream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(fileStream);
+                }
+            }
 
             await this.auctionsRepository.AddAsync(auction);
             await this.auctionsRepository.SaveChangesAsync();

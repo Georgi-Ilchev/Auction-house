@@ -4,7 +4,7 @@
     var categoriesItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
-<form method="post" class="col-md-6 offset-md-3">
+<form method="post" class="col-md-6 offset-md-3" enctype="multipart/form-data">
     <h1>@this.ViewData["Title"]</h1>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
@@ -26,6 +26,11 @@
         <label asp-for="CategoryId"></label>
         <select asp-for="CategoryId" class="form-control" asp-items="categoriesItems"></select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Images"></label>
+        <input asp-for="Images" class="form-control" />
+        <span asp-validation-for="Images" class="text-danger"></span>
     </div>
 
     <input type="submit" class="btn btn-primary" />
