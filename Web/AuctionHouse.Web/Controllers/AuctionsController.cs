@@ -48,10 +48,19 @@
 
         public IActionResult All(int id = 1)
         {
+            const int ItemsPerPage = 8;
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
             var viewModel = new ListAuctionsViewModel
             {
+                ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
-                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, 8),
+                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
+                AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 
             return this.View(viewModel);

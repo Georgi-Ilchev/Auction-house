@@ -7,7 +7,7 @@
 <hr />
 
 <div class="row">
-    @foreach(var auction in this.Model.Auctions)
+    @foreach (var auction in this.Model.Auctions)
     {
         <div class="card media col-md-3" style="width: 18rem;">
             <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
@@ -30,20 +30,4 @@
 
 <hr />
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+<partial name="_PagingPartial" model="@Model" />

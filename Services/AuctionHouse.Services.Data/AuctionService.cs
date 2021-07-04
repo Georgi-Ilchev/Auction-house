@@ -46,5 +46,10 @@
 
             return auctions;
         }
+
+        public int GetAuctionsCount()
+        {
+            return this.auctionsRepository.All().Count();
+        }
     }
 }

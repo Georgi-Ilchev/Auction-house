@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
 
-    public class ListAuctionsViewModel
+    public class ListAuctionsViewModel : PagingViewModel
     {
         public IEnumerable<ListAuctionViewModel> Auctions { get; set; }
-
-        public int PageNumber { get; set; }
     }
 }

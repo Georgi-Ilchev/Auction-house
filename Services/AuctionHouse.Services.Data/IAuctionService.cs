@@ -10,5 +10,7 @@
         Task CreateAsync(CreateAuctionInputModel input, string userId);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
+
+        int GetAuctionsCount();
     }
 }
