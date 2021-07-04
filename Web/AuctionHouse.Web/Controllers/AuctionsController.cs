@@ -1,9 +1,12 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Auctions;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class AuctionsController : Controller
     {
@@ -16,6 +19,7 @@
             this.auctionService = auctionService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var viewModel = new CreateAuctionInputModel();
@@ -25,6 +29,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateAuctionInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -33,10 +38,28 @@
                 return this.View(input);
             }
 
-            await this.auctionService.CreateAsync(input);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            await this.auctionService.CreateAsync(input, userId);
 
             // TODO
             return this.Redirect("/");
+        }
+
+        public IActionResult All(int id = 1)
+        {
+            var viewModel = new ListAuctionsViewModel
+            {
+                PageNumber = id,
+                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, 8),
+            };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult AuctionOfTheWeek()
+        {
+            return this.View();
         }
     }
 }

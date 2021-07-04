@@ -6,3 +6,4 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services\obj\Debug\netstandard2.1\AuctionHouse.Services.csproj.CoreCompileInputs.cache
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services\obj\Debug\netstandard2.1\AuctionHouse.Services.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services\obj\Debug\netstandard2.1\AuctionHouse.Services.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services\obj\Debug\netstandard2.1\AuctionHouse.Services.csprojAssemblyReference.cache

@@ -24,11 +24,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="AuctionOfTheWeek">Week Auctions</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

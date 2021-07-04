@@ -178,10 +178,7 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<TimeSpan>("Timer")
                         .HasColumnType("time");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -190,7 +187,7 @@ namespace AuctionHouse.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Auctions");
                 });
@@ -380,7 +377,7 @@ namespace AuctionHouse.Data.Migrations
 
                     b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Category");
 

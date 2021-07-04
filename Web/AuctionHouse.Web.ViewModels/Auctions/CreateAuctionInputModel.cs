@@ -15,6 +15,7 @@
         [MinLength(10)]
         public string Description { get; set; }
 
+        [Range(0.0, double.MaxValue, ErrorMessage = "The field {0} must be greater than {1}.")]
         public decimal Price { get; set; }
 
         [Range(0, 24 * 60)]

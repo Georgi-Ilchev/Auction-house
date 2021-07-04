@@ -74,3 +74,5 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\obj\Debug\net5.0
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\obj\Debug\net5.0\ref\Sandbox.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\obj\Debug\net5.0\Sandbox.pdb
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\obj\Debug\net5.0\Sandbox.genruntimeconfig.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\bin\Debug\net5.0\AuctionHouse.Web.ViewModels.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\Sandbox\bin\Debug\net5.0\AuctionHouse.Web.ViewModels.pdb
