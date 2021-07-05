@@ -28,13 +28,13 @@
                     UserId = userId,
                     AuctionId = auctionId,
                     Timestamp = DateTime.Now,
-                    BidAmount = 10,
+                    //BidAmount = price,
                 };
 
                 await this.bidsRepository.AddAsync(bid);
             }
 
-            bid.BidAmount = price;
+            bid.BidAmount += price;
 
             await this.bidsRepository.SaveChangesAsync();
         }

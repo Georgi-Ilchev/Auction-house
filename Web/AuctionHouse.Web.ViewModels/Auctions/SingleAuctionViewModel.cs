@@ -29,9 +29,11 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, SingleAuctionViewModel>()
+                .ForMember(x => x.BidsAmount, opt =>
+                    opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)))
                 .ForMember(x => x.ImageUrl, opt =>
-                  opt.MapFrom(x =>
-                  "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
+                    opt.MapFrom(x =>
+                    "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
         }
     }
 }
