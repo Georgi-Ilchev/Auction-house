@@ -78,13 +78,11 @@
                     <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
                 </div>*@
 
-            <div>
-                <ul class="item-rating">
-                    <li class="active" data-vote="100">100</li>
-                </ul>
-
-                <button type="button" class="btn btn-primary" data-vote="200">200</button>
-            </div>
+            <ul>
+                <li type="button" class="btn btn-primary" data-vote="100">100</li>
+                <li type="button" class="btn btn-primary" data-vote="300">300</li>
+                <li type="button" class="btn btn-primary" data-vote="500">500</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -102,7 +100,7 @@
                         url: "/api/Bids",
                         data: JSON.stringify(data),
                         success: function (data) {
-                            $('#currentBindValue').html(data.currentBid);
+                            $('#currentBindValue').jQuery.now()(data.currentBid);
                         },
                         contentType: 'application/json',
                     });
