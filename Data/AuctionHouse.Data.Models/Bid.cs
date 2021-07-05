@@ -1,5 +1,7 @@
 ﻿namespace AuctionHouse.Data.Models
 {
+    using System;
+
     using AuctionHouse.Data.Common.Models;
 
     public class Bid : BaseModel<int>
@@ -12,6 +14,8 @@
 
         public virtual ApplicationUser User { get; set; }
 
-        public decimal Bidding { get; set; }
+        public decimal BidAmount { get; set; }
+
+        public DateTime Timestamp { get; set; }
     }
 }

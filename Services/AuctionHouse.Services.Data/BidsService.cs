@@ -32,9 +32,16 @@
                 await this.bidsRepository.AddAsync(bid);
             }
 
-            bid.Bidding = price;
+            bid.BidAmount = price;
 
             await this.bidsRepository.SaveChangesAsync();
+        }
+
+        public decimal GetSumBids(int auctionId)
+        {
+            return this.bidsRepository.All()
+                .Where(x => x.AuctionId == auctionId)
+                .Sum(x => x.BidAmount);
         }
     }
 }

@@ -5,5 +5,7 @@
     public interface IBidsService
     {
         Task SetBidAsync(string userId, int auctionId, decimal price);
+
+        decimal GetSumBids(int auctionId);
     }
 }

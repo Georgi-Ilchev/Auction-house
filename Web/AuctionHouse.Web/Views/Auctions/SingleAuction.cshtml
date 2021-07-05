@@ -50,11 +50,9 @@
                 </div>
             </div>
 
-            <hr />
-
             <div class="row">
                 <div class="col-md-12">
-                    <p class="description">@Model.Description</p>
+                    <p class="category">@Model.CategoryName</p>
                 </div>
             </div>
 
@@ -64,28 +62,48 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="description">Starting price: @Model.Price</p>
-                </div>
-            </div>
-
             <hr />
 
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="description">Current price: </p>
-                </div>
-            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - </span></li>
+            </ul>
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Bid</label>
                 <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
             </div>
 
-            <div class="card-body">
-                <a asp-action="Set" asp-route-auctionId="" class="btn btn-success">Bid now</a>
+            <div class="card-footer text-muted">
+                <button>Bid Now</button>
             </div>
         </div>
     </div>
 </div>
+
+@*@section Scripts {
+    <script>
+        $("li[data-vote]").each(function (el) {
+            $(this).click(function () {
+                var bidding = $(this).attr("data-vote");
+                var auctionId = @Model.Id;
+                var data = { auctionId: auctionId, bidding: bidding };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Bids",
+                    data: JSON.stringify(data),
+                    success: function (data) {
+                        var total = 0;
+                        $('#currentBindValue').html(data.currentBid);
+                    /*console.log(data.currentBid);*/
+
+                        total += ((total + data.currentBid));
+                        console.log(total);
+                    },
+                    contentType: 'application/json',
+                });
+            })
+        });
+    </script>
+}*@
