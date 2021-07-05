@@ -22,9 +22,7 @@
                 <li class="list-group-item">Owner: @auction.UserUserName</li>
             </ul>
             <div class="card-body">
-                <a href="/Auctions/SingleAuction?auctionId=@auction.Id" class="btn btn-success">Bit</a>
-
-                @*<a asp-action="SingleAuction" asp-route-id="@auction.Id" class="btn btn-success">Bit</a>*@
+                <a asp-action="SingleAuction" asp-route-auctionId="@auction.Id" class="btn btn-success">Bit</a>
             </div>
         </div>
     }

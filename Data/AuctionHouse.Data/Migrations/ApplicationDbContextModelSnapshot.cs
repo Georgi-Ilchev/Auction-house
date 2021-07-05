@@ -152,6 +152,9 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("CurrentPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
