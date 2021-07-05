@@ -17,6 +17,8 @@
 
         public decimal Price { get; set; }
 
+        public decimal BidsAmount { get; set; }
+
         public string CategoryName { get; set; }
 
         public string UserUserName { get; set; }

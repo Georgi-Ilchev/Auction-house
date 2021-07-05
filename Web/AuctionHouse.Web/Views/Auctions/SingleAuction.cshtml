@@ -75,35 +75,59 @@
             </div>
 
             <div class="card-footer text-muted">
-                <button>Bid Now</button>
+                <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
             </div>
         </div>
     </div>
 </div>
 
 @*@section Scripts {
+        <script>
+            $("li[data-vote]").each(function (el) {
+                $(this).click(function () {
+                    var bidding = $(this).attr("data-vote");
+                    var auctionId = @Model.Id;
+                    var data = { auctionId: auctionId, bidding: bidding };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/Bids",
+                        data: JSON.stringify(data),
+                        success: function (data) {
+                            var total = 0;
+                            $('#currentBindValue').html(data.currentBid);
+                        /*console.log(data.currentBid);*/
+
+                            total += ((total + data.currentBid));
+                            console.log(total);
+                        },
+                        contentType: 'application/json',
+                    });
+                })
+            });
+        </script>
+    }*@
+
+@section Scripts{
     <script>
-        $("li[data-vote]").each(function (el) {
-            $(this).click(function () {
-                var bidding = $(this).attr("data-vote");
-                var auctionId = @Model.Id;
-                var data = { auctionId: auctionId, bidding: bidding };
-
-                $.ajax({
-                    type: "POST",
-                    url: "/api/Bids",
-                    data: JSON.stringify(data),
-                    success: function (data) {
-                        var total = 0;
-                        $('#currentBindValue').html(data.currentBid);
-                    /*console.log(data.currentBid);*/
-
-                        total += ((total + data.currentBid));
-                        console.log(total);
-                    },
-                    contentType: 'application/json',
-                });
-            })
+        $("#bidNow").click(function () {
+            var auctionId = @Model.Id;
+            var bidding = $(this).attr("bidNow");
+            var data = { auctionId: auctionId, bidding: bidding };
+        $.ajax({
+            @*url: "@Url.Action("Bid", "Bids")",*@
+            url: "/api/Bids",
+            type: "POST",
+            data: JSON.stringify(data),
+        }).done(function (response) {
+            if (response.Success) {
+                window.location.reload();
+            } else {
+                console.log("Error! Try again.");
+            }
+        }).fail(function () {
+            console.log("Error! Try again.");
         });
+    });
     </script>
-}*@
+}

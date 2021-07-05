@@ -22,11 +22,11 @@
         [HttpPost]
         [Authorize]
         [IgnoreAntiforgeryToken]
-        public async Task<ActionResult<CurrentBidViewModel>> Set(MakeBidInputModel input)
+        public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            await this.bidsService.SetBidAsync(userId, input.AuctionId, input.Bidding);
+            await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
 

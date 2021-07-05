@@ -16,7 +16,7 @@
             this.bidsRepository = bidsRepository;
         }
 
-        public async Task SetBidAsync(string userId, int auctionId, decimal price)
+        public async Task AddBidAsync(string userId, int auctionId, decimal price)
         {
             var bid = this.bidsRepository.All()
                 .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId == userId);
@@ -27,6 +27,8 @@
                 {
                     UserId = userId,
                     AuctionId = auctionId,
+                    Timestamp = DateTime.Now,
+                    BidAmount = 10,
                 };
 
                 await this.bidsRepository.AddAsync(bid);

@@ -89,5 +89,10 @@
 
             return auction;
         }
+
+        //public async Task GetBidAmount(SingleAuctionViewModel input)
+        //{
+        //    input.BidsAmount = input.Price + input.auc
+        //}
     }
 }
