@@ -11,6 +11,7 @@
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
     using AuctionHouse.Web.ViewModels.Auctions;
+    using AuctionHouse.Web.ViewModels.Images;
 
     public class AuctionService : IAuctionService
     {

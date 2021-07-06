@@ -1,10 +1,12 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Auctions
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
+    using AuctionHouse.Web.ViewModels.Images;
     using AutoMapper;
 
     public class SingleAuctionViewModel : IMapFrom<Auction>, IHaveCustomMappings

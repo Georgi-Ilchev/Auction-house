@@ -20,7 +20,7 @@
                         <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src=@Model.ImageUrl class="d-block w-100" alt="...">
+                        <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
@@ -64,16 +64,20 @@
 
             <hr />
 
+            @{ 
+                Model.BidsAmount = Model.BidsAmount + Model.Price;
+            }
+
             <ul class="list-group">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price</li>
-                <li class="list-group-item"><span class="font-weight-bold">Current price - </span>@Model.BidsAmount</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - <span id="currentBindValue">@Model.BidsAmount.ToString("0.00")</span></span></li>
             </ul>
 
             <hr />
 
             @*<div class="card-footer text-muted">
-            <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-        </div>*@
+                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+                </div>*@
 
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
@@ -105,25 +109,50 @@
         </div>
     </div>
 </div>
-
+@*<form method="post" id="antiForgeryForm"></form>*@
 @section Scripts {
-    <script>
-            $("li[data-vote]").each(function (el) {
-                $(this).click(function () {
-                    var bidding = $(this).attr("data-vote");
-                    var auctionId = @Model.Id;
-                    var data = { auctionId: auctionId, bidding: bidding };
+        <script>
+                $("li[data-vote]").each(function (el) {
+                    $(this).click(function () {
+                        var bidding = $(this).attr("data-vote");
+                        var auctionId = @Model.Id;
+                        var data = { auctionId: auctionId, bidding: bidding };
 
-                    $.ajax({
-                        type: "POST",
-                        url: "/api/Bids",
-                        data: JSON.stringify(data),
-                        success: function (data) {
-                            $('#currentBindValue').html(data.currentBid);
-                        },
-                        contentType: 'application/json',
-                    });
-                })
-            });
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/Bids",
+                            data: JSON.stringify(data),
+                            success: function (data) {
+                                $('#currentBindValue').html(data.currentBid + @Model.Price);
+                            },
+                            contentType: 'application/json',
+                        });
+                    })
+                });
+        </script>
+    }
+
+@*@section Scripts {
+    <script>
+        $("li[data-vote]").each(function (el) {
+            $(this).click(function () {
+                var bidding = $(this).attr("data-vote");
+                var auctionId = @Model.Id;
+                var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                var data = { auctionId: auctionId, bidding: bidding };
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Bids",
+                    data: JSON.stringify(data),
+                    headers: {
+                        'X-CSRF-TOKEN': antiForgeryToken
+                    },
+                    success: function (data) {
+                        $('#averageVoteValue').html(data.currentBid);
+                    },
+                    contentType: 'application/json',
+                });
+            })
+        });
     </script>
-}
+}*@

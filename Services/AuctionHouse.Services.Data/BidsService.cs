@@ -27,7 +27,7 @@
                 {
                     UserId = userId,
                     AuctionId = auctionId,
-                    Timestamp = DateTime.Now,
+                    //Timestamp = DateTime.UtcNow,
                     // BidAmount = price,
                 };
 

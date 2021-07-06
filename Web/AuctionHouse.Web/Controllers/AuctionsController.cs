@@ -61,6 +61,7 @@
             return this.Redirect("/Auctions/All");
         }
 
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             const int ItemsPerPage = 8;
@@ -81,6 +82,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         public IActionResult SingleAuction(int auctionId)
         {
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
@@ -91,6 +93,7 @@
             return this.View(auction);
         }
 
+        [Authorize]
         public async Task<IActionResult> Delete(int auctionId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
