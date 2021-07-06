@@ -69,14 +69,11 @@
                 <li class="list-group-item"><span class="font-weight-bold">Current price - </span>@Model.BidsAmount</li>
             </ul>
 
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Bid</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
-            </div>
+            <hr />
 
             @*<div class="card-footer text-muted">
-                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-                </div>*@
+            <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+        </div>*@
 
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
@@ -98,6 +95,11 @@
                         <li type="button" class="btn btn-primary" data-vote="300">300</li>
                         <li type="button" class="btn btn-primary" data-vote="500">500</li>
                     </ul>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Bid</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
+                    </div>
                 }
             }
         </div>
