@@ -159,6 +159,9 @@ namespace AuctionHouse.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("EndPromoted")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsAuctionOfTheWeek")
                         .HasColumnType("bit");
 
@@ -174,6 +177,9 @@ namespace AuctionHouse.Data.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("StartPromoted")
+                        .HasColumnType("datetime2");
 
                     b.Property<TimeSpan>("Timer")
                         .HasColumnType("time");

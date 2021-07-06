@@ -28,7 +28,7 @@
                     UserId = userId,
                     AuctionId = auctionId,
                     Timestamp = DateTime.Now,
-                    //BidAmount = price,
+                    // BidAmount = price,
                 };
 
                 await this.bidsRepository.AddAsync(bid);

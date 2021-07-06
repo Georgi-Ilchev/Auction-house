@@ -78,11 +78,28 @@
                     <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
                 </div>*@
 
-            <ul>
-                <li type="button" class="btn btn-primary" data-vote="100">100</li>
-                <li type="button" class="btn btn-primary" data-vote="300">300</li>
-                <li type="button" class="btn btn-primary" data-vote="500">500</li>
-            </ul>
+            @{
+                var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+
+                if (userId == this.Model.UserId)
+                {
+                    <td>
+                        <a class="btn btn-block btn-primary text-white mb-3" href="/Auctions/Delete?AuctionId=@Model.Id">Delete Auction</a>
+                    </td>
+                }
+                else
+                {
+                    <ul>
+                        <li type="button" class="btn btn-primary" data-vote="10">10</li>
+                        <li type="button" class="btn btn-primary" data-vote="20">20</li>
+                        <li type="button" class="btn btn-primary" data-vote="50">50</li>
+                        <li type="button" class="btn btn-primary" data-vote="100">100</li>
+                        <li type="button" class="btn btn-primary" data-vote="200">200</li>
+                        <li type="button" class="btn btn-primary" data-vote="300">300</li>
+                        <li type="button" class="btn btn-primary" data-vote="500">500</li>
+                    </ul>
+                }
+            }
         </div>
     </div>
 </div>
@@ -100,7 +117,7 @@
                         url: "/api/Bids",
                         data: JSON.stringify(data),
                         success: function (data) {
-                            $('#currentBindValue').jQuery.now()(data.currentBid);
+                            $('#currentBindValue').html(data.currentBid);
                         },
                         contentType: 'application/json',
                     });
@@ -108,4 +125,3 @@
             });
     </script>
 }
-

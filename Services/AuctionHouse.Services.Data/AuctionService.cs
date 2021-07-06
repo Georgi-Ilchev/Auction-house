@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using AuctionHouse.Data.Common.Repositories;
@@ -90,9 +91,31 @@
             return auction;
         }
 
-        //public async Task GetBidAmount(SingleAuctionViewModel input)
-        //{
-        //    input.BidsAmount = input.Price + input.auc
-        //}
+        public async Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId)
+        {
+            var auction = this.auctionsRepository
+                .All()
+                .FirstOrDefault(a => a.Id == auctionId);
+
+            auction.IsAuctionOfTheWeek = true;
+            auction.StartPromoted = DateTime.UtcNow;
+            auction.EndPromoted = promoteEnd;
+
+            this.auctionsRepository.Update(auction);
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task Delete(int auctionId)
+        {
+            var auction = this.auctionsRepository.All().FirstOrDefault(a => a.Id == auctionId);
+
+            this.auctionsRepository.Delete(auction);
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public bool OwnedByUser(string userId, int auctionId)
+        {
+            return this.auctionsRepository.All().Any(c => c.Id == auctionId && c.UserId == userId);
+        }
     }
 }

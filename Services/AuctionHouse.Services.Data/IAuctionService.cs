@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -14,5 +15,11 @@
         int GetAuctionsCount();
 
         T GetById<T>(int id);
+
+        bool OwnedByUser(string userId, int auctionId);
+
+        Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId);
+
+        Task Delete(int auctionId);
     }
 }

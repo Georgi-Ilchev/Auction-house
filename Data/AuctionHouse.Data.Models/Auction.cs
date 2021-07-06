@@ -26,6 +26,10 @@
         [Required]
         public bool IsAuctionOfTheWeek { get; set; }
 
+        public DateTime? StartPromoted { get; set; }
+
+        public DateTime? EndPromoted { get; set; }
+
         public TimeSpan Timer { get; set; }
 
         public string UserId { get; set; }

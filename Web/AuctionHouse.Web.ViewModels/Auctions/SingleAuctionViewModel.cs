@@ -23,6 +23,8 @@
 
         public string UserUserName { get; set; }
 
+        public string UserId { get; set; }
+
         [Required]
         public string ImageUrl { get; set; }
 
