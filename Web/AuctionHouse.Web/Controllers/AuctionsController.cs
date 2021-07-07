@@ -1,6 +1,7 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -86,9 +87,13 @@
         public IActionResult SingleAuction(int auctionId)
         {
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
-            /*auction.Price + auction.BidsAmount.Sum(x=>x.bid)*/
 
-            // auction.BidsAmount = auction.Price + auction.BidsAmount.
+            // changed here
+            // auction.BidsAmount = auction.Auction.Price + auction.Auction.Bids.Sum(x => x.BidAmount);
+
+            var latestBidder = auction.Bids.OrderByDescending(x => x.Timestamp).FirstOrDefault();
+
+            auction.LatestBidder = latestBidder != null ? latestBidder.User : null;
 
             return this.View(auction);
         }

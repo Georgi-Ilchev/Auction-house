@@ -27,6 +27,8 @@
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
+        public DateTime Timestamp { get; set; }
+
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
 
         public IEnumerable<IFormFile> Images { get; set; }

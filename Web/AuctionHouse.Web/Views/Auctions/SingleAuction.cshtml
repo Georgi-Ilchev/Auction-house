@@ -58,7 +58,13 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <p class="description">@Model.Description</p>
+                    <p class="timestamp">@Model.Description</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">@Model.Timestamp</p>
                 </div>
             </div>
 
@@ -71,14 +77,20 @@
             <ul class="list-group">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price</li>
                 <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBindValue">@Model.BidsAmount.ToString("0.00")</span></span></li>
-                <li class="list-group-item"><span class="font-weight-bold">Last bid user - </span>@Model.UserUserName</li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">Highest bidder - </span>
+                    @if (Model.LatestBidder != null)
+                    {
+                        @Model.LatestBidder.UserName;
+                    }
+                </li>
             </ul>
 
             <hr />
 
             @*<div class="card-footer text-muted">
-                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-                </div>*@
+            <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+        </div>*@
 
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;

@@ -184,6 +184,9 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<TimeSpan>("Timer")
                         .HasColumnType("time");
 
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 

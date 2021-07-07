@@ -1,11 +1,13 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Auctions
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
+    using AuctionHouse.Web.ViewModels.Bids;
     using AuctionHouse.Web.ViewModels.Images;
     using AutoMapper;
 
@@ -26,6 +28,13 @@
         public string UserUserName { get; set; }
 
         public string UserId { get; set; }
+
+        public ICollection<BidViewModel> Bids { get; set; }
+
+        public DateTime Timestamp { get; set; }
+
+        // changed here
+        public ApplicationUser LatestBidder { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }
