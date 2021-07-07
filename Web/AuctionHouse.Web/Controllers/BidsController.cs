@@ -21,7 +21,7 @@
 
         [HttpPost]
         [Authorize]
-        [IgnoreAntiforgeryToken]
+        //[IgnoreAntiforgeryToken]
         public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;

@@ -64,7 +64,7 @@
 
             <hr />
 
-            @{ 
+            @{
                 Model.BidsAmount = Model.BidsAmount + Model.Price;
             }
 
@@ -109,19 +109,23 @@
         </div>
     </div>
 </div>
-@*<form method="post" id="antiForgeryForm"></form>*@
+<form method="post" id="antiForgeryForm"></form>
 @section Scripts {
-        <script>
+    <script>
                 $("li[data-vote]").each(function (el) {
                     $(this).click(function () {
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
+                        var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
                         var data = { auctionId: auctionId, bidding: bidding };
 
                         $.ajax({
                             type: "POST",
                             url: "/api/Bids",
                             data: JSON.stringify(data),
+                            headers: {
+                                'X-CSRF-TOKEN': antiForgeryToken
+                            },
                             success: function (data) {
                                 $('#currentBindValue').html(data.currentBid + @Model.Price);
                             },
@@ -129,30 +133,30 @@
                         });
                     })
                 });
-        </script>
-    }
+    </script>
+}
 
 @*@section Scripts {
-    <script>
-        $("li[data-vote]").each(function (el) {
-            $(this).click(function () {
-                var bidding = $(this).attr("data-vote");
-                var auctionId = @Model.Id;
-                var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                var data = { auctionId: auctionId, bidding: bidding };
-                $.ajax({
-                    type: "POST",
-                    url: "/api/Bids",
-                    data: JSON.stringify(data),
-                    headers: {
-                        'X-CSRF-TOKEN': antiForgeryToken
-                    },
-                    success: function (data) {
-                        $('#averageVoteValue').html(data.currentBid);
-                    },
-                    contentType: 'application/json',
-                });
-            })
-        });
-    </script>
-}*@
+        <script>
+            $("li[data-vote]").each(function (el) {
+                $(this).click(function () {
+                    var bidding = $(this).attr("data-vote");
+                    var auctionId = @Model.Id;
+                    var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                    var data = { auctionId: auctionId, bidding: bidding };
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/Bids",
+                        data: JSON.stringify(data),
+                        headers: {
+                            'X-CSRF-TOKEN': antiForgeryToken
+                        },
+                        success: function (data) {
+                            $('#averageVoteValue').html(data.currentBid);
+                        },
+                        contentType: 'application/json',
+                    });
+                })
+            });
+        </script>
+    }*@
