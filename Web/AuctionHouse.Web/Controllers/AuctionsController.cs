@@ -121,19 +121,5 @@
 
             return true;
         }
-
-        // move this to administration in web.viewModels
-        [HttpGet]
-        public IActionResult AuctionOfTheWeek()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AuctionOfTheWeek(PromoteAuctionInputModel input, int auctionId)
-        {
-            await this.auctionService.PromoteAuctionOfWeek(input.PromoteEnd, auctionId);
-            return this.Redirect("/Views/Auctions/AuctionOfTheWeek");
-        }
     }
 }

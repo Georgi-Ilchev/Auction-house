@@ -23,7 +23,6 @@
         [Range(0, double.MaxValue)]
         public decimal Price { get; set; }
 
-        [Required]
         public bool IsAuctionOfTheWeek { get; set; }
 
         public DateTime? StartPromoted { get; set; }

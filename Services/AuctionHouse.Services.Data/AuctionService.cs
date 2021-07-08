@@ -106,6 +106,20 @@
             await this.auctionsRepository.SaveChangesAsync();
         }
 
+        public async Task UnPromoteAuctionOfWeek(int auctionId)
+        {
+            var auction = this.auctionsRepository
+                .All()
+                .FirstOrDefault(a => a.Id == auctionId);
+
+            auction.IsAuctionOfTheWeek = false;
+            auction.StartPromoted = null;
+            auction.EndPromoted = null;
+
+            this.auctionsRepository.Update(auction);
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
         public async Task Delete(int auctionId)
         {
             var auction = this.auctionsRepository.All().FirstOrDefault(a => a.Id == auctionId);

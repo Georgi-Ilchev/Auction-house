@@ -20,6 +20,8 @@
 
         Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId);
 
+        Task UnPromoteAuctionOfWeek(int auctionId);
+
         Task Delete(int auctionId);
     }
 }
