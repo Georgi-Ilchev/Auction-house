@@ -29,8 +29,6 @@
 
         public string UserId { get; set; }
 
-        public ICollection<BidViewModel> Bids { get; set; }
-
         public DateTime Timestamp { get; set; }
 
         // changed here

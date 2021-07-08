@@ -91,10 +91,6 @@
             // changed here
             // auction.BidsAmount = auction.Auction.Price + auction.Auction.Bids.Sum(x => x.BidAmount);
 
-            var latestBidder = auction.Bids.OrderByDescending(x => x.Timestamp).FirstOrDefault();
-
-            auction.LatestBidder = latestBidder != null ? latestBidder.User : null;
-
             return this.View(auction);
         }
 

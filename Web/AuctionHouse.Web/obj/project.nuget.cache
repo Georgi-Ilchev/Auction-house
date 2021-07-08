@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0LX2XLlD6ZEMR5D7bB0Pm1AMRoNyVNapfBjqZotCF5TEVdxPo1Qv492Rt/bAWoZ2VTA4P6eGYH+ORpd86fATSg==",
+  "dgSpecHash": "yP5KFfdlcVAZNWwaDHxCGZdm8QVw4RQBt+BFgS2/DUANtITJgw1JZ2cLHuizEQYoZ9rodxeraFVGqzqmsla8Gg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web\\AuctionHouse.Web.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.6\\microsoft.entityframeworkcore.design.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.6\\microsoft.entityframeworkcore.relational.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.6\\microsoft.entityframeworkcore.sqlserver.5.0.6.nupkg.sha512",
+    "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.6\\microsoft.entityframeworkcore.tools.5.0.6.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\Goshicha\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",

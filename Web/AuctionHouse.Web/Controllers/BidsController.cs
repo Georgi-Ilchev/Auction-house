@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -29,7 +30,11 @@
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
 
-            return new CurrentBidViewModel { CurrentBid = currentBid };
+            // var latestBidder = input.Bids.OrderByDescending(x => x.Timestamp).FirstOrDefault();
+
+            //input.LatestBidder = latestBidder != null ? latestBidder.User : null;
+
+            return new CurrentBidViewModel { CurrentBid = currentBid, /*LatestBidder = latestBidder*/ };
         }
     }
 }
