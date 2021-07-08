@@ -63,6 +63,46 @@
         }
 
         [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var input = this.auctionService.GetById<EditAuctionInputModel>(id);
+            input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+
+            return this.View(input);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(int id, EditAuctionInputModel auction)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                auction.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+
+                return this.View(auction);
+            }
+
+            await this.auctionService.UpdateAsync(id, auction);
+
+            return this.RedirectToAction(nameof(this.SingleAuction), new { id });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Delete(int auctionId)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (!this.auctionService.OwnedByUser(userId, auctionId))
+            {
+                return this.Unauthorized();
+            }
+
+            await this.auctionService.Delete(auctionId);
+
+            return this.Redirect("/Auctions/All");
+        }
+
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             const int ItemsPerPage = 8;
@@ -92,21 +132,6 @@
             // auction.BidsAmount = auction.Auction.Price + auction.Auction.Bids.Sum(x => x.BidAmount);
 
             return this.View(auction);
-        }
-
-        [Authorize]
-        public async Task<IActionResult> Delete(int auctionId)
-        {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            if (!this.auctionService.OwnedByUser(userId, auctionId))
-            {
-                return this.Unauthorized();
-            }
-
-            await this.auctionService.Delete(auctionId);
-
-            return this.Redirect("/Auctions/All");
         }
 
         public bool CanUserDeleteAuction(int auctionId)

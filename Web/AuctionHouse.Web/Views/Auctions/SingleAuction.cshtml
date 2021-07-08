@@ -99,6 +99,7 @@
                 {
                     <td>
                         @*<a class="btn btn-block btn-danger text-white mb-3" href="/Auctions/Delete?AuctionId=@Model.Id">Delete Auction</a>*@
+                        <a class="btn btn-block btn-secondary text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
                         <a class="btn btn-block btn-danger text-white mb-3" asp-action="Delete" asp-route-auctionId="@Model.Id">Delete Auction</a>
                     </td>
                 }

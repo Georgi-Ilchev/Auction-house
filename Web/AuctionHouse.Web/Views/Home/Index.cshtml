@@ -24,11 +24,11 @@
 
 <section>
     <h1 class="display-4 text-warning">Weekly auctions</h1>
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="row">
             @foreach (var auction in this.Model.WeeklyAuctions)
             {
-                <div class="card col-md-6" style="width: 18rem;">
+                <div class="card col-md-4 mb-4" style="width: 18rem;">
                     <img class="card-img-top" src="@auction.ImageUrl" alt="@auction.Name">
                     <div class="card-body">
                         <h5 class="card-title">@auction.Name</h5>

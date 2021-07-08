@@ -120,6 +120,17 @@
             await this.auctionsRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(int id, EditAuctionInputModel input)
+        {
+            var auctions = this.auctionsRepository.All().FirstOrDefault(x => x.Id == id);
+            auctions.Name = input.Name;
+            auctions.Description = input.Description;
+            auctions.Price = input.Price;
+            auctions.CategoryId = input.CategoryId;
+
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
         public async Task Delete(int auctionId)
         {
             var auction = this.auctionsRepository.All().FirstOrDefault(a => a.Id == auctionId);

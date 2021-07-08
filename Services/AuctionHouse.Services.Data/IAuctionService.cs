@@ -24,6 +24,8 @@
 
         Task UnPromoteAuctionOfWeek(int auctionId);
 
+        Task UpdateAsync(int id, EditAuctionInputModel input);
+
         Task Delete(int auctionId);
     }
 }
