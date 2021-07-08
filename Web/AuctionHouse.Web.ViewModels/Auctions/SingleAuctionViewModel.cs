@@ -44,7 +44,7 @@
                     opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)))
                 .ForMember(x => x.ImageUrl, opt =>
                     opt.MapFrom(x =>
-                    "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
+            "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
         }
     }
 }

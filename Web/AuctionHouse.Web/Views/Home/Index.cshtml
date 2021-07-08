@@ -15,7 +15,28 @@
         </div>
     </div>
     @*<ul class="list-group">
-        <li class="list-group-item">Auctions: @Model.AuctionsCount</li>
-        <li class="list-group-item">Categories: @Model.CategoriesCount</li>
-    </ul>*@
+            <li class="list-group-item">Auctions: @Model.AuctionsCount</li>
+            <li class="list-group-item">Categories: @Model.CategoriesCount</li>
+        </ul>*@
+
+
+</section>
+
+<section>
+    <h1 class="display-4 text-warning">Weekly auctions</h1>
+    <div class="col-md-8">
+        <div class="row">
+            @foreach (var auction in this.Model.WeeklyAuctions)
+            {
+                <div class="card col-md-6" style="width: 18rem;">
+                    <img class="card-img-top" src="@auction.ImageUrl" alt="@auction.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@auction.Name</h5>
+                        <p class="card-text">@auction.CategoryName</p>
+                        <a asp-controller="Auctions" asp-action="SingleAuction" asp-route-auctionId="@auction.Id" class="btn btn-success">View</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </section>

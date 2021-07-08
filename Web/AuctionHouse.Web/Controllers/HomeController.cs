@@ -10,10 +10,12 @@
     public class HomeController : BaseController
     {
         private readonly IGetCountsService getCountsService;
+        private readonly IAuctionService auctionService;
 
-        public HomeController(IGetCountsService getCountsService)
+        public HomeController(IGetCountsService getCountsService, IAuctionService auctionService)
         {
             this.getCountsService = getCountsService;
+            this.auctionService = auctionService;
         }
 
         public IActionResult Index()
@@ -23,6 +25,7 @@
             {
                 AuctionsCount = counts.AuctionsCount,
                 CategoriesCount = counts.CategoriesCount,
+                WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
             };
 
             return this.View(viewModel);

@@ -181,7 +181,6 @@
             return this.auctionRepository.All().Any(e => e.Id == id);
         }
 
-
         [HttpGet]
         public IActionResult AuctionOfTheWeek()
         {

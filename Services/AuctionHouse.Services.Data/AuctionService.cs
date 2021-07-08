@@ -132,5 +132,13 @@
         {
             return this.auctionsRepository.All().Any(c => c.Id == auctionId && c.UserId == userId);
         }
+
+        public IEnumerable<T> GetWeeklyAuctions<T>()
+        {
+            return this.auctionsRepository.All()
+                .Where(x => x.IsAuctionOfTheWeek == true)
+                .To<T>()
+                .ToList();
+        }
     }
 }

@@ -12,6 +12,8 @@
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
 
+        IEnumerable<T> GetWeeklyAuctions<T>();
+
         int GetAuctionsCount();
 
         T GetById<T>(int id);
