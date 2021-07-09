@@ -6,7 +6,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" id="editForm">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
@@ -27,10 +27,31 @@
 
     <div class="form-group">
         <label asp-for="CategoryId"></label>
-        <select asp-for="CategoryId" asp-items="categoriesItems"></select>
+        <select asp-for="CategoryId" asp-items="categoriesItems" class="form-control"></select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
     <input type="hidden" asp-for="Id" />
-    <input type="submit" class="btn btn-success" value="Save changes" />
 </form>
+<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#editModal">Save changes</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to save changes to this document before closing?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editForm.submit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

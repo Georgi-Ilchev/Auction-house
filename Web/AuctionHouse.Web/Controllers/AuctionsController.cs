@@ -1,12 +1,10 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
     using System;
-    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
     using AuctionHouse.Services.Data;
-    using AuctionHouse.Web.ViewModels.Administration.Auctions;
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
@@ -65,6 +63,13 @@
         [Authorize]
         public IActionResult Edit(int id)
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (!this.auctionService.OwnedByUser(userId, id))
+            {
+                return this.Unauthorized();
+            }
+
             var input = this.auctionService.GetById<EditAuctionInputModel>(id);
             input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
 
@@ -80,6 +85,13 @@
                 auction.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
 
                 return this.View(auction);
+            }
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (!this.auctionService.OwnedByUser(userId, id))
+            {
+                return this.Unauthorized();
             }
 
             await this.auctionService.UpdateAsync(id, auction);
