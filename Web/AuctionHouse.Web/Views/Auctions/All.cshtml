@@ -8,10 +8,20 @@
 
 <hr />
 
+@*<div class="row">
+    <div class="col-sm-12">
+        <div class="form-inline pull-right">
+            <label>Search</label>
+            <input type="text" class="form-control" id="txtSearch" />
+        </div>
+    </div>
+</div>*@
+
+<br />
 <div class="row">
     @foreach (var auction in this.Model.Auctions)
     {
-        <div class="card media col-md-3 mb-4"  style="width: 18rem;">
+        <div class="card media col-md-3 mb-4" style="width: 18rem;">
             <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
             <div class="card-body">
                 <h3 class="card-title">@auction.Name</h3>
@@ -32,3 +42,22 @@
 <hr />
 
 <partial name="_PagingPartial" model="@Model" />
+
+@*<script>
+
+    function getAuctions() {
+        $.ajax({
+            type: "GET",
+            url: "/api/SearchController",
+            datatype: 'html',
+            data: { }
+            headers: {
+                'X-CSRF-TOKEN': antiForgeryToken
+            },
+            success: function (data) {
+                $('#currentBindValue').html(data.currentBid + @Model.Price);
+            },
+            contentType: 'application/json',
+         });
+    }
+</script>*@

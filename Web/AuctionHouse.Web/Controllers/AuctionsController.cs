@@ -160,3 +160,35 @@
         }
     }
 }
+
+//const int ItemsPerPage = 8;
+
+//if (id <= 0)
+//{
+//    return this.NotFound();
+//}
+
+//if (category == null)
+//{
+//    var viewModel = new ListAuctionsViewModel
+//    {
+//        ItemsPerPage = ItemsPerPage,
+//        PageNumber = id,
+//        Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
+//        AuctionsCount = this.auctionService.GetAuctionsCount(),
+//    };
+
+//    return this.View(viewModel);
+//}
+//else
+//{
+//    var viewModel = new ListAuctionsViewModel
+//    {
+//        ItemsPerPage = ItemsPerPage,
+//        PageNumber = id,
+//        Auctions = this.auctionService.GetAllByCategory<ListAuctionViewModel>(id, (int)category, ItemsPerPage),
+//        AuctionsCount = this.auctionService.GetAuctionsCount(),
+//    };
+
+//    return this.View(viewModel);
+//}

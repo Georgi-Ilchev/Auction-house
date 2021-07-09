@@ -77,6 +77,19 @@
             return auctions;
         }
 
+        //public IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8)
+        //{
+        //    var auctions = this.auctionsRepository.AllAsNoTracking()
+        //        .OrderByDescending(x => x.Id)
+        //        .Where(x => x.CategoryId == category)
+        //        .Skip((page - 1) * itemsPerPage)
+        //        .Take(itemsPerPage)
+        //        .To<T>()
+        //        .ToList();
+
+        //    return auctions;
+        //}
+
         public int GetAuctionsCount()
         {
             return this.auctionsRepository.All().Count();

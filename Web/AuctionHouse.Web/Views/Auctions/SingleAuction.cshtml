@@ -70,60 +70,58 @@
 
             <hr />
 
-            <form id="deleteForm">
-                @{
-                    Model.BidsAmount = Model.BidsAmount + Model.Price;
-                }
+            @{
+                Model.BidsAmount = Model.BidsAmount + Model.Price;
+            }
 
-                <ul class="list-group">
-                    <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price</li>
-                    <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBindValue">@Model.BidsAmount.ToString("0.00")</span></span></li>
-                    <li class="list-group-item">
-                        <span class="font-weight-bold">Highest bidder - </span>
-                        @if (Model.LatestBidder != null)
-                        {
-                            @Model.LatestBidder.UserName;
-                        }
-                    </li>
-                </ul>
-
-                <hr />
-
-                @*<div class="card-footer text-muted">
-                        <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-                    </div>*@
-
-                @{
-                    var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
-
-                    if (userId == this.Model.UserId)
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBindValue">@Model.BidsAmount.ToString("0.00")</span></span></li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">Highest bidder - </span>
+                    @if (Model.LatestBidder != null)
                     {
-                        <td>
-                            @*<a class="btn btn-block btn-danger text-white mb-3" href="/Auctions/Delete?AuctionId=@Model.Id">Delete Auction</a>*@
-                            <a class="btn btn-block btn-secondary text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
-                            <a class="btn btn-block btn-danger text-white mb-3" asp-action="Delete" asp-route-auctionId="@Model.Id">Delete Auction</a>
-                            @*<button type="submit" class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete</button>*@
-                        </td>
+                        @Model.LatestBidder.UserName;
                     }
-                    else
-                    {
-                        <ul>
-                            <li type="button" class="btn btn-success" data-vote="10">10</li>
-                            <li type="button" class="btn btn-success" data-vote="20">20</li>
-                            <li type="button" class="btn btn-success" data-vote="50">50</li>
-                            <li type="button" class="btn btn-success" data-vote="100">100</li>
-                            <li type="button" class="btn btn-success" data-vote="200">200</li>
-                            <li type="button" class="btn btn-success" data-vote="300">300</li>
-                            <li type="button" class="btn btn-success" data-vote="500">500</li>
-                        </ul>
+                </li>
+            </ul>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Bid</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
-                        </div>
-                    }
+            <hr />
+
+            @*<div class="card-footer text-muted">
+                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+                </div>*@
+
+            @{
+                var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+
+                if (userId == this.Model.UserId)
+                {
+                    <td>
+                        <a class="btn btn-block btn-secondary text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
+                        <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id">
+                        </form>
+                        <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
+                    </td>
                 }
-            </form>
+                else
+                {
+                    <ul>
+                        <li type="button" class="btn btn-success" data-vote="10">10</li>
+                        <li type="button" class="btn btn-success" data-vote="20">20</li>
+                        <li type="button" class="btn btn-success" data-vote="50">50</li>
+                        <li type="button" class="btn btn-success" data-vote="100">100</li>
+                        <li type="button" class="btn btn-success" data-vote="200">200</li>
+                        <li type="button" class="btn btn-success" data-vote="300">300</li>
+                        <li type="button" class="btn btn-success" data-vote="500">500</li>
+                    </ul>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Bid</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>
@@ -156,7 +154,7 @@
 }
 
 <!-- Modal -->
-@*<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -170,8 +168,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" asp-action="Delete" asp-route-auctionId="@Model.Id" onclick="deleteForm.submit()">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Delete</button>
             </div>
         </div>
     </div>
-</div>*@
+</div>
