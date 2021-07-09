@@ -84,7 +84,7 @@
 
             await this.auctionService.UpdateAsync(id, auction);
 
-            return this.RedirectToAction(nameof(this.SingleAuction), new { id });
+            return this.RedirectToAction(nameof(this.SingleAuction), new { auctionId = id });
         }
 
         [Authorize]
