@@ -1911,10 +1911,7 @@
         },
         "runtime": {
           "bin/placeholder/AuctionHouse.Services.Data.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "AuctionHouse.Services.Mapping/1.0.0": {
         "type": "project",
