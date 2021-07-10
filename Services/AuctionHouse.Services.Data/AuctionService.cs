@@ -90,6 +90,21 @@
             return auction;
         }
 
+        public IEnumerable<T> GetSearch<T>(string search)
+        {
+            if (search == null)
+            {
+                search = string.Empty;
+            }
+
+            var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.Name.ToLower().Contains(search.ToLower()))
+                .To<T>()
+                .ToList();
+
+            return auctions;
+        }
+
         //public IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8)
         //{
         //    var auctions = this.auctionsRepository.AllAsNoTracking()

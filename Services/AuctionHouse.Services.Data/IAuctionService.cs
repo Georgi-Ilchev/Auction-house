@@ -15,6 +15,8 @@
 
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 
+        IEnumerable<T> GetSearch<T>(string search);
+
         // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);
 
         IEnumerable<T> GetWeeklyAuctions<T>();

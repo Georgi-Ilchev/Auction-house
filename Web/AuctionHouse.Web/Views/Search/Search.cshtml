@@ -1,0 +1,42 @@
+﻿@{ViewBag.Title = "Search auctions";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-inline pull-right">
+            <label>Search</label>
+            <input type="text" class="form-control" id="txtSearch" placeholder="Type a name" />
+        </div>
+    </div>
+    <div class="row" id="grdAuctions">
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+            $(() => {
+                getAuctions();
+
+                $('#txtSearch').on('keyup', () => {
+                    getAuctions();
+                });
+            });
+
+            function getAuctions() {
+                $.ajax({
+                    url: '@Url.Action("SearchAuctions", "Search")',
+                    method: 'GET',
+                    datatype: 'html',
+                    data: { searchText: $('#txtSearch').val() },
+                    success: function (res) {
+                        $('#grdAuctions').html('').html(res);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                })
+            }
+    </script>
+} 
