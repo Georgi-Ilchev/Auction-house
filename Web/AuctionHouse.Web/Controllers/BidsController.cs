@@ -30,11 +30,11 @@
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
 
-            // var latestBidder = input.Bids.OrderByDescending(x => x.Timestamp).FirstOrDefault();
+            //var latestBidder = this.bidsService.GetLastBidder();
 
             //input.LatestBidder = latestBidder != null ? latestBidder.User : null;
 
-            return new CurrentBidViewModel { CurrentBid = currentBid, /*LatestBidder = latestBidder*/ };
+            return new CurrentBidViewModel { CurrentBid = currentBid, LatestBidder = userId };
         }
     }
 }

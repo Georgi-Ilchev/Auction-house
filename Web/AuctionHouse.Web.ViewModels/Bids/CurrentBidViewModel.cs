@@ -6,6 +6,6 @@ namespace AuctionHouse.Web.ViewModels.Bids
     {
         public decimal CurrentBid { get; set; }
 
-        public ApplicationUser LatestBidder { get; set; }
+        public string LatestBidder { get; set; }
     }
 }

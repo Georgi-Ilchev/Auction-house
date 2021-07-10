@@ -72,18 +72,20 @@
 
             @{
                 Model.BidsAmount = Model.BidsAmount + Model.Price;
+                @*@if (Model.LatestBidder != null)
+                    {
+                        @Model.LatestBidder.Email;
+                    }
+                    else
+                    {
+                        @Model.LatestBidder.UserName;
+                    }*@
             }
 
             <ul class="list-group">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price$</li>
-                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBindValue">@Model.BidsAmount.ToString("0.00")$</span></span></li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Highest bidder - </span>
-                    @if (Model.LatestBidder != null)
-                    {
-                        @Model.LatestBidder.UserName;
-                    }
-                </li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBidValue">@Model.BidsAmount.ToString("0.00")$</span></span></li>
+                <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="latestBidder">@Model.LatestBidder</span></span></li>
             </ul>
 
             <hr />
@@ -145,7 +147,8 @@
                                 'X-CSRF-TOKEN': antiForgeryToken
                             },
                             success: function (data) {
-                                $('#currentBindValue').html(data.currentBid + @Model.Price + digits);
+                                $('#currentBidValue').html(data.currentBid + @Model.Price + digits);
+                                $('#latestBidder').html(data.latestBidder);
                             },
                             contentType: 'application/json',
                         });

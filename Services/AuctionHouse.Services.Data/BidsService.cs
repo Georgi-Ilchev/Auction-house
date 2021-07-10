@@ -1,6 +1,7 @@
 ﻿namespace AuctionHouse.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -44,5 +45,12 @@
                 .Where(x => x.AuctionId == auctionId)
                 .Sum(x => x.BidAmount);
         }
+
+        //public Bid GetLastBidder()
+        //{
+        //    return this.bidsRepository.All()
+        //        .OrderByDescending(x => x.Timestamp)
+        //        .FirstOrDefault();
+        //}
     }
 }
