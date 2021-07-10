@@ -108,6 +108,11 @@
             return this.auctionsRepository.All().Count();
         }
 
+        public int GetUserAuctionsCount(string userId)
+        {
+            return this.auctionsRepository.All().Where(x => x.UserId == userId).Count();
+        }
+
         public T GetById<T>(int id)
         {
             var auction = this.auctionsRepository.AllAsNoTracking()
