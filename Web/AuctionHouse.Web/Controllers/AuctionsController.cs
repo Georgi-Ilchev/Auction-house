@@ -100,6 +100,7 @@
         }
 
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Delete(int auctionId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -107,6 +108,11 @@
             if (!this.auctionService.OwnedByUser(userId, auctionId))
             {
                 return this.Unauthorized();
+            }
+
+            if (auctionId == 0)
+            {
+                return this.NotFound();
             }
 
             await this.auctionService.Delete(auctionId);
@@ -161,6 +167,11 @@
         [Authorize]
         public IActionResult SingleAuction(int auctionId)
         {
+            if (auctionId == 0)
+            {
+                return this.NotFound();
+            }
+
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
 
             // changed here

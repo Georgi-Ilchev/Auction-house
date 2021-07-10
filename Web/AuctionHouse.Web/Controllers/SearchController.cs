@@ -2,7 +2,7 @@
 {
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Auctions;
-    using AuctionHouse.Web.ViewModels.Search;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class SearchController : BaseController
@@ -15,6 +15,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Search(int id = 1)
         {
             const int ItemsPerPage = 8;
@@ -35,6 +36,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         public PartialViewResult SearchAuctions(string searchText)
         {
             var viewModel = new ListAuctionsViewModel
