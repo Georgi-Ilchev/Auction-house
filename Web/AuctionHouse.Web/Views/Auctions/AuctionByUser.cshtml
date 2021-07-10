@@ -1,21 +1,21 @@
 ﻿@model AuctionHouse.Web.ViewModels.Auctions.ListAuctionsViewModel
 
 @{
-    this.ViewData["Title"] = "Auction list";
+    this.ViewData["Title"] = "My auctions";
 }
 
-<h1 class="text-center">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
+<h1 class="text-center">@this.ViewData["Title"] - @this.Model.Auctions.Count()</h1>
 
 <hr />
 
 @*<div class="row">
-    <div class="col-sm-12">
-        <div class="form-inline pull-right">
-            <label>Search</label>
-            <input type="text" class="form-control" id="txtSearch" />
+        <div class="col-sm-12">
+            <div class="form-inline pull-right">
+                <label>Search</label>
+                <input type="text" class="form-control" id="txtSearch" />
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <br />
 <div class="row">
@@ -41,23 +41,4 @@
 
 <hr />
 
-<partial name="_PagingPartial" model="@Model" />
-
-@*<script>
-
-    function getAuctions() {
-        $.ajax({
-            type: "GET",
-            url: "/api/SearchController",
-            datatype: 'html',
-            data: { }
-            headers: {
-                'X-CSRF-TOKEN': antiForgeryToken
-            },
-            success: function (data) {
-                $('#currentBindValue').html(data.currentBid + @Model.Price);
-            },
-            contentType: 'application/json',
-         });
-    }
-</script>*@
+@*<partial name="_PagingPartial" model="@Model" />*@

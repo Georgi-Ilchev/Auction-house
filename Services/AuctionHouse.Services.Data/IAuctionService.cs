@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
-
+    using AuctionHouse.Data.Models;
     using AuctionHouse.Web.ViewModels.Auctions;
 
     public interface IAuctionService
@@ -11,6 +12,8 @@
         Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
+
+        IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 
         // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);
 

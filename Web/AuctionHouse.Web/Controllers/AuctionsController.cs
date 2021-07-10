@@ -115,11 +115,11 @@
         }
 
         [Authorize]
-        public IActionResult All(int id = 1)
+        public IActionResult All(int pageNum = 1)
         {
             const int ItemsPerPage = 8;
 
-            if (id <= 0)
+            if (pageNum <= 0)
             {
                 return this.NotFound();
             }
@@ -127,8 +127,31 @@
             var viewModel = new ListAuctionsViewModel
             {
                 ItemsPerPage = ItemsPerPage,
-                PageNumber = id,
-                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
+                PageNumber = pageNum,
+                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(pageNum, ItemsPerPage),
+                AuctionsCount = this.auctionService.GetAuctionsCount(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult AuctionByUser(int pageNum = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (pageNum <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var viewModel = new ListAuctionsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = pageNum,
+                Auctions = this.auctionService.GetUserAuctions<ListAuctionViewModel>(userId, pageNum, ItemsPerPage),
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 

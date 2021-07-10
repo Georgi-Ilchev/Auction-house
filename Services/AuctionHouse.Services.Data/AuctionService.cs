@@ -77,6 +77,18 @@
             return auctions;
         }
 
+        public IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8)
+        {
+            var auction = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .To<T>()
+                .ToList();
+
+            return auction;
+        }
+
         //public IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8)
         //{
         //    var auctions = this.auctionsRepository.AllAsNoTracking()
