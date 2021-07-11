@@ -41,6 +41,8 @@
 
         public virtual Category Category { get; set; }
 
+        public string LastBidder { get; set; }
+
         public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Bid> Bids { get; set; }

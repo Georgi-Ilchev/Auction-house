@@ -85,7 +85,8 @@
             <ul class="list-group">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price$</li>
                 <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBidValue">@Model.BidsAmount.ToString("0.00")$</span></span></li>
-                <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="latestBidder">@Model.LatestBidder</span></span></li>
+                <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="lastBidder">@Model.LastBidder</span></span></li>
+
             </ul>
 
             <hr />
@@ -108,20 +109,24 @@
                 }
                 else
                 {
-                    <ul>
-                        <li type="button" class="btn btn-success" data-vote="10">10</li>
-                        <li type="button" class="btn btn-success" data-vote="20">20</li>
-                        <li type="button" class="btn btn-success" data-vote="50">50</li>
-                        <li type="button" class="btn btn-success" data-vote="100">100</li>
-                        <li type="button" class="btn btn-success" data-vote="200">200</li>
-                        <li type="button" class="btn btn-success" data-vote="300">300</li>
-                        <li type="button" class="btn btn-success" data-vote="500">500</li>
-                    </ul>
-
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Bid</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
+                        <label for="exampleFormControlInput1">Submit your Bid</label>
+                        <ul>
+                            <li type="button" class="btn btn-success" data-vote="10">10</li>
+                            <li type="button" class="btn btn-success" data-vote="20">20</li>
+                            <li type="button" class="btn btn-success" data-vote="50">50</li>
+                            <li type="button" class="btn btn-success" data-vote="100">100</li>
+                            <li type="button" class="btn btn-success" data-vote="200">200</li>
+                            <li type="button" class="btn btn-success" data-vote="300">300</li>
+                            <li type="button" class="btn btn-success" data-vote="500">500</li>
+                            <li type="button" class="btn btn-success" data-vote="1000">1000</li>
+                        </ul>
                     </div>
+
+                    @*<div class="form-group">
+                            <label for="exampleFormControlInput1">Submit your Bid</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
+                        </div>*@
                 }
             }
         </div>
@@ -136,7 +141,7 @@
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
                         var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { auctionId: auctionId, bidding: bidding };
+                        var data = { auctionId: auctionId, bidding: bidding};
                         var digits = '.00$';
 
                         $.ajax({
@@ -148,7 +153,7 @@
                             },
                             success: function (data) {
                                 $('#currentBidValue').html(data.currentBid + @Model.Price + digits);
-                                $('#latestBidder').html(data.latestBidder);
+                                $('#lastBidder').html(data.lastBidder);
                             },
                             contentType: 'application/json',
                         });

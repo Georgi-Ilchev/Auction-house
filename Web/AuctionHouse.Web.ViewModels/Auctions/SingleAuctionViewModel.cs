@@ -32,7 +32,7 @@
         public DateTime Timestamp { get; set; }
 
         // changed here
-        public ApplicationUser LatestBidder { get; set; }
+        public string LastBidder { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }

@@ -14,6 +14,10 @@
 
         public ICollection<BidViewModel> Bids { get; set; }
 
+        public LastUserBidViewModel LastBidder { get; set; }
+
         // public DateTime Timestamp { get; set; }
+
+        //public ApplicationUser LatestBidder { get; set; }
     }
 }

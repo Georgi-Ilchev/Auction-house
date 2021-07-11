@@ -1,6 +1,5 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
-    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -25,16 +24,22 @@
         public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
 
             await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
 
-            //var latestBidder = this.bidsService.GetLastBidder();
+            var latestBidder = this.bidsService.GetUser(userId, userEmail);
+            input.LastBidder = latestBidder;
 
-            //input.LatestBidder = latestBidder != null ? latestBidder.User : null;
+            var currentBidView = new CurrentBidViewModel
+            {
+                CurrentBid = currentBid,
+                LastBidder = input.LastBidder.Email,
+            };
 
-            return new CurrentBidViewModel { CurrentBid = currentBid, LatestBidder = userId };
+            return currentBidView;
         }
     }
 }

@@ -17,5 +17,7 @@
         public decimal BidAmount { get; set; }
 
         public DateTime Timestamp { get; set; }
+
+        public string LastBidder { get; set; }
     }
 }

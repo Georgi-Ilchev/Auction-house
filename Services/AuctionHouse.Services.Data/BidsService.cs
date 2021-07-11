@@ -7,14 +7,17 @@
 
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
+    using AuctionHouse.Web.ViewModels.Bids;
 
     public class BidsService : IBidsService
     {
         private readonly IRepository<Bid> bidsRepository;
+        private readonly IRepository<ApplicationUser> usersRepository;
 
-        public BidsService(IRepository<Bid> bidsRepository)
+        public BidsService(IRepository<Bid> bidsRepository, IRepository<ApplicationUser> usersRepository)
         {
             this.bidsRepository = bidsRepository;
+            this.usersRepository = usersRepository;
         }
 
         public async Task AddBidAsync(string userId, int auctionId, decimal price)
@@ -29,6 +32,7 @@
                     UserId = userId,
                     AuctionId = auctionId,
                     Timestamp = DateTime.UtcNow,
+                    LastBidder = userId,
                     //BidAmount = price,
                 };
                 await this.bidsRepository.AddAsync(bid);
@@ -46,11 +50,18 @@
                 .Sum(x => x.BidAmount);
         }
 
-        //public Bid GetLastBidder()
-        //{
-        //    return this.bidsRepository.All()
-        //        .OrderByDescending(x => x.Timestamp)
-        //        .FirstOrDefault();
-        //}
+        public LastUserBidViewModel GetUser(string userId, string email)
+        {
+            var user = new LastUserBidViewModel
+            {
+                Id = userId,
+                Email = email,
+            };
+
+            //var user = this.usersRepository.All()
+            //    .FirstOrDefault(x => x.Id == userId && x.Email == email);
+
+            return user;
+        }
     }
 }
