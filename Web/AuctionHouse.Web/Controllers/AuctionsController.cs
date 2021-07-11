@@ -56,7 +56,6 @@
                 return this.View(input);
             }
 
-            // TODO
             return this.Redirect("/Auctions/All");
         }
 

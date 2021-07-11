@@ -6,6 +6,8 @@
 
     using AuctionHouse.Data.Common.Models;
 
+    using static AuctionHouse.Data.Models.DataConstants.DataConstants;
+
     public class Auction : BaseDeletableModel<int>
     {
         public Auction()
@@ -15,12 +17,14 @@
         }
 
         [Required]
+        [MaxLength(AuctionNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
+        [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; }
 
-        [Range(0, double.MaxValue)]
+        [Range(PriceMinValue, PriceMaxValue)]
         public decimal Price { get; set; }
 
         public bool IsAuctionOfTheWeek { get; set; }

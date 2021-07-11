@@ -1,26 +1,28 @@
 ﻿namespace AuctionHouse.Services.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
     using AuctionHouse.Web.ViewModels.Auctions;
-    using AuctionHouse.Web.ViewModels.Images;
 
     public class AuctionService : IAuctionService
     {
         private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png", "JPG", "PNG" };
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
 
-        public AuctionService(IDeletableEntityRepository<Auction> auctionsRepository)
+        public AuctionService(
+            IDeletableEntityRepository<Auction> auctionsRepository,
+            IDeletableEntityRepository<Category> categoriesRepository)
         {
             this.auctionsRepository = auctionsRepository;
+            this.categoriesRepository = categoriesRepository;
         }
 
         public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
@@ -35,6 +37,11 @@
                 UserId = userId,
             };
 
+            if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
+            {
+                throw new Exception($"Invalid category.");
+            }
+
             Directory.CreateDirectory($"{imagePath}/auctions/");
 
             foreach (var image in input.Images)
@@ -43,7 +50,7 @@
 
                 if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
                 {
-                    throw new Exception($"Invalid image extension {extension}");
+                    throw new Exception($"Invalid image extension {extension}.");
                 }
 
                 var dataImage = new Image
@@ -168,6 +175,11 @@
 
         public async Task UpdateAsync(int id, EditAuctionInputModel input)
         {
+            if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
+            {
+                throw new Exception($"Invalid category.");
+            }
+
             var auctions = this.auctionsRepository.All().FirstOrDefault(x => x.Id == id);
             auctions.Name = input.Name;
             auctions.Description = input.Description;
