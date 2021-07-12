@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 

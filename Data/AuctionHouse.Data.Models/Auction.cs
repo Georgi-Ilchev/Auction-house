@@ -14,6 +14,7 @@
         {
             this.Images = new HashSet<Image>();
             this.Bids = new HashSet<Bid>();
+            this.Comments = new HashSet<Comment>();
         }
 
         [Required]
@@ -50,5 +51,7 @@
         public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Bid> Bids { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
