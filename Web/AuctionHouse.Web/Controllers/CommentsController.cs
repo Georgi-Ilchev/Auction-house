@@ -44,5 +44,26 @@
             // think for redirect
             return this.RedirectToAction("SingleAuction", "Auctions", new { auctionId = id });
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, string commentId)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (!this.commentService.OwnedByUser(userId, commentId))
+            {
+                return this.Unauthorized();
+            }
+
+            if (commentId == string.Empty)
+            {
+                return this.NotFound();
+            }
+
+            await this.commentService.Delete(commentId);
+
+            return this.RedirectToAction("SingleAuction", "Auctions", new { auctionId = id });
+        }
     }
 }

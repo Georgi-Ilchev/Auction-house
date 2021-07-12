@@ -1,6 +1,7 @@
 ﻿namespace AuctionHouse.Services.Data
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using AuctionHouse.Data.Common.Repositories;
@@ -27,6 +28,19 @@
 
             await this.commentsRepository.AddAsync(comment);
             await this.commentsRepository.SaveChangesAsync();
+        }
+
+        public async Task Delete(string commentId)
+        {
+            var auction = this.commentsRepository.All().FirstOrDefault(a => a.Id == commentId);
+
+            this.commentsRepository.Delete(auction);
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
+        public bool OwnedByUser(string userId, string commentId)
+        {
+            return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
         }
     }
 }
