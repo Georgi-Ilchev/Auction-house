@@ -4,6 +4,7 @@
 
     public class ListCommentsViewModel
     {
+        // for bin
         public IEnumerable<CommentViewModel> Comments { get; set; }
     }
 }

@@ -8,8 +8,10 @@
 
     using static AuctionHouse.Data.Models.DataConstants.DataConstants;
 
-    public class CommentViewModel : IMapFrom<Comment>
+    public class CommitCommentViewModel : IMapFrom<Comment>
     {
+        public string Id { get; set; }
+
         [Required]
         [StringLength(
             ContentMaxLength,

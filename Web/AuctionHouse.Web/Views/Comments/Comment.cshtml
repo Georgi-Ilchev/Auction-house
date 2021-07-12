@@ -1,9 +1,22 @@
 ﻿@model AuctionHouse.Web.ViewModels.Comments.CommentAuctionInputModel
-@*@{
-        this.ViewData["Title"] = Model.UserId;
-    }*@
+@{
+        this.ViewData["Title"] = "Comments";
+    }
 
-<h1>hello there</h1>
+<h1 class="text-center">@this.ViewData["Title"]</h1>
+<hr />
+
+@foreach (var comment in Model.Comments)
+{
+    <ul class="list-unstyled">
+        <li class="media">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">@comment.UserUserName</h5>
+                @comment.Content
+            </div>
+        </li>
+    </ul>
+}
 
 <form method="post" id="commentAuction">
     <div class="form-group">

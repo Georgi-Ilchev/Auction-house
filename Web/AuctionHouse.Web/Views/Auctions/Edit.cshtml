@@ -4,7 +4,8 @@
     var categoriesItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
+<hr />
 
 <form method="post" id="editForm">
     <div class="form-group">
