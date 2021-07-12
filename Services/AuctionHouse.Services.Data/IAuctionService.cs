@@ -8,8 +8,6 @@
 
     public interface IAuctionService
     {
-        Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath);
-
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
 
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
@@ -27,6 +25,10 @@
         T GetById<T>(int id);
 
         bool OwnedByUser(string userId, int auctionId);
+
+        bool IsAuctionExisting(int auctionId);
+
+        Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath);
 
         Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId);
 

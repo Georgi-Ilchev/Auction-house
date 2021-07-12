@@ -27,6 +27,6 @@
 
         public Auction Auction { get; set; }
 
-        public TimeSpan PostedOn { get; set; }
+        public DateTime PostedOn { get; set; }
     }
 }

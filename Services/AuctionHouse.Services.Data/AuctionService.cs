@@ -1,10 +1,10 @@
 ﻿namespace AuctionHouse.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
 
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
@@ -200,6 +200,13 @@
         public bool OwnedByUser(string userId, int auctionId)
         {
             return this.auctionsRepository.All().Any(c => c.Id == auctionId && c.UserId == userId);
+        }
+
+        public bool IsAuctionExisting(int auctionId)
+        {
+            return this.auctionsRepository
+                .All()
+                .Any(x => x.Id == auctionId);
         }
 
         public IEnumerable<T> GetWeeklyAuctions<T>()

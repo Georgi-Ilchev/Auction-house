@@ -1,0 +1,16 @@
+﻿@model AuctionHouse.Web.ViewModels.Comments.CommentAuctionInputModel
+@*@{
+        this.ViewData["Title"] = Model.UserId;
+    }*@
+
+<h1>hello there</h1>
+
+<form method="post" id="commentAuction">
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Id" />
+</form>
+<button type="submit" class="btn btn-success" onclick="commentAuction.submit()">Commit</button>

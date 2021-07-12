@@ -102,8 +102,8 @@
                 {
                     <td>
                         <a class="btn btn-block btn-secondary text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
-                        <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id">
-                        </form>
+                        <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
+                        <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id"></form>
                         <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
                     </td>
                 }
@@ -122,12 +122,9 @@
                             <li type="button" class="btn btn-success" data-vote="1000">1000</li>
                         </ul>
                     </div>
-
-                    @*<div class="form-group">
-                            <label for="exampleFormControlInput1">Submit your Bid</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Type your bid...">
-                        </div>*@
+                    <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                 }
+
             }
         </div>
     </div>
@@ -167,7 +164,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
