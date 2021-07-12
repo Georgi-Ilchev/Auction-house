@@ -13,7 +13,7 @@
         public const double PriceMaxValue = double.MaxValue;
 
         // Comment
-        public const int ContentMaxLength = 50;
+        public const int ContentMaxLength = 300;
         public const int ContentMinLength = 3;
     }
 }

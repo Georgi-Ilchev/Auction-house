@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Services.Data
 {
+    using System;
     using System.Threading.Tasks;
 
     using AuctionHouse.Data.Common.Repositories;
@@ -21,6 +22,7 @@
                 Content = content,
                 UserId = userId,
                 AuctionId = auctionId,
+                PostedOn = DateTime.UtcNow,
             };
 
             await this.commentsRepository.AddAsync(comment);

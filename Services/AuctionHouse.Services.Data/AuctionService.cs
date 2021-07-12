@@ -25,53 +25,6 @@
             this.categoriesRepository = categoriesRepository;
         }
 
-        public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
-        {
-            var auction = new Auction()
-            {
-                Name = input.Name,
-                Description = input.Description,
-                Price = input.Price,
-                Timer = TimeSpan.FromDays(input.Timer),
-                CategoryId = input.CategoryId,
-                UserId = userId,
-            };
-
-            if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
-            {
-                throw new Exception($"Invalid category.");
-            }
-
-            Directory.CreateDirectory($"{imagePath}/auctions/");
-
-            foreach (var image in input.Images)
-            {
-                var extension = Path.GetExtension(image.FileName).TrimStart('.');
-
-                if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
-                {
-                    throw new Exception($"Invalid image extension {extension}.");
-                }
-
-                var dataImage = new Image
-                {
-                    UserId = userId,
-                    Extension = extension,
-                };
-                auction.Images.Add(dataImage);
-
-                var path = $"{imagePath}/auctions/{dataImage.Id}.{extension}";
-
-                using (Stream fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await image.CopyToAsync(fileStream);
-                }
-            }
-
-            await this.auctionsRepository.AddAsync(auction);
-            await this.auctionsRepository.SaveChangesAsync();
-        }
-
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
@@ -143,6 +96,53 @@
                 .FirstOrDefault();
 
             return auction;
+        }
+
+        public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
+        {
+            var auction = new Auction()
+            {
+                Name = input.Name,
+                Description = input.Description,
+                Price = input.Price,
+                Timer = TimeSpan.FromDays(input.Timer),
+                CategoryId = input.CategoryId,
+                UserId = userId,
+            };
+
+            if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
+            {
+                throw new Exception($"Invalid category.");
+            }
+
+            Directory.CreateDirectory($"{imagePath}/auctions/");
+
+            foreach (var image in input.Images)
+            {
+                var extension = Path.GetExtension(image.FileName).TrimStart('.');
+
+                if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
+                {
+                    throw new Exception($"Invalid image extension {extension}.");
+                }
+
+                var dataImage = new Image
+                {
+                    UserId = userId,
+                    Extension = extension,
+                };
+                auction.Images.Add(dataImage);
+
+                var path = $"{imagePath}/auctions/{dataImage.Id}.{extension}";
+
+                using (Stream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(fileStream);
+                }
+            }
+
+            await this.auctionsRepository.AddAsync(auction);
+            await this.auctionsRepository.SaveChangesAsync();
         }
 
         public async Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId)
