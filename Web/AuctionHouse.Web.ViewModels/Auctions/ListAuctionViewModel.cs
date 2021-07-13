@@ -22,11 +22,15 @@
 
         public decimal Price { get; set; }
 
-        public decimal Bit { get; set; }
+        //public decimal Bit { get; set; }
+
+        public decimal BidsAmount { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, ListAuctionViewModel>()
+                .ForMember(x => x.BidsAmount, opt =>
+                  opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)))
                 .ForMember(x => x.ImageUrl, opt =>
                   opt.MapFrom(x =>
                   "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));

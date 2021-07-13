@@ -83,8 +83,8 @@
             }
 
             <ul class="list-group">
-                <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>@Model.Price$</li>
-                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBidValue">@Model.BidsAmount.ToString("0.00")$</span></span></li>
+                <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>$@Model.Price</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBidValue">$@Model.BidsAmount.ToString("0.00")</span></span></li>
                 <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="lastBidder">@Model.LastBidder</span></span></li>
 
             </ul>
@@ -138,8 +138,9 @@
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
                         var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { auctionId: auctionId, bidding: bidding};
-                        var digits = '.00$';
+                        var data = { auctionId: auctionId, bidding: bidding };
+                        var sign = '$';
+                        var digits = '.00';
 
                         $.ajax({
                             type: "POST",
@@ -149,7 +150,7 @@
                                 'X-CSRF-TOKEN': antiForgeryToken
                             },
                             success: function (data) {
-                                $('#currentBidValue').html(data.currentBid + @Model.Price + digits);
+                                $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
                             },
                             contentType: 'application/json',
