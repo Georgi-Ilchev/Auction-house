@@ -13,7 +13,7 @@
 
     public class SingleAuctionViewModel : IMapFrom<Auction>, IHaveCustomMappings
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
@@ -34,15 +34,17 @@
         // changed here
         public string LastBidder { get; set; }
 
-        [Required]
-        public string ImageUrl { get; set; }
+        //[Required]
+        //public List<string> Images { get; set; }
+
+        public string Images { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, SingleAuctionViewModel>()
                 .ForMember(x => x.BidsAmount, opt =>
                     opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)))
-                .ForMember(x => x.ImageUrl, opt =>
+                .ForMember(x => x.Images, opt =>
                     opt.MapFrom(x =>
             "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
         }

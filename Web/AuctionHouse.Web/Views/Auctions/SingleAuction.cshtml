@@ -17,13 +17,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
+                        <img src="@Model.Images" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
+                        <img src="@Model.Images" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="@Model.ImageUrl" class="d-block w-100" alt="...">
+                        <img src="@Model.Images" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -72,14 +72,11 @@
 
             @{
                 Model.BidsAmount = Model.BidsAmount + Model.Price;
-                @*@if (Model.LatestBidder != null)
-                    {
-                        @Model.LatestBidder.Email;
-                    }
-                    else
-                    {
-                        @Model.LatestBidder.UserName;
-                    }*@
+                if (Model.LastBidder == null)
+                {
+                    Model.LastBidder = "No bids yet";
+                }
+
             }
 
             <ul class="list-group">

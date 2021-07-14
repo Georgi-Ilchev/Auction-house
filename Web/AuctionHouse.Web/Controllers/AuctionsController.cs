@@ -173,9 +173,6 @@
 
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
 
-            // changed here
-            // auction.BidsAmount = auction.Auction.Price + auction.Auction.Bids.Sum(x => x.BidAmount);
-
             return this.View(auction);
         }
 
