@@ -16,13 +16,21 @@
         private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png", "JPG", "PNG" };
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
 
         public AuctionService(
             IDeletableEntityRepository<Auction> auctionsRepository,
-            IDeletableEntityRepository<Category> categoriesRepository)
+            IDeletableEntityRepository<Category> categoriesRepository,
+            IDeletableEntityRepository<ApplicationUser> userRepository)
         {
             this.auctionsRepository = auctionsRepository;
             this.categoriesRepository = categoriesRepository;
+            this.userRepository = userRepository;
+        }
+
+        public decimal GetUserBalance(string userId)
+        {
+            return this.userRepository.All().FirstOrDefault(x => x.Id == userId).Balance;
         }
 
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)

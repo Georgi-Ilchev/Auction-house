@@ -8,6 +8,8 @@
 
         public int CategoriesCount { get; set; }
 
+        public decimal Balance { get; set; }
+
         public IEnumerable<IndexPageAuctionViewModel> WeeklyAuctions { get; set; }
     }
 }

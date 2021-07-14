@@ -29,6 +29,8 @@ namespace AuctionHouse.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public decimal Balance { get; set; } = 0;
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

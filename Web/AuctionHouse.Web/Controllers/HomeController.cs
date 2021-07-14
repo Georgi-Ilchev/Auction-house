@@ -1,7 +1,7 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
     using System.Diagnostics;
-
+    using System.Security.Claims;
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels;
     using AuctionHouse.Web.ViewModels.Home;
@@ -12,7 +12,9 @@
         private readonly IGetCountsService getCountsService;
         private readonly IAuctionService auctionService;
 
-        public HomeController(IGetCountsService getCountsService, IAuctionService auctionService)
+        public HomeController(
+            IGetCountsService getCountsService,
+            IAuctionService auctionService)
         {
             this.getCountsService = getCountsService;
             this.auctionService = auctionService;
@@ -20,11 +22,13 @@
 
         public IActionResult Index()
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var counts = this.getCountsService.GetCounts();
             var viewModel = new IndexViewModel
             {
                 AuctionsCount = counts.AuctionsCount,
                 CategoriesCount = counts.CategoriesCount,
+                Balance = this.auctionService.GetUserBalance(userId),
                 WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
             };
 

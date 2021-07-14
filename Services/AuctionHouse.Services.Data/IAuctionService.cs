@@ -24,6 +24,8 @@
 
         T GetById<T>(int id);
 
+        decimal GetUserBalance(string userId);
+
         bool OwnedByUser(string userId, int auctionId);
 
         bool IsAuctionExisting(int auctionId);
