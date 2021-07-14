@@ -2,6 +2,7 @@
 {
     using System.Diagnostics;
     using System.Security.Claims;
+
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels;
     using AuctionHouse.Web.ViewModels.Home;
@@ -22,17 +23,32 @@
 
         public IActionResult Index()
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var counts = this.getCountsService.GetCounts();
-            var viewModel = new IndexViewModel
+            if (this.User.Identity.IsAuthenticated)
             {
-                AuctionsCount = counts.AuctionsCount,
-                CategoriesCount = counts.CategoriesCount,
-                Balance = this.auctionService.GetUserBalance(userId),
-                WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
-            };
+                var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var counts = this.getCountsService.GetCounts();
+                var viewModel = new IndexViewModel
+                {
+                    AuctionsCount = counts.AuctionsCount,
+                    CategoriesCount = counts.CategoriesCount,
+                    Balance = this.auctionService.GetUserBalance(userId),
+                    WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
+                };
 
-            return this.View(viewModel);
+                return this.View(viewModel);
+            }
+            else
+            {
+                var counts = this.getCountsService.GetCounts();
+                var viewModel = new IndexViewModel
+                {
+                    AuctionsCount = counts.AuctionsCount,
+                    CategoriesCount = counts.CategoriesCount,
+                    WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
+                };
+
+                return this.View(viewModel);
+            }
         }
 
         public IActionResult Privacy()
