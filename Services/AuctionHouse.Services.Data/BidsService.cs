@@ -12,12 +12,12 @@
     public class BidsService : IBidsService
     {
         private readonly IRepository<Bid> bidsRepository;
-        private readonly IRepository<ApplicationUser> usersRepository;
+        private readonly IRepository<Auction> auctionsRepository;
 
-        public BidsService(IRepository<Bid> bidsRepository, IRepository<ApplicationUser> usersRepository)
+        public BidsService(IRepository<Bid> bidsRepository, IRepository<Auction> auctionsRepository)
         {
             this.bidsRepository = bidsRepository;
-            this.usersRepository = usersRepository;
+            this.auctionsRepository = auctionsRepository;
         }
 
         public async Task AddBidAsync(string userId, int auctionId, decimal price)
@@ -33,12 +33,12 @@
                     AuctionId = auctionId,
                     Timestamp = DateTime.UtcNow,
                     LastBidder = userId,
-                    //BidAmount = price,
                 };
                 await this.bidsRepository.AddAsync(bid);
             }
 
             bid.BidAmount += price;
+            bid.LastBidder = userId;
 
             await this.bidsRepository.SaveChangesAsync();
         }
@@ -50,6 +50,14 @@
                 .Sum(x => x.BidAmount);
         }
 
+        public async Task UpdateAsync(int id, LastUserBidViewModel input)
+        {
+            var auctions = this.auctionsRepository.All().FirstOrDefault(x => x.Id == id);
+            auctions.LastBidder = input.Email;
+
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
         public LastUserBidViewModel GetUser(string userId, string email)
         {
             var user = new LastUserBidViewModel
@@ -57,9 +65,6 @@
                 Id = userId,
                 Email = email,
             };
-
-            //var user = this.usersRepository.All()
-            //    .FirstOrDefault(x => x.Id == userId && x.Email == email);
 
             return user;
         }

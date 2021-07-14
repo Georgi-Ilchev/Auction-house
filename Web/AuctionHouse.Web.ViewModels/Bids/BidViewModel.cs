@@ -20,5 +20,7 @@
         public int AuctionId { get; set; }
 
         public Auction Auction { get; set; }
+
+        public string LastBidder { get; set; }
     }
 }

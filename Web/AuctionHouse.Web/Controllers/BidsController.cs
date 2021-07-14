@@ -29,14 +29,14 @@
             await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
-
             var latestBidder = this.bidsService.GetUser(userId, userEmail);
-            input.LastBidder = latestBidder;
+
+            await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
 
             var currentBidView = new CurrentBidViewModel
             {
                 CurrentBid = currentBid,
-                LastBidder = input.LastBidder.Email,
+                LastBidder = latestBidder.Email,
             };
 
             return currentBidView;

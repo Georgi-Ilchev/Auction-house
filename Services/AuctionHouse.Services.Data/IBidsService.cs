@@ -1,10 +1,8 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using AuctionHouse.Data.Models;
-    using AuctionHouse.Web.ViewModels.Bids;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
+
+    using AuctionHouse.Web.ViewModels.Bids;
 
     public interface IBidsService
     {
@@ -14,6 +12,6 @@
 
         LastUserBidViewModel GetUser(string userId, string email);
 
-        //Bid GetLastBidder();
+        Task UpdateAsync(int id, LastUserBidViewModel input);
     }
 }

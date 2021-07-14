@@ -3,7 +3,7 @@
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 
-    public class LastUserBidViewModel : IMapFrom<ApplicationUser>
+    public class LastUserBidViewModel : IMapFrom<Auction>
     {
         public string Id { get; set; }
 
