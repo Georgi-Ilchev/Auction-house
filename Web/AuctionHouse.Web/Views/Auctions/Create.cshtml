@@ -1,4 +1,4 @@
-﻿@model AuctionHouse.Web.ViewModels.Auctions.CreateAuctionInputModel
+﻿@model CreateAuctionInputModel
 @{
     this.ViewData["Title"] = "Create auction";
     var categoriesItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));

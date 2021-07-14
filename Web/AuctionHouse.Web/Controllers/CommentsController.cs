@@ -41,8 +41,7 @@
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             await this.commentService.CreateAsync(auctionId, userId, model.Content);
 
-            // think for redirect
-            return this.RedirectToAction("SingleAuction", "Auctions", new { auctionId = id });
+            return this.RedirectToAction(nameof(this.Comment));
         }
 
         [Authorize]
@@ -63,7 +62,7 @@
 
             await this.commentService.Delete(commentId);
 
-            return this.RedirectToAction("SingleAuction", "Auctions", new { auctionId = id });
+            return this.RedirectToAction(nameof(this.Comment));
         }
     }
 }
