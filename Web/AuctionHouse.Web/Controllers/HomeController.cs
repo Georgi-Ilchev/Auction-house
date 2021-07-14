@@ -12,13 +12,16 @@
     {
         private readonly IGetCountsService getCountsService;
         private readonly IAuctionService auctionService;
+        private readonly IUserService userService;
 
         public HomeController(
             IGetCountsService getCountsService,
-            IAuctionService auctionService)
+            IAuctionService auctionService,
+            IUserService userService)
         {
             this.getCountsService = getCountsService;
             this.auctionService = auctionService;
+            this.userService = userService;
         }
 
         public IActionResult Index()
@@ -31,7 +34,7 @@
                 {
                     AuctionsCount = counts.AuctionsCount,
                     CategoriesCount = counts.CategoriesCount,
-                    Balance = this.auctionService.GetUserBalance(userId),
+                    Balance = this.userService.GetUserBalance(userId),
                     WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
                 };
 
