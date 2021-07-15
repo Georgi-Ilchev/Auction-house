@@ -52,7 +52,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <p class="category">@Model.CategoryName</p>
+                    <p class="category">Category: @Model.CategoryName</p>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <p class="timestamp">@Model.Description</p>
                 </div>
             </div>
-
+            <hr />
             <div class="row">
                 <div class="col-md-12">
                     <p class="description">Created on: @Model.CreatedOnAsString</p>
@@ -76,19 +76,22 @@
 
             @{
                 var status = string.Empty;
+                var activeOrNo = string.Empty;
                 if (this.Model.IsActive == true)
                 {
                     status = "Active";
+                    activeOrNo = "text-success";
                 }
                 else
                 {
                     status = "Inactive";
+                    activeOrNo = "text-danger";
                 }
             }
 
             <div class="row">
                 <div class="col-md-12">
-                    <p class="description">Status: @status</p>
+                    <p class="description">Status: <span class="@activeOrNo">@status</span>
                 </div>
             </div>
             <hr />
@@ -142,6 +145,8 @@
                                 <li type="button" class="btn btn-success" data-vote="300">300</li>
                                 <li type="button" class="btn btn-success" data-vote="500">500</li>
                                 <li type="button" class="btn btn-success" data-vote="1000">1000</li>
+                                <li type="button" class="btn btn-success" data-vote="3000">3000</li>
+                                <li type="button" class="btn btn-success" data-vote="5000">5000</li>
                             </ul>
                         </div>
                     }

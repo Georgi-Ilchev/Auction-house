@@ -21,30 +21,30 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item h5">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="AuctionByUser">My Auctions</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Search" asp-action="Search">Search Auction</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
                             </li>
                         }
                         @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                         {
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="Administration" asp-controller="Categories" asp-action="Index">Categories</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="Administration" asp-controller="Auctions" asp-action="Index">Auctions</a>
                             </li>
                         }
