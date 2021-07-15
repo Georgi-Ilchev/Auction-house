@@ -120,6 +120,27 @@
         }
 
         [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> PayToOwner(int auctionId, string ownerId)
+        {
+            //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            //if (!this.auctionService.OwnedByUser(ownerId, auctionId))
+            //{
+            //    return this.Unauthorized();
+            //}
+
+            //if (auctionId == 0)
+            //{
+            //    return this.NotFound();
+            //}
+
+            //await this.auctionService.Pay(userId, ownerId);
+
+            return this.Redirect("");
+        }
+
+        [Authorize]
         public IActionResult All(int id = 1)
         {
             const int ItemsPerPage = 8;

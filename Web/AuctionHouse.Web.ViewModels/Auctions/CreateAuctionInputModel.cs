@@ -30,7 +30,7 @@
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
-        [Range(1, 30)]
+        [Range(ActiveDaysMin, ActiveDaysMax)]
         [Display(Name = "Аuction validity (1-30 days)")]
         public int ActiveDays { get; set; }
 

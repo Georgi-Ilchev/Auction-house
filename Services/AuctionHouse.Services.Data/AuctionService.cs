@@ -17,6 +17,9 @@
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
 
+        private const int ActiveDaysMin = 1;
+        private const int ActiveDaysMax = 30;
+
         public AuctionService(
             IDeletableEntityRepository<Auction> auctionsRepository,
             IDeletableEntityRepository<Category> categoriesRepository)
@@ -100,6 +103,11 @@
 
         public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
         {
+            if (input.ActiveDays < ActiveDaysMin || input.ActiveDays > ActiveDaysMax)
+            {
+                throw new Exception($"The auction activity cannot be less than {ActiveDaysMin} and more than {ActiveDaysMax} days.");
+            }
+
             var auction = new Auction()
             {
                 Name = input.Name,
@@ -196,6 +204,11 @@
 
             this.auctionsRepository.Delete(auction);
             await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task PayToOwnerAsync(string userId, string ownerEmail)
+        {
+            // TODO
         }
 
         public bool OwnedByUser(string userId, int auctionId)

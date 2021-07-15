@@ -4,7 +4,7 @@
     this.ViewData["Title"] = "My auctions";
 }
 
-<h1 class="text-center">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
 
 <hr />
 
@@ -21,7 +21,7 @@
 <div class="row">
     @foreach (var auction in this.Model.Auctions)
     {
-        <div class="card media col-md-3 mb-4" style="width: 18rem;">
+        <div class="card media col-md-4 mb-4 ml-4" style="width: 18rem;">
             <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
             <div class="card-body">
                 <h3 class="card-title">@auction.Name</h3>

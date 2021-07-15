@@ -32,9 +32,9 @@
 
         public async Task Delete(string commentId)
         {
-            var auction = this.commentsRepository.All().FirstOrDefault(a => a.Id == commentId);
+            var comment = this.commentsRepository.All().FirstOrDefault(a => a.Id == commentId);
 
-            this.commentsRepository.Delete(auction);
+            this.commentsRepository.Delete(comment);
             await this.commentsRepository.SaveChangesAsync();
         }
 

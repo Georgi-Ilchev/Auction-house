@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar nav-tabs navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <img src="~/logo.png" width="75" height="70" alt="logo" class="navbar-brand" />
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -22,30 +22,30 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="AuctionByUser">My Auctions</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="AuctionByUser">My Auctions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Search">Search Auction</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Search" asp-action="Search">Search Auction</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
                             </li>
                         }
                         @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Categories" asp-action="Index">Categories</a>
+                                <a class="nav-link text-white" asp-area="Administration" asp-controller="Categories" asp-action="Index">Categories</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Auctions" asp-action="Index">Auctions</a>
+                                <a class="nav-link text-white" asp-area="Administration" asp-controller="Auctions" asp-action="Index">Auctions</a>
                             </li>
                         }
 

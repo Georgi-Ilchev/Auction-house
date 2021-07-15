@@ -3,7 +3,7 @@
     this.ViewData["Title"] = @Model.Name;
 }
 
-<h1>@this.ViewData["Title"]</h1>
+<h1 class="text-info text-monospace mt-3">@this.ViewData["Title"]</h1>
 <hr />
 
 <div class="container">
@@ -121,7 +121,7 @@
                 if (userId == this.Model.UserId)
                 {
                     <td>
-                        <a class="btn btn-block btn-secondary text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
+                        <a class="btn btn-block btn-light text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
                         <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                         <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id"></form>
                         <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
@@ -147,7 +147,7 @@
                     }
                     else if (this.Model.IsActive == false && userEmail == this.Model.LastBidder)
                     {
-                        <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Auctions" asp-action="Pay" asp-route-Id="@Model.Id">Claim!</a>
+                        <a class="btn btn-block btn-success text-white mb-3" asp-controller="Auctions" asp-action="PayToOwner" asp-route-Id="@Model.Id">Claim!</a>
                     }
                     <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                 }

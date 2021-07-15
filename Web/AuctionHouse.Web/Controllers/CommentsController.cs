@@ -46,14 +46,14 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Delete(int id, string commentId)
+        public async Task<IActionResult> Delete(string commentId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            if (!this.commentService.OwnedByUser(userId, commentId))
-            {
-                return this.Unauthorized();
-            }
+            //if (!this.commentService.OwnedByUser(userId, commentId))
+            //{
+            //    return this.Unauthorized();
+            //}
 
             if (commentId == string.Empty)
             {

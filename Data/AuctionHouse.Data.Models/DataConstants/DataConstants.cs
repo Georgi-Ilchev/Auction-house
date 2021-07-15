@@ -12,6 +12,9 @@
         public const double PriceMinValue = 1.0;
         public const double PriceMaxValue = double.MaxValue;
 
+        public const int ActiveDaysMin = 1;
+        public const int ActiveDaysMax = 30;
+
         // Comment
         public const int ContentMaxLength = 300;
         public const int ContentMinLength = 3;

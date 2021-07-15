@@ -1,11 +1,17 @@
 ﻿@{ViewBag.Title = "Search auctions";
 }
 
+@*<div class="form-floating mb-3">
+    <textarea asp-for="Description" class="form-control" rows="5" placeholder="Description"></textarea>
+    <label asp-for="Description"></label>
+    <span asp-validation-for="Description" class="text-warning"></span>
+</div>*@
+
 <div>
-    <div class="col-md-12">
+    <div class="form-floating mb-3 col-md-12 mt-4">
         <div class="form-inline pull-right">
-            <label>Search</label>
-            <input type="text" class="form-control" id="txtSearch" placeholder="Type a name" />
+            <label class="h2 text-monospace text-info mt-3">Search:</label>
+            <input type="text" class="form-control ml-4" id="txtSearch" placeholder="Type a name" />
         </div>
     </div>
     <div class="row" id="grdAuctions">
