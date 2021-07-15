@@ -149,6 +149,9 @@ namespace AuctionHouse.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("ActiveTo")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -165,6 +168,9 @@ namespace AuctionHouse.Data.Migrations
 
                     b.Property<DateTime?>("EndPromoted")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsAuctionOfTheWeek")
                         .HasColumnType("bit");
@@ -187,12 +193,6 @@ namespace AuctionHouse.Data.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("StartPromoted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<TimeSpan>("Timer")
-                        .HasColumnType("time");
-
-                    b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")

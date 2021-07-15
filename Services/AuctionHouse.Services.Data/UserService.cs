@@ -17,16 +17,18 @@
             this.userRepository = userRepository;
         }
 
-        //public Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage = 8)
-        //{
-        //    var accounts = this.userRepository.AllAsNoTracking()
-        //        .OrderByDescending(x => x.Id)
-        //        .Skip((page - 1) * itemsPerPage)
-        //        .Take(itemsPerPage)
-        //        .ToList();
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)
+        {
+            //var accounts = this.userRepository.All()
+            //    .OrderByDescending(x => x.Id)
+            //    .Skip((page - 1) * itemsPerPage)
+            //    .Take(itemsPerPage)
+            //    .ToList();
 
-        //    return accounts;
-        //}
+            //return (T)accounts;
+
+            throw new NotImplementedException();
+        }
 
         public decimal GetUserBalance(string userId)
         {

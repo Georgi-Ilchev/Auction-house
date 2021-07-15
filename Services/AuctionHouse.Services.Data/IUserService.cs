@@ -5,7 +5,7 @@
 
     public interface IUserService
     {
-        //Task<IEnumerable<T>> GetAll<T>(int page, int itemsPerPage = 8);
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
 
         decimal GetUserBalance(string userId);
     }

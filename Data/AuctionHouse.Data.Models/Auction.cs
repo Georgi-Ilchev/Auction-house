@@ -30,13 +30,13 @@
 
         public bool IsAuctionOfTheWeek { get; set; }
 
+        public bool IsActive { get; set; }
+
         public DateTime? StartPromoted { get; set; }
 
         public DateTime? EndPromoted { get; set; }
 
-        public TimeSpan Timer { get; set; }
-
-        public DateTime Timestamp { get; set; }
+        public DateTime ActiveTo { get; set; }
 
         public string UserId { get; set; }
 

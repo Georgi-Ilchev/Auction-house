@@ -27,14 +27,16 @@
         [Range(PriceMinValue, PriceMaxValue, ErrorMessage = "The field {0} must be greater than {1}.")]
         public decimal Price { get; set; }
 
-        [Range(0, 24 * 60)]
-        [Display(Name = "Auction validity (in days)")]
-        public int Timer { get; set; }
-
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        [Range(1, 30)]
+        [Display(Name = "Аuction validity (1-30 days)")]
+        public int ActiveDays { get; set; }
+
+        public DateTime ActiveTo { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
 

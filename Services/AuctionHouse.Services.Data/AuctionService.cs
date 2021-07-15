@@ -105,9 +105,11 @@
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
-                Timer = TimeSpan.FromDays(input.Timer),
+                CreatedOn = DateTime.UtcNow,
+                ActiveTo = DateTime.UtcNow.AddDays(input.ActiveDays),
                 CategoryId = input.CategoryId,
                 UserId = userId,
+                IsActive = true,
             };
 
             if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))

@@ -7,11 +7,6 @@
 
     public class UserViewModel : IMapFrom<ApplicationUser>
     {
-        public UserViewModel()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
         public string Id { get; set; }
 
         public decimal Balance { get; set; }

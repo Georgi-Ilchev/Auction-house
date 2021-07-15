@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
     using System.Linq;
 
     using AuctionHouse.Data.Models;
@@ -29,7 +30,15 @@
 
         public string UserId { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ActiveTo { get; set; }
+
+        public string CreatedOnAsString
+            => this.CreatedOn.ToString("dd.MM.yyyy HH:mm", CultureInfo.GetCultureInfo("bg-BG"));
+
+        public string ActiveToAsString
+            => this.ActiveTo.ToString("dd.MM.yyyy HH:mm", CultureInfo.GetCultureInfo("bg-BG"));
 
         // changed here
         public string LastBidder { get; set; }
