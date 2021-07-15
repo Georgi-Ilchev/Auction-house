@@ -185,7 +185,6 @@
             var auctions = this.auctionsRepository.All().FirstOrDefault(x => x.Id == id);
             auctions.Name = input.Name;
             auctions.Description = input.Description;
-            auctions.Price = input.Price;
             auctions.CategoryId = input.CategoryId;
 
             await this.auctionsRepository.SaveChangesAsync();

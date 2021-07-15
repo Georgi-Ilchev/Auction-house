@@ -22,9 +22,6 @@
             MinimumLength = DescriptionMinLength)]
         public string Description { get; set; }
 
-        [Range(PriceMinValue, PriceMaxValue, ErrorMessage = "The field {0} must be greater than {1}.")]
-        public decimal Price { get; set; }
-
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
