@@ -73,6 +73,24 @@
                     <p class="description">Active to: @Model.ActiveToAsString</p>
                 </div>
             </div>
+
+            @{
+                var status = string.Empty;
+                if (this.Model.IsActive == true)
+                {
+                    status = "Active";
+                }
+                else
+                {
+                    status = "Inactive";
+                }
+            }
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">Status: @status</p>
+                </div>
+            </div>
             <hr />
 
             @{

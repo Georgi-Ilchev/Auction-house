@@ -172,6 +172,10 @@
             }
 
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
+            if (DateTime.UtcNow > auction.ActiveTo)
+            {
+                auction.IsActive = false;
+            }
 
             return this.View(auction);
         }
