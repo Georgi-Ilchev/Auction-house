@@ -18,7 +18,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="font-weight-bold">Username: </span>@user.UserName</li>
                 <li class="list-group-item"><span class="font-weight-bold">Email: </span>@user.Email</li>
-                <li class="list-group-item"><span class="font-weight-bold" id="currentBidValue">Balance: </span>$@user.Balance</li>
+                <li class="list-group-item"><span class="font-weight-bold">Balance: </span>$@user.Balance</li>
             </ul>
         </div>
         <div class="card-body viewBtn">
@@ -29,30 +29,3 @@
 </div>
 
 <hr />
-
-@*<form method="post" id="antiForgeryForm"></form>
-@section Scripts {
-    <script>
-        $("li[data-vote]").each(function (el) {
-            $(this).click(function () {
-                var balance = $(this).attr("data-vote");
-                //var userId = this.Model.Users;
-                var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                var data = { balance: balance };
-
-                $.ajax({
-                    type: "POST",
-                    url: "/api/Bids",
-                    data: JSON.stringify(data),
-                    headers: {
-                        'X-CSRF-TOKEN': antiForgeryToken
-                    },
-                    success: function (data) {
-                        $('#currentBidValue').html(data.balance);
-                    },
-                    contentType: 'application/json',
-                });
-            })
-        });
-    </script>
-}*@

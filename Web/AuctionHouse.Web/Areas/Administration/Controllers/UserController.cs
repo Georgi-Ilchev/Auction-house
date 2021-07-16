@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [Area("Administration")]
+
     public class UserController : Controller
     {
         private readonly IUserService userService;
@@ -17,6 +18,7 @@
             this.userService = userService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index(int page = 1)
         {
             const int ItemsPerPage = 8;
@@ -36,6 +38,7 @@
             return this.View(viewModel);
         }
 
+        [HttpGet]
         public IActionResult SingleUser(string userId)
         {
             if (userId == string.Empty)
@@ -49,12 +52,15 @@
         }
 
         [HttpPost]
+        [Route("api/[controller]")]
+        [IgnoreAntiforgeryToken]
         public async Task<ActionResult<CurrentBalanceViewModel>> GiveMoney(GiveMoneyInputModel input)
         {
             await this.userService.AddMoneyAsync(input.UserId, input.Amount);
 
             var currentBalance = new CurrentBalanceViewModel
             {
+                UserId = input.UserId,
                 Balance = input.Amount,
             };
 

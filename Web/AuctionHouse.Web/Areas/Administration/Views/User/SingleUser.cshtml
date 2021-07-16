@@ -18,19 +18,19 @@
             </div>
 
             @*@{
-                Model.BidsAmount = Model.BidsAmount + Model.Price;
-                if (Model.LastBidder == null)
-                {
-                    Model.LastBidder = "No bids yet";
-                }
+                    Model.BidsAmount = Model.BidsAmount + Model.Price;
+                    if (Model.LastBidder == null)
+                    {
+                        Model.LastBidder = "No bids yet";
+                    }
 
-            }*@
+                }*@
 
-            <ul class="list-group">
-                <li class="list-group-item"><span class="font-weight-bold">Id: </span>@this.Model.Id</li>
-                <li class="list-group-item"><span class="font-weight-bold">Email: </span>@this.Model.Email</li>
-                <li class="list-group-item"><span class="font-weight-bold">Balance: </span>$@this.Model.Balance</li>
-            </ul>
+        <ul class="list-group">
+            <li class="list-group-item"><span class="font-weight-bold">Id: </span>@this.Model.Id</li>
+            <li class="list-group-item"><span class="font-weight-bold">Email: </span>@this.Model.Email</li>
+            <li class="list-group-item"><span class="font-weight-bold">Balance: <span class="font-weight-normal" id="currentBalance">$@this.Model.Balance</span></span></li>
+        </ul>
 
             <hr />
             <div class="form-group">
@@ -42,3 +42,31 @@
         </div>
     </div>
 </div>
+
+<form method="post" id="antiForgeryForm"></form>
+@section Scripts {
+    <script>
+                $("li[data-vote]").each(function (el) {
+                    $(this).click(function () {
+                        var value = $(this).attr("data-vote");
+                        var userId = @Model.Id;
+                        //var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                        var data = { userId: userId, value: value };
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/User",
+                            data: JSON.stringify(data),
+                            //headers: {
+                            //    'X-CSRF-TOKEN': antiForgeryToken
+                            //},
+                            success: function (data) {
+                                $('#currentBalance').html(data.value);
+                                //console.log(data);
+                            },
+                            contentType: 'application/json',
+                        });
+                    })
+                });
+    </script>
+}
