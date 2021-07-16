@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link href="~/css/superhero.css" rel="stylesheet" />
+    <link href="~/css/vapor.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </head>
 <body>
@@ -46,6 +46,9 @@
                             </li>
                             <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="Administration" asp-controller="Auctions" asp-action="Index">Auctions</a>
+                            </li>
+                            <li class="nav-item h5">
+                                <a class="nav-link text-white" asp-area="Administration" asp-controller="User" asp-action="Index">Users</a>
                             </li>
                         }
 

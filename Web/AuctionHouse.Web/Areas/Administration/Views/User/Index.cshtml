@@ -1,0 +1,28 @@
+﻿@model AuctionHouse.Web.ViewModels.Users.ListUsersViewModel
+
+@{
+    this.ViewData["Title"] = "Users";
+}
+
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.Users.Count()</h1>
+
+<hr />
+
+<br />
+<div class="row">
+    @foreach (var user in this.Model.Users)
+    {
+        <div class="card media border-info col-md-4 mb-4 ml-4" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title">@user.UserName</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="font-weight-bold">Username: </span>@user.UserName</li>
+                    <li class="list-group-item"><span class="font-weight-bold">Email: </span>@user.Email</li>
+                    <li class="list-group-item"><span class="font-weight-bold">Balance: </span>$@user.Balance</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />

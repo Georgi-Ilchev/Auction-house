@@ -495,3 +495,4 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\User\Index.cshtml.g.cs

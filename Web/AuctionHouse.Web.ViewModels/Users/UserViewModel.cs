@@ -1,7 +1,5 @@
-﻿namespace AuctionHouse.Web.Areas.Administration.Views.Users
+﻿namespace AuctionHouse.Web.ViewModels.Users
 {
-    using System;
-
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 
@@ -10,5 +8,9 @@
         public string Id { get; set; }
 
         public decimal Balance { get; set; }
+
+        public string Email { get; set; }
+
+        public string UserName { get; set; }
     }
 }

@@ -7,6 +7,8 @@
 
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
+    using AuctionHouse.Web.ViewModels.Users;
+    using Microsoft.EntityFrameworkCore;
 
     public class UserService : IUserService
     {
@@ -17,17 +19,23 @@
             this.userRepository = userRepository;
         }
 
-        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)
+        public async Task<IEnumerable<UserViewModel>> GetAllAsync(int page, int itemsPerPage = 8)
         {
-            //var accounts = this.userRepository.All()
-            //    .OrderByDescending(x => x.Id)
-            //    .Skip((page - 1) * itemsPerPage)
-            //    .Take(itemsPerPage)
-            //    .ToList();
+            var accounts = await this.userRepository.All()
+                .AsQueryable()
+                .Select(x => new UserViewModel
+                {
+                    Id = x.Id,
+                    Balance = x.Balance,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                })
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToListAsync();
 
-            //return (T)accounts;
-
-            throw new NotImplementedException();
+            return accounts;
         }
 
         public decimal GetUserBalance(string userId)

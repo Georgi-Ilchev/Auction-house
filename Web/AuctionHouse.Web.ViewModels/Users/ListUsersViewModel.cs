@@ -1,4 +1,4 @@
-﻿namespace AuctionHouse.Web.Areas.Administration.Views.Users
+﻿namespace AuctionHouse.Web.ViewModels.Users
 {
     using System.Collections.Generic;
 
