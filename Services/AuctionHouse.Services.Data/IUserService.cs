@@ -8,6 +8,10 @@
     {
         Task<IEnumerable<UserViewModel>> GetAllAsync(int page, int itemsPerPage = 8);
 
+        Task AddMoneyAsync(string userId, decimal amount);
+
+        UserViewModel GetUser(string userId);
+
         decimal GetUserBalance(string userId);
     }
 }

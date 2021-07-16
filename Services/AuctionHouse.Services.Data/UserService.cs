@@ -42,5 +42,32 @@
         {
             return this.userRepository.All().FirstOrDefault(x => x.Id == userId).Balance;
         }
+
+        public UserViewModel GetUser(string userId)
+        {
+            var user = this.userRepository.AllAsNoTracking()
+                .Where(x => x.Id == userId)
+                .Select(x => new UserViewModel
+                {
+                    Id = x.Id,
+                    Balance = x.Balance,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                })
+                .FirstOrDefault();
+
+            return user;
+        }
+
+        public async Task AddMoneyAsync(string userId, decimal amount)
+        {
+            var user = this.userRepository.All()
+                .FirstOrDefault(x => x.Id == userId);
+
+            user.Balance += amount;
+
+            // await this.userRepository.Update(user);
+            await this.userRepository.SaveChangesAsync();
+        }
     }
 }

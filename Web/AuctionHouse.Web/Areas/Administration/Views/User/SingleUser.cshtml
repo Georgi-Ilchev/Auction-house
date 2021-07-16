@@ -1,0 +1,44 @@
+﻿@model AuctionHouse.Web.ViewModels.Users.UserViewModel
+
+@{
+    this.ViewData["Title"] = "Users";
+}
+
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"]</h1>
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@this.Model.UserName</h1>
+                </div>
+            </div>
+
+            @*@{
+                Model.BidsAmount = Model.BidsAmount + Model.Price;
+                if (Model.LastBidder == null)
+                {
+                    Model.LastBidder = "No bids yet";
+                }
+
+            }*@
+
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Id: </span>@this.Model.Id</li>
+                <li class="list-group-item"><span class="font-weight-bold">Email: </span>@this.Model.Email</li>
+                <li class="list-group-item"><span class="font-weight-bold">Balance: </span>$@this.Model.Balance</li>
+            </ul>
+
+            <hr />
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Give money to user</label>
+                <ul>
+                    <li type="button" class="btn btn-success" data-vote="5000">5000</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
