@@ -26,6 +26,8 @@
 
         public decimal BidsAmount { get; set; }
 
+        public bool IsActive { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, ListAuctionViewModel>()

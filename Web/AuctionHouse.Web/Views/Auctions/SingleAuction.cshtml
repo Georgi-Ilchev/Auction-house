@@ -87,14 +87,33 @@
                     status = "Inactive";
                     activeOrNo = "text-danger";
                 }
+
+                var isSold = string.Empty;
+                if (this.Model.IsActive == false && this.Model.IsSold == true)
+                {
+                    isSold = "Sold!";
+                }
+                else if (this.Model.IsActive == false && this.Model.IsSold == false)
+                {
+                    isSold = "No buyer was found for this auction";
+                }
             }
 
             <div class="row">
                 <div class="col-md-12">
-                    <p class="description">Status: <span class="@activeOrNo">@status</span>
+                    <p class="description">Status: <span class="@activeOrNo">@status</span></p>
                 </div>
             </div>
-            <hr />
+
+            @if (this.Model.IsActive == false)
+            {
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="description h5 text-center">@isSold</p>
+                    </div>
+                </div>
+            }
 
             @{
                 Model.BidsAmount = Model.BidsAmount + Model.Price;
@@ -224,7 +243,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Pay to owner
+                Pay to owner - $@(this.Model.BidsAmount)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

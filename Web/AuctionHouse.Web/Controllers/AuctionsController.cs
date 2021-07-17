@@ -196,17 +196,24 @@
         }
 
         [Authorize]
-        public IActionResult SingleAuction(int auctionId)
+        public async Task<IActionResult> SingleAuction(int auctionId)
         {
             if (auctionId == 0)
             {
                 return this.NotFound();
             }
 
+            await this.auctionService.UpdateDbAuction(auctionId);
+
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
             if (DateTime.UtcNow > auction.ActiveTo)
             {
                 auction.IsActive = false;
+            }
+
+            if (auction.IsActive == false && auction.LastBidder != null)
+            {
+                auction.IsSold = true;
             }
 
             return this.View(auction);

@@ -32,6 +32,8 @@
 
         public bool IsActive { get; set; }
 
+        public bool IsSold { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime ActiveTo { get; set; }
@@ -42,7 +44,6 @@
         public string ActiveToAsString
             => this.ActiveTo.ToString("dd.MM.yyyy HH:mm", CultureInfo.GetCultureInfo("bg-BG"));
 
-        // changed here
         public string LastBidder { get; set; }
 
         //[Required]

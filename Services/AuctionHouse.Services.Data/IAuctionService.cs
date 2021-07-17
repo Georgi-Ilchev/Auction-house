@@ -37,5 +37,7 @@
         Task UpdateAsync(int id, EditAuctionInputModel input);
 
         Task Delete(int auctionId);
+
+        Task UpdateDbAuction(int auctionId);
     }
 }

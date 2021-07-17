@@ -7,7 +7,6 @@
 <h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
 
 <hr />
-
 <br />
 <div class="row">
     @foreach (var auction in this.Model.Auctions)
@@ -17,6 +16,16 @@
             <div class="card-body">
                 <h3 class="card-title">@auction.Name</h3>
                 <p class="card-text">Category: @auction.CategoryName</p>
+                <p class="card-text">
+                    @if (auction.IsActive == true)
+                    {
+                    <span class="text-success">Active</span>
+                    }
+                    else
+                    {
+                    <span class="text-danger">Inactive</span>
+                    }
+                </p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price: </span>$@auction.Price</li>
@@ -36,19 +45,19 @@
 
 @*<script>
 
-    function getAuctions() {
-        $.ajax({
-            type: "GET",
-            url: "/api/SearchController",
-            datatype: 'html',
-            data: { }
-            headers: {
-                'X-CSRF-TOKEN': antiForgeryToken
-            },
-            success: function (data) {
-                $('#currentBindValue').html(data.currentBid + @Model.Price);
-            },
-            contentType: 'application/json',
-         });
-    }
-</script>*@
+        function getAuctions() {
+            $.ajax({
+                type: "GET",
+                url: "/api/SearchController",
+                datatype: 'html',
+                data: { }
+                headers: {
+                    'X-CSRF-TOKEN': antiForgeryToken
+                },
+                success: function (data) {
+                    $('#currentBindValue').html(data.currentBid + @Model.Price);
+                },
+                contentType: 'application/json',
+             });
+        }
+    </script>*@

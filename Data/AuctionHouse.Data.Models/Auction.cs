@@ -32,6 +32,8 @@
 
         public bool IsActive { get; set; }
 
+        public bool IsSold { get; set; }
+
         public DateTime? StartPromoted { get; set; }
 
         public DateTime? EndPromoted { get; set; }

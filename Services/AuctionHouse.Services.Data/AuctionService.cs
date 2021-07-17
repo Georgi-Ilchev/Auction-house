@@ -118,6 +118,7 @@
                 CategoryId = input.CategoryId,
                 UserId = userId,
                 IsActive = true,
+                IsSold = false,
             };
 
             if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
@@ -206,9 +207,23 @@
             await this.auctionsRepository.SaveChangesAsync();
         }
 
-        public async Task PayToOwnerAsync(string userId, string ownerEmail)
+        public async Task UpdateDbAuction(int auctionId)
         {
-            // TODO
+            var dbAuction = this.auctionsRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == auctionId);
+
+            if (DateTime.UtcNow > dbAuction.ActiveTo)
+            {
+                dbAuction.IsActive = false;
+            }
+
+            if (dbAuction.IsActive == false && dbAuction.LastBidder != null)
+            {
+                dbAuction.IsSold = true;
+            }
+
+            this.auctionsRepository.Update(dbAuction);
+            await this.auctionsRepository.SaveChangesAsync();
         }
 
         public bool OwnedByUser(string userId, int auctionId)
