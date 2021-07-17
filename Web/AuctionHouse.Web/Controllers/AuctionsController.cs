@@ -15,12 +15,18 @@
         private readonly ICategoriesService categoriesService;
         private readonly IAuctionService auctionService;
         private readonly IWebHostEnvironment environment;
+        private readonly IUserService userService;
 
-        public AuctionsController(ICategoriesService categoriesService, IAuctionService auctionService, IWebHostEnvironment environment)
+        public AuctionsController(
+            ICategoriesService categoriesService,
+            IAuctionService auctionService,
+            IWebHostEnvironment environment,
+            IUserService userService)
         {
             this.categoriesService = categoriesService;
             this.auctionService = auctionService;
             this.environment = environment;
+            this.userService = userService;
         }
 
         [Authorize]
@@ -121,23 +127,28 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> PayToOwner(int auctionId, string ownerId)
+        public async Task<IActionResult> MoneyTransfer(int auctionId)
         {
-            //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (auctionId == 0)
+            {
+                return this.NotFound();
+            }
 
-            //if (!this.auctionService.OwnedByUser(ownerId, auctionId))
-            //{
-            //    return this.Unauthorized();
-            //}
+            var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var ownerId = auction.UserId;
 
-            //if (auctionId == 0)
-            //{
-            //    return this.NotFound();
-            //}
+            if (!this.auctionService.OwnedByUser(ownerId, auctionId))
+            {
+                return this.Unauthorized();
+            }
 
-            //await this.auctionService.Pay(userId, ownerId);
+            var amount = auction.BidsAmount + auction.Price;
 
-            return this.Redirect("");
+            await this.userService.GetFromUser(userId, amount);
+            await this.userService.GetToOwner(ownerId, amount);
+
+            return this.Redirect("/Auctions/All");
         }
 
         [Authorize]

@@ -33,6 +33,11 @@
         {
             var auctionId = model.Id;
 
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(model);
+            //}
+
             if (!this.auctionService.IsAuctionExisting(auctionId))
             {
                 return this.Redirect("/");

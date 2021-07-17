@@ -61,12 +61,34 @@
 
         public async Task AddMoneyAsync(string userId, decimal amount)
         {
-            var user = this.userRepository.All()
+            var user = this.userRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == userId);
 
             user.Balance += amount;
 
-            // await this.userRepository.Update(user);
+            this.userRepository.Update(user);
+            await this.userRepository.SaveChangesAsync();
+        }
+
+        public async Task GetFromUser(string userId, decimal amount)
+        {
+            var user = this.userRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == userId);
+
+            user.Balance -= amount;
+
+            this.userRepository.Update(user);
+            await this.userRepository.SaveChangesAsync();
+        }
+
+        public async Task GetToOwner(string ownerId, decimal amount)
+        {
+            var owner = this.userRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == ownerId);
+
+            owner.Balance += amount;
+
+            this.userRepository.Update(owner);
             await this.userRepository.SaveChangesAsync();
         }
     }

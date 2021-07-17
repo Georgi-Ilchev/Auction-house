@@ -114,8 +114,8 @@
             <hr />
 
             @*<div class="card-footer text-muted">
-                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-                </div>*@
+            <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+        </div>*@
 
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
@@ -152,7 +152,8 @@
                     }
                     else if (this.Model.IsActive == false && userEmail == this.Model.LastBidder)
                     {
-                        <a class="btn btn-block btn-success text-white mb-3" asp-controller="Auctions" asp-action="PayToOwner" asp-route-Id="@Model.Id">Claim!</a>
+                        <form method="post" id="payForm" asp-action="MoneyTransfer" asp-route-auctionId="@Model.Id"></form>
+                        <a class="btn btn-block btn-success text-white mb-3" data-toggle="modal" data-target="#payModal">Claim!</a>
                     }
                     <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                 }
@@ -208,6 +209,26 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Pay</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Pay to owner
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="payForm.submit()">Pay</button>
             </div>
         </div>
     </div>
