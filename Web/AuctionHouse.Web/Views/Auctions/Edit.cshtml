@@ -9,21 +9,22 @@
 
 <form method="post" id="editForm">
     <div asp-validation-summary="All" class="text-warning"></div>
-    <div class="form-group">
+
+    <div class="form-floating mb-3">
+        <input asp-for="Name" class="form-control" placeholder="Name" />
         <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-warning"></span>
     </div>
 
-    <div class="form-group">
+    <div class="form-floating mb-3">
+        <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
         <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
         <span asp-validation-for="Description" class="text-warning"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="CategoryId"></label>
+    <div class="form-floating mb-3">
         <select asp-for="CategoryId" asp-items="categoriesItems" class="form-control"></select>
+        <label asp-for="CategoryId"></label>
         <span asp-validation-for="CategoryId" class="text-warning"></span>
     </div>
 
