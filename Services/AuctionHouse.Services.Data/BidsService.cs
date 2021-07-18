@@ -13,11 +13,16 @@
     {
         private readonly IRepository<Bid> bidsRepository;
         private readonly IRepository<Auction> auctionsRepository;
+        private readonly IUserService userService;
 
-        public BidsService(IRepository<Bid> bidsRepository, IRepository<Auction> auctionsRepository)
+        public BidsService(
+            IRepository<Bid> bidsRepository,
+            IRepository<Auction> auctionsRepository,
+            IUserService userService)
         {
             this.bidsRepository = bidsRepository;
             this.auctionsRepository = auctionsRepository;
+            this.userService = userService;
         }
 
         public async Task AddBidAsync(string userId, int auctionId, decimal price)
@@ -68,5 +73,12 @@
 
             return user;
         }
+
+        //public bool CanUserBid(string userId)
+        //{
+        //    var user = this.userService.GetUser(userId);
+
+            
+        //}
     }
 }

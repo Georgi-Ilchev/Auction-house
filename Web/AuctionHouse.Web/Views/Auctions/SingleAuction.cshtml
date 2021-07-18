@@ -158,21 +158,28 @@
                 {
                     if (this.Model.IsActive)
                     {
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Submit your Bid</label>
-                            <ul>
-                                <li type="button" class="btn btn-success" data-vote="10">10</li>
-                                <li type="button" class="btn btn-success" data-vote="20">20</li>
-                                <li type="button" class="btn btn-success" data-vote="50">50</li>
-                                <li type="button" class="btn btn-success" data-vote="100">100</li>
-                                <li type="button" class="btn btn-success" data-vote="200">200</li>
-                                <li type="button" class="btn btn-success" data-vote="300">300</li>
-                                <li type="button" class="btn btn-success" data-vote="500">500</li>
-                                <li type="button" class="btn btn-success" data-vote="1000">1000</li>
-                                <li type="button" class="btn btn-success" data-vote="3000">3000</li>
-                                <li type="button" class="btn btn-success" data-vote="5000">5000</li>
-                            </ul>
-                        </div>
+                        if (this.Model.CanUserBid)
+                        {
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Submit your Bid</label>
+                                <ul>
+                                    <li type="button" class="btn btn-success" data-vote="10">10</li>
+                                    <li type="button" class="btn btn-success" data-vote="20">20</li>
+                                    <li type="button" class="btn btn-success" data-vote="50">50</li>
+                                    <li type="button" class="btn btn-success" data-vote="100">100</li>
+                                    <li type="button" class="btn btn-success" data-vote="200">200</li>
+                                    <li type="button" class="btn btn-success" data-vote="300">300</li>
+                                    <li type="button" class="btn btn-success" data-vote="500">500</li>
+                                    <li type="button" class="btn btn-success" data-vote="1000">1000</li>
+                                    <li type="button" class="btn btn-success" data-vote="3000">3000</li>
+                                    <li type="button" class="btn btn-success" data-vote="5000">5000</li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>You dont have enough money to make bid</p>
+                        }
                     }
                     else if (this.Model.IsActive == false && userEmail == this.Model.LastBidder)
                     {

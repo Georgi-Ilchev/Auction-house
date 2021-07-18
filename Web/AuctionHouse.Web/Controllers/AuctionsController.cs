@@ -257,7 +257,11 @@
                 return this.NotFound();
             }
 
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = this.userService.GetUser(userId);
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
+            var auctionSum = auction.BidsAmount + auction.Price;
+
             if (DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
             {
                 auction.IsActive = false;
@@ -266,6 +270,11 @@
             if (auction.IsActive == false && auction.LastBidder != null)
             {
                 auction.IsSold = true;
+            }
+
+            if (user.Balance >= auctionSum)
+            {
+                auction.CanUserBid = true;
             }
 
             await this.auctionService.UpdateDbAuction(auctionId);
