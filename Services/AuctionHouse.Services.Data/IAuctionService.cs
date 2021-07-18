@@ -12,6 +12,10 @@
 
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 
+        IEnumerable<T> GetAllUserPurchases<T>(string userEmail, int page, int itemsPerPage = 8);
+
+        IEnumerable<T> GetAllUserSales<T>(string userId, int page, int itemsPerPage = 8);
+
         IEnumerable<T> GetSearch<T>(string search);
 
         // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);

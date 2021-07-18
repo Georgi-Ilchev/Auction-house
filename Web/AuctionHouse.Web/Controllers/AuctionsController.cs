@@ -146,9 +146,9 @@
             var amount = auction.BidsAmount + auction.Price;
 
             await this.userService.GetFromUser(userId, amount);
-            await this.userService.GetToOwner(ownerId, amount);
+            await this.userService.GetToOwner(ownerId, amount, auctionId);
 
-            return this.Redirect("/Auctions/All");
+            return this.Redirect("/Auctions/UserPurchases");
         }
 
         [Authorize]
@@ -196,14 +196,56 @@
         }
 
         [Authorize]
+        public IActionResult UserPurchases(int id = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
+
+            var viewModel = new ListAuctionsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = this.auctionService.GetAllUserPurchases<ListAuctionViewModel>(userEmail, id, ItemsPerPage),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult UserSales(int id = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var viewModel = new ListAuctionsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = this.auctionService.GetAllUserSales<ListAuctionViewModel>(userId, id, ItemsPerPage),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
         public async Task<IActionResult> SingleAuction(int auctionId)
         {
             if (auctionId == 0)
             {
                 return this.NotFound();
             }
-
-            await this.auctionService.UpdateDbAuction(auctionId);
 
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
             if (DateTime.UtcNow > auction.ActiveTo)
@@ -215,6 +257,8 @@
             {
                 auction.IsSold = true;
             }
+
+            await this.auctionService.UpdateDbAuction(auctionId);
 
             return this.View(auction);
         }

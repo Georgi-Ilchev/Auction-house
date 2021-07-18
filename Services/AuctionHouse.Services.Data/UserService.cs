@@ -13,10 +13,14 @@
     public class UserService : IUserService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly IDeletableEntityRepository<Auction> auctionsRepository;
 
-        public UserService(IDeletableEntityRepository<ApplicationUser> userRepository)
+        public UserService(
+            IDeletableEntityRepository<ApplicationUser> userRepository,
+            IDeletableEntityRepository<Auction> auctionsRepository)
         {
             this.userRepository = userRepository;
+            this.auctionsRepository = auctionsRepository;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAllAsync(int page, int itemsPerPage = 8)
@@ -81,15 +85,23 @@
             await this.userRepository.SaveChangesAsync();
         }
 
-        public async Task GetToOwner(string ownerId, decimal amount)
+        public async Task GetToOwner(string ownerId, decimal amount, int auctionId)
         {
             var owner = this.userRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == ownerId);
 
             owner.Balance += amount;
 
+            var dbAuction = this.auctionsRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == auctionId);
+
+            dbAuction.IsPaid = true;
+
             this.userRepository.Update(owner);
+            this.auctionsRepository.Update(dbAuction);
+
             await this.userRepository.SaveChangesAsync();
+            await this.auctionsRepository.SaveChangesAsync();
         }
     }
 }

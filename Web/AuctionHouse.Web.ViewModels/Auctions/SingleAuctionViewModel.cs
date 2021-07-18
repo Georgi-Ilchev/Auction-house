@@ -34,6 +34,8 @@
 
         public bool IsSold { get; set; }
 
+        public bool IsPaid { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime ActiveTo { get; set; }

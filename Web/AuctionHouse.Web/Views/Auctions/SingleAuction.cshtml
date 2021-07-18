@@ -133,8 +133,8 @@
             <hr />
 
             @*<div class="card-footer text-muted">
-            <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-        </div>*@
+                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
+                </div>*@
 
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
@@ -171,8 +171,15 @@
                     }
                     else if (this.Model.IsActive == false && userEmail == this.Model.LastBidder)
                     {
-                        <form method="post" id="payForm" asp-action="MoneyTransfer" asp-route-auctionId="@Model.Id"></form>
-                        <a class="btn btn-block btn-success text-white mb-3" data-toggle="modal" data-target="#payModal">Claim!</a>
+                        if (this.Model.IsPaid == true)
+                        {
+                            <p>You are already paid for this!</p>
+                        }
+                        else
+                        {
+                            <form method="post" id="payForm" asp-action="MoneyTransfer" asp-route-auctionId="@Model.Id"></form>
+                            <a class="btn btn-block btn-success text-white mb-3" data-toggle="modal" data-target="#payModal">Claim!</a>
+                        }
                     }
                     <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                 }

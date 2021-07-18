@@ -16,6 +16,6 @@
 
         Task GetFromUser(string userId, decimal amount);
 
-        Task GetToOwner(string ownerId, decimal amount);
+        Task GetToOwner(string ownerId, decimal amount, int auctionId);
     }
 }

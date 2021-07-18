@@ -31,6 +31,7 @@
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.IsPaid == false)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -42,15 +43,41 @@
 
         public IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8)
         {
-            var auction = this.auctionsRepository.AllAsNoTracking()
-                .Where(x => x.UserId == userId)
+            var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.UserId == userId && x.IsPaid == false)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .To<T>()
                 .ToList();
 
-            return auction;
+            return auctions;
+        }
+
+        public IEnumerable<T> GetAllUserPurchases<T>(string userEmail, int page, int itemsPerPage = 8)
+        {
+            var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.LastBidder == userEmail && x.IsSold == true && x.IsPaid == true)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .ToList();
+
+            return auctions;
+        }
+
+        public IEnumerable<T> GetAllUserSales<T>(string userId, int page, int itemsPerPage = 8)
+        {
+            var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.UserId == userId && x.IsSold == true && x.IsPaid == true)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .ToList();
+
+            return auctions;
         }
 
         public IEnumerable<T> GetSearch<T>(string search)
@@ -83,12 +110,17 @@
 
         public int GetAuctionsCount()
         {
-            return this.auctionsRepository.All().Count();
+            return this.auctionsRepository.All()
+                .Where(x => x.IsPaid == false)
+                .Count();
         }
 
         public int GetUserAuctionsCount(string userId)
         {
-            return this.auctionsRepository.All().Where(x => x.UserId == userId).Count();
+            return this.auctionsRepository.All()
+                .Where(x => x.UserId == userId &&
+                            x.IsPaid == false)
+                .Count();
         }
 
         public T GetById<T>(int id)
@@ -119,6 +151,7 @@
                 UserId = userId,
                 IsActive = true,
                 IsSold = false,
+                IsPaid = false,
             };
 
             if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))

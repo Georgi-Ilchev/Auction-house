@@ -27,16 +27,21 @@
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item h5">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="AuctionByUser">My Auctions</a>
-                            </li>
-                            <li class="nav-item h5">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
-                            </li>
-                            <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Search" asp-action="Search">Search Auction</a>
                             </li>
                             <li class="nav-item h5">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Auctions" asp-action="Create">Create Auction</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Auctions</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Auctions" asp-action="AuctionByUser">My Auctions</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Auctions" asp-action="UserPurchases">My Purchases</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Auctions" asp-action="UserSales">My Sales</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Auctions" asp-action="All">All Auctions</a>
+                                </div>
                             </li>
                         }
                         @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
