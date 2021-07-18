@@ -62,6 +62,8 @@
                 return this.View(input);
             }
 
+            this.TempData["Message"] = "The auction was successfully created.";
+
             return this.Redirect("/Auctions/All");
         }
 
@@ -101,6 +103,8 @@
 
             await this.auctionService.UpdateAsync(id, auction);
 
+            this.TempData["Message"] = "The auction was successfully updated.";
+
             return this.RedirectToAction(nameof(this.SingleAuction), new { auctionId = id });
         }
 
@@ -121,6 +125,8 @@
             }
 
             await this.auctionService.Delete(auctionId);
+
+            this.TempData["Message"] = "The auction was successfully deleted.";
 
             return this.Redirect("/Auctions/All");
         }
@@ -147,6 +153,8 @@
 
             await this.userService.GetFromUser(userId, amount);
             await this.userService.GetToOwner(ownerId, amount, auctionId);
+
+            this.TempData["Message"] = "You have successfully paid";
 
             return this.Redirect("/Auctions/UserPurchases");
         }

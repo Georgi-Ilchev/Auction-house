@@ -3,6 +3,11 @@
     this.ViewData["Title"] = @Model.Name;
 }
 
+@if (this.TempData.ContainsKey("Message"))
+{
+    <partial name="_AlertPartial" />
+}
+
 <h1 class="text-info text-monospace mt-3">@this.ViewData["Title"]</h1>
 <hr />
 
@@ -183,7 +188,6 @@
                     }
                     <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
                 }
-
             }
         </div>
     </div>

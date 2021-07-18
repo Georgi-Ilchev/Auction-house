@@ -499,3 +499,4 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\User\SingleUser.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\UserPurchases.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\UserSales.cshtml.g.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_AlertPartial.cshtml.g.cs

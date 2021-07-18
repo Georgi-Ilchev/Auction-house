@@ -4,6 +4,11 @@
     this.ViewData["Title"] = "Auction list";
 }
 
+@if (this.TempData.ContainsKey("Message"))
+{
+    <partial name="_AlertPartial" />
+}
+
 <h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
 
 <hr />
@@ -19,11 +24,11 @@
                 <p class="card-text">
                     @if (auction.IsActive == true)
                     {
-                    <span class="text-success">Active</span>
+                        <span class="text-success">Active</span>
                     }
                     else
                     {
-                    <span class="text-danger">Inactive</span>
+                        <span class="text-danger">Inactive</span>
                     }
                 </p>
             </div>
