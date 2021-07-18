@@ -212,6 +212,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetAllUserPurchases<ListAuctionViewModel>(userEmail, id, ItemsPerPage),
+                AuctionsCount = this.auctionService.GetUserPurchasesCount(userEmail),
             };
 
             return this.View(viewModel);
@@ -234,6 +235,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetAllUserSales<ListAuctionViewModel>(userId, id, ItemsPerPage),
+                AuctionsCount = this.auctionService.GetUserSalesCount(userId),
             };
 
             return this.View(viewModel);

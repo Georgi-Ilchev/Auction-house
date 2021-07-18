@@ -123,6 +123,21 @@
                 .Count();
         }
 
+        public int GetUserPurchasesCount(string userEmail)
+        {
+            return this.auctionsRepository.All()
+                 .Where(x => x.LastBidder == userEmail &&
+                             x.IsPaid == true)
+                 .Count();
+        }
+
+        public int GetUserSalesCount(string userId)
+        {
+            return this.auctionsRepository.All()
+                .Where(x => x.UserId == userId && x.IsPaid == true)
+                .Count();
+        }
+
         public T GetById<T>(int id)
         {
             var auction = this.auctionsRepository.AllAsNoTracking()

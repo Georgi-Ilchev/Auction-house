@@ -26,6 +26,10 @@
 
         int GetUserAuctionsCount(string userId);
 
+        int GetUserPurchasesCount(string userEmail);
+
+        int GetUserSalesCount(string userId);
+
         T GetById<T>(int id);
 
         bool OwnedByUser(string userId, int auctionId);
