@@ -250,7 +250,7 @@
             }
 
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
-            if (DateTime.UtcNow > auction.ActiveTo)
+            if (DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
             {
                 auction.IsActive = false;
             }

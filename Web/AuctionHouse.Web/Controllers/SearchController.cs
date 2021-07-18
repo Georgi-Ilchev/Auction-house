@@ -37,10 +37,14 @@
         }
 
         [Authorize]
-        public PartialViewResult SearchAuctions(string searchText)
+        public PartialViewResult SearchAuctions(string searchText, int id = 1)
         {
+            const int ItemsPerPage = 8;
+
             var viewModel = new ListAuctionsViewModel
             {
+                //ItemsPerPage = ItemsPerPage,
+                //PageNumber = id,
                 Auctions = this.auctionService.GetSearch<ListAuctionViewModel>(searchText),
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };

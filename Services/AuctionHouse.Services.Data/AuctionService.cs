@@ -89,6 +89,7 @@
 
             var auctions = this.auctionsRepository.AllAsNoTracking()
                 .Where(x => x.Name.ToLower().Contains(search.ToLower()))
+                .OrderByDescending(x => x.Id)
                 .To<T>()
                 .ToList();
 
@@ -160,8 +161,8 @@
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
-                CreatedOn = DateTime.UtcNow,
-                ActiveTo = DateTime.UtcNow.AddDays(input.ActiveDays),
+                CreatedOn = DateTime.UtcNow.ToLocalTime(),
+                ActiveTo = DateTime.UtcNow.ToLocalTime().AddDays(input.ActiveDays),
                 CategoryId = input.CategoryId,
                 UserId = userId,
                 IsActive = true,
