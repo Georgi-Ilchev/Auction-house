@@ -31,6 +31,7 @@
                 {
                     Id = x.Id,
                     Balance = x.Balance,
+                    VirtualBalance = x.VirtualBalance,
                     Email = x.Email,
                     UserName = x.UserName,
                 })
@@ -47,6 +48,11 @@
             return this.userRepository.All().FirstOrDefault(x => x.Id == userId).Balance;
         }
 
+        public decimal GetVirtualUserBalance(string userId)
+        {
+            return this.userRepository.All().FirstOrDefault(x => x.Id == userId).VirtualBalance;
+        }
+
         public UserViewModel GetUser(string userId)
         {
             var user = this.userRepository.AllAsNoTracking()
@@ -55,6 +61,7 @@
                 {
                     Id = x.Id,
                     Balance = x.Balance,
+                    VirtualBalance = x.VirtualBalance,
                     Email = x.Email,
                     UserName = x.UserName,
                 })
@@ -69,6 +76,7 @@
                 .FirstOrDefault(x => x.Id == userId);
 
             user.Balance += amount;
+            user.VirtualBalance += amount;
 
             this.userRepository.Update(user);
             await this.userRepository.SaveChangesAsync();
@@ -80,6 +88,7 @@
                 .FirstOrDefault(x => x.Id == userId);
 
             user.Balance -= amount;
+            user.VirtualBalance -= amount;
 
             this.userRepository.Update(user);
             await this.userRepository.SaveChangesAsync();
@@ -91,6 +100,7 @@
                 .FirstOrDefault(x => x.Id == ownerId);
 
             owner.Balance += amount;
+            owner.VirtualBalance += amount;
 
             var dbAuction = this.auctionsRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == auctionId);
@@ -110,6 +120,7 @@
                 .FirstOrDefault(x => x.Id == userId);
 
             dbUser.Balance -= amount;
+            dbUser.VirtualBalance -= amount;
 
             this.userRepository.Update(dbUser);
             await this.userRepository.SaveChangesAsync();

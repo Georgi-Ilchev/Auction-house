@@ -31,6 +31,8 @@ namespace AuctionHouse.Data.Models
 
         public decimal Balance { get; set; } = 0;
 
+        public decimal VirtualBalance { get; set; } = 0;
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

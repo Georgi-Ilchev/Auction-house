@@ -57,7 +57,7 @@
         public IEnumerable<T> GetAllUserPurchases<T>(string userEmail, int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
-                .Where(x => x.LastBidder == userEmail && x.IsSold == true && x.IsPaid == true)
+                .Where(x => x.LastBidder == userEmail /*&& x.IsSold == true*/ && x.IsPaid == true)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -261,7 +261,7 @@
             var dbAuction = this.auctionsRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == auctionId);
 
-            if (DateTime.UtcNow > dbAuction.ActiveTo)
+            if (DateTime.UtcNow.ToLocalTime() > dbAuction.ActiveTo)
             {
                 dbAuction.IsActive = false;
             }

@@ -81,7 +81,7 @@
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email, Balance = 0 };
+                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email, Balance = 0, VirtualBalance = 0 };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {

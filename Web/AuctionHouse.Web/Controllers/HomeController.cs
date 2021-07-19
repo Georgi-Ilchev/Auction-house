@@ -35,6 +35,7 @@
                     AuctionsCount = counts.AuctionsCount,
                     CategoriesCount = counts.CategoriesCount,
                     Balance = this.userService.GetUserBalance(userId),
+                    VirtualBalance = this.userService.GetVirtualUserBalance(userId),
                     WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
                 };
 

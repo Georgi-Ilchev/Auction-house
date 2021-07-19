@@ -280,7 +280,7 @@
 
             await this.auctionService.UpdateDbAuction(auctionId);
 
-            this.ViewBag.UserBalance = user.Balance;
+            this.ViewBag.UserBalance = user.VirtualBalance;
             this.ViewBag.SupportingBids = this.bids;
 
             return this.View(auction);

@@ -10,6 +10,8 @@
 
         public decimal Balance { get; set; }
 
+        public decimal VirtualBalance { get; set; }
+
         public IEnumerable<IndexPageAuctionViewModel> WeeklyAuctions { get; set; }
     }
 }

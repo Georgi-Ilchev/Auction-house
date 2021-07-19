@@ -198,7 +198,6 @@
                                             </li>
                                         }*@
 
-                                    @*new*@
                                     @for (int i = 0; i < supportingBids.Length; i++)
                                     {
                                         var currentBid = supportingBids[i];
@@ -210,7 +209,7 @@
                                         else
                                         {
                                             <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
-                                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
+                                                <button class="btn btn-outline-light" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
                                             </li>
                                         }
                                     }

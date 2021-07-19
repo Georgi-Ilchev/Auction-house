@@ -9,6 +9,8 @@
 
         public decimal Balance { get; set; }
 
+        public decimal VirtualBalance { get; set; }
+
         public string Email { get; set; }
 
         public string UserName { get; set; }
