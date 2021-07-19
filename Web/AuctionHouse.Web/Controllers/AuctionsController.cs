@@ -16,6 +16,7 @@
         private readonly IAuctionService auctionService;
         private readonly IWebHostEnvironment environment;
         private readonly IUserService userService;
+        private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
         public AuctionsController(
             ICategoriesService categoriesService,
@@ -272,12 +273,15 @@
                 auction.IsSold = true;
             }
 
-            if (user.Balance >= auctionSum)
+            if (user.Balance > auctionSum)
             {
                 auction.CanUserBid = true;
             }
 
             await this.auctionService.UpdateDbAuction(auctionId);
+
+            this.ViewBag.UserBalance = user.Balance;
+            this.ViewBag.SupportingBids = this.bids;
 
             return this.View(auction);
         }

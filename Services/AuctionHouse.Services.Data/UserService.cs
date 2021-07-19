@@ -103,5 +103,16 @@
             await this.userRepository.SaveChangesAsync();
             await this.auctionsRepository.SaveChangesAsync();
         }
+
+        public async Task UpdateDbUser(string userId, decimal amount)
+        {
+            var dbUser = this.userRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == userId);
+
+            dbUser.Balance -= amount;
+
+            this.userRepository.Update(dbUser);
+            await this.userRepository.SaveChangesAsync();
+        }
     }
 }

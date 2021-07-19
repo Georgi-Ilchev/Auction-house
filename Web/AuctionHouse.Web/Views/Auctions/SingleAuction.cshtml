@@ -8,6 +8,11 @@
     <partial name="_AlertPartial" />
 }
 
+@{
+    var userBalance = this.ViewBag.UserBalance;
+    var supportingBids = this.ViewBag.SupportingBids;
+}
+
 <h1 class="text-info text-monospace mt-3">@this.ViewData["Title"]</h1>
 <hr />
 
@@ -163,16 +168,44 @@
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Submit your Bid</label>
                                 <ul>
-                                    <li type="button" class="btn btn-success" data-vote="10">10</li>
-                                    <li type="button" class="btn btn-success" data-vote="20">20</li>
-                                    <li type="button" class="btn btn-success" data-vote="50">50</li>
-                                    <li type="button" class="btn btn-success" data-vote="100">100</li>
-                                    <li type="button" class="btn btn-success" data-vote="200">200</li>
-                                    <li type="button" class="btn btn-success" data-vote="300">300</li>
-                                    <li type="button" class="btn btn-success" data-vote="500">500</li>
-                                    <li type="button" class="btn btn-success" data-vote="1000">1000</li>
-                                    <li type="button" class="btn btn-success" data-vote="3000">3000</li>
-                                    <li type="button" class="btn btn-success" data-vote="5000">5000</li>
+                                    @*<li type="button" class="btn btn-success" data-vote="10">10</li>
+                                        <li type="button" class="btn btn-success" data-vote="20">20</li>
+                                        <li type="button" class="btn btn-success" data-vote="50">50</li>
+                                        <li type="button" class="btn btn-success" data-vote="100">100</li>
+                                        <li type="button" class="btn btn-success" data-vote="200">200</li>
+                                        <li type="button" class="btn btn-success" data-vote="300">300</li>
+                                        <li type="button" class="btn btn-success" data-vote="500">500</li>
+                                        <li type="button" class="btn btn-success" data-vote="1000">1000</li>
+                                        <li type="button" class="btn btn-success" data-vote="3000">3000</li>
+                                        @if (userBalance >= 5000)
+                                        {
+                                            <li type="button" class="btn btn-success" data-vote="5000">5000</li>
+                                            userBalance -= 5000;
+                                        }
+                                        else
+                                        {
+                                            <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
+                                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>5000</button>
+                                            </li>
+                                        }*@
+
+                                    @*new*@
+                                    @for (int i = 0; i < supportingBids.Length; i++)
+                                    {
+                                        var currentBid = supportingBids[i];
+
+                                        @if (userBalance >= currentBid + this.Model.BidsAmount)
+                                        {
+                                            <li type="button" class="btn btn-success" data-vote=@(currentBid)>@(currentBid)</li>
+                                        }
+                                        else
+                                        {
+                                            <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
+                                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
+                                            </li>
+                                        }
+                                    }
+
                                 </ul>
                             </div>
                         }
@@ -192,9 +225,13 @@
                     {
                         if (this.Model.IsPaid == true)
                         {
-                            <div class="alert alert-success">
-                                <button type="button" class="btn"></button>
-                                <strong>Congratulations!</strong> You won this auction.
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="check check-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                <div>
+                                    <strong>Congratulations!</strong> You won this auction.
+                                </div>
                             </div>
                         }
                         else

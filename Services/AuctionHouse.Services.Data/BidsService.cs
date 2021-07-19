@@ -73,12 +73,5 @@
 
             return user;
         }
-
-        //public bool CanUserBid(string userId)
-        //{
-        //    var user = this.userService.GetUser(userId);
-
-            
-        //}
     }
 }
