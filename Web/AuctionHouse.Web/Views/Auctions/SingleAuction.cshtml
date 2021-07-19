@@ -142,22 +142,31 @@
 
             <hr />
 
-            @*<div class="card-footer text-muted">
-                    <button type="button" class="btn btn-success" id="bidNow">Bid Now</button>
-                </div>*@
-
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
 
                 if (userId == this.Model.UserId)
                 {
-                    <td>
-                        <a class="btn btn-block btn-light text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
-                        <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
-                        <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id"></form>
-                        <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
-                    </td>
+                    if (this.Model.LastBidder == "No bids yet")
+                    {
+                        <td>
+                            <a class="btn btn-block btn-light text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
+                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
+                            <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id"></form>
+                            <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn btn-block btn-light text-white mb-3" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
+                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="Comment" asp-route-Id="@Model.Id">Comments</a>
+                            <li class="d-block" tabindex="0" data-toggle="tooltip" title="You cannot delete the auction while there are bidders.">
+                                <button class="btn btn-danger btn-block" style="pointer-events: none;" type="button" disabled>Delete Auction</button>
+                            </li>
+                        </td>
+                    }
                 }
                 else
                 {
