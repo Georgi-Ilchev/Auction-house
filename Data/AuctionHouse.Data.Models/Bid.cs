@@ -1,6 +1,5 @@
 ﻿namespace AuctionHouse.Data.Models
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AuctionHouse.Data.Common.Models;
@@ -19,7 +18,5 @@
         public decimal BidAmount { get; set; }
 
         public string LastBidder { get; set; }
-
-        public virtual ICollection<History> Histories { get; set; }
     }
 }

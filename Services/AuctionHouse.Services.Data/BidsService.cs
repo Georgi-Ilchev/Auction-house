@@ -38,6 +38,7 @@
                     AuctionId = auctionId,
                     LastBidder = userId,
                 };
+
                 await this.bidsRepository.AddAsync(bid);
             }
 
@@ -71,6 +72,11 @@
             };
 
             return user;
+        }
+
+        public async Task GetMoneyFromDbUser (string userId, decimal amount)
+        {
+            await this.userService.UpdateDbUserVirtualBalance(userId, amount);
         }
     }
 }

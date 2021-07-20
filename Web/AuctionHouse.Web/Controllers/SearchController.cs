@@ -4,6 +4,7 @@
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
     public class SearchController : BaseController
     {
@@ -16,7 +17,7 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult Search(int id = 1)
+        public async Task<IActionResult> Search(int id = 1)
         {
             const int ItemsPerPage = 8;
 
@@ -29,7 +30,7 @@
             {
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
-                Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
+                Auctions = await this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 

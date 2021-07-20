@@ -21,5 +21,7 @@
         Task GetToOwner(string ownerId, decimal amount, int auctionId);
 
         Task UpdateDbUser(string userId, decimal amount);
+
+        Task UpdateDbUserVirtualBalance(string userId, decimal amount);
     }
 }

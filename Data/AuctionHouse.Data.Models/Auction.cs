@@ -15,6 +15,7 @@
             this.Images = new HashSet<Image>();
             this.Bids = new HashSet<Bid>();
             this.Comments = new HashSet<Comment>();
+            this.Histories = new HashSet<History>();
         }
 
         [Required]
@@ -57,5 +58,7 @@
         public virtual ICollection<Bid> Bids { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<History> Histories { get; set; }
     }
 }

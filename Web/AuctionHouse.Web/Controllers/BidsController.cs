@@ -32,6 +32,7 @@
             var latestBidder = this.bidsService.GetUser(userId, userEmail);
 
             await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
+            await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
 
             var currentBidView = new CurrentBidViewModel
             {

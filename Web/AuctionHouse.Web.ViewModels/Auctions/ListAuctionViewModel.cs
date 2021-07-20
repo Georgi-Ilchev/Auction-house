@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Auctions
 {
+    using System;
     using System.Linq;
 
     using AuctionHouse.Data.Models;
@@ -22,11 +23,16 @@
 
         public decimal Price { get; set; }
 
-        //public decimal Bit { get; set; }
-
         public decimal BidsAmount { get; set; }
 
         public bool IsActive { get; set; }
+
+        // new
+        public DateTime ActiveTo { get; set; }
+
+        public string LastBidder { get; set; }
+
+        public bool IsSold { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

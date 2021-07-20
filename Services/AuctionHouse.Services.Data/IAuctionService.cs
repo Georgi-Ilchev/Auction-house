@@ -8,7 +8,7 @@
 
     public interface IAuctionService
     {
-        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8);
+        Task<IEnumerable<ListAuctionViewModel>> GetAll<TListAuctionViewModel>(int page, int itemsPerPage = 8);
 
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 

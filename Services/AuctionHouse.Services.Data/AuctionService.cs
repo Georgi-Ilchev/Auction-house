@@ -28,15 +28,30 @@
             this.categoriesRepository = categoriesRepository;
         }
 
-        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 8)
+        public async Task<IEnumerable<ListAuctionViewModel>> GetAll<TListAuctionViewModel>(int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
                 .Where(x => x.IsPaid == false)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
-                .To<T>()
+                .To<ListAuctionViewModel>()
                 .ToList();
+
+            foreach (var auction in auctions)
+            {
+                if (DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
+                {
+                    auction.IsActive = false;
+                }
+
+                if (auction.IsActive == false && auction.LastBidder != null)
+                {
+                    auction.IsSold = true;
+                }
+            }
+
+            await this.auctionsRepository.SaveChangesAsync();
 
             return auctions;
         }
