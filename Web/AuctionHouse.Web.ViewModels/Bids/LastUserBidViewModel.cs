@@ -3,10 +3,12 @@
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 
-    public class LastUserBidViewModel : IMapFrom<Auction>
+    public class LastUserBidViewModel : IMapFrom<ApplicationUser>
     {
         public string Id { get; set; }
 
         public string Email { get; set; }
+
+        public decimal VirtualBalance { get; set; }
     }
 }

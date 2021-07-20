@@ -302,7 +302,7 @@
                 .Any(x => x.Id == auctionId);
         }
 
-        public IEnumerable<T> GetWeeklyAuctions<T>()
+        public List<T> GetWeeklyAuctions<T>()
         {
             return this.auctionsRepository.All()
                 .Where(x => x.IsAuctionOfTheWeek == true)

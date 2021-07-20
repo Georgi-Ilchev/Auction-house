@@ -207,7 +207,7 @@
 
                                         @if (userBalance >= currentBid + this.Model.BidsAmount)
                                         {
-                                            <li type="button" class="btn btn-success" data-vote=@(currentBid)>@(currentBid)</li>
+                                            <li type="button" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
                                         }
                                         else
                                         {
@@ -265,8 +265,9 @@
                     $(this).click(function () {
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
+                        var balance = @userBalance;
                         var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { auctionId: auctionId, bidding: bidding };
+                        var data = { auctionId: auctionId, bidding: bidding};
                         var sign = '$';
                         var digits = '.00';
 
@@ -280,7 +281,7 @@
                             success: function (data) {
                                 $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
-                                $('#currentBalance').html(sign + (@userBalance - bidding) + digits);
+                                $('#currentBalance').html(sign + (balance - bidding) + digits);
                             },
                             contentType: 'application/json',
                         });

@@ -20,7 +20,7 @@
 
         // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);
 
-        IEnumerable<T> GetWeeklyAuctions<T>();
+        List<T> GetWeeklyAuctions<T>();
 
         int GetAuctionsCount();
 
