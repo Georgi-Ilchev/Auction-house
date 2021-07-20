@@ -8,15 +8,11 @@
     {
         public int AuctionId { get; set; }
 
-        [Range(1, 1_000_000)]
+        [Range(10, 5000)]
         public decimal Bidding { get; set; }
 
         public ICollection<BidViewModel> Bids { get; set; }
 
         public LastUserBidViewModel LastBidder { get; set; }
-
-        // public DateTime Timestamp { get; set; }
-
-        //public ApplicationUser LatestBidder { get; set; }
     }
 }

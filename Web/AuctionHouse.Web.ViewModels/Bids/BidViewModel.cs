@@ -1,6 +1,7 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Bids
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AuctionHouse.Data.Models;
@@ -12,8 +13,6 @@
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-
-        public DateTime Timestamp { get; set; }
 
         public decimal BidAmount { get; set; }
 

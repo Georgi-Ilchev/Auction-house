@@ -28,6 +28,8 @@
         [Range(PriceMinValue, PriceMaxValue)]
         public decimal Price { get; set; }
 
+        public string LastBidder { get; set; }
+
         public bool IsAuctionOfTheWeek { get; set; }
 
         public bool IsActive { get; set; }
@@ -49,8 +51,6 @@
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
-        public string LastBidder { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
 

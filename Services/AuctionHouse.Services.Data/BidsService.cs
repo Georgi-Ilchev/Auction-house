@@ -36,7 +36,6 @@
                 {
                     UserId = userId,
                     AuctionId = auctionId,
-                    Timestamp = DateTime.UtcNow,
                     LastBidder = userId,
                 };
                 await this.bidsRepository.AddAsync(bid);

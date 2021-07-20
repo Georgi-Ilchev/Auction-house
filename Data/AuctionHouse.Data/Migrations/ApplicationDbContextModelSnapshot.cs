@@ -240,9 +240,6 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -332,6 +329,45 @@ namespace AuctionHouse.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("AuctionHouse.Data.Models.History", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("BidAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("BidId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BidId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Histories");
                 });
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Image", b =>
@@ -539,6 +575,19 @@ namespace AuctionHouse.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("AuctionHouse.Data.Models.History", b =>
+                {
+                    b.HasOne("AuctionHouse.Data.Models.Bid", null)
+                        .WithMany("Histories")
+                        .HasForeignKey("BidId");
+
+                    b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AuctionHouse.Data.Models.Image", b =>
                 {
                     b.HasOne("AuctionHouse.Data.Models.Auction", "Auction")
@@ -627,6 +676,11 @@ namespace AuctionHouse.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("AuctionHouse.Data.Models.Bid", b =>
+                {
+                    b.Navigation("Histories");
                 });
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Category", b =>

@@ -142,6 +142,9 @@
 
             <hr />
 
+            @*current*@
+            <li class="list-group-item"><span class="font-weight-bold">Balance - <span class="font-weight-normal" id="currentBalance">@userBalance</span></span></li>
+
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
@@ -277,6 +280,7 @@
                             success: function (data) {
                                 $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
+                                $('#currentBalance').html(sign + (@userBalance - data.currentBid) + digits);
                             },
                             contentType: 'application/json',
                         });

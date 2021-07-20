@@ -1,6 +1,4 @@
-﻿using AuctionHouse.Data.Models;
-
-namespace AuctionHouse.Web.ViewModels.Bids
+﻿namespace AuctionHouse.Web.ViewModels.Bids
 {
     public class CurrentBidViewModel
     {

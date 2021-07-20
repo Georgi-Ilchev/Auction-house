@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class SearchInputModel
+    public class SearchInputModel : PagingViewModel
     {
         public IEnumerable<int> Categories { get; set; }
     }
