@@ -16,7 +16,7 @@
 
         IEnumerable<T> GetAllUserSales<T>(string userId, int page, int itemsPerPage = 8);
 
-        IEnumerable<T> GetSearch<T>(string search);
+        IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8);
 
         // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);
 

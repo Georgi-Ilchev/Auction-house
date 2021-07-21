@@ -44,9 +44,9 @@
 
             var viewModel = new ListAuctionsViewModel
             {
-                //ItemsPerPage = ItemsPerPage,
-                //PageNumber = id,
-                Auctions = this.auctionService.GetSearch<ListAuctionViewModel>(searchText),
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = this.auctionService.GetSearch<ListAuctionViewModel>(searchText, id, ItemsPerPage),
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 

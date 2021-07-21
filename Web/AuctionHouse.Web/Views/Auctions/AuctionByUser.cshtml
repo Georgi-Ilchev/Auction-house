@@ -18,10 +18,10 @@
     </div>*@
 
 <br />
-<div class="row">
+<div class="row offset-1">
     @foreach (var auction in this.Model.Auctions)
     {
-        <div class="card media border-info col-md-4 mb-4 ml-4" style="width: 18rem;">
+        <div class="card media border-info col-md-4 mb-4 mr-4" style="width: 18rem;">
             <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
             <div class="card-body">
                 <h3 class="card-title">@auction.Name</h3>

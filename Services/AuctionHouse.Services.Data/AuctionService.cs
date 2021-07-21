@@ -95,7 +95,7 @@
             return auctions;
         }
 
-        public IEnumerable<T> GetSearch<T>(string search)
+        public IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8)
         {
             if (search == null)
             {
@@ -105,6 +105,8 @@
             var auctions = this.auctionsRepository.AllAsNoTracking()
                 .Where(x => x.Name.ToLower().Contains(search.ToLower()))
                 .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
                 .To<T>()
                 .ToList();
 
