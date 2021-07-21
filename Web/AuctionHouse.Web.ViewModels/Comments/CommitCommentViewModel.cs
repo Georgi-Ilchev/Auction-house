@@ -10,7 +10,7 @@
 
     public class CommitCommentViewModel : IMapFrom<Comment>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(
@@ -22,13 +22,13 @@
         public DateTime PostedOn { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string OwnerId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        //public virtual ApplicationUser User { get; set; }
 
         public int AuctionId { get; set; }
 
-        public Auction Auction { get; set; }
+        //public Auction Auction { get; set; }
 
         public string UserUserName { get; set; }
     }

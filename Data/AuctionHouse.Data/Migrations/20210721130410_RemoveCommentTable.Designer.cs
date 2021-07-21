@@ -4,14 +4,16 @@ using AuctionHouse.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuctionHouse.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210721130410_RemoveCommentTable")]
+    partial class RemoveCommentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -288,54 +290,6 @@ namespace AuctionHouse.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("AuctionHouse.Data.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AuctionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OwnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PostedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuctionId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("AuctionHouse.Data.Models.History", b =>
                 {
                     b.Property<int>("Id")
@@ -561,23 +515,6 @@ namespace AuctionHouse.Data.Migrations
                         .HasForeignKey("CategoryId");
                 });
 
-            modelBuilder.Entity("AuctionHouse.Data.Models.Comment", b =>
-                {
-                    b.HasOne("AuctionHouse.Data.Models.Auction", "Auction")
-                        .WithMany("Comments")
-                        .HasForeignKey("AuctionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Auction");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("AuctionHouse.Data.Models.History", b =>
                 {
                     b.HasOne("AuctionHouse.Data.Models.Auction", null)
@@ -675,8 +612,6 @@ namespace AuctionHouse.Data.Migrations
             modelBuilder.Entity("AuctionHouse.Data.Models.Auction", b =>
                 {
                     b.Navigation("Bids");
-
-                    b.Navigation("Comments");
 
                     b.Navigation("Histories");
 

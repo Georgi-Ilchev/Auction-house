@@ -6,8 +6,8 @@
     {
         Task CreateAsync(int auctionId, string userId, string content);
 
-        Task Delete(string commentId);
+        Task Delete(int commentId);
 
-        bool OwnedByUser(string userId, string commentId);
+        bool OwnedByUser(string userId, int commentId);
     }
 }

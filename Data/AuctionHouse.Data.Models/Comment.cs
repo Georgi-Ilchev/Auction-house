@@ -7,19 +7,14 @@
 
     using static AuctionHouse.Data.Models.DataConstants.DataConstants;
 
-    public class Comment : BaseDeletableModel<string>
+    public class Comment : BaseDeletableModel<int>
     {
-        public Comment()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
         [Required]
         [MaxLength(ContentMaxLength)]
         public string Content { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string OwnerId { get; set; }
 
         public ApplicationUser User { get; set; }
 

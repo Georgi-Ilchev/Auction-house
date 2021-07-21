@@ -7,7 +7,7 @@
 <hr />
 
 @{
-    var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+    var userName = this.User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value;
 }
 
 <div class="container">
@@ -23,9 +23,9 @@
                     <div class="comment-text-sm"><span>@comment.Content</span></div>
                 </div>
             </div>
-            @if (userId == this.Model.UserId)
+            @if (userName == comment.UserUserName)
             {
-                <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@Model.Id"></form>
+                <form method="post" id="deleteForm" asp-controller="Comments" asp-action="Delete" asp-route-commentId="@comment.Id"></form>
                 <a class="btn btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">X</a>
             }
         }
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" onclick="deleteComment.submit()">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Delete</button>
             </div>
         </div>
     </div>

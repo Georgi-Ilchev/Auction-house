@@ -21,7 +21,7 @@
             var comment = new Comment
             {
                 Content = content,
-                UserId = userId,
+                OwnerId = userId,
                 AuctionId = auctionId,
                 PostedOn = DateTime.UtcNow,
             };
@@ -30,7 +30,7 @@
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public async Task Delete(string commentId)
+        public async Task Delete(int commentId)
         {
             var comment = this.commentsRepository.All().FirstOrDefault(a => a.Id == commentId);
 
@@ -38,9 +38,9 @@
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public bool OwnedByUser(string userId, string commentId)
+        public bool OwnedByUser(string userId, int commentId)
         {
-            return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
+            return this.commentsRepository.All().Any(c => c.Id == commentId && c.OwnerId == userId);
         }
     }
 }
