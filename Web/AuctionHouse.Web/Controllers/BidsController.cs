@@ -13,10 +13,12 @@
     public class BidsController : BaseController
     {
         private readonly IBidsService bidsService;
+        private readonly IUserService userService;
 
-        public BidsController(IBidsService bidsService)
+        public BidsController(IBidsService bidsService, IUserService userService)
         {
             this.bidsService = bidsService;
+            this.userService = userService;
         }
 
         [HttpPost]
@@ -35,10 +37,14 @@
             await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
             await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
 
+            var virtualBalance = this.bidsService.GetDbUserBalance(userId);
+
             var currentBidView = new CurrentBidViewModel
             {
                 CurrentBid = currentBid,
                 LastBidder = latestBidder.Email,
+                Bid = input.Bidding,
+                VirtualBalance = virtualBalance,
             };
 
             return currentBidView;

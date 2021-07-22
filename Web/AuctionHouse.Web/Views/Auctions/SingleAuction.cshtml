@@ -200,23 +200,23 @@
                                                 <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>5000</button>
                                             </li>
                                         }*@
-
-                                    @for (int i = 0; i < supportingBids.Length; i++)
-                                    {
-                                        var currentBid = supportingBids[i];
-
-                                        @if (userBalance >= currentBid + this.Model.BidsAmount)
+                                    <div id="containerButtons">
+                                        @for (int i = 0; i < supportingBids.Length; i++)
                                         {
-                                            <li type="button" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
-                                        }
-                                        else
-                                        {
-                                            <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
-                                                <button class="btn btn-outline-light" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
-                                            </li>
-                                        }
-                                    }
+                                            var currentBid = supportingBids[i];
 
+                                            @if (userBalance >= currentBid + this.Model.BidsAmount)
+                                            {
+                                                <li type="button" id="" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
+                                            }
+                                            else
+                                            {
+                                                <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
+                                                    <button class="btn btn-outline-light" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
+                                                </li>
+                                            }
+                                        }
+                                    </div>
                                 </ul>
                             </div>
                         }
@@ -265,11 +265,11 @@
                     $(this).click(function () {
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
-                        var balance = @userBalance;
                         var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
                         var data = { auctionId: auctionId, bidding: bidding};
                         var sign = '$';
                         var digits = '.00';
+                        data.virtualBalance = @userBalance;
 
                         $.ajax({
                             type: "POST",
@@ -281,13 +281,50 @@
                             success: function (data) {
                                 $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
-                                $('#currentBalance').html(sign + (balance - bidding) + digits);
+                                //$('#currentBalance').html(sign + (data.virtualBalance - bidding) + digits);
+                                //$('#currentBalance').html(sign + (data.virtualBalance - bidding) + digits);
+                                console.log(data.virtualBalance);
+                                $('#currentBalance').text(sign + data.virtualBalance + digits);
                             },
                             contentType: 'application/json',
                         });
                     })
                 });
     </script>
+
+    @*<script type="text/javascript">
+
+            const buttonContainer = document.getElementById("containeer");
+            let currentBallance = document.getElementById("currentBalance");
+
+            let containerAsArray = Array.from(buttonContainer.children)
+
+            buttonContainer.addEventListener("click", (event) => {
+                console.log(event.target.textContent)
+                let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
+
+                console.log('buton value');
+                console.log(currentBtnValue);
+
+                if (event.target.disabled == false) {
+                    currentBallance.textContent -= currentBtnValue;
+
+                    checkButtons(containerAsArray, currentBalance)
+                }
+            });
+
+            function checkButtons(containerAsArray, currentBalance) {
+                containerAsArray.map((element) => {
+                    // proverka za sumite na butona sprqmo currentBalance
+                    let currElement = Number(element.textContent);
+                    let currBalaNum = Number(currentBalance.textContent);
+                    if (currElement > currBalaNum) {
+                        element.style.backgroundColor = "red";
+                        element.disabled = true;
+                    }
+                });
+            }
+        </script>*@
 }
 
 <!-- Modal -->

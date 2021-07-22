@@ -12,7 +12,7 @@
         public decimal Bidding { get; set; }
 
         // new
-        //public decimal VirtualBalance { get; set; }
+        public decimal VirtualBalance { get; set; }
 
         public ICollection<BidViewModel> Bids { get; set; }
 

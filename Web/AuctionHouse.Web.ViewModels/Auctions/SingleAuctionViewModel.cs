@@ -50,6 +50,8 @@
 
         public string LastBidder { get; set; }
 
+        public string CurrentUserBalance { get; set; }
+
         //[Required]
         //public ICollection<string> Images { get; set; }
 

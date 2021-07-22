@@ -106,5 +106,12 @@
         {
             await this.userService.UpdateDbUserVirtualBalance(userId, amount);
         }
+
+        public decimal GetDbUserBalance(string userId)
+        {
+            var userBalance = this.userService.GetVirtualUserBalance(userId);
+
+            return userBalance;
+        }
     }
 }

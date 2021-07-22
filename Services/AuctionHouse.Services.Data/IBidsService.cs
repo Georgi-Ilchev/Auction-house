@@ -12,6 +12,8 @@
 
         decimal GetSumBids(int auctionId);
 
+        decimal GetDbUserBalance(string userId);
+
         LastUserBidViewModel GetUser(string userId, string email);
 
         Task UpdateAsync(int id, LastUserBidViewModel input);

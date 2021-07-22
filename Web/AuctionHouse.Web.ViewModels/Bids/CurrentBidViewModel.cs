@@ -7,5 +7,7 @@
         public string LastBidder { get; set; }
 
         public decimal VirtualBalance { get; set; }
+
+        public decimal Bid { get; set; }
     }
 }
