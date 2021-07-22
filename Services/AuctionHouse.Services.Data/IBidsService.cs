@@ -8,6 +8,8 @@
     {
         Task AddBidAsync(string userId, int auctionId, decimal price);
 
+        Task AddBidToHistory(string userId, int auctionId, decimal price);
+
         decimal GetSumBids(int auctionId);
 
         LastUserBidViewModel GetUser(string userId, string email);

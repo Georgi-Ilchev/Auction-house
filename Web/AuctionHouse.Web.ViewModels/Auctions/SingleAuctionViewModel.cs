@@ -51,9 +51,11 @@
         public string LastBidder { get; set; }
 
         //[Required]
-        //public List<string> Images { get; set; }
+        //public ICollection<string> Images { get; set; }
 
         public string Images { get; set; }
+
+        //public IEnumerable<ImagesViewModel> Images { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

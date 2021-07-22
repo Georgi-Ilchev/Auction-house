@@ -8,6 +8,10 @@
 
         public virtual ApplicationUser User { get; set; }
 
+        public int AuctionId { get; set; }
+
+        public virtual Auction Auction { get; set; }
+
         public decimal BidAmount { get; set; }
     }
 }

@@ -27,6 +27,7 @@
             var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
 
             await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
+            //await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
 
             var currentBid = this.bidsService.GetSumBids(input.AuctionId);
             var latestBidder = this.bidsService.GetUser(userId, userEmail);

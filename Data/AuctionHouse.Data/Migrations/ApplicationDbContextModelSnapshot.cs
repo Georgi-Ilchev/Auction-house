@@ -315,14 +315,11 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OwnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("PostedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -343,7 +340,7 @@ namespace AuctionHouse.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuctionId")
+                    b.Property<int>("AuctionId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("BidAmount")
@@ -571,7 +568,9 @@ namespace AuctionHouse.Data.Migrations
 
                     b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Auction");
 
@@ -580,13 +579,17 @@ namespace AuctionHouse.Data.Migrations
 
             modelBuilder.Entity("AuctionHouse.Data.Models.History", b =>
                 {
-                    b.HasOne("AuctionHouse.Data.Models.Auction", null)
+                    b.HasOne("AuctionHouse.Data.Models.Auction", "Auction")
                         .WithMany("Histories")
-                        .HasForeignKey("AuctionId");
+                        .HasForeignKey("AuctionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("AuctionHouse.Data.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Auction");
 
                     b.Navigation("User");
                 });

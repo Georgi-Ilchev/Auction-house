@@ -13,15 +13,18 @@
     {
         private readonly IRepository<Bid> bidsRepository;
         private readonly IRepository<Auction> auctionsRepository;
+        private readonly IRepository<History> historiesRepository;
         private readonly IUserService userService;
 
         public BidsService(
             IRepository<Bid> bidsRepository,
             IRepository<Auction> auctionsRepository,
+            IRepository<History> historiesRepository,
             IUserService userService)
         {
             this.bidsRepository = bidsRepository;
             this.auctionsRepository = auctionsRepository;
+            this.historiesRepository = historiesRepository;
             this.userService = userService;
         }
 
@@ -46,6 +49,31 @@
             bid.LastBidder = userId;
 
             await this.bidsRepository.SaveChangesAsync();
+        }
+
+        public async Task AddBidToHistory(string userId, int auctionId, decimal price)
+        {
+            var auction = this.auctionsRepository.All()
+                .FirstOrDefault(x => x.Id == auctionId && x.UserId == userId);
+
+            var history = this.historiesRepository.All()
+                .FirstOrDefault(x => x.Id == auctionId && x.UserId == userId);
+
+            if (history == null)
+            {
+                history = new History
+                {
+                    UserId = userId,
+                    AuctionId = auctionId,
+                    BidAmount = price,
+                };
+
+                await this.historiesRepository.AddAsync(history);
+
+                auction.Histories.Add(history);
+            }
+
+            await this.historiesRepository.SaveChangesAsync();
         }
 
         public decimal GetSumBids(int auctionId)
@@ -74,7 +102,7 @@
             return user;
         }
 
-        public async Task GetMoneyFromDbUser (string userId, decimal amount)
+        public async Task GetMoneyFromDbUser(string userId, decimal amount)
         {
             await this.userService.UpdateDbUserVirtualBalance(userId, amount);
         }
