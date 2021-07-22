@@ -4,12 +4,24 @@
     this.ViewData["Title"] = "Home Page";
 }
 
+@{
+    var oneItem = "ITEM FOR SALE";
+    var manyItems = "ITEMS FOR SALE";
+}
+
 <section class="img-fluid.max-width: 100%"
          style="background-image: url('https://geauction.com/wp-content/uploads/2018/07/5-Auction-Tips-for-Beginners2.jpg'); background-repeat: repeat; ">
     <div style="height: 18vh;"></div>
     <div class="text-center">
         <h1 class="display-1 text-warning mb-5">Welcome to @GlobalConstants.SystemName!</h1>
-        <h1 class="display-2 text-warning fw-bold">@Model.AuctionsCount ITEMS FOR SALE</h1>
+        @if (Model.AuctionsCount == 1)
+        {
+            <h1 class="display-2 text-warning fw-bold">@Model.AuctionsCount @oneItem</h1>
+        }
+        else
+        {
+            <h1 class="display-2 text-warning fw-bold">@Model.AuctionsCount @manyItems</h1>
+        }
         <h1 class="text-warning">IN</h1>
         <h1 class="display-2 text-warning fw-bold mb-5">@Model.CategoriesCount CATEGORIES!</h1>
         <div class="col-md-4 offset-md-4">
@@ -28,47 +40,53 @@
                 <li class="list-group-item">Categories: @Model.CategoriesCount</li>
             </ul>*@
     </section>
-    <hr />
 
-    <section class="pt-5 pb-5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <h1 class="display-4 text-decoration-underline text-center">Weekly auctions</h1>
-                </div>
-                <div class="col-6 text-right">
-                    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            @for (int i = 0; i < Model.WeeklyAuctions.Count; i++)
-                            {
-                                var weeklyAuction = Model.WeeklyAuctions[i];
-                                <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
-                                    <div class="row">
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="img-fluid" alt="100%x280" src="@weeklyAuction.ImageUrl">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">@weeklyAuction.Name</h4>
-                                                    <p class="card-text">@weeklyAuction.CategoryName</p>
-                                                    <p class="card-text">@weeklyAuction.Description</p>
-                                                    <a asp-controller="Auctions" asp-action="SingleAuction" asp-route-auctionId="@weeklyAuction.Id" class="btn btn-success">View</a>
+    <section class="pt-5 pb-5 border-top">
+        @if (Model.WeeklyAuctions.Count == 0)
+        {
+            <h1 class="display-2 text-warning fw-bold mb-5 text-center">Theres no weekly auctions</h1>
+        }
+        else
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="display-4 text-decoration-underline text-center">Weekly auctions</h1>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.WeeklyAuctions.Count; i++)
+                                {
+                                    var weeklyAuction = Model.WeeklyAuctions[i];
+                                    <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="@weeklyAuction.ImageUrl">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">@weeklyAuction.Name</h4>
+                                                        <p class="card-text">@weeklyAuction.CategoryName</p>
+                                                        <p class="card-text">@weeklyAuction.Description</p>
+                                                        <a asp-controller="Auctions" asp-action="SingleAuction" asp-route-auctionId="@weeklyAuction.Id" class="btn btn-success">View</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </section>
