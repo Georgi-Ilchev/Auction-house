@@ -11,9 +11,6 @@
         [Range(10, 5000)]
         public decimal Bidding { get; set; }
 
-        // new
-        public decimal VirtualBalance { get; set; }
-
         public ICollection<BidViewModel> Bids { get; set; }
 
         public LastUserBidViewModel LastBidder { get; set; }

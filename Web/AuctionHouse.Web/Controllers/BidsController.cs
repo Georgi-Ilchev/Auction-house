@@ -43,7 +43,6 @@
             {
                 CurrentBid = currentBid,
                 LastBidder = latestBidder.Email,
-                Bid = input.Bidding,
                 VirtualBalance = virtualBalance,
             };
 

@@ -8,7 +8,5 @@
         public string Id { get; set; }
 
         public string Email { get; set; }
-
-        public decimal VirtualBalance { get; set; }
     }
 }
