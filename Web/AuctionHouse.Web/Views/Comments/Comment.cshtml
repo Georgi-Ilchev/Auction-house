@@ -3,18 +3,18 @@
     this.ViewData["Title"] = "Comments";
 }
 
-<h1 class="text-center">@this.ViewData["Title"]</h1>
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"]</h1>
 <hr />
 
 @{
-    var userName = this.User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value;
+    var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row col-md-6 offset-3">
         @foreach (var comment in Model.Comments)
         {
-            <div class="coment-bottom bg-dark p-2 px-4">
+            <div class="coment-bottom bg-dark p-2 px-4 mt-2">
                 <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/CFpa3nK.jpg" width="38"><h5 class="mr-2">@comment.UserUserName</h5></div>
                 <div class="commented-section mt-2">
                     <div class="d-flex flex-row align-items-center commented-user">
@@ -23,9 +23,10 @@
                     <div class="comment-text-sm"><span>@comment.Content</span></div>
                 </div>
             </div>
-            @if (userName == comment.UserUserName)
+
+            @if (userId == comment.UserId)
             {
-                <form method="post" id="deleteForm" asp-controller="Comments" asp-action="Delete" asp-route-commentId="@comment.Id"></form>
+                <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@comment.Id"></form>
                 <a class="btn btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">X</a>
             }
         }
@@ -58,7 +59,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="deleteComment.submit()">Delete</button>
             </div>
         </div>
     </div>

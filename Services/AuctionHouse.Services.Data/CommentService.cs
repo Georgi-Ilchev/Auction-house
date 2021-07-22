@@ -1,11 +1,13 @@
 ﻿namespace AuctionHouse.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
+    using AuctionHouse.Web.ViewModels.Comments;
 
     public class CommentService : ICommentService
     {
@@ -16,14 +18,28 @@
             this.commentsRepository = commentsRepository;
         }
 
+        //public ICollection<CommentViewModel> GetAll(int auctionId)
+        //{
+        //    var comments = this.commentsRepository.AllAsNoTracking()
+        //        .Where(x => x.AuctionId == auctionId)
+        //        .Select(x=> new CommentViewModel
+        //        {
+                    
+        //        })
+        //        .OrderByDescending(x => x.CreatedOn)
+        //        .ToList();
+
+        //    return comments;
+        //}
+
         public async Task CreateAsync(int auctionId, string userId, string content)
         {
             var comment = new Comment
             {
                 Content = content,
-                OwnerId = userId,
+                UserId = userId,
                 AuctionId = auctionId,
-                PostedOn = DateTime.UtcNow,
+                PostedOn = DateTime.UtcNow.ToLocalTime(),
             };
 
             await this.commentsRepository.AddAsync(comment);
@@ -40,7 +56,7 @@
 
         public bool OwnedByUser(string userId, int commentId)
         {
-            return this.commentsRepository.All().Any(c => c.Id == commentId && c.OwnerId == userId);
+            return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
         }
     }
 }

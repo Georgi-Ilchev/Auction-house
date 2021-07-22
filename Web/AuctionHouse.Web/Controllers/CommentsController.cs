@@ -24,6 +24,8 @@
         {
             var input = this.auctionService.GetById<CommentAuctionInputModel>(id);
 
+            //var comments = this.commentService.GetAll<CommentAuctionInputModel>(id);
+
             return this.View(input);
         }
 

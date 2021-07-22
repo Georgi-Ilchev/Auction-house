@@ -14,7 +14,7 @@
         public string Content { get; set; }
 
         [Required]
-        public string OwnerId { get; set; }
+        public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
 

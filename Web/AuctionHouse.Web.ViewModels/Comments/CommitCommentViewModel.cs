@@ -22,13 +22,13 @@
         public DateTime PostedOn { get; set; }
 
         [Required]
-        public string OwnerId { get; set; }
+        public string UserId { get; set; }
 
-        //public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public int AuctionId { get; set; }
 
-        //public Auction Auction { get; set; }
+        public Auction Auction { get; set; }
 
         public string UserUserName { get; set; }
     }

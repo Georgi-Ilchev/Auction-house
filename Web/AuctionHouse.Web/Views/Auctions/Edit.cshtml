@@ -7,7 +7,7 @@
 <h1 class="text-center text-monospace text-info mt-3">@ViewData["Title"]</h1>
 <hr />
 
-<form method="post" id="editForm">
+<form method="post" class="col-md-6 offset-md-3" id="editForm">
     <div asp-validation-summary="All" class="text-warning"></div>
 
     <div class="form-floating mb-3">
@@ -28,10 +28,11 @@
         <span asp-validation-for="CategoryId" class="text-warning"></span>
     </div>
 
+    <hr />
+    <button type="submit" class="btn-success btn-lg" data-toggle="modal" data-target="#editModal">Save changes</button>
+
     <input type="hidden" asp-for="Id" />
 </form>
-<hr />
-<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#editModal">Save changes</button>
 
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
