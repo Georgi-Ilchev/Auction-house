@@ -1,0 +1,32 @@
+﻿@model ListAuctionsViewModel
+
+<div class="row offset-1">
+    @foreach (var auction in this.Model.Auctions)
+    {
+        <div class="card media border-info col-md-4 mb-4 mr-4" style="width: 18rem;">
+            <img class="card-img-top" src="@auction.ImageUrl" alt="This auction doesn`t have image" width="100">
+            <div class="card-body">
+                <h3 class="card-title">@auction.Name</h3>
+                <p class="card-text">Category: @auction.CategoryName</p>
+                <p class="card-text">
+                    @if (auction.IsActive == true)
+                    {
+                        <span class="h4 text-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="h4 text-danger">Inactive</span>
+                    }
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="font-weight-bold">Starting price: </span>$@auction.Price</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price: </span>$@(auction.BidsAmount + auction.Price)</li>
+                <li class="list-group-item"><span class="font-weight-bold">Owner: </span>@auction.UserUserName</li>
+            </ul>
+            <div class="card-body">
+                <a asp-action="SingleAuction" asp-route-auctionId="@auction.Id" class="btn btn-success viewBtn">View</a>
+            </div>
+        </div>
+    }
+</div>
