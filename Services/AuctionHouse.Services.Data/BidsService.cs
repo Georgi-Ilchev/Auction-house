@@ -55,10 +55,10 @@
         public async Task AddBidToHistory(string userId, int auctionId, decimal price)
         {
             var auction = this.auctionsRepository.All()
-                .FirstOrDefault(x => x.Id == auctionId && x.UserId == userId);
+                .FirstOrDefault(x => x.Id == auctionId);
 
             var history = this.historiesRepository.All()
-                .FirstOrDefault(x => x.Id == auctionId && x.UserId == userId);
+                .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId == userId);
 
             if (history == null)
             {
@@ -75,6 +75,7 @@
             }
 
             await this.historiesRepository.SaveChangesAsync();
+            await this.auctionsRepository.SaveChangesAsync();
         }
 
         public decimal GetSumBids(int auctionId)
@@ -129,5 +130,13 @@
 
             return false;
         }
+
+        //public bool CheckForBidsReturn(int auctionId, string userId)
+        //{
+        //    var auction = this.auctionsRepository.All()
+        //       .FirstOrDefault(x => x.Id == auctionId);
+
+        //    auction.Histories.LastOrDefault(x => x.UserId == userId);
+        //}
     }
 }
