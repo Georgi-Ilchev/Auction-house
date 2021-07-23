@@ -15,6 +15,7 @@
         private readonly IRepository<Auction> auctionsRepository;
         private readonly IRepository<History> historiesRepository;
         private readonly IUserService userService;
+        private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
         public BidsService(
             IRepository<Bid> bidsRepository,
@@ -112,6 +113,21 @@
             var userBalance = this.userService.GetVirtualUserBalance(userId);
 
             return userBalance;
+        }
+
+        public bool CheckForCorrectBid(decimal bid)
+        {
+            for (int i = 0; i < this.bids.Length; i++)
+            {
+                var currentBid = this.bids[i];
+
+                if (currentBid == bid)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

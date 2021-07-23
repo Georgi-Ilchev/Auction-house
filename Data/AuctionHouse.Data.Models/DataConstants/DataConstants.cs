@@ -18,5 +18,12 @@
         // Comment
         public const int ContentMaxLength = 300;
         public const int ContentMinLength = 3;
+
+        // User
+        public const int BalanceMinValue = 0;
+
+        // Bid
+        public const int BidMinValue = 10;
+        public const int BidMaxValue = 5000;
     }
 }

@@ -25,28 +25,33 @@
         [Authorize]
         public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
-
-            await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
-            //await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
-
-            var currentBid = this.bidsService.GetSumBids(input.AuctionId);
-            var latestBidder = this.bidsService.GetUser(userId, userEmail);
-
-            await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
-            await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
-
-            var virtualBalance = this.bidsService.GetDbUserBalance(userId);
-
-            var currentBidView = new CurrentBidViewModel
+            if (this.bidsService.CheckForCorrectBid(input.Bidding))
             {
-                CurrentBid = currentBid,
-                LastBidder = latestBidder.Email,
-                VirtualBalance = virtualBalance,
-            };
+                var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
 
-            return currentBidView;
+                await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
+                //await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
+
+                var currentBid = this.bidsService.GetSumBids(input.AuctionId);
+                var latestBidder = this.bidsService.GetUser(userId, userEmail);
+
+                await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
+                await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
+
+                var virtualBalance = this.bidsService.GetDbUserBalance(userId);
+
+                var currentBidView = new CurrentBidViewModel
+                {
+                    CurrentBid = currentBid,
+                    LastBidder = latestBidder.Email,
+                    VirtualBalance = virtualBalance,
+                };
+
+                return currentBidView;
+            }
+
+            return RedirectToAction("/Auctions/All");
         }
     }
 }

@@ -19,5 +19,7 @@
         Task UpdateAsync(int id, LastUserBidViewModel input);
 
         Task GetMoneyFromDbUser(string userId, decimal amount);
+
+        bool CheckForCorrectBid(decimal bid);
     }
 }
