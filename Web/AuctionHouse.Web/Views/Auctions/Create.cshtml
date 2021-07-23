@@ -48,8 +48,12 @@
         <span asp-validation-for="Images" class="text-danger"></span>
     </div>
     <hr />
-    
+
     <div class="form-group">
         <button type="submit" class="btn-success btn-lg">Create</button>
     </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
