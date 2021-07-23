@@ -51,7 +51,7 @@
                 return currentBidView;
             }
 
-            return RedirectToAction("/Auctions/All");
+            return this.RedirectToAction("/Home/Error");
         }
     }
 }

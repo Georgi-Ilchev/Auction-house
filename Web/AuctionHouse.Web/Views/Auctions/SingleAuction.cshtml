@@ -142,9 +142,6 @@
 
             <hr />
 
-            @*current*@
-            <li class="list-group-item"><span class="font-weight-bold">Balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
-
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
@@ -173,6 +170,8 @@
                 }
                 else
                 {
+                    <li class="list-group-item"><span class="font-weight-bold">Your balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
+
                     if (this.Model.IsActive)
                     {
                         if (this.Model.CanUserBid)
@@ -207,7 +206,7 @@
 
                                             @if (userBalance >= currentBid + this.Model.BidsAmount)
                                             {
-                                                <li type="button" id="" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
+                                                <li type="button" id="bid" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
                                             }
                                             else
                                             {
@@ -281,9 +280,22 @@
                             success: function (data) {
                                 $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
-                                //$('#currentBalance').html(sign + (data.virtualBalance - bidding) + digits);
-                                //$('#currentBalance').html(sign + (data.virtualBalance - bidding) + digits);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
+
+                                $("#containerButtons").click(function () {
+                                    console.log((data.currentBid + bidding));
+                                    console.log(data.virtualBalance - bidding);
+
+                                    if ($(this).data.virtualBalance - bidding < data.currentBid) {
+                                        $("#bid").toggleClass("btn btn-outline-light");
+                                    }
+                                    // Else, the element doesn't have the active class, so we remove it from every element before applying it to the element that was clicked
+                                    //else {
+                                    //    $("#bid").toggleClass("btn btn-outline-light");
+                                    //    //$(this).html("active");
+                                    //}
+                                });
+
                             },
                             contentType: 'application/json',
                         });
@@ -293,40 +305,45 @@
 
     @*<script type="text/javascript">
 
-            const buttonContainer = document.getElementById("containeer");
-            let currentBallance = document.getElementById("currentBalance");
+            //const buttonContainer = document.getElementById("containerButtons");
 
-            let containerAsArray = Array.from(buttonContainer.children)
+            //console.log(buttonContainer);
 
-            buttonContainer.addEventListener("click", (event) => {
-                console.log(event.target.textContent)
-                let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
+            //let currentBallance = document.getElementById("currentBalance");
 
-                console.log('buton value');
-                console.log(currentBtnValue);
+            //console.log(currentBallance);
 
-                if (event.target.disabled == false) {
-                    currentBallance.textContent -= currentBtnValue;
+            //let containerAsArray = Array.from(buttonContainer.children)
 
-                    checkButtons(containerAsArray, currentBalance)
-                }
-            });
+            //buttonContainer.addEventListener("click", (event) => {
+            //    console.log(event.target.textContent)
+            //    let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
 
-            function checkButtons(containerAsArray, currentBalance) {
-                containerAsArray.map((element) => {
-                    // proverka za sumite na butona sprqmo currentBalance
-                    let currElement = Number(element.textContent);
-                    let currBalaNum = Number(currentBalance.textContent);
-                    if (currElement > currBalaNum) {
-                        element.style.backgroundColor = "red";
-                        element.disabled = true;
-                    }
-                });
-            }
+            //    console.log('buton value');
+            //    console.log(currentBtnValue);
+
+            //    if (event.target.disabled == false) {
+            //        currentBallance.textContent -= currentBtnValue;
+
+            //        checkButtons(containerAsArray, currentBalance)
+            //    }
+            //});
+
+            //function checkButtons(containerAsArray, currentBalance) {
+            //    containerAsArray.map((element) => {
+            //        // proverka za sumite na butona sprqmo currentBalance
+            //        let currElement = Number(element.textContent);
+            //        let currBalaNum = Number(currentBalance.textContent);
+            //        if (currElement > currBalaNum) {
+            //            element.style.backgroundColor = "red";
+            //            element.disabled = true;
+            //        }
+            //    });
+            //}
         </script>*@
 }
 
-<!-- Modal -->
+<!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -347,6 +364,7 @@
     </div>
 </div>
 
+<!-- Pay Modal -->
 <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
