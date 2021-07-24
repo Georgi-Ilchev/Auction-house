@@ -19,22 +19,28 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    @for (var i = 1; i <= this.Model.Images.Count(); i++)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" @(i == 1 ? "class='active'" : "")></li>
+                    }
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="@Model.Images" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="@Model.Images" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="@Model.Images" class="d-block w-100" alt="...">
-                    </div>
+                    @{ var counter = 1;}
+                    @foreach (var image in Model.Images)
+                    {
+                        var id = image.Id;
+                        var extension = image.Extension;
+
+                        var imageUrl = "/images/auctions/" + id + "." + extension;
+
+                        <div class="carousel-@(counter == 1 ? "item active" : "item")">
+                            <img src="@imageUrl" class="d-block w-100" alt="..." style="height: 500px;">
+                        </div>
+
+                        counter++;
+                    }
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

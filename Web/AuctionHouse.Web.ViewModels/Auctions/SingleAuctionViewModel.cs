@@ -2,14 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Linq;
 
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
-    using AuctionHouse.Web.ViewModels.Bids;
-    using AuctionHouse.Web.ViewModels.Images;
     using AutoMapper;
 
     public class SingleAuctionViewModel : IMapFrom<Auction>, IHaveCustomMappings
@@ -52,21 +49,13 @@
 
         public string CurrentUserBalance { get; set; }
 
-        //[Required]
-        //public ICollection<string> Images { get; set; }
-
-        public string Images { get; set; }
-
-        //public IEnumerable<ImagesViewModel> Images { get; set; }
+        public IEnumerable<ImagesViewModel> Images { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, SingleAuctionViewModel>()
                 .ForMember(x => x.BidsAmount, opt =>
-                    opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)))
-                .ForMember(x => x.Images, opt =>
-                    opt.MapFrom(x =>
-            "/images/auctions/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
+                    opt.MapFrom(x => x.Bids.Sum(a => a.BidAmount)));
         }
     }
 }
