@@ -1,7 +1,5 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -100,9 +98,6 @@
                 var amountToReturn = history.BidAmount;
                 var giveMeTheMoneyId = history.UserId;
 
-                // var userBalance = this.userService.GetVirtualUserBalance(giveMeTheMoneyId);
-                // userBalance += amountToReturn;
-
                 auction.Histories.Remove(history);
                 this.historiesRepository.Delete(history);
 
@@ -112,19 +107,17 @@
             }
         }
 
-        public decimal GetSumBids(int auctionId)
-        {
-            return this.bidsRepository.All()
-                .Where(x => x.AuctionId == auctionId)
-                .Sum(x => x.BidAmount);
-        }
-
         public async Task UpdateAsync(int id, LastUserBidViewModel input)
         {
             var auctions = this.auctionsRepository.All().FirstOrDefault(x => x.Id == id);
             auctions.LastBidder = input.Email;
 
             await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task GetMoneyFromDbUser(string userId, decimal amount)
+        {
+            await this.userService.UpdateDbUserVirtualBalance(userId, amount);
         }
 
         public LastUserBidViewModel GetUser(string userId, string email)
@@ -138,9 +131,11 @@
             return user;
         }
 
-        public async Task GetMoneyFromDbUser(string userId, decimal amount)
+        public decimal GetSumBids(int auctionId)
         {
-            await this.userService.UpdateDbUserVirtualBalance(userId, amount);
+            return this.bidsRepository.All()
+                .Where(x => x.AuctionId == auctionId)
+                .Sum(x => x.BidAmount);
         }
 
         public decimal GetDbUserBalance(string userId)
@@ -164,13 +159,5 @@
 
             return false;
         }
-
-        //public bool CheckForBidsReturn(int auctionId, string userId)
-        //{
-        //    var auction = this.auctionsRepository.All()
-        //       .FirstOrDefault(x => x.Id == auctionId);
-
-        //    auction.Histories.LastOrDefault(x => x.UserId == userId);
-        //}
     }
 }

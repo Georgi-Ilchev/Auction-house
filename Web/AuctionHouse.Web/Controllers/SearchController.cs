@@ -1,10 +1,11 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class SearchController : BaseController
     {

@@ -1,7 +1,5 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Bids
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AuctionHouse.Data.Models;

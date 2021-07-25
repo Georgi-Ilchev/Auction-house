@@ -18,20 +18,6 @@
             this.commentsRepository = commentsRepository;
         }
 
-        //public ICollection<CommentViewModel> GetAll(int auctionId)
-        //{
-        //    var comments = this.commentsRepository.AllAsNoTracking()
-        //        .Where(x => x.AuctionId == auctionId)
-        //        .Select(x=> new CommentViewModel
-        //        {
-                    
-        //        })
-        //        .OrderByDescending(x => x.CreatedOn)
-        //        .ToList();
-
-        //    return comments;
-        //}
-
         public async Task CreateAsync(int auctionId, string userId, string content)
         {
             var comment = new Comment

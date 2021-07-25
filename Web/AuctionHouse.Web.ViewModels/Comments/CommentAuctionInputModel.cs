@@ -1,7 +1,7 @@
 ﻿namespace AuctionHouse.Web.ViewModels.Comments
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 

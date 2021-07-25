@@ -27,7 +27,6 @@
 
         public bool IsActive { get; set; }
 
-        // new
         public DateTime ActiveTo { get; set; }
 
         public string LastBidder { get; set; }

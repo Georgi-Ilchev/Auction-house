@@ -13,12 +13,10 @@
     public class BidsController : BaseController
     {
         private readonly IBidsService bidsService;
-        private readonly IUserService userService;
 
-        public BidsController(IBidsService bidsService, IUserService userService)
+        public BidsController(IBidsService bidsService)
         {
             this.bidsService = bidsService;
-            this.userService = userService;
         }
 
         [HttpPost]

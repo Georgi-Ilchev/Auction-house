@@ -1,8 +1,9 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using AuctionHouse.Web.ViewModels.Users;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using AuctionHouse.Web.ViewModels.Users;
 
     public interface IUserService
     {
