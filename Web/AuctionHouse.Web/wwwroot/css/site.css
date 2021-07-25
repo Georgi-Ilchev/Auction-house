@@ -91,3 +91,11 @@ body {
         transform: scale(1.1,1.1);
         /*background-color: cadetblue;*/
     }
+
+.carousel-item {
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.0s ease, -webkit-transform 0.7s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
