@@ -2,7 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ImageViewModel
+    using AuctionHouse.Data.Models;
+    using AuctionHouse.Services.Mapping;
+
+    public class ImageViewModel : IMapFrom<Image>
     {
         [Required]
         public string Id { get; set; }

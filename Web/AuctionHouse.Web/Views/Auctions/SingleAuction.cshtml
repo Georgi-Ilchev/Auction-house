@@ -52,6 +52,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
@@ -217,7 +218,7 @@
                                             else
                                             {
                                                 <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
-                                                    <button class="btn btn-outline-light" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
+                                                    <button class="btn btn-outline-light" id="bid" style="pointer-events: none;" type="button" disabled>@(currentBid)</button>
                                                 </li>
                                             }
                                         }
@@ -288,19 +289,19 @@
                                 $('#lastBidder').html(data.lastBidder);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
 
-                                $("#containerButtons").click(function () {
-                                    console.log((data.currentBid + bidding));
-                                    console.log(data.virtualBalance - bidding);
+                                //$("#containerButtons").click(function () {
+                                //    console.log((data.currentBid + bidding));
+                                //    console.log(data.virtualBalance - bidding);
 
-                                    if ($(this).data.virtualBalance - bidding < data.currentBid) {
-                                        $("#bid").toggleClass("btn btn-outline-light");
-                                    }
-                                    // Else, the element doesn't have the active class, so we remove it from every element before applying it to the element that was clicked
-                                    //else {
-                                    //    $("#bid").toggleClass("btn btn-outline-light");
-                                    //    //$(this).html("active");
-                                    //}
-                                });
+                                //    if ($(this).data.virtualBalance - bidding < data.currentBid) {
+                                //        $("#bid").toggleClass("btn btn-outline-light");
+                                //    }
+                                //    // Else, the element doesn't have the active class, so we remove it from every element before applying it to the element that was clicked
+                                //    //else {
+                                //    //    $("#bid").toggleClass("btn btn-outline-light");
+                                //    //    //$(this).html("active");
+                                //    //}
+                                //});
 
                             },
                             contentType: 'application/json',
@@ -309,44 +310,53 @@
                 });
     </script>
 
-    @*<script type="text/javascript">
+    <script type="text/javascript">
 
-            //const buttonContainer = document.getElementById("containerButtons");
+        //const buttonContainer = document.getElementById("containerButtons");
 
-            //console.log(buttonContainer);
+        //console.log(buttonContainer);
 
-            //let currentBallance = document.getElementById("currentBalance");
+        //let currentBallance = document.getElementById("currentBalance");
 
-            //console.log(currentBallance);
+        //console.log(currentBallance);
 
-            //let containerAsArray = Array.from(buttonContainer.children)
+        //let containerAsArray = Array.from(buttonContainer.children)
 
-            //buttonContainer.addEventListener("click", (event) => {
-            //    console.log(event.target.textContent)
-            //    let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
+        //buttonContainer.addEventListener("click", (event) => {
+        //    console.log(event.target.textContent)
+        //    let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
 
-            //    console.log('buton value');
-            //    console.log(currentBtnValue);
+        //    console.log('buton value');
+        //    console.log(currentBtnValue);
 
-            //    if (event.target.disabled == false) {
-            //        currentBallance.textContent -= currentBtnValue;
+        //    if (event.target.disabled == false) {
+        //        currentBallance.textContent -= currentBtnValue;
 
-            //        checkButtons(containerAsArray, currentBalance)
-            //    }
-            //});
+        //        checkButtons(containerAsArray, currentBalance)
+        //    }
+        //});
+        //function checkButtons(containerAsArray, currentBalance) {
+        //    containerAsArray.map((element) => {
+        //         //proverka za sumite na butona sprqmo currentBalance
+        //        let currElement = Number(element.textContent);
+        //        let currBalaNum = Number(currentBalance.textContent);
+        //        if (currElement > currBalaNum) {
+        //            element.style.backgroundColor = "red";
+        //            element.disabled = true;
+        //        }
+        //    });
+        //}
 
-            //function checkButtons(containerAsArray, currentBalance) {
-            //    containerAsArray.map((element) => {
-            //        // proverka za sumite na butona sprqmo currentBalance
-            //        let currElement = Number(element.textContent);
-            //        let currBalaNum = Number(currentBalance.textContent);
-            //        if (currElement > currBalaNum) {
-            //            element.style.backgroundColor = "red";
-            //            element.disabled = true;
-            //        }
-            //    });
-            //}
-        </script>*@
+        @*bidForm.addEventListener('li', () => {
+            if (bid.value > @userBalance) {
+                bid.setAttribute('enabled');
+            } else {
+                bid.removeAttribute('enabled');
+            }
+        });*@
+
+
+    </script>
 }
 
 <!-- Delete Modal -->

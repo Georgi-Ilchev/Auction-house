@@ -8,6 +8,7 @@
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Web.ViewModels.Bids;
+    using Microsoft.EntityFrameworkCore;
 
     public class BidsService : IBidsService
     {
@@ -55,6 +56,7 @@
         public async Task AddBidToHistory(string userId, int auctionId, decimal price)
         {
             var auction = this.auctionsRepository.All()
+                .Include(x => x.Histories)
                 .FirstOrDefault(x => x.Id == auctionId);
 
             var history = this.historiesRepository.All()
@@ -73,8 +75,14 @@
 
                 auction.Histories.Add(history);
             }
+            else
+            {
+                history.BidAmount += price;
+            }
 
             await this.historiesRepository.SaveChangesAsync();
+
+            //auction.Histories.Add(history);
             await this.auctionsRepository.SaveChangesAsync();
         }
 

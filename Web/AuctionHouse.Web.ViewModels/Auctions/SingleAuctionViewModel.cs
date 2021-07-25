@@ -7,6 +7,8 @@
 
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
+    using AuctionHouse.Web.ViewModels.Histories;
+    using AuctionHouse.Web.ViewModels.Images;
     using AutoMapper;
 
     public class SingleAuctionViewModel : IMapFrom<Auction>, IHaveCustomMappings
@@ -49,7 +51,9 @@
 
         public string CurrentUserBalance { get; set; }
 
-        public IEnumerable<ImagesViewModel> Images { get; set; }
+        public IEnumerable<ImageViewModel> Images { get; set; }
+
+        public IEnumerable<HistoryViewModel> Histories { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
