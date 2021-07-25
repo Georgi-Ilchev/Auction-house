@@ -10,6 +10,8 @@
 
         Task AddBidToHistory(string userId, int auctionId, decimal price);
 
+        Task ReturnBids(string userId, int auctionId);
+
         decimal GetSumBids(int auctionId);
 
         decimal GetDbUserBalance(string userId);

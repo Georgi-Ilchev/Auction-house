@@ -81,9 +81,32 @@
             }
 
             await this.historiesRepository.SaveChangesAsync();
-
-            //auction.Histories.Add(history);
             await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task ReturnBids(string userId, int auctionId)
+        {
+            var auction = this.auctionsRepository.All()
+                .Include(x => x.Histories)
+                .FirstOrDefault(x => x.Id == auctionId);
+
+            var auctionsCount = auction.Histories.Count();
+
+            if (auctionsCount == 2)
+            {
+                var history = this.historiesRepository.All()
+                    .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId != userId);
+
+                var amountToReturn = history.BidAmount;
+                var giveMeTheMoneyId = history.UserId;
+
+                var userBalance = this.userService.GetVirtualUserBalance(giveMeTheMoneyId);
+                userBalance += amountToReturn;
+
+                auction.Histories.Remove(history);
+
+                await this.auctionsRepository.SaveChangesAsync();
+            }
         }
 
         public decimal GetSumBids(int auctionId)
