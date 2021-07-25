@@ -100,11 +100,14 @@
                 var amountToReturn = history.BidAmount;
                 var giveMeTheMoneyId = history.UserId;
 
-                var userBalance = this.userService.GetVirtualUserBalance(giveMeTheMoneyId);
-                userBalance += amountToReturn;
+                // var userBalance = this.userService.GetVirtualUserBalance(giveMeTheMoneyId);
+                // userBalance += amountToReturn;
 
                 auction.Histories.Remove(history);
+                this.historiesRepository.Delete(history);
 
+                await this.userService.UpdateReturningBids(giveMeTheMoneyId, amountToReturn);
+                await this.historiesRepository.SaveChangesAsync();
                 await this.auctionsRepository.SaveChangesAsync();
             }
         }

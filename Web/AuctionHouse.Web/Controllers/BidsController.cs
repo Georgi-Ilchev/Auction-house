@@ -32,9 +32,7 @@
 
                 await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
                 await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
-
-                // check return bid to user or no
-                //await this.bidsService.ReturnBids(userId, input.AuctionId);
+                await this.bidsService.ReturnBids(userId, input.AuctionId);
 
                 var currentBid = this.bidsService.GetSumBids(input.AuctionId);
                 var latestBidder = this.bidsService.GetUser(userId, userEmail);

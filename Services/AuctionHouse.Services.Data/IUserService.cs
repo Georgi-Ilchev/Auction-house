@@ -23,5 +23,7 @@
         Task UpdateDbUser(string userId, decimal amount);
 
         Task UpdateDbUserVirtualBalance(string userId, decimal amount);
+
+        Task UpdateReturningBids(string userId, decimal amount);
     }
 }
