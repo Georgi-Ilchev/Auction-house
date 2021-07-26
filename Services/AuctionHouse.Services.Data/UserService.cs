@@ -70,6 +70,23 @@
             return user;
         }
 
+        public UserViewModel GetLastBidUser(string email)
+        {
+            var user = this.userRepository.AllAsNoTracking()
+                .Where(x => x.Email == email)
+                .Select(x => new UserViewModel
+                {
+                    Id = x.Id,
+                    Balance = x.Balance,
+                    VirtualBalance = x.VirtualBalance,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                })
+                .FirstOrDefault();
+
+            return user;
+        }
+
         public async Task AddMoneyAsync(string userId, decimal amount)
         {
             var user = this.userRepository.AllAsNoTracking()
@@ -82,13 +99,15 @@
             await this.userRepository.SaveChangesAsync();
         }
 
-        public async Task GetFromUser(string userId, decimal amount)
+        public async Task GetFromUser(string userId, decimal amount, decimal virtualBids)
         {
             var user = this.userRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == userId);
 
+            var virtualAmount = amount - virtualBids;
+
             user.Balance -= amount;
-            user.VirtualBalance -= amount;
+            user.VirtualBalance -= virtualAmount;
 
             this.userRepository.Update(user);
             await this.userRepository.SaveChangesAsync();

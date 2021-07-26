@@ -12,22 +12,29 @@
 
 <div class="container">
     <div class="row col-md-6 offset-3">
-        @foreach (var comment in Model.Comments)
+        @if (this.Model.Comments.Count() == 0)
         {
-            <div class="coment-bottom bg-dark p-2 px-4 mt-2">
-                <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/CFpa3nK.jpg" width="38"><h5 class="mr-2">@comment.UserUserName</h5></div>
-                <div class="commented-section mt-2">
-                    <div class="d-flex flex-row align-items-center commented-user">
-                        <span class="dot mb-1"></span><span class="mb-1 ml-2">@comment.PostedOn</span>
-                    </div>
-                    <div class="comment-text-sm"><span>@comment.Content</span></div>
-                </div>
-            </div>
-
-            @if (userId == comment.UserId)
+            <h1 class="display-2 text-warning fw-bold mb-5 text-center">Theres no comments!</h1>
+        }
+        else
+        {
+            @foreach (var comment in Model.Comments)
             {
-                <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@comment.Id"></form>
-                <a class="btn btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">X</a>
+                <div class="coment-bottom bg-dark p-2 px-4 mt-2">
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/CFpa3nK.jpg" width="38"><h5 class="mr-2">@comment.UserUserName</h5></div>
+                    <div class="commented-section mt-2">
+                        <div class="d-flex flex-row align-items-center commented-user">
+                            <span class="dot mb-1"></span><span class="mb-1 ml-2">@comment.PostedOn</span>
+                        </div>
+                        <div class="comment-text-sm"><span>@comment.Content</span></div>
+                    </div>
+                </div>
+
+                @if (userId == comment.UserId)
+                {
+                    <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@comment.Id"></form>
+                    <a class="btn btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">X</a>
+                }
             }
         }
     </div>

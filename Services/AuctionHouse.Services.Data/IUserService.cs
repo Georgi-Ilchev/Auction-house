@@ -13,11 +13,13 @@
 
         UserViewModel GetUser(string userId);
 
+        UserViewModel GetLastBidUser(string email);
+
         decimal GetUserBalance(string userId);
 
         decimal GetVirtualUserBalance(string userId);
 
-        Task GetFromUser(string userId, decimal amount);
+        Task GetFromUser(string userId, decimal amount, decimal virtualBids);
 
         Task GetToOwner(string ownerId, decimal amount, int auctionId);
 

@@ -1,9 +1,11 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-
+    using AuctionHouse.Data.Common.Repositories;
+    using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
@@ -18,16 +20,20 @@
         private readonly IUserService userService;
         private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
+        private readonly IRepository<History> historiesRepository;
+
         public AuctionsController(
             ICategoriesService categoriesService,
             IAuctionService auctionService,
             IWebHostEnvironment environment,
-            IUserService userService)
+            IUserService userService,
+            IRepository<History> historiesRepository)
         {
             this.categoriesService = categoriesService;
             this.auctionService = auctionService;
             this.environment = environment;
             this.userService = userService;
+            this.historiesRepository = historiesRepository;
         }
 
         [Authorize]
@@ -152,7 +158,14 @@
 
             var amount = auction.BidsAmount + auction.Price;
 
-            await this.userService.GetFromUser(userId, amount);
+            var lastUser = this.userService.GetLastBidUser(auction.LastBidder);
+
+            var history = this.historiesRepository.All()
+                .FirstOrDefault(x => x.AuctionId == auction.Id && x.UserId == lastUser.Id);
+
+            var virtualBids = history.BidAmount;
+
+            await this.userService.GetFromUser(userId, amount, virtualBids);
             await this.userService.GetToOwner(ownerId, amount, auctionId);
 
             this.TempData["Message"] = "You have successfully paid";
@@ -273,7 +286,7 @@
                 auction.IsSold = true;
             }
 
-            if (user.Balance > auctionSum)
+            if (user.Balance > auctionSum && auction.IsActive == true)
             {
                 auction.CanUserBid = true;
             }

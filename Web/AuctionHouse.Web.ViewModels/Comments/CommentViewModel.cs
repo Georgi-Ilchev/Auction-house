@@ -10,6 +10,8 @@
 
     public class CommentViewModel : IMapFrom<Comment>
     {
+        public int Id { get; set; }
+
         [Required]
         [StringLength(
              ContentMaxLength,

@@ -40,7 +40,7 @@
 
             foreach (var auction in auctions)
             {
-                if (DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
+                if (auction.IsActive == true && DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
                 {
                     auction.IsActive = false;
                 }
@@ -278,7 +278,7 @@
             var dbAuction = this.auctionsRepository.AllAsNoTracking()
                 .FirstOrDefault(x => x.Id == auctionId);
 
-            if (DateTime.UtcNow.ToLocalTime() > dbAuction.ActiveTo)
+            if (dbAuction.IsActive == true && DateTime.UtcNow.ToLocalTime() > dbAuction.ActiveTo)
             {
                 dbAuction.IsActive = false;
             }

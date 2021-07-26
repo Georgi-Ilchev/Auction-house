@@ -44,5 +44,21 @@
         {
             return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
         }
+
+        public IEnumerable<CommentViewModel> GetAll(int auctionId)
+        {
+            var comments = this.commentsRepository.All()
+                .AsQueryable()
+                .Select(x => new CommentViewModel
+                {
+                    AuctionId = x.AuctionId,
+                    Content = x.Content,
+                    UserId = x.UserId,
+                })
+                .Where(x => x.AuctionId == auctionId)
+                .ToList();
+
+            return comments;
+        }
     }
 }
