@@ -11,14 +11,13 @@
     using AuctionHouse.Services.Mapping;
     using AuctionHouse.Web.ViewModels.Auctions;
 
+    using static AuctionHouse.Data.Models.DataConstants.DataConstants;
+
     public class AuctionService : IAuctionService
     {
         private readonly string[] allowedExtensionsForImage = new[] { "jpg", "png", "JPG", "PNG" };
         private readonly IDeletableEntityRepository<Auction> auctionsRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
-
-        private const int ActiveDaysMin = 1;
-        private const int ActiveDaysMax = 30;
 
         public AuctionService(
             IDeletableEntityRepository<Auction> auctionsRepository,
@@ -194,28 +193,35 @@
 
             Directory.CreateDirectory($"{imagePath}/auctions/");
 
-            foreach (var image in input.Images)
+            if (input.Images.Count() <= ImagesMaxCount && input.Images.Count() >= ImagesMinCount)
             {
-                var extension = Path.GetExtension(image.FileName).TrimStart('.');
-
-                if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
+                foreach (var image in input.Images)
                 {
-                    throw new Exception($"Invalid image extension {extension}.");
+                    var extension = Path.GetExtension(image.FileName).TrimStart('.');
+
+                    if (!this.allowedExtensionsForImage.Any(x => extension.EndsWith(x)))
+                    {
+                        throw new Exception($"Invalid image extension {extension}.");
+                    }
+
+                    var dataImage = new Image
+                    {
+                        UserId = userId,
+                        Extension = extension,
+                    };
+                    auction.Images.Add(dataImage);
+
+                    var path = $"{imagePath}/auctions/{dataImage.Id}.{extension}";
+
+                    using (Stream fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await image.CopyToAsync(fileStream);
+                    }
                 }
-
-                var dataImage = new Image
-                {
-                    UserId = userId,
-                    Extension = extension,
-                };
-                auction.Images.Add(dataImage);
-
-                var path = $"{imagePath}/auctions/{dataImage.Id}.{extension}";
-
-                using (Stream fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await image.CopyToAsync(fileStream);
-                }
+            }
+            else
+            {
+                throw new Exception($"Maximum {ImagesMaxCount} images.");
             }
 
             await this.auctionsRepository.AddAsync(auction);

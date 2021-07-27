@@ -15,6 +15,9 @@
         public const int ActiveDaysMin = 1;
         public const int ActiveDaysMax = 30;
 
+        public const int ImagesMinCount = 1;
+        public const int ImagesMaxCount = 6;
+
         // Comment
         public const int ContentMaxLength = 300;
         public const int ContentMinLength = 3;

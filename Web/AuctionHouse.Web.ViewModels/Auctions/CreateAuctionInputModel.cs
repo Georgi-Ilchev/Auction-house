@@ -40,6 +40,7 @@
 
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
 
+        [Display(Name = "Images (1-6)")]
         public IEnumerable<IFormFile> Images { get; set; }
     }
 }
