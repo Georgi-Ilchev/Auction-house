@@ -11,6 +11,7 @@
     using AuctionHouse.Services.Data;
     using AuctionHouse.Services.Mapping;
     using AuctionHouse.Services.Messaging;
+    using AuctionHouse.Web.Hubs;
     using AuctionHouse.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -60,6 +61,7 @@
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddSignalR();
             services.AddAntiforgery(options =>
             {
                 options.HeaderName = "X-CSRF-TOKEN";
@@ -120,6 +122,7 @@
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
+                        endpoints.MapHub<AuctionHub>("/auction");
                     });
         }
     }

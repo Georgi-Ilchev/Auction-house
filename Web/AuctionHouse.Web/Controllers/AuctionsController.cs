@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Data;
