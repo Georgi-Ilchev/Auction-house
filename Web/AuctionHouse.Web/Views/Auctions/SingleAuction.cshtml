@@ -9,7 +9,8 @@
 }
 
 @{
-    var userBalance = this.ViewBag.UserBalance;
+    var staticBalance = this.ViewBag.Balance;
+    var userBalance = this.ViewBag.VirtualBalance;
     var supportingBids = this.ViewBag.SupportingBids;
     var userBidsSum = this.ViewBag.UserBidsSum;
 }
@@ -178,7 +179,8 @@
                 }
                 else
                 {
-                    <li class="list-group-item"><span class="font-weight-bold">Your balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
+                    <li class="list-group-item"><span class="font-weight-bold">Balance - <span class="font-weight-normal">$@staticBalance</span></span></li>
+                    <li class="list-group-item"><span class="font-weight-bold">Virtual balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
                     <li class="list-group-item"><span class="font-weight-bold">You are in with - <span class="font-weight-normal" id="bidsSum">$@userBidsSum.ToString("0.00")</span></span></li>
 
                     if (this.Model.IsActive)
@@ -266,7 +268,7 @@
                         data.virtualBalance = @userBalance;
 
                         var containerAsArray = Array.from(containerButtons.children);
-                        var bidAmount = @this.Model.BidsAmount;
+                        var startPrice = @this.Model.Price;
 
                         $.ajax({
                             type: "POST",
@@ -281,7 +283,7 @@
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
                                 $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
 
-                                //checkButtons(containerAsArray, data.virtualBalance, bidAmount);
+                                checkButtons(containerAsArray, data.virtualBalance, data.currentBid, data.userbidsAmount, startPrice);
 
                                 //connection.on("RefreshBids", model => {
                                 //    data.currentBid;
@@ -320,38 +322,12 @@
             update.server.NewBid(result);
         }
 
-        //const buttonContainer = document.getElementById("containerButtons");
-
-        //console.log(buttonContainer);
-
-        //let currentBallance = document.getElementById("currentBalance");
-
-        //console.log(currentBallance);
-
-        //let containerAsArray = Array.from(buttonContainer.children)
-
-        //buttonContainer.addEventListener("click", (event) => {
-        //    console.log(event.target.textContent)
-        //    let currentBtnValue = event.target.textContent; //взимам валюто на натиснатият бутон
-
-        //    console.log('buton value');
-        //    console.log(currentBtnValue);
-
-        //    if (event.target.disabled == false) {
-        //        currentBallance.textContent -= currentBtnValue;
-
-        //        checkButtons(containerAsArray, currentBalance)
-        //    }
-        //});
-
-        function checkButtons(containerAsArray, currentBalance, bidAmount) {
+        function checkButtons(containerAsArray, currentBalance, currentBid, userBidsSum, startPrice) {
             containerAsArray.map((element) => {
-                 //proverka za sumite na butona sprqmo currentBalance
                 let currElement = Number(element.textContent);
-                console.log(currElement);
-                let currBalaNum = Number(currentBalance);
-                console.log(currBalaNum);
-                if (currElement + bidAmount > currBalaNum) {
+                let virtualBalance = Number(currentBalance);
+                
+                if (virtualBalance + userBidsSum < currentBid + currElement + startPrice) {
                     element.style.backgroundColor = "red";
                     element.disabled = true;
                 }
@@ -365,8 +341,6 @@
                 bid.removeAttribute('enabled');
             }
         });*@
-
-
     </script>
 }
 

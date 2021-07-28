@@ -299,7 +299,8 @@
 
             await this.auctionService.UpdateDbAuction(auctionId);
 
-            this.ViewBag.UserBalance = user.VirtualBalance;
+            this.ViewBag.Balance = user.Balance;
+            this.ViewBag.VirtualBalance = user.VirtualBalance;
             this.ViewBag.SupportingBids = this.bids;
             this.ViewBag.UserBidsSum = userBidsAmount;
 
