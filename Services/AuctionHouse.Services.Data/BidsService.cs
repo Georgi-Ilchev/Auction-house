@@ -145,21 +145,6 @@
             return userBalance;
         }
 
-        public bool CheckForCorrectBid(decimal bid)
-        {
-            for (int i = 0; i < this.bids.Length; i++)
-            {
-                var currentBid = this.bids[i];
-
-                if (currentBid == bid)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         public decimal GetUserBids(string userId, int auctionId)
         {
             var history = this.historiesRepository.All()
@@ -173,6 +158,21 @@
             }
 
             return sum;
+        }
+
+        public bool CheckForCorrectBid(decimal bid)
+        {
+            for (int i = 0; i < this.bids.Length; i++)
+            {
+                var currentBid = this.bids[i];
+
+                if (currentBid == bid)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         //public UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder)
