@@ -159,5 +159,32 @@
 
             return false;
         }
+
+        public decimal GetUserBids(string userId, int auctionId)
+        {
+            var history = this.historiesRepository.All()
+                 .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId == userId);
+
+            var sum = 0.0m;
+
+            if (history != null)
+            {
+                sum = history.BidAmount;
+            }
+
+            return sum;
+        }
+
+        //public UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder)
+        //{
+        //    var result = new UpdateAuctionBidsViewModel
+        //    {
+        //        New = true,
+        //        CurrentBid = currentBid,
+        //        LastBidder = lastBidder,
+        //    };
+
+        //    return result;
+        //}
     }
 }

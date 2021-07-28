@@ -11,6 +11,7 @@
 @{
     var userBalance = this.ViewBag.UserBalance;
     var supportingBids = this.ViewBag.SupportingBids;
+    var userBidsSum = this.ViewBag.UserBidsSum;
 }
 
 <h1 class="text-info text-monospace mt-3 ml-5">@this.ViewData["Title"]</h1>
@@ -177,7 +178,8 @@
                 }
                 else
                 {
-                    <li class="list-group-item mb-3"><span class="font-weight-bold">Your balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
+                    <li class="list-group-item"><span class="font-weight-bold">Your balance - <span class="font-weight-normal" id="currentBalance">$@userBalance</span></span></li>
+                    <li class="list-group-item mb-1"><span class="font-weight-bold">You are in with - <span class="font-weight-normal" id="bidsSum">$@userBidsSum.ToString("0.00")</span></span></li>
 
                     if (this.Model.IsActive)
                     {
@@ -186,32 +188,12 @@
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Submit your Bid</label>
                                 <ul>
-                                    @*<li type="button" class="btn btn-success" data-vote="10">10</li>
-                                        <li type="button" class="btn btn-success" data-vote="20">20</li>
-                                        <li type="button" class="btn btn-success" data-vote="50">50</li>
-                                        <li type="button" class="btn btn-success" data-vote="100">100</li>
-                                        <li type="button" class="btn btn-success" data-vote="200">200</li>
-                                        <li type="button" class="btn btn-success" data-vote="300">300</li>
-                                        <li type="button" class="btn btn-success" data-vote="500">500</li>
-                                        <li type="button" class="btn btn-success" data-vote="1000">1000</li>
-                                        <li type="button" class="btn btn-success" data-vote="3000">3000</li>
-                                        @if (userBalance >= 5000)
-                                        {
-                                            <li type="button" class="btn btn-success" data-vote="5000">5000</li>
-                                            userBalance -= 5000;
-                                        }
-                                        else
-                                        {
-                                            <li class="d-inline-block" tabindex="0" data-toggle="tooltip" title="You dont have enough money">
-                                                <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>5000</button>
-                                            </li>
-                                        }*@
                                     <div id="containerButtons">
                                         @for (int i = 0; i < supportingBids.Length; i++)
                                         {
                                             var currentBid = supportingBids[i];
 
-                                            @if (userBalance >= currentBid + this.Model.BidsAmount)
+                                            @if (userBalance + userBidsSum >= currentBid + this.Model.BidsAmount)
                                             {
                                                 <li type="button" id="bid" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
                                             }
@@ -267,6 +249,12 @@
 <form method="post" id="antiForgeryForm"></form>
 @section Scripts {
     <script>
+        var connection = new signalR
+            .HubConnectionBuilder()
+            .withUrl("/bid")
+            .build();
+        connection.start();
+
                 $("li[data-vote]").each(function (el) {
                     $(this).click(function () {
                         var bidding = $(this).attr("data-vote");
@@ -276,6 +264,9 @@
                         var sign = '$';
                         var digits = '.00';
                         data.virtualBalance = @userBalance;
+
+                        var containerAsArray = Array.from(containerButtons.children);
+                        var bidAmount = @this.Model.BidsAmount;
 
                         $.ajax({
                             type: "POST",
@@ -288,6 +279,18 @@
                                 $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
+                                $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
+
+                                //checkButtons(containerAsArray, data.virtualBalance, bidAmount);
+
+                                //connection.on("RefreshBids", model => {
+                                //    data.currentBid;
+                                //});
+
+                                //connection.invoke("SendUpdates").catch(function (err) {
+                                //    return console.error(err.toString());
+                                //});
+
 
                                 //$("#containerButtons").click(function () {
                                 //    console.log((data.currentBid + bidding));
@@ -312,6 +315,11 @@
 
     <script type="text/javascript">
 
+        function Update(result) {
+            var update = $.connection.bidsHub;
+            update.server.NewBid(result);
+        }
+
         //const buttonContainer = document.getElementById("containerButtons");
 
         //console.log(buttonContainer);
@@ -335,17 +343,20 @@
         //        checkButtons(containerAsArray, currentBalance)
         //    }
         //});
-        //function checkButtons(containerAsArray, currentBalance) {
-        //    containerAsArray.map((element) => {
-        //         //proverka za sumite na butona sprqmo currentBalance
-        //        let currElement = Number(element.textContent);
-        //        let currBalaNum = Number(currentBalance.textContent);
-        //        if (currElement > currBalaNum) {
-        //            element.style.backgroundColor = "red";
-        //            element.disabled = true;
-        //        }
-        //    });
-        //}
+
+        function checkButtons(containerAsArray, currentBalance, bidAmount) {
+            containerAsArray.map((element) => {
+                 //proverka za sumite na butona sprqmo currentBalance
+                let currElement = Number(element.textContent);
+                console.log(currElement);
+                let currBalaNum = Number(currentBalance);
+                console.log(currBalaNum);
+                if (currElement + bidAmount > currBalaNum) {
+                    element.style.backgroundColor = "red";
+                    element.disabled = true;
+                }
+            });
+        }
 
         @*bidForm.addEventListener('li', () => {
             if (bid.value > @userBalance) {

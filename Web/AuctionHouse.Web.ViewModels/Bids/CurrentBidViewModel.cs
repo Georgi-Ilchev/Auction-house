@@ -13,5 +13,7 @@
 
         [Range(BalanceMinValue, double.PositiveInfinity)]
         public decimal VirtualBalance { get; set; }
+
+        public decimal UserbidsAmount { get; set; }
     }
 }

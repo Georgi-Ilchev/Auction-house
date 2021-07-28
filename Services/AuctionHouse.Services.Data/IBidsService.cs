@@ -16,6 +16,8 @@
 
         decimal GetDbUserBalance(string userId);
 
+        decimal GetUserBids(string userId, int auctionId);
+
         LastUserBidViewModel GetUser(string userId, string email);
 
         Task UpdateAsync(int id, LastUserBidViewModel input);
@@ -23,5 +25,7 @@
         Task GetMoneyFromDbUser(string userId, decimal amount);
 
         bool CheckForCorrectBid(decimal bid);
+
+        //UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder);
     }
 }

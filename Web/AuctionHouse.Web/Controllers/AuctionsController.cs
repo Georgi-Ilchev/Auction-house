@@ -19,6 +19,7 @@
         private readonly IAuctionService auctionService;
         private readonly IWebHostEnvironment environment;
         private readonly IUserService userService;
+        private readonly IBidsService bidsService;
         private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
         private readonly IRepository<History> historiesRepository;
@@ -28,12 +29,14 @@
             IAuctionService auctionService,
             IWebHostEnvironment environment,
             IUserService userService,
+            IBidsService bidsService,
             IRepository<History> historiesRepository)
         {
             this.categoriesService = categoriesService;
             this.auctionService = auctionService;
             this.environment = environment;
             this.userService = userService;
+            this.bidsService = bidsService;
             this.historiesRepository = historiesRepository;
         }
 
@@ -277,6 +280,8 @@
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
             var auctionSum = auction.BidsAmount + auction.Price;
 
+            var userBidsAmount = this.bidsService.GetUserBids(userId, auction.Id);
+
             if (DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
             {
                 auction.IsActive = false;
@@ -296,6 +301,7 @@
 
             this.ViewBag.UserBalance = user.VirtualBalance;
             this.ViewBag.SupportingBids = this.bids;
+            this.ViewBag.UserBidsSum = userBidsAmount;
 
             return this.View(auction);
         }
