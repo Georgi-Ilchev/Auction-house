@@ -37,9 +37,15 @@
 
         public bool CanUserBid { get; set; }
 
+        public bool IsAuctionOfTheWeek { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime ActiveTo { get; set; }
+
+        public DateTime? StartPromoted { get; set; }
+
+        public DateTime? EndPromoted { get; set; }
 
         public string CreatedOnAsString
             => this.CreatedOn.ToString("dd.MM.yyyy HH:mm", CultureInfo.GetCultureInfo("bg-BG"));

@@ -200,6 +200,11 @@
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 
+            //foreach (var auction in viewModel.Auctions)
+            //{
+            //    await this.auctionService.UpdateDbAuction(auction.Id);
+            //}
+
             return this.View(viewModel);
         }
 
@@ -300,6 +305,13 @@
             if (user.Balance > auctionSum && auction.IsActive == true)
             {
                 auction.CanUserBid = true;
+            }
+
+            if (auction.EndPromoted < DateTime.UtcNow.ToLocalTime())
+            {
+                auction.StartPromoted = null;
+                auction.EndPromoted = null;
+                auction.IsAuctionOfTheWeek = false;
             }
 
             await this.auctionService.UpdateDbAuction(auctionId);

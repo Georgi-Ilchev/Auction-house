@@ -294,6 +294,13 @@
                 dbAuction.IsSold = true;
             }
 
+            if (dbAuction.EndPromoted < DateTime.UtcNow.ToLocalTime())
+            {
+                dbAuction.StartPromoted = null;
+                dbAuction.EndPromoted = null;
+                dbAuction.IsAuctionOfTheWeek = false;
+            }
+
             this.auctionsRepository.Update(dbAuction);
             await this.auctionsRepository.SaveChangesAsync();
         }
