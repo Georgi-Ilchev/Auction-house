@@ -135,6 +135,11 @@
                 return this.NotFound();
             }
 
+            if (!this.auctionService.IsThereLastBidder(auctionId))
+            {
+                return this.Unauthorized();
+            }
+
             await this.auctionService.Delete(auctionId);
 
             this.TempData["Message"] = "The auction was successfully deleted.";

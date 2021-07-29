@@ -36,6 +36,8 @@
 
         bool IsAuctionExisting(int auctionId);
 
+        bool IsThereLastBidder(int auctionId);
+
         Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath);
 
         Task PromoteAuctionOfWeek(DateTime promoteEnd, int auctionId);

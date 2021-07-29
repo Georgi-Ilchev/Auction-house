@@ -326,10 +326,10 @@
             containerAsArray.map((element) => {
                 let currElement = Number(element.textContent);
                 let virtualBalance = Number(currentBalance);
-                
+
                 if (virtualBalance + userBidsSum < currentBid + currElement + startPrice) {
                     element.style.backgroundColor = "red";
-                    element.disabled = true;
+                    element.class = "btn btn-outline-light";
                 }
             });
         }

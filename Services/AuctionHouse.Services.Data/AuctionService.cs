@@ -310,6 +310,12 @@
                 .Any(x => x.Id == auctionId);
         }
 
+        public bool IsThereLastBidder(int auctionId)
+        {
+            return this.auctionsRepository.All()
+                .Any(x => x.LastBidder != null);
+        }
+
         public List<T> GetWeeklyAuctions<T>()
         {
             return this.auctionsRepository.All()
