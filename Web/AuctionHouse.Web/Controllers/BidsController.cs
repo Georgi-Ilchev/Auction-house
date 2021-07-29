@@ -32,6 +32,11 @@
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
 
+                //if (!this.bidsService.CanUserMakeBid(userId))
+                //{
+                //    return this.Unauthorized();
+                //}
+
                 await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
                 await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
                 await this.bidsService.ReturnBids(userId, input.AuctionId);

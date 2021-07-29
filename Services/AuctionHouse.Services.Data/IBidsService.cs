@@ -26,6 +26,8 @@
 
         bool CheckForCorrectBid(decimal bid);
 
+        bool CanUserMakeBid(string userId);
+
         //UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder);
     }
 }

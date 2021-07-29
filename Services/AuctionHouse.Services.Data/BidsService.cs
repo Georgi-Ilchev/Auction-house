@@ -175,6 +175,18 @@
             return false;
         }
 
+        public bool CanUserMakeBid(string userId)
+        {
+            var balance = this.GetDbUserBalance(userId);
+
+            if (balance < 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         //public UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder)
         //{
         //    var result = new UpdateAuctionBidsViewModel
