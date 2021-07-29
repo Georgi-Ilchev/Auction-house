@@ -182,15 +182,17 @@
         }
 
         [HttpGet]
-        public IActionResult AuctionOfTheWeek()
+        public IActionResult AuctionOfTheWeek(int auctionId)
         {
-            return this.View();
+            var input = this.auctionService.GetById<PromoteAuctionInputModel>(auctionId);
+
+            return this.View(input);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AuctionOfTheWeek(PromoteAuctionInputModel input, int auctionId)
+        public async Task<IActionResult> AuctionOfTheWeek(PromoteAuctionInputModel input, int id)
         {
-            await this.auctionService.PromoteAuctionOfWeek(input.PromoteEnd, auctionId);
+            await this.auctionService.PromoteAuctionOfWeek(input.PromoteEnd, id);
             return this.Redirect("/Administration/Auctions/Index");
         }
 

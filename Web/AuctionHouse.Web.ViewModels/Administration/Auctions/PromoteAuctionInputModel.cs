@@ -2,7 +2,10 @@
 {
     using System;
 
-    public class PromoteAuctionInputModel
+    using AuctionHouse.Data.Models;
+    using AuctionHouse.Services.Mapping;
+
+    public class PromoteAuctionInputModel : IMapFrom<Auction>
     {
         public int Id { get; set; }
 

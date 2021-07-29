@@ -235,7 +235,7 @@
                 .FirstOrDefault(a => a.Id == auctionId);
 
             auction.IsAuctionOfTheWeek = true;
-            auction.StartPromoted = DateTime.UtcNow;
+            auction.StartPromoted = DateTime.UtcNow.ToLocalTime();
             auction.EndPromoted = promoteEnd;
 
             this.auctionsRepository.Update(auction);

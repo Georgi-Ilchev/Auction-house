@@ -8,7 +8,7 @@
     <h1>@this.ViewData["Title"]</h1>
 </div>
 
-<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data" id="weeklyForm">
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -25,6 +25,31 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-sm">Set to week auction</button>
     <hr />
+    <input type="hidden" asp-for="Id" />
 </form>
+
+<div class="col-md-6 offset-md-3">
+    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#weeklyModal">Set to week auction</a>
+</div>
+
+<!-- Week Modal -->
+<div class="modal fade" id="weeklyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Set to weekly auction!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to set this auction to 'weekly'?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="weeklyForm.submit()">Set</button>
+            </div>
+        </div>
+    </div>
+</div>
