@@ -37,34 +37,12 @@
 <form method="post" id="antiForgeryForm"></form>
 @section Scripts {
     <script>
-                @*$("li[data-vote]").each(function (el) {
-                    $(this).click(function () {
-                        var balance = $(this).attr("data-vote");
-                        var userId = @Model.Id;
-                        //var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { userId: userId, balance: balance };
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/api/Gift",
-                            data: JSON.stringify(data),
-                            //headers: {
-                            //    'X-CSRF-TOKEN': antiForgeryToken
-                            //},
-                            success: function (data) {
-                                $('#currentBalance').html(data.balance);
-                                //console.log(data);
-                            },
-                            contentType: 'application/json',
-                        });
-                    })
-                });*@
-
-
-$("li[data-vote]").each(function (el) {
+                $("li[data-vote]").each(function (el) {
                     $(this).click(function () {
                         var amount = $(this).attr("data-vote");
+                        console.log(amount);
                         var userId = @Model.Id;
+                        var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
                         var data = { userId: userId, аmount: amount};
                         var sign = '$';
                         var digits = '.00';
@@ -73,6 +51,9 @@ $("li[data-vote]").each(function (el) {
                             type: "POST",
                             url: "/api/Gift",
                             data: JSON.stringify(data),
+                            headers: {
+                                'X-CSRF-TOKEN': antiForgeryToken
+                            },
                             success: function (data) {
                                 $('#currentBalance').html(sign + (data.balance) + digits);
                                 $('#currentBalance').text(sign + data.balance + digits);

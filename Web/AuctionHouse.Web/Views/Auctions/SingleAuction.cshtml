@@ -262,7 +262,7 @@
                         var bidding = $(this).attr("data-vote");
                         var auctionId = @Model.Id;
                         var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { auctionId: auctionId, bidding: bidding};
+                        var data = { auctionId: auctionId, bidding: bidding };
                         var sign = '$';
                         var digits = '.00';
                         data.virtualBalance = @userBalance;
@@ -278,7 +278,7 @@
                                 'X-CSRF-TOKEN': antiForgeryToken
                             },
                             success: function (data) {
-                                $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
+                                var result = $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
                                 $('#lastBidder').html(data.lastBidder);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
                                 $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
@@ -310,16 +310,21 @@
 
                             },
                             contentType: 'application/json',
+                        })
+                            .done(function (result) {
+                                var bidToSend = result.currentBid;
+                                var lastBidderToSend = result.lastBidder;
+                                connection.on("RefreshBids", SendUpdates(bidToSend, lastBidderToSend))
                         });
                     })
                 });
+
     </script>
 
     <script type="text/javascript">
 
-        function Update(result) {
-            var update = $.connection.bidsHub;
-            update.server.NewBid(result);
+        function SendUpdates(bidToSend, lastBidderToSend) {
+            connection.server.Send(JSON.stringify(bidToSend), JSON.stringify(lastBidderToSend));
         }
 
         function checkButtons(containerAsArray, currentBalance, currentBid, userBidsSum, startPrice) {

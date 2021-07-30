@@ -58,7 +58,7 @@
                     UserbidsAmount = userBidsAmount,
                 };
 
-                await this.hubContext.Clients.All.SendAsync("RefreshBids", currentBidView);
+                await this.hubContext.Clients.All.SendAsync("Send", currentBid.ToString());
 
                 return currentBidView;
             }
