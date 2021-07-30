@@ -292,29 +292,13 @@
                                 //connection.invoke("SendUpdates").catch(function (err) {
                                 //    return console.error(err.toString());
                                 //});
-
-
-                                //$("#containerButtons").click(function () {
-                                //    console.log((data.currentBid + bidding));
-                                //    console.log(data.virtualBalance - bidding);
-
-                                //    if ($(this).data.virtualBalance - bidding < data.currentBid) {
-                                //        $("#bid").toggleClass("btn btn-outline-light");
-                                //    }
-                                //    // Else, the element doesn't have the active class, so we remove it from every element before applying it to the element that was clicked
-                                //    //else {
-                                //    //    $("#bid").toggleClass("btn btn-outline-light");
-                                //    //    //$(this).html("active");
-                                //    //}
-                                //});
-
                             },
                             contentType: 'application/json',
                         })
                             .done(function (result) {
                                 var bidToSend = result.currentBid;
                                 var lastBidderToSend = result.lastBidder;
-                                connection.on("RefreshBids", SendUpdates(bidToSend, lastBidderToSend))
+                                SendUpdates(bidToSend, lastBidderToSend);
                         });
                     })
                 });
@@ -333,19 +317,10 @@
                 let virtualBalance = Number(currentBalance);
 
                 if (virtualBalance + userBidsSum < currentBid + currElement + startPrice) {
-                    element.style.backgroundColor = "red";
-                    element.class = "btn btn-outline-light";
+                    element.className += " disabled";
                 }
             });
         }
-
-        @*bidForm.addEventListener('li', () => {
-            if (bid.value > @userBalance) {
-                bid.setAttribute('enabled');
-            } else {
-                bid.removeAttribute('enabled');
-            }
-        });*@
     </script>
 }
 
