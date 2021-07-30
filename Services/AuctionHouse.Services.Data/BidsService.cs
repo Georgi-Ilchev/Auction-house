@@ -149,7 +149,7 @@
                 var history = this.historiesRepository.All()
                     .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId != userId);
 
-                var amountToReturn = history.BidAmount + auctionPrice;
+                var amountToReturn = history.BidAmount;
                 var giveMeTheMoneyId = history.UserId;
 
                 auction.Histories.Remove(history);
