@@ -10,7 +10,7 @@
 
         Task AddBidToHistory(string userId, int auctionId, decimal price);
 
-        Task ReturnBids(string userId, int auctionId);
+        Task ReturnBids(string userId, int auctionId, decimal auctionPrice);
 
         decimal GetSumBids(int auctionId);
 
@@ -27,6 +27,14 @@
         bool CheckForCorrectBid(decimal bid);
 
         bool CanUserMakeBid(string userId);
+
+
+
+        decimal GetAuctionPrice(int auctionId);
+
+        Task GetMoneyFromDbUserPlusPrice(string userId, decimal amount, decimal price);
+
+        bool AmILastBidder(string userId);
 
         //UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder);
     }

@@ -37,16 +37,28 @@
                 //    return this.Unauthorized();
                 //}
 
+                bool iamLastBidder = this.bidsService.AmILastBidder(userId);
+                var auctionPrice = this.bidsService.GetAuctionPrice(input.AuctionId);
+
                 await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
                 await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
-                await this.bidsService.ReturnBids(userId, input.AuctionId);
+                await this.bidsService.ReturnBids(userId, input.AuctionId, auctionPrice);
 
                 var currentBid = this.bidsService.GetSumBids(input.AuctionId);
                 var latestBidder = this.bidsService.GetUser(userId, userEmail);
                 var userBidsAmount = this.bidsService.GetUserBids(userId, input.AuctionId);
 
                 await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
-                await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
+
+                if (iamLastBidder)
+                {
+                    await this.bidsService.GetMoneyFromDbUser(userId, input.Bidding);
+                }
+                else
+                {
+                    await this.bidsService.GetMoneyFromDbUserPlusPrice(userId, input.Bidding, auctionPrice);
+                    userBidsAmount += auctionPrice;
+                }
 
                 var virtualBalance = this.bidsService.GetDbUserBalance(userId);
 

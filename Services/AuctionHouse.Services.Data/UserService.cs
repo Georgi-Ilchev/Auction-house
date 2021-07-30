@@ -156,6 +156,17 @@
             await this.userRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateDbUserVirtualBalanceWithPrice(string userId, decimal amount, decimal auctionPrice)
+        {
+            var dbUser = this.userRepository.AllAsNoTracking()
+                .FirstOrDefault(x => x.Id == userId);
+
+            dbUser.VirtualBalance -= amount + auctionPrice;
+
+            this.userRepository.Update(dbUser);
+            await this.userRepository.SaveChangesAsync();
+        }
+
         public async Task UpdateReturningBids(string userId, decimal amount)
         {
             var dbUser = this.userRepository.AllAsNoTracking()

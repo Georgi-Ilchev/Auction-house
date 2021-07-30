@@ -10,7 +10,7 @@
 
 @{
     var staticBalance = this.ViewBag.Balance;
-    var userBalance = this.ViewBag.VirtualBalance;
+    var userBalance = this.ViewBag.VirtualBalance; /*- this.Model.Price;*/
     var supportingBids = this.ViewBag.SupportingBids;
     var userBidsSum = this.ViewBag.UserBidsSum;
 }
@@ -255,6 +255,7 @@
             .HubConnectionBuilder()
             .withUrl("/bid")
             .build();
+
         connection.start();
 
                 $("li[data-vote]").each(function (el) {
@@ -265,10 +266,10 @@
                         var data = { auctionId: auctionId, bidding: bidding };
                         var sign = '$';
                         var digits = '.00';
+                        var startPrice = @this.Model.Price;
                         data.virtualBalance = @userBalance;
 
                         var containerAsArray = Array.from(containerButtons.children);
-                        var startPrice = @this.Model.Price;
 
                         $.ajax({
                             type: "POST",
