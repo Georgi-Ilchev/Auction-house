@@ -8,7 +8,11 @@
     {
         Task AddBidAsync(string userId, int auctionId, decimal price);
 
+        Task AddBidAsyncPlusPrice(string userId, int auctionId, decimal price, decimal auctionPrice);
+
         Task AddBidToHistory(string userId, int auctionId, decimal price);
+
+        Task AddBidToHistoryPlusPrice(string userId, int auctionId, decimal price, decimal auctionPrice);
 
         Task ReturnBids(string userId, int auctionId, decimal auctionPrice);
 
@@ -34,7 +38,7 @@
 
         Task GetMoneyFromDbUserPlusPrice(string userId, decimal amount, decimal price);
 
-        bool AmILastBidder(string userId);
+        bool AmILastBidder(string userId, int auctionId);
 
         //UpdateAuctionBidsViewModel GetUpdate(int auctionId, decimal currentBid, string lastBidder);
     }

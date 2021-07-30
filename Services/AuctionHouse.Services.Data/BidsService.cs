@@ -51,6 +51,29 @@
             await this.bidsRepository.SaveChangesAsync();
         }
 
+        public async Task AddBidAsyncPlusPrice(string userId, int auctionId, decimal price, decimal auctionPrice)
+        {
+            var bid = this.bidsRepository.All()
+                .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId == userId);
+
+            if (bid == null)
+            {
+                bid = new Bid
+                {
+                    UserId = userId,
+                    AuctionId = auctionId,
+                    LastBidder = userId,
+                };
+
+                await this.bidsRepository.AddAsync(bid);
+            }
+
+            bid.BidAmount += price + auctionPrice;
+            bid.LastBidder = userId;
+
+            await this.bidsRepository.SaveChangesAsync();
+        }
+
         public async Task AddBidToHistory(string userId, int auctionId, decimal price)
         {
             var auction = this.auctionsRepository.All()
@@ -67,6 +90,37 @@
                     UserId = userId,
                     AuctionId = auctionId,
                     BidAmount = price,
+                };
+
+                await this.historiesRepository.AddAsync(history);
+
+                auction.Histories.Add(history);
+            }
+            else
+            {
+                history.BidAmount += price;
+            }
+
+            await this.historiesRepository.SaveChangesAsync();
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task AddBidToHistoryPlusPrice(string userId, int auctionId, decimal price, decimal auctionPrice)
+        {
+            var auction = this.auctionsRepository.All()
+                .Include(x => x.Histories)
+                .FirstOrDefault(x => x.Id == auctionId);
+
+            var history = this.historiesRepository.All()
+                .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId == userId);
+
+            if (history == null)
+            {
+                history = new History
+                {
+                    UserId = userId,
+                    AuctionId = auctionId,
+                    BidAmount = price + auctionPrice,
                 };
 
                 await this.historiesRepository.AddAsync(history);
@@ -202,9 +256,15 @@
             await this.userService.UpdateDbUserVirtualBalanceWithPrice(userId, amount, price);
         }
 
-        public bool AmILastBidder(string userId)
+        public bool AmILastBidder(string userId, int auctionId)
         {
+            if (this.historiesRepository.All().FirstOrDefault(x => x.AuctionId == auctionId) == null)
+            {
+                return false;
+            }
+
             var lastBidder = this.historiesRepository.All()
+                .Where(x => x.AuctionId == auctionId)
                 .OrderByDescending(x => x.CreatedOn).FirstOrDefault().UserId;
 
             if (lastBidder == userId)
