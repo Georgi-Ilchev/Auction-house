@@ -300,7 +300,7 @@
         public decimal GetAuctionPrice(int auctionId)
         {
             var auctionPrice = this.auctionsRepository.All()
-                .FirstOrDefault(x => x.Id == auctionId).Price;
+                .FirstOrDefault(x => x.Id == auctionId).CurrentPrice;
 
             return auctionPrice;
         }

@@ -29,6 +29,9 @@
         [Range(PriceMinValue, PriceMaxValue)]
         public decimal Price { get; set; }
 
+        [Range(PriceMinValue, PriceMaxValue)]
+        public decimal CurrentPrice { get; set; }
+
         public string LastBidder { get; set; }
 
         public bool IsAuctionOfTheWeek { get; set; }

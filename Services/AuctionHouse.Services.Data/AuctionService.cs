@@ -177,6 +177,7 @@
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
+                CurrentPrice = input.Price,
                 CreatedOn = DateTime.UtcNow.ToLocalTime(),
                 ActiveTo = DateTime.UtcNow.ToLocalTime().AddDays(input.ActiveDays),
                 CategoryId = input.CategoryId,

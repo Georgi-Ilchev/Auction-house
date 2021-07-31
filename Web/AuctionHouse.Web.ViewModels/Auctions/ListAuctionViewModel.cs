@@ -25,6 +25,8 @@
 
         public decimal Price { get; set; }
 
+        public decimal CurrentPrice { get; set; }
+
         public decimal BidsAmount { get; set; }
 
         public bool IsActive { get; set; }
