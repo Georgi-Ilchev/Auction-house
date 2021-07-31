@@ -280,7 +280,7 @@
         [Authorize]
         public async Task<IActionResult> SingleAuction(int auctionId)
         {
-            if (auctionId == 0)
+            if (!this.auctionService.IsAuctionExisting(auctionId))
             {
                 return this.NotFound();
             }

@@ -537,3 +537,4 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Web.Tests\o
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Web.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Web.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Web.Tests\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Web.Tests\bin\Debug\net5.0\AuctionHouse.Web.StaticWebAssets.xml

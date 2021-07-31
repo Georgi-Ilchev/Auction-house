@@ -135,9 +135,11 @@
             }
 
             @{
+                //Model.BidsAmount = Model.BidsAmount + Model.Price;
                 if (Model.LastBidder == null)
                 {
                     Model.LastBidder = "No bids yet";
+                    Model.BidsAmount = Model.Price;
                 }
 
             }

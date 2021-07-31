@@ -176,3 +176,8 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Da
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.Data.Tools.Schema.Sql.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.Data.Tools.Utilities.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.SqlServer.TransactSql.ScriptDom.dll

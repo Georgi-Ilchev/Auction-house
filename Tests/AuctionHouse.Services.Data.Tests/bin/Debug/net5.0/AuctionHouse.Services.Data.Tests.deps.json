@@ -15,7 +15,10 @@
           "Moq": "4.16.1",
           "StyleCop.Analyzers": "1.2.0-beta.312",
           "xunit": "2.4.1",
-          "xunit.runner.visualstudio": "2.4.3"
+          "xunit.runner.visualstudio": "2.4.3",
+          "Microsoft.Data.Tools.Schema.Sql": "15.0.0.0",
+          "Microsoft.Data.Tools.Schema.Sql.UnitTesting": "16.0.0.0",
+          "Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter": "16.0.0.0"
         },
         "runtime": {
           "AuctionHouse.Services.Data.Tests.dll": {}
@@ -1977,6 +1980,46 @@
         "runtime": {
           "AuctionHouse.Web.ViewModels.dll": {}
         }
+      },
+      "Microsoft.Data.Tools.Schema.Sql/15.0.0.0": {
+        "runtime": {
+          "Microsoft.Data.Tools.Schema.Sql.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.5070.1"
+          }
+        }
+      },
+      "Microsoft.Data.Tools.Schema.Sql.UnitTesting/16.0.0.0": {
+        "runtime": {
+          "Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll": {
+            "assemblyVersion": "16.0.0.0",
+            "fileVersion": "16.0.62103.10070"
+          }
+        }
+      },
+      "Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter/16.0.0.0": {
+        "runtime": {
+          "Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll": {
+            "assemblyVersion": "16.0.0.0",
+            "fileVersion": "16.0.62103.10070"
+          }
+        }
+      },
+      "Microsoft.Data.Tools.Utilities/15.0.0.0": {
+        "runtime": {
+          "Microsoft.Data.Tools.Utilities.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.5070.1"
+          }
+        }
+      },
+      "Microsoft.SqlServer.TransactSql.ScriptDom/15.0.0.0": {
+        "runtime": {
+          "Microsoft.SqlServer.TransactSql.ScriptDom.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.5070.1"
+          }
+        }
       }
     }
   },
@@ -3145,6 +3188,31 @@
     },
     "AuctionHouse.Web.ViewModels/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Data.Tools.Schema.Sql/15.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Data.Tools.Schema.Sql.UnitTesting/16.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter/16.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Data.Tools.Utilities/15.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.SqlServer.TransactSql.ScriptDom/15.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
