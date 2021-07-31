@@ -46,7 +46,6 @@
             }
 
             bid.BidAmount += price;
-            // bid.LastBidder = userId;
 
             await this.bidsRepository.SaveChangesAsync();
         }
@@ -118,10 +117,12 @@
                 await this.historiesRepository.AddAsync(history);
 
                 auction.Histories.Add(history);
+                auction.CurrentPrice += price;
             }
             else
             {
                 history.BidAmount += price;
+                auction.CurrentPrice += price;
             }
 
             await this.historiesRepository.SaveChangesAsync();
@@ -149,10 +150,12 @@
                 await this.historiesRepository.AddAsync(history);
 
                 auction.Histories.Add(history);
+                auction.CurrentPrice += price;
             }
             else
             {
                 history.BidAmount += price;
+                auction.CurrentPrice += price;
             }
 
             await this.historiesRepository.SaveChangesAsync();

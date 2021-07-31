@@ -25,7 +25,7 @@
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<CurrentBidViewModel>> Bid1(MakeBidInputModel input)
+        public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
             if (this.bidsService.CheckForCorrectBid(input.Bidding))
             {
@@ -49,12 +49,11 @@
                 }
                 else
                 {
-                    //await this.bidsService.AddBidAsyncPlusCurrentBids(userId, input.AuctionId, input.Bidding, currentBidBeforeBid);
-                    ////await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
-                    //await this.bidsService.AddBidToHistoryPlusCurrentBids(userId, input.AuctionId, input.Bidding, currentBidBeforeBid);
+                    //await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
+                    //await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
 
-                    await this.bidsService.AddBidAsync(userId, input.AuctionId, input.Bidding);
-                    await this.bidsService.AddBidToHistory(userId, input.AuctionId, input.Bidding);
+                    await this.bidsService.AddBidAsyncPlusPrice(userId, input.AuctionId, input.Bidding, auctionPrice);
+                    await this.bidsService.AddBidToHistoryPlusPrice(userId, input.AuctionId, input.Bidding, auctionPrice);
 
                     await this.bidsService.ReturnBids(userId, input.AuctionId);
                 }
@@ -78,9 +77,7 @@
                 }
                 else
                 {
-                    //await this.bidsService.GetMoneyFromDbUserPlusPrice(userId, input.Bidding, auctionPrice);
-                    await this.bidsService.GetMoneyFromDbUser(userId, currentBid);
-                    // think about get user bids without auctionPrice
+                    await this.bidsService.GetMoneyFromDbUser(userId, auctionPrice + input.Bidding);
                     userBidsAmount = this.bidsService.GetUserBidsPlusPrice(userId, input.AuctionId, currentBid);
                     //userBidsAmount = this.bidsService.GetUserBids(userId, input.AuctionId);
                 }
