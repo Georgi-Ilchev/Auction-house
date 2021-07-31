@@ -46,7 +46,7 @@
             }
 
             bid.BidAmount += price;
-            bid.LastBidder = userId;
+            // bid.LastBidder = userId;
 
             await this.bidsRepository.SaveChangesAsync();
         }
@@ -69,7 +69,7 @@
             }
 
             bid.BidAmount += price + auctionPrice;
-            bid.LastBidder = userId;
+            // bid.LastBidder = userId;
 
             await this.bidsRepository.SaveChangesAsync();
         }

@@ -66,7 +66,6 @@
                 else
                 {
                     await this.bidsService.GetMoneyFromDbUserPlusPrice(userId, input.Bidding, auctionPrice);
-                    //userBidsAmount += auctionPrice;
                 }
 
                 var virtualBalance = this.bidsService.GetDbUserBalance(userId);

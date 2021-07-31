@@ -135,7 +135,6 @@
             }
 
             @{
-                Model.BidsAmount = Model.BidsAmount + Model.Price;
                 if (Model.LastBidder == null)
                 {
                     Model.LastBidder = "No bids yet";
@@ -279,7 +278,7 @@
                                 'X-CSRF-TOKEN': antiForgeryToken
                             },
                             success: function (data) {
-                                var result = $('#currentBidValue').html(sign + (data.currentBid + @Model.Price) + digits);
+                                var result = $('#currentBidValue').html(sign + (data.currentBid) + digits);
                                 $('#lastBidder').html(data.lastBidder);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
                                 $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
