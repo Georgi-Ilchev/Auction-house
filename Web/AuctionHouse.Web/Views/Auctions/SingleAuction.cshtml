@@ -139,7 +139,7 @@
                 if (Model.LastBidder == null)
                 {
                     Model.LastBidder = "No bids yet";
-                    Model.BidsAmount = Model.Price;
+                    //Model.BidsAmount = Model.Price;
                 }
 
             }
@@ -147,7 +147,6 @@
             <ul class="list-group">
                 <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>$@Model.Price</li>
                 <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentPrice">$@Model.CurrentPrice</span></span></li>
-                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentBidValue">$@Model.BidsAmount.ToString("0.00")</span></span></li>
                 <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="lastBidder">@Model.LastBidder</span></span></li>
             </ul>
 
@@ -197,7 +196,7 @@
                                         {
                                             var currentBid = supportingBids[i];
 
-                                            @if (userBalance + userBidsSum >= currentBid + this.Model.BidsAmount)
+                                            @if (userBalance + userBidsSum >= currentBid + this.Model.CurrentPrice)
                                             {
                                                 <li type="button" id="bid" class="btn btn-success" data-vote="@(currentBid)">@(currentBid)</li>
                                             }
@@ -282,13 +281,12 @@
                                 'X-CSRF-TOKEN': antiForgeryToken
                             },
                             success: function (data) {
-                                $('#currentPrice').html(sign + (data.currentPrice) + digits);
-                                var result = $('#currentBidValue').html(sign + (data.currentBid) + digits);
+                                var result = $('#currentPrice').html(sign + (data.currentPrice) + digits);
                                 $('#lastBidder').html(data.lastBidder);
                                 $('#currentBalance').text(sign + data.virtualBalance + digits);
                                 $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
 
-                                checkButtons(containerAsArray, data.virtualBalance, data.currentBid, data.userbidsAmount, startPrice);
+                                checkButtons(containerAsArray, data.virtualBalance, data.currentPrice, data.userbidsAmount, startPrice);
 
                                 //connection.on("RefreshBids", model => {
                                 //    data.currentBid;
@@ -301,7 +299,7 @@
                             contentType: 'application/json',
                         })
                             .done(function (result) {
-                                var bidToSend = result.currentBid;
+                                var bidToSend = result.currentPrice;
                                 var lastBidderToSend = result.lastBidder;
                                 SendUpdates(bidToSend, lastBidderToSend);
                         });
@@ -316,16 +314,17 @@
             connection.server.Send(JSON.stringify(bidToSend), JSON.stringify(lastBidderToSend));
         }
 
-        function checkButtons(containerAsArray, currentBalance, currentBid, userBidsSum, startPrice) {
+        function checkButtons(containerAsArray, currentBalance, currentPrice, userBidsSum, startPrice) {
             containerAsArray.map((element) => {
                 let currElement = Number(element.textContent);
                 let virtualBalance = Number(currentBalance);
 
-                if (virtualBalance + userBidsSum < currentBid + currElement + startPrice) {
+                if (virtualBalance + userBidsSum < currentPrice + currElement) {
                     element.className += " disabled";
                 }
             });
         }
+
     </script>
 }
 
@@ -361,7 +360,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Pay to owner - $@(this.Model.BidsAmount)
+                Pay to owner - $@(this.Model.CurrentPrice)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

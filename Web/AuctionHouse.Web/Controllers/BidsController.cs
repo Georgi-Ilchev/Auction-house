@@ -55,9 +55,6 @@
                 }
 
                 var auctionPriceAfterBid = this.bidsService.GetAuctionPrice(input.AuctionId);
-
-                // remove current bid
-                var currentBid = this.bidsService.GetSumBids(input.AuctionId);
                 var latestBidder = this.bidsService.GetUser(userId, userEmail);
 
                 await this.bidsService.UpdateAsync(input.AuctionId, input.LastBidder = latestBidder);
@@ -85,13 +82,12 @@
                 var currentBidView = new CurrentBidViewModel
                 {
                     CurrentPrice = auctionPriceAfterBid,
-                    CurrentBid = currentBid,
                     LastBidder = latestBidder.Email,
                     VirtualBalance = virtualBalance,
                     UserbidsAmount = userBidsAmount,
                 };
 
-                await this.hubContext.Clients.All.SendAsync("RefreshBids", currentBid.ToString(), latestBidder.Email);
+                await this.hubContext.Clients.All.SendAsync("RefreshBids", auctionPriceAfterBid.ToString(), latestBidder.Email);
 
                 return currentBidView;
             }

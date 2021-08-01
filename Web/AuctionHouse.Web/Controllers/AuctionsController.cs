@@ -165,7 +165,7 @@
                 return this.Unauthorized();
             }
 
-            var amount = auction.BidsAmount + auction.Price;
+            var amount = auction.CurrentPrice;
 
             var lastUser = this.userService.GetLastBidUser(auction.LastBidder);
 
@@ -288,7 +288,7 @@
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = this.userService.GetUser(userId);
             var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
-            var auctionSum = auction.BidsAmount + auction.Price;
+            var auctionSum = auction.CurrentPrice;
 
             var userBidsAmount = this.bidsService.GetUserBids(userId, auction.Id);
 
@@ -338,35 +338,3 @@
         }
     }
 }
-
-//const int ItemsPerPage = 8;
-
-//if (id <= 0)
-//{
-//    return this.NotFound();
-//}
-
-//if (category == null)
-//{
-//    var viewModel = new ListAuctionsViewModel
-//    {
-//        ItemsPerPage = ItemsPerPage,
-//        PageNumber = id,
-//        Auctions = this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
-//        AuctionsCount = this.auctionService.GetAuctionsCount(),
-//    };
-
-//    return this.View(viewModel);
-//}
-//else
-//{
-//    var viewModel = new ListAuctionsViewModel
-//    {
-//        ItemsPerPage = ItemsPerPage,
-//        PageNumber = id,
-//        Auctions = this.auctionService.GetAllByCategory<ListAuctionViewModel>(id, (int)category, ItemsPerPage),
-//        AuctionsCount = this.auctionService.GetAuctionsCount(),
-//    };
-
-//    return this.View(viewModel);
-//}
