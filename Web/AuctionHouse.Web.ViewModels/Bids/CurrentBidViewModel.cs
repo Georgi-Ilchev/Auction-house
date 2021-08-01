@@ -7,6 +7,8 @@
 
     public class CurrentBidViewModel
     {
+        public decimal CurrentPrice { get; set; }
+
         public decimal CurrentBid { get; set; }
 
         public string LastBidder { get; set; }

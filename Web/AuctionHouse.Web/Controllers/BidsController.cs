@@ -31,7 +31,6 @@
             {
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
-                var currentBidBeforeBid = this.bidsService.GetSumBids(input.AuctionId);
 
                 bool iamFirstBidder = this.bidsService.AmIFirstBidder(input.AuctionId);
                 bool iamLastBidder = this.bidsService.AmILastBidder(userId, input.AuctionId);
@@ -58,6 +57,8 @@
                     await this.bidsService.ReturnBids(userId, input.AuctionId);
                 }
 
+                var auctionPriceAfterBid = this.bidsService.GetAuctionPrice(input.AuctionId);
+
                 var currentBid = this.bidsService.GetSumBids(input.AuctionId);
                 var latestBidder = this.bidsService.GetUser(userId, userEmail);
 
@@ -77,15 +78,16 @@
                 }
                 else
                 {
-                    await this.bidsService.GetMoneyFromDbUser(userId, auctionPrice + input.Bidding);
-                    userBidsAmount = this.bidsService.GetUserBidsPlusPrice(userId, input.AuctionId, currentBid);
-                    //userBidsAmount = this.bidsService.GetUserBids(userId, input.AuctionId);
+                    await this.bidsService.GetMoneyFromDbUser(userId, auctionPriceAfterBid);
+                    //userBidsAmount = this.bidsService.GetUserBidsPlusPrice(userId, input.AuctionId, currentBid);
+                    userBidsAmount = this.bidsService.GetUserBids(userId, input.AuctionId);
                 }
 
                 var virtualBalance = this.bidsService.GetDbUserBalance(userId);
 
                 var currentBidView = new CurrentBidViewModel
                 {
+                    CurrentPrice = auctionPriceAfterBid,
                     CurrentBid = currentBid,
                     LastBidder = latestBidder.Email,
                     VirtualBalance = virtualBalance,
