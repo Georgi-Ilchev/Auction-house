@@ -49,5 +49,8 @@
         Task Delete(int auctionId);
 
         Task UpdateDbAuction(int auctionId);
+
+
+        Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(string category, int page, int itemsPerPage = 8);
     }
 }

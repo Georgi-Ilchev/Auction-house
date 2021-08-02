@@ -2,6 +2,7 @@
 
 @{
     this.ViewData["Title"] = "Auction list";
+    var categoriesItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
 @if (this.TempData.ContainsKey("Message"))
@@ -11,8 +12,18 @@
 
 <h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
 
+@*<form method="get">
+    <div class="form-floating">
+        <div class="col-md-3">
+            <select asp-for="CategoriesItems" class="form-control" asp-items="categoriesItems"></select>
+            <label asp-for="CategoriesItems"></label>
+            <span asp-validation-for="CategoriesItems" class="text-warning"></span>
+        </div>
+    </div>
+</form>*@
+
 <hr />
-<br />
+@*<br />*@
 
 <partial name="_CarsListPartial" model="@Model" />
 <hr />

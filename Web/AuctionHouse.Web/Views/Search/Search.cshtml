@@ -1,18 +1,20 @@
-﻿@{ViewBag.Title = "Search auctions";
+﻿@model ListAuctionsViewModel
+
+@{ViewBag.Title = "Search auctions";
 }
 
-<div>
-    <div class="form-floating mb-3 col-md-12 mt-4">
+<div class="form-floating mb-3 col-md-12 mt-4">
+    <div>
         <div class="form-inline pull-right">
             <label class="h2 text-monospace text-info mt-3">Search:</label>
             <input type="text" class="form-control ml-4" id="txtSearch" placeholder="Type a name" />
         </div>
     </div>
-    <div class="row" id="grdAuctions">
+    <div id="grdAuctions">
     </div>
 </div>
 
-@*<partial name="_PagingPartial" model="@Model" />*@
+<partial name="_PagingPartial" model="@Model" />
 
 @section Scripts{
     <script>

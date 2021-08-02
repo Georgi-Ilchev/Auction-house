@@ -183,7 +183,7 @@
         }
 
         [Authorize]
-        public async Task<IActionResult> All(int id = 1)
+        public async Task<IActionResult> All1(int id = 1)
         {
             const int ItemsPerPage = 8;
 
@@ -335,6 +335,31 @@
             }
 
             return true;
+        }
+
+
+
+        // testing
+        [Authorize]
+        public async Task<IActionResult> All(string category, int id = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var viewModel = new ListAuctionsViewModel
+            {
+                CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
+                AuctionsCount = this.auctionService.GetAuctionsCount(),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

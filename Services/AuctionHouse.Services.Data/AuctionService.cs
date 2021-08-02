@@ -104,8 +104,8 @@
             var auctions = this.auctionsRepository.AllAsNoTracking()
                 .Where(x => x.Name.ToLower().Contains(search.ToLower()))
                 .OrderByDescending(x => x.Id)
-                .Skip((page - 1) * itemsPerPage)
-                .Take(itemsPerPage)
+                //.Skip((page - 1) * itemsPerPage)
+                //.Take(itemsPerPage)
                 .To<T>()
                 .ToList();
 
@@ -330,6 +330,43 @@
                 .Where(x => x.IsAuctionOfTheWeek == true)
                 .To<T>()
                 .ToList();
+        }
+
+
+
+        public async Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(string category, int page, int itemsPerPage = 8)
+        {
+            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                auctionsQuery = auctionsQuery.Where(c => c.Category.Name == category);
+            }
+
+            var auctions = auctionsQuery
+                .Where(x => x.IsPaid == false)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<ListAuctionViewModel>()
+                .ToList();
+
+            foreach (var auction in auctions)
+            {
+                if (auction.IsActive == true && DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
+                {
+                    auction.IsActive = false;
+                }
+
+                if (auction.IsActive == false && auction.LastBidder != null)
+                {
+                    auction.IsSold = true;
+                }
+            }
+
+            await this.auctionsRepository.SaveChangesAsync();
+
+            return auctions;
         }
     }
 }
