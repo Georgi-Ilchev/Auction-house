@@ -62,6 +62,7 @@
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSignalR();
+            services.AddMemoryCache();
             services.AddAntiforgery(options =>
             {
                 options.HeaderName = "X-CSRF-TOKEN";
