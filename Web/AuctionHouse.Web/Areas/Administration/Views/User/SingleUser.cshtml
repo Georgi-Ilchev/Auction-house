@@ -1,66 +1,43 @@
 ﻿@model AuctionHouse.Web.ViewModels.Users.UserViewModel
 
 @{
-    this.ViewData["Title"] = "Users";
+    this.ViewData["Title"] = this.Model.UserName;
 }
 
 <h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"]</h1>
 
 <hr />
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>@this.Model.UserName</h1>
-                </div>
+<form method="post" class="col-md-6 offset-md-3" id="editForm">
+    <div class="form-floating mb-3">
+        <input asp-for="Balance" class="form-control" type="number" min="1" max="1_000_000" />
+        <label asp-for="Balance"></label>
+        <span asp-validation-for="Balance" class="text-warning"></span>
+    </div>
+    <input type="hidden" asp-for="Id" />
+</form>
+
+<div class="col-md-6 offset-md-3">
+    <button type="submit" class="btn-success btn-lg " data-toggle="modal" data-target="#giftModal">Money gift</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-            <ul class="list-group">
-                <li class="list-group-item"><span class="font-weight-bold">Id: </span>@this.Model.Id</li>
-                <li class="list-group-item"><span class="font-weight-bold">Email: </span>@this.Model.Email</li>
-                <li class="list-group-item"><span class="font-weight-bold">Balance: <span class="font-weight-normal" id="currentBalance">$@this.Model.Balance</span></span></li>
-            </ul>
-
-            <hr />
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Give money to user</label>
-                <ul>
-                    <li type="button" class="btn btn-success" data-vote="5000">5000</li>
-                </ul>
+            <div class="modal-body">
+                Do you want to give these sum to user?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editForm.submit()">Give</button>
             </div>
         </div>
     </div>
 </div>
-
-<form method="post" id="antiForgeryForm"></form>
-@section Scripts {
-    <script>
-                $("li[data-vote]").each(function (el) {
-                    $(this).click(function () {
-                        var amount = $(this).attr("data-vote");
-                        console.log(amount);
-                        var userId = @Model.Id;
-                        var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
-                        var data = { userId: userId, аmount: amount};
-                        var sign = '$';
-                        var digits = '.00';
-
-                        $.ajax({
-                            type: "POST",
-                            url: "/api/Gift",
-                            data: JSON.stringify(data),
-                            headers: {
-                                'X-CSRF-TOKEN': antiForgeryToken
-                            },
-                            success: function (data) {
-                                $('#currentBalance').html(sign + (data.balance) + digits);
-                                $('#currentBalance').text(sign + data.balance + digits);
-                            },
-                            contentType: 'application/json',
-                        });
-                    })
-                });
-    </script>
-}

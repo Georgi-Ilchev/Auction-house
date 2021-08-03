@@ -51,5 +51,21 @@
 
             return this.View(user);
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult SingleUser(string userId, decimal amount)
+        {
+            if (userId == string.Empty)
+            {
+                return this.NotFound();
+            }
+
+            var user = this.userService.GetUser(userId);
+            user.Balance += amount;
+            user.VirtualBalance += amount;
+
+            return this.View(user);
+        }
     }
 }
