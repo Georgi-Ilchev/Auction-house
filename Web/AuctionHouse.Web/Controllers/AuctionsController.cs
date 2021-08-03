@@ -341,7 +341,7 @@
 
         // testing
         [Authorize]
-        public async Task<IActionResult> All(int category, int id = 1)
+        public async Task<IActionResult> All(int category, int id = 1, int searchId = 1)
         {
             const int ItemsPerPage = 8;
 
@@ -350,14 +350,39 @@
                 return this.NotFound();
             }
 
-            var viewModel = new ListAuctionsViewModel
+            // TODO: think for categoryId check
+            var auctionsCount = 0;
+            var viewModel = new ListAuctionsViewModel();
+
+            if (category == 0)
             {
-                CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
-                ItemsPerPage = ItemsPerPage,
-                PageNumber = id,
-                Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetAuctionsCount(),
-            };
+                auctionsCount = this.auctionService.GetAuctionsCount();
+                viewModel = new ListAuctionsViewModel
+                {
+                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                    ItemsPerPage = ItemsPerPage,
+                    PageNumber = id,
+                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
+                    AuctionsCount = auctionsCount,
+                };
+            }
+            else
+            {
+                auctionsCount = this.auctionService.GetAuctionsCountByCategory(category);
+                viewModel = new ListAuctionsViewModel
+                {
+                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                    ItemsPerPage = ItemsPerPage,
+                    PageNumber = searchId,
+                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, searchId, ItemsPerPage),
+                    AuctionsCount = auctionsCount,
+                };
+            }
+
+            //foreach (var auction in viewModel.Auctions)
+            //{
+            //    await this.auctionService.UpdateDbAuction(auction.Id);
+            //}
 
             if (category != 0)
             {

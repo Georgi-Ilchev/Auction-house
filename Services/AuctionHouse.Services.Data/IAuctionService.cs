@@ -24,6 +24,8 @@
 
         int GetAuctionsCount();
 
+        int GetAuctionsCountByCategory(int category);
+
         int GetUserAuctionsCount(string userId);
 
         int GetUserPurchasesCount(string userEmail);

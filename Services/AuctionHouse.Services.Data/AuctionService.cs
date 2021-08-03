@@ -154,6 +154,13 @@
                 .Count();
         }
 
+        public int GetAuctionsCountByCategory(int category)
+        {
+            return this.auctionsRepository.All()
+                .Where(x => x.CategoryId == category && x.IsPaid == false)
+                .Count();
+        }
+
         public int GetUserAuctionsCount(string userId)
         {
             return this.auctionsRepository.All()
