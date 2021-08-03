@@ -10,6 +10,8 @@
     {
         Task<IEnumerable<ListAuctionViewModel>> GetAll<TListAuctionViewModel>(int page, int itemsPerPage = 8);
 
+        Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(int category, int page, int itemsPerPage = 8);
+
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 
         IEnumerable<T> GetAllUserPurchases<T>(string userEmail, int page, int itemsPerPage = 8);
@@ -17,8 +19,6 @@
         IEnumerable<T> GetAllUserSales<T>(string userId, int page, int itemsPerPage = 8);
 
         IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8);
-
-        // IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8);
 
         List<T> GetWeeklyAuctions<T>();
 
@@ -49,8 +49,5 @@
         Task Delete(int auctionId);
 
         Task UpdateDbAuction(int auctionId);
-
-
-        Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(string category, int page, int itemsPerPage = 8);
     }
 }

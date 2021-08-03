@@ -341,7 +341,7 @@
 
         // testing
         [Authorize]
-        public async Task<IActionResult> All(string category, int id = 1)
+        public async Task<IActionResult> All(int category, int id = 1)
         {
             const int ItemsPerPage = 8;
 

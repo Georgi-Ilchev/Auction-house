@@ -55,6 +55,41 @@
             return auctions;
         }
 
+        public async Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(int category, int page, int itemsPerPage = 8)
+        {
+            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().AsQueryable();
+
+            if (this.categoriesRepository.All().Any(c => c.Id == category))
+            {
+                auctionsQuery = auctionsQuery.Where(c => c.Category.Id == category);
+            }
+
+            var auctions = auctionsQuery
+                .Where(x => x.IsPaid == false)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<ListAuctionViewModel>()
+                .ToList();
+
+            foreach (var auction in auctions)
+            {
+                if (auction.IsActive == true && DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
+                {
+                    auction.IsActive = false;
+                }
+
+                if (auction.IsActive == false && auction.LastBidder != null)
+                {
+                    auction.IsSold = true;
+                }
+            }
+
+            await this.auctionsRepository.SaveChangesAsync();
+
+            return auctions;
+        }
+
         public IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
@@ -111,19 +146,6 @@
 
             return auctions;
         }
-
-        //public IEnumerable<T> GetAllByCategory<T>(int page, int category, int itemsPerPage = 8)
-        //{
-        //    var auctions = this.auctionsRepository.AllAsNoTracking()
-        //        .OrderByDescending(x => x.Id)
-        //        .Where(x => x.CategoryId == category)
-        //        .Skip((page - 1) * itemsPerPage)
-        //        .Take(itemsPerPage)
-        //        .To<T>()
-        //        .ToList();
-
-        //    return auctions;
-        //}
 
         public int GetAuctionsCount()
         {
@@ -330,43 +352,6 @@
                 .Where(x => x.IsAuctionOfTheWeek == true)
                 .To<T>()
                 .ToList();
-        }
-
-
-
-        public async Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(string category, int page, int itemsPerPage = 8)
-        {
-            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(category))
-            {
-                auctionsQuery = auctionsQuery.Where(c => c.Category.Name == category);
-            }
-
-            var auctions = auctionsQuery
-                .Where(x => x.IsPaid == false)
-                .OrderByDescending(x => x.Id)
-                .Skip((page - 1) * itemsPerPage)
-                .Take(itemsPerPage)
-                .To<ListAuctionViewModel>()
-                .ToList();
-
-            foreach (var auction in auctions)
-            {
-                if (auction.IsActive == true && DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
-                {
-                    auction.IsActive = false;
-                }
-
-                if (auction.IsActive == false && auction.LastBidder != null)
-                {
-                    auction.IsSold = true;
-                }
-            }
-
-            await this.auctionsRepository.SaveChangesAsync();
-
-            return auctions;
         }
     }
 }
