@@ -43,7 +43,7 @@ else
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-                <a class="page-link" asp-route-searchId="@Model.PreviousPageNumber">
+                <a class="page-link" asp-route-category="@currentCategory" asp-route-searchId="@Model.PreviousPageNumber">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
