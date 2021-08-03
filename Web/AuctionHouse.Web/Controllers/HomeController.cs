@@ -35,10 +35,12 @@
         {
             const string allWeeklyAukctions = "LatesAuctionsCount";
             const string indexViewModel = "IndexViewModel";
+            const string auctionsAndCategories = "AuctionsAndCategories";
 
             if (this.User.Identity.IsAuthenticated)
             {
                 var weeklyAuctions = this.cache.Get<List<IndexPageAuctionViewModel>>(allWeeklyAukctions);
+                var counts = this.cache.Get<CountsDto>(auctionsAndCategories);
 
                 if (weeklyAuctions == null)
                 {
@@ -49,8 +51,16 @@
                     this.cache.Set(allWeeklyAukctions, weeklyAuctions, cacheOptions);
                 }
 
+                if (counts == null)
+                {
+                    counts = this.getCountsService.GetCounts();
+
+                    var cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(15));
+
+                    this.cache.Set(auctionsAndCategories, counts, cacheOptions);
+                }
+
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var counts = this.getCountsService.GetCounts();
                 var viewModel = new IndexViewModel
                 {
                     AuctionsCount = counts.AuctionsCount,
