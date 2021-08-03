@@ -359,6 +359,11 @@
                 AuctionsCount = this.auctionService.GetAuctionsCount(),
             };
 
+            if (category != 0)
+            {
+                this.ViewBag.CurrentCategory = category;
+            }
+
             return this.View(viewModel);
         }
     }
