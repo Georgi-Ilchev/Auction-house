@@ -124,6 +124,7 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
                         endpoints.MapHub<BidsHub>("/bid");
+                        endpoints.MapHub<CommentHub>("/comment");
                     });
         }
     }

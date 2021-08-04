@@ -194,6 +194,18 @@
             return auction;
         }
 
+        public T GetByIdWithPaging<T>(int id, int page, int itemsPerPage = 8)
+        {
+            var auction = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .FirstOrDefault();
+
+            return auction;
+        }
+
         public async Task CreateAsync(CreateAuctionInputModel input, string userId, string imagePath)
         {
             if (input.ActiveDays < ActiveDaysMin || input.ActiveDays > ActiveDaysMax)

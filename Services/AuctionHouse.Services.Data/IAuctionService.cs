@@ -34,6 +34,8 @@
 
         T GetById<T>(int id);
 
+        T GetByIdWithPaging<T>(int id, int page, int itemsPerPage = 8);
+
         bool OwnedByUser(string userId, int auctionId);
 
         bool IsAuctionExisting(int auctionId);

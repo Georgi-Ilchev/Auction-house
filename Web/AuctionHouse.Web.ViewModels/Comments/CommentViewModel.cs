@@ -21,7 +21,7 @@
 
         public DateTime PostedOn { get; set; }
 
-        [Required]
+        //[Required]
         public string UserId { get; set; }
 
         public int AuctionId { get; set; }

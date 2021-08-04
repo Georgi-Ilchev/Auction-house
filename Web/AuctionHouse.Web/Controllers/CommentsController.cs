@@ -35,10 +35,10 @@
         {
             var auctionId = model.Id;
 
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(model);
-            //}
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
 
             if (!this.auctionService.IsAuctionExisting(auctionId))
             {
@@ -53,7 +53,7 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Delete(int commentId)
+        public async Task<IActionResult> Delete(int commentId, int auctionId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -69,7 +69,7 @@
 
             await this.commentService.Delete(commentId);
 
-            return this.RedirectToAction(nameof(this.Comment));
+            return this.RedirectToAction(nameof(this.Comment), new { id = auctionId });
         }
     }
 }
