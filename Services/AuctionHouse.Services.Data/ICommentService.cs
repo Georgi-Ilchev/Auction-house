@@ -12,6 +12,8 @@
 
         bool OwnedByUser(string userId, int commentId);
 
-        IEnumerable<CommentViewModel> GetAll(int auctionId);
+        IEnumerable<CommentViewModel> GetAll(int auctionId, int page, int itemsPerPage = 8);
+
+        int GetCommentsCount(int auctionId);
     }
 }

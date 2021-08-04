@@ -45,20 +45,29 @@
             return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
         }
 
-        public IEnumerable<CommentViewModel> GetAll(int auctionId)
+        public IEnumerable<CommentViewModel> GetAll(int auctionId, int page, int itemsPerPage = 8)
         {
             var comments = this.commentsRepository.All()
                 .AsQueryable()
+                .Where(x => x.AuctionId == auctionId)
                 .Select(x => new CommentViewModel
                 {
                     AuctionId = x.AuctionId,
                     Content = x.Content,
                     UserId = x.UserId,
                 })
-                .Where(x => x.AuctionId == auctionId)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
                 .ToList();
 
             return comments;
+        }
+
+        public int GetCommentsCount(int auctionId)
+        {
+            return this.commentsRepository.AllAsNoTracking()
+                .Where(x => x.AuctionId == auctionId)
+                .Count();
         }
     }
 }

@@ -24,8 +24,6 @@
         {
             var input = this.auctionService.GetById<CommentAuctionInputModel>(id);
 
-            //var comments = this.commentService.GetAll<CommentAuctionInputModel>(id);
-
             return this.View(input);
         }
 
@@ -70,6 +68,36 @@
             await this.commentService.Delete(commentId);
 
             return this.RedirectToAction(nameof(this.Comment), new { id = auctionId });
+        }
+
+
+
+
+
+
+
+        // new comments
+        [Authorize]
+        public async Task<IActionResult> All(int id, int ids = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (ids <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var comments = this.commentService.GetAll(id, ids, ItemsPerPage);
+
+            var viewModel = new ListCommentsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = ids,
+                Comments = comments,
+                AuctionsCount = this.commentService.GetCommentsCount(id),
+            };
+
+            return this.View(viewModel);
         }
     }
 }

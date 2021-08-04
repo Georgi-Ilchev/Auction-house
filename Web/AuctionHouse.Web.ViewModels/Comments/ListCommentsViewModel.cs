@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AuctionHouse.Web.ViewModels.Comments
 {
-    public class ListCommentsViewModel : CommentViewModel
+    public class ListCommentsViewModel : PagingViewModel
     {
         public IEnumerable<CommentViewModel> Comments { get; set; }
     }
