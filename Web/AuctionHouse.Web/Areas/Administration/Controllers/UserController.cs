@@ -54,18 +54,16 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult SingleUser(string userId, decimal amount)
+        public async Task<IActionResult> SingleUser(string userId, decimal balance)
         {
             if (userId == string.Empty)
             {
                 return this.NotFound();
             }
 
-            var user = this.userService.GetUser(userId);
-            user.Balance += amount;
-            user.VirtualBalance += amount;
+            await this.userService.AddMoneyAsync(userId, balance);
 
-            return this.View(user);
+            return this.RedirectToAction("Index");
         }
     }
 }

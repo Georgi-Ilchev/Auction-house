@@ -8,13 +8,12 @@
 
 <hr />
 
-<form method="post" class="col-md-6 offset-md-3" id="editForm">
+<form method="post" class="col-md-6 offset-md-3" id="giftForm">
     <div class="form-floating mb-3">
         <input asp-for="Balance" class="form-control" type="number" min="1" max="1_000_000" />
         <label asp-for="Balance"></label>
         <span asp-validation-for="Balance" class="text-warning"></span>
     </div>
-    <input type="hidden" asp-for="Id" />
 </form>
 
 <div class="col-md-6 offset-md-3">
@@ -32,11 +31,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Do you want to give these sum to user?
+                The amount entered will be added to the user's balance!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="editForm.submit()">Give</button>
+                <button type="button" class="btn btn-success" onclick="giftForm.submit()">ОК</button>
             </div>
         </div>
     </div>
