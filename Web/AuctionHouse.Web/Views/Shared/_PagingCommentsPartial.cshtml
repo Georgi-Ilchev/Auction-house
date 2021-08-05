@@ -6,7 +6,7 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-            <a class="page-link" asp-route="@auctionId" asp-route-id="@Model.PreviousPageNumber">
+            <a class="page-link" asp-route-auctionId="@auctionId" asp-route-id="@Model.PreviousPageNumber">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
@@ -14,7 +14,7 @@
         {
             if (i > 0)
             {
-                <li class="page-item"><a class="page-link" asp-route="@auctionId" asp-route-id="@i">@i</a></li>
+                <li class="page-item"><a class="page-link" asp-route-auctionId="@auctionId" asp-route-id="@i">@i</a></li>
             }
         }
         <li class="page-item active" aria-current="page">
@@ -24,11 +24,11 @@
         {
             if (i <= Model.PagesCount)
             {
-                <li class="page-item"><a class="page-link" asp-route="@auctionId" asp-route-id="@i">@i</a></li>
+                <li class="page-item"><a class="page-link" asp-route-auctionId="@auctionId" asp-route-id="@i">@i</a></li>
             }
         }
         <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
-            <a class="page-link" asp-route="@auctionId" asp-route-id="@Model.NextPageNumber">
+            <a class="page-link" asp-route-auctionId="@auctionId" asp-route-id="@Model.NextPageNumber">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

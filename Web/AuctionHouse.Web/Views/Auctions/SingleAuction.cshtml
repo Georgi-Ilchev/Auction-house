@@ -160,7 +160,7 @@
                     {
                         <td>
                             <a class="btn btn-block btn-light text-white mb-2" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
-                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="All" asp-route-Id="@Model.Id">Comments</a>
+                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="All" asp-route-auctionId="@Model.Id">Comments</a>
                             <form method="post" id="deleteForm" asp-action="Delete" asp-route-auctionId="@Model.Id"></form>
                             <a class="btn btn-block btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">Delete Auction</a>
                         </td>
@@ -169,7 +169,7 @@
                     {
                         <td>
                             <a class="btn btn-block btn-light text-white mb-2" asp-action="Edit" asp-route-Id="@Model.Id">Edit Auction</a>
-                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="All" asp-route-Id="@Model.Id">Comments</a>
+                            <a class="btn btn-block btn-primary text-white mb-3" asp-controller="Comments" asp-action="All" asp-route-auctionId="@Model.Id">Comments</a>
                             <li class="d-block" tabindex="0" data-toggle="tooltip" title="You cannot delete the auction while there are bidders.">
                                 <button class="btn btn-danger btn-block" style="pointer-events: none;" type="button" disabled>Delete Auction</button>
                             </li>
@@ -240,7 +240,7 @@
                             <a class="btn btn-block btn-success text-white mb-0 mt-3" data-toggle="modal" data-target="#payModal">Claim!</a>
                         }
                     }
-                    <a class="btn btn-block btn-primary text-white mb-3 mt-3" asp-controller="Comments" asp-action="All" asp-route-Id="@Model.Id">Comments</a>
+                    <a class="btn btn-block btn-primary text-white mb-3 mt-3" asp-controller="Comments" asp-action="All" asp-route-auctionId="@Model.Id">Comments</a>
                 }
             }
         </div>

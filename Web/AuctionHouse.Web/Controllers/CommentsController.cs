@@ -21,42 +21,42 @@
         }
 
         [Authorize]
-        public IActionResult All(int id, int pageNum = 1)
+        public IActionResult All(int auctionId, int id = 1)
         {
             const int ItemsPerPage = 8;
 
-            if (pageNum <= 0)
+            if (id <= 0)
             {
                 return this.NotFound();
             }
 
-            var comments = this.commentService.GetAll(id, pageNum, ItemsPerPage);
+            var comments = this.commentService.GetAll(auctionId, id, ItemsPerPage);
 
             var viewModel = new ListCommentsViewModel
             {
                 ItemsPerPage = ItemsPerPage,
-                PageNumber = pageNum,
+                PageNumber = id,
                 Comments = comments,
-                AuctionsCount = this.commentService.GetCommentsCount(id),
+                AuctionsCount = this.commentService.GetCommentsCount(auctionId),
             };
 
-            this.ViewBag.AuctionId = id;
+            this.ViewBag.AuctionId = auctionId;
 
             return this.View(viewModel);
         }
 
         [Authorize]
-        public IActionResult Create(int id)
+        public IActionResult Create(int auctionId)
         {
             var viewModel = new CreateCommentInputModel();
-            viewModel.Id = id;
+            viewModel.Id = auctionId;
 
             return this.View(viewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Create(int id, CreateCommentInputModel input)
+        public async Task<IActionResult> Create(int auctionId, CreateCommentInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
@@ -67,7 +67,7 @@
 
             try
             {
-                await this.commentService.CreateAsync(id, userId, input.Content);
+                await this.commentService.CreateAsync(auctionId, userId, input.Content);
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@
                 return this.View(input);
             }
 
-            return this.RedirectToAction(nameof(this.All), new { id = id });
+            return this.RedirectToAction(nameof(this.All), new { auctionId = auctionId });
         }
 
         [Authorize]
@@ -96,7 +96,7 @@
 
             await this.commentService.Delete(commentId);
 
-            return this.RedirectToAction(nameof(this.All), new { id = auctionId });
+            return this.RedirectToAction(nameof(this.All), new { auctionId = auctionId });
         }
 
         // test
