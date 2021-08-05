@@ -1,0 +1,19 @@
+﻿@model CreateCommentInputModel
+@{
+    this.ViewData["Title"] = "Create comment";
+}
+
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"]</h1>
+<hr />
+<br />
+<form method="post" class="col-md-6 offset-md-3" id="commentAuction">
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea maxlength="300" asp-for="Content" class="form-control" style="background-color: #b6b7b4;"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    @*<input type="hidden" asp-for="AuctionId" />*@
+</form>
+<br />
+<br />
+<div id="sendButton" class="form-group offset-3"><button type="submit" class="btn btn-outline-warning" onclick="commentAuction.submit()">Post Comment</button></div>

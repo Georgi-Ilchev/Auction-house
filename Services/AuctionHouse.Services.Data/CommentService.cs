@@ -1,6 +1,5 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -25,7 +24,6 @@
                 Content = content,
                 UserId = userId,
                 AuctionId = auctionId,
-                PostedOn = DateTime.UtcNow.ToLocalTime(),
             };
 
             await this.commentsRepository.AddAsync(comment);
@@ -40,21 +38,20 @@
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public bool OwnedByUser(string userId, int commentId)
-        {
-            return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
-        }
-
         public IEnumerable<CommentViewModel> GetAll(int auctionId, int page, int itemsPerPage = 8)
         {
             var comments = this.commentsRepository.All()
                 .AsQueryable()
+                .OrderByDescending(x => x.CreatedOn)
                 .Where(x => x.AuctionId == auctionId)
                 .Select(x => new CommentViewModel
                 {
+                    Id = x.Id,
                     AuctionId = x.AuctionId,
                     Content = x.Content,
                     UserId = x.UserId,
+                    PostedOn = x.CreatedOn.ToLocalTime(),
+                    UserUserName = x.User.Email,
                 })
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -68,6 +65,11 @@
             return this.commentsRepository.AllAsNoTracking()
                 .Where(x => x.AuctionId == auctionId)
                 .Count();
+        }
+
+        public bool OwnedByUser(string userId, int commentId)
+        {
+            return this.commentsRepository.All().Any(c => c.Id == commentId && c.UserId == userId);
         }
     }
 }

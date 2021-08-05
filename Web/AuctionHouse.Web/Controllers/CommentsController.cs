@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Web.Controllers
 {
+    using System;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -20,33 +21,61 @@
         }
 
         [Authorize]
-        public IActionResult Comment(int id)
+        public IActionResult All(int id, int pageNum = 1)
         {
-            var input = this.auctionService.GetById<CommentAuctionInputModel>(id);
+            const int ItemsPerPage = 8;
 
-            return this.View(input);
+            if (pageNum <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var comments = this.commentService.GetAll(id, pageNum, ItemsPerPage);
+
+            var viewModel = new ListCommentsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = pageNum,
+                Comments = comments,
+                AuctionsCount = this.commentService.GetCommentsCount(id),
+            };
+
+            this.ViewBag.AuctionId = id;
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult Create(int id)
+        {
+            var viewModel = new CreateCommentInputModel();
+            viewModel.Id = id;
+
+            return this.View(viewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Comment(int id, CommentAuctionInputModel model)
+        public async Task<IActionResult> Create(int id, CreateCommentInputModel input)
         {
-            var auctionId = model.Id;
-
             if (!this.ModelState.IsValid)
             {
-                return this.View(model);
+                return this.View(input);
             }
 
-            if (!this.auctionService.IsAuctionExisting(auctionId))
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            try
             {
-                return this.Redirect("/");
+                await this.commentService.CreateAsync(id, userId, input.Content);
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                return this.View(input);
             }
 
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            await this.commentService.CreateAsync(auctionId, userId, model.Content);
-
-            return this.RedirectToAction(nameof(this.Comment));
+            return this.RedirectToAction(nameof(this.All), new { id = id });
         }
 
         [Authorize]
@@ -67,37 +96,39 @@
 
             await this.commentService.Delete(commentId);
 
-            return this.RedirectToAction(nameof(this.Comment), new { id = auctionId });
+            return this.RedirectToAction(nameof(this.All), new { id = auctionId });
         }
 
-
-
-
-
-
-
-        // new comments
+        // test
         [Authorize]
-        public async Task<IActionResult> All(int id, int ids = 1)
+        public IActionResult Comment(int id)
         {
-            const int ItemsPerPage = 8;
+            var input = this.auctionService.GetById<CommentAuctionInputModel>(id);
 
-            if (ids <= 0)
+            return this.View(input);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Comment(int id, CommentAuctionInputModel model)
+        {
+            var auctionId = model.Id;
+
+            if (!this.ModelState.IsValid)
             {
-                return this.NotFound();
+                //return this.View(model);
+                return this.BadRequest();
             }
 
-            var comments = this.commentService.GetAll(id, ids, ItemsPerPage);
-
-            var viewModel = new ListCommentsViewModel
+            if (!this.auctionService.IsAuctionExisting(auctionId))
             {
-                ItemsPerPage = ItemsPerPage,
-                PageNumber = ids,
-                Comments = comments,
-                AuctionsCount = this.commentService.GetCommentsCount(id),
-            };
+                return this.Redirect("/");
+            }
 
-            return this.View(viewModel);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            await this.commentService.CreateAsync(auctionId, userId, model.Content);
+
+            return this.RedirectToAction(nameof(this.Comment));
         }
     }
 }

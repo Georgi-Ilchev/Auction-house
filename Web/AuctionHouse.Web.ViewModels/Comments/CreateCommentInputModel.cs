@@ -8,12 +8,11 @@
 
     using static AuctionHouse.Data.Models.DataConstants.DataConstants;
 
-    public class CommentViewModel : IMapFrom<Comment>
+    public class CreateCommentInputModel : IMapFrom<Comment>
     {
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Write your comment")]
         [StringLength(
              ContentMaxLength,
              ErrorMessage = "Comment message must be between {2} and {1} characters long.",
@@ -22,11 +21,11 @@
 
         public DateTime PostedOn { get; set; }
 
-        //[Required]
-        public string UserId { get; set; }
+        ////[Required]
+        //public string UserId { get; set; }
 
-        public int AuctionId { get; set; }
+        //public int AuctionId { get; set; }
 
-        public string UserUserName { get; set; }
+        //public string UserUserName { get; set; }
     }
 }

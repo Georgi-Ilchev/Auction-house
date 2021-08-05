@@ -1,8 +1,9 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using AuctionHouse.Web.ViewModels.Comments;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using AuctionHouse.Web.ViewModels.Comments;
 
     public interface ICommentService
     {
@@ -10,10 +11,10 @@
 
         Task Delete(int commentId);
 
-        bool OwnedByUser(string userId, int commentId);
-
         IEnumerable<CommentViewModel> GetAll(int auctionId, int page, int itemsPerPage = 8);
 
         int GetCommentsCount(int auctionId);
+
+        bool OwnedByUser(string userId, int commentId);
     }
 }

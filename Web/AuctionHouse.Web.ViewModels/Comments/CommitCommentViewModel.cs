@@ -10,6 +10,7 @@
 
     public class CommitCommentViewModel : IMapFrom<Comment>
     {
+        // not in use
         public int Id { get; set; }
 
         [Required]

@@ -1,6 +1,7 @@
 ﻿@model ListCommentsViewModel
 @{
     this.ViewData["Title"] = "Comments";
+    var auctionId = this.ViewBag.AuctionId;
 }
 <h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.AuctionsCount</h1>
 
@@ -28,16 +29,23 @@
                         </div>
                         <div class="comment-text-sm fw-bold h4 mt-3"><span>@comment.Content</span></div>
                     </div>
+                    @if (userId == comment.UserId)
+                    {
+                        <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@comment.Id" asp-route-auctionId="@comment.AuctionId">
+                            <div class="form-group">
+                                <button type="submit" class="btn-danger mb-n5">Delete</button>
+                            </div>
+                        </form>
+                    }
                 </div>
-
-                @if (userId == comment.UserId)
-                {
-                    <form method="post" id="deleteComment" asp-action="Delete" asp-route-commentId="@comment.Id" asp-route-auctionId="@comment.AuctionId"></form>
-                    <a class="btn btn-danger text-white mb-3" data-toggle="modal" data-target="#deleteModal">X</a>
-                }
             }
         }
     </div>
 </div>
 <hr />
 
+<div class="form-group">
+    <a asp-action="Create" asp-route-Id="@auctionId" class="btn btn-outline-warning">Post comment</a>
+</div>
+
+<partial name="_PagingCommentsPartial" model="@Model" />
