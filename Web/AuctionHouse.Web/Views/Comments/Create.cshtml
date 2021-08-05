@@ -7,12 +7,11 @@
 <hr />
 <br />
 <form method="post" class="col-md-6 offset-md-3" id="commentAuction">
-    <div class="form-group">
+    <div class="form-floating mb-3">
+        <textarea id="exampleTextarea" asp-for="Content" class="form-control" rows="5" style="background-color: #F8F8FF" placeholder="Description"></textarea>
         <label asp-for="Content"></label>
-        <textarea maxlength="300" asp-for="Content" class="form-control" style="background-color: #b6b7b4;"></textarea>
-        <span asp-validation-for="Content" class="text-danger"></span>
+        <span asp-validation-for="Content" class="text-warning"></span>
     </div>
-    @*<input type="hidden" asp-for="AuctionId" />*@
 </form>
 <br />
 <br />

@@ -8,8 +8,6 @@ namespace AuctionHouse.Web.ViewModels.Comments
 {
     public class ListCommentsViewModel : PagingViewModel, IMapFrom<Auction>
     {
-        public int Id { get; set; }
-
         public IEnumerable<CommentViewModel> Comments { get; set; }
     }
 }

@@ -11,19 +11,19 @@
     <div asp-validation-summary="All" class="text-warning"></div>
 
     <div class="form-floating mb-3">
-        <input asp-for="Name" class="form-control" placeholder="Name" />
+        <input asp-for="Name" style="background-color: #F8F8FF" class="form-control" placeholder="Name" />
         <label asp-for="Name"></label>
         <span asp-validation-for="Name" class="text-warning"></span>
     </div>
 
     <div class="form-floating mb-3">
-        <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
+        <textarea asp-for="Description" style="background-color: #F8F8FF" class="form-control" placeholder="Description"></textarea>
         <label asp-for="Description"></label>
         <span asp-validation-for="Description" class="text-warning"></span>
     </div>
 
     <div class="form-floating mb-3">
-        <select asp-for="CategoryId" asp-items="categoriesItems" class="form-control"></select>
+        <select asp-for="CategoryId" style="background-color: #F8F8FF" asp-items="categoriesItems" class="form-control"></select>
         <label asp-for="CategoryId"></label>
         <span asp-validation-for="CategoryId" class="text-warning"></span>
     </div>

@@ -11,12 +11,12 @@
     <div asp-validation-summary="All" class="text-warning"></div>
 
     <div class="form-floating mb-3">
-        <input asp-for="Name" class="form-control" placeholder="Type name of auction" />
+        <input asp-for="Name" style="background-color: #F8F8FF" class="form-control" placeholder="Type name of auction" />
         <label asp-for="Name"></label>
         <span asp-validation-for="Name" class="text-warning"></span>
     </div>
     <div class="form-floating mb-3">
-        <textarea asp-for="Description" class="form-control" rows="5" placeholder="Description"></textarea>
+        <textarea asp-for="Description" style="background-color: #F8F8FF" class="form-control" rows="5" placeholder="Description"></textarea>
         <label asp-for="Description"></label>
         <span asp-validation-for="Description" class="text-warning"></span>
     </div>
@@ -25,26 +25,26 @@
         <div class="form-group">
             <div class="input-group mb-3">
                 <span class="input-group-text">$</span>
-                <input asp-for="Price" class="form-control" type="text" />
+                <input asp-for="Price" style="background-color: #F8F8FF" class="form-control" type="text" />
                 <span class="input-group-text">.00</span>
             </div>
             <span asp-validation-for="Price" class="text-warning"></span>
         </div>
     </div>
     <div class="form-floating mb-3">
-        <select asp-for="CategoryId" class="form-control" asp-items="categoriesItems"></select>
+        <select asp-for="CategoryId" style="background-color: #F8F8FF" class="form-control" asp-items="categoriesItems"></select>
         <label asp-for="CategoryId"></label>
         <span asp-validation-for="CategoryId" class="text-warning"></span>
     </div>
 
     <div class="form-floating mb-3">
-        <input asp-for="ActiveDays" class="form-control" type="number" min="1" max="30" />
+        <input asp-for="ActiveDays" style="background-color: #F8F8FF" class="form-control" type="number" min="1" max="30" />
         <label asp-for="ActiveDays"></label>
         <span asp-validation-for="ActiveDays" class="text-warning"></span>
     </div>
     <div class="form-group">
         <label asp-for="Images"></label>
-        <input asp-for="Images" class="form-control" />
+        <input asp-for="Images" style="background-color: #F8F8FF" class="form-control" />
         <span asp-validation-for="Images" class="text-danger"></span>
     </div>
     <hr />
