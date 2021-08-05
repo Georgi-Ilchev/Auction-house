@@ -19,11 +19,11 @@
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int id = 1)
         {
             const int ItemsPerPage = 8;
 
-            if (page <= 0)
+            if (id <= 0)
             {
                 return this.NotFound();
             }
@@ -31,8 +31,9 @@
             var viewModel = new ListUsersViewModel()
             {
                 ItemsPerPage = ItemsPerPage,
-                PageNumber = page,
-                Users = await this.userService.GetAllAsync(page, ItemsPerPage),
+                PageNumber = id,
+                Users = await this.userService.GetAllAsync(id, ItemsPerPage),
+                Count = this.userService.UsersCount(),
             };
 
             return this.View(viewModel);

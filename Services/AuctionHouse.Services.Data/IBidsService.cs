@@ -32,7 +32,7 @@
 
         bool CheckForCorrectBid(decimal bid);
 
-        bool CanUserMakeBid(string userId);
+        bool CanUserMakeBid(string userId, decimal bid);
 
         bool AmILastBidder(string userId, int auctionId);
 

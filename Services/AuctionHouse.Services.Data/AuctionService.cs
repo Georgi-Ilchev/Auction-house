@@ -131,13 +131,14 @@
 
         public IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8)
         {
-            if (search == null)
+            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                search = string.Empty;
+                auctionsQuery = auctionsQuery.Where(x => x.Name.ToLower().Contains(search.ToLower()));
             }
 
-            var auctions = this.auctionsRepository.AllAsNoTracking()
-                .Where(x => x.Name.ToLower().Contains(search.ToLower()))
+            var auctions = auctionsQuery
                 .OrderByDescending(x => x.Id)
                 //.Skip((page - 1) * itemsPerPage)
                 //.Take(itemsPerPage)

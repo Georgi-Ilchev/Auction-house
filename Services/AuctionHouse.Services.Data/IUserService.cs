@@ -19,6 +19,8 @@
 
         decimal GetVirtualUserBalance(string userId);
 
+        int UsersCount();
+
         Task GetFromUser(string userId, decimal amount, decimal virtualBids);
 
         Task GetToOwner(string ownerId, decimal amount, int auctionId);

@@ -1,7 +1,4 @@
 ﻿@model ListAuctionsViewModel
-@{
-    var searchTerm = this.ViewBag.SearchText;
-}
 
 <hr />
 @if (this.Model.Count != 0)
@@ -43,37 +40,3 @@ else
         <td colspan="3" class="text-center">No results!</td>
     </tr>
 }
-
-@*<partial name="_PagingPartial" model="@Model" />*@
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-            <a class="page-link" asp-route-searchText="@searchTerm" asp-route-id="@Model.PreviousPageNumber">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        @for (int i = Model.PageNumber - 4; i < Model.PageNumber; i++)
-        {
-            if (i > 0)
-            {
-                <li class="page-item"><a class="page-link" asp-route-searchText="@searchTerm" asp-route-id="@i">@i</a></li>
-            }
-        }
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">@Model.PageNumber <span class="sr-only">(current)</span></a>
-        </li>
-        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 4; i++)
-        {
-            if (i <= Model.PagesCount)
-            {
-                <li class="page-item"><a class="page-link" asp-route-searchText="@searchTerm" asp-route-id="@i">@i</a></li>
-            }
-        }
-        <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
-            <a class="page-link" asp-route-searchText="@searchTerm" asp-route-id="@Model.NextPageNumber">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>

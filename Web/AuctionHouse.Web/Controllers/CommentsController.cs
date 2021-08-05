@@ -37,7 +37,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Comments = comments,
-                AuctionsCount = this.commentService.GetCommentsCount(auctionId),
+                Count = this.commentService.GetCommentsCount(auctionId),
             };
 
             this.ViewBag.AuctionId = auctionId;

@@ -239,11 +239,11 @@
             return false;
         }
 
-        public bool CanUserMakeBid(string userId)
+        public bool CanUserMakeBid(string userId, decimal bid)
         {
             var balance = this.GetDbUserBalance(userId);
 
-            if (balance < 0)
+            if (balance - bid < 0)
             {
                 return false;
             }

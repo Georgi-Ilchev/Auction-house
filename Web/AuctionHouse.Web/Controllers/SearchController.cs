@@ -32,7 +32,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = await this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetAuctionsCount(),
+                Count = this.auctionService.GetAuctionsCount(),
             };
 
             return this.View(viewModel);
@@ -48,8 +48,10 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetSearch<ListAuctionViewModel>(searchText, id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetAuctionsCount(),
+                Count = this.auctionService.GetAuctionsCount(),
             };
+
+            this.ViewBag.SearchText = searchText;
 
             return this.PartialView("_GridView", viewModel);
         }

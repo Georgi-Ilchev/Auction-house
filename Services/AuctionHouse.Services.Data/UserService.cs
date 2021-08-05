@@ -1,6 +1,5 @@
 ﻿namespace AuctionHouse.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -176,6 +175,11 @@
 
             this.userRepository.Update(dbUser);
             await this.userRepository.SaveChangesAsync();
+        }
+
+        public int UsersCount()
+        {
+            return this.userRepository.AllAsNoTracking().Count();
         }
     }
 }

@@ -197,7 +197,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = await this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetAuctionsCount(),
+                Count = this.auctionService.GetAuctionsCount(),
             };
 
             //foreach (var auction in viewModel.Auctions)
@@ -225,7 +225,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetUserAuctions<ListAuctionViewModel>(userId, id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetUserAuctionsCount(userId),
+                Count = this.auctionService.GetUserAuctionsCount(userId),
             };
 
             return this.View(viewModel);
@@ -248,7 +248,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetAllUserPurchases<ListAuctionViewModel>(userEmail, id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetUserPurchasesCount(userEmail),
+                Count = this.auctionService.GetUserPurchasesCount(userEmail),
             };
 
             return this.View(viewModel);
@@ -271,7 +271,7 @@
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
                 Auctions = this.auctionService.GetAllUserSales<ListAuctionViewModel>(userId, id, ItemsPerPage),
-                AuctionsCount = this.auctionService.GetUserSalesCount(userId),
+                Count = this.auctionService.GetUserSalesCount(userId),
             };
 
             return this.View(viewModel);
@@ -363,7 +363,7 @@
                     ItemsPerPage = ItemsPerPage,
                     PageNumber = id,
                     Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
-                    AuctionsCount = auctionsCount,
+                    Count = auctionsCount,
                 };
             }
             else
@@ -375,7 +375,7 @@
                     ItemsPerPage = ItemsPerPage,
                     PageNumber = searchId,
                     Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, searchId, ItemsPerPage),
-                    AuctionsCount = auctionsCount,
+                    Count = auctionsCount,
                 };
             }
 
