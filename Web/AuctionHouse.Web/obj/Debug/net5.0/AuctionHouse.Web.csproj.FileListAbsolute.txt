@@ -462,7 +462,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\Create.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\All.cshtml.g.cs
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Auctions\AuctionOfTheWeek.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_PagingPartial.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
@@ -505,4 +504,3 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Comments\All.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Comments\Create.cshtml.g.cs
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Shared\_PagingCommentsPartial.cshtml.g.cs
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Debug\net5.0\Razor\Views\Search\SearchAuctions.cshtml.g.cs

@@ -27,6 +27,8 @@
         [Authorize]
         public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
+            //var canUserMakeBid = this.bidsService.CanUserMakeBid(userId, input.Bidding);
+
             if (this.bidsService.CheckForCorrectBid(input.Bidding))
             {
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
