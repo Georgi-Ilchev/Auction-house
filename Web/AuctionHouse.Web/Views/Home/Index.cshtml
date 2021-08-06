@@ -10,20 +10,20 @@
 }
 
 <section class="img-fluid.max-width: 100%"
-         style="background-image: url('https://geauction.com/wp-content/uploads/2018/07/5-Auction-Tips-for-Beginners2.jpg'); background-repeat: repeat; ">
-    <div style="height: 22vh;"></div>
+         style="background-image: url('https://dollarsandsense.sg/wp-content/uploads/2020/11/pexels-sora-shimazaki-5668473.jpg'); background-repeat: repeat; ">
+    <div style="height: 18vh;"></div>
     <div class="text-center">
-        <h1 class="display-1 text-warning mb-5">Welcome to @GlobalConstants.SystemName!</h1>
+        <h1 class="display-1 text-white fw-bold mt-n5 mb-5">Welcome to <span class="text-black-50">@GlobalConstants.SystemName!</span></h1>
         @if (Model.AuctionsCount == 1)
         {
-            <h1 class="display-2 text-warning fw-bold">@Model.AuctionsCount @oneItem</h1>
+            <h1 class="display-2 text-white fw-bold">@Model.AuctionsCount @oneItem</h1>
         }
         else
         {
-            <h1 class="display-2 text-warning fw-bold">@Model.AuctionsCount @manyItems</h1>
+            <h1 class="display-2 text-white fw-bold">@Model.AuctionsCount @manyItems</h1>
         }
-        <h1 class="text-warning">IN</h1>
-        <h1 class="display-2 text-warning fw-bold mb-5">@Model.CategoriesCount CATEGORIES!</h1>
+        <h1 class="text-white">IN</h1>
+        <h1 class="display-2 text-white fw-bold mb-5">@Model.CategoriesCount CATEGORIES!</h1>
         <div class="col-md-4 offset-md-4">
             <p class="h4 text-white">
                 If you want to trade and fight for auctions, this is your place.
@@ -66,12 +66,16 @@
                                     <div class="carousel-item @(i == 0 ? "active" : string.Empty)">
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
-                                                <div class="card">
+                                                <div class="card media border-info">
                                                     <img class="img-fluid" alt="100%x280" src="@weeklyAuction.ImageUrl">
                                                     <div class="card-body">
                                                         <h4 class="card-title">@weeklyAuction.Name</h4>
-                                                        <p class="card-text">@weeklyAuction.CategoryName</p>
-                                                        <p class="card-text">@weeklyAuction.Description</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item"><span class="font-weight-bold">Category: </span>@weeklyAuction.CategoryName</li>
+                                                        <li class="list-group-item"><span class="font-weight-bold">Description: </span>@weeklyAuction.Description</li>
+                                                    </ul>
+                                                    <div class="ml-3 mt-3 mb-3">
                                                         <a asp-controller="Auctions" asp-action="SingleAuction" asp-route-auctionId="@weeklyAuction.Id" class="btn btn-success">View</a>
                                                     </div>
                                                 </div>
