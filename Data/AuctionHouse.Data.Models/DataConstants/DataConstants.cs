@@ -24,6 +24,7 @@
 
         // User
         public const int BalanceMinValue = 0;
+        public const double BalanceMaxValue = double.MaxValue;
 
         // Bid
         public const int BidMinValue = 10;

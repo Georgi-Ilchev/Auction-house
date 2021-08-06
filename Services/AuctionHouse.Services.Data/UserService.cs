@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -49,7 +50,7 @@
 
         public decimal GetVirtualUserBalance(string userId)
         {
-            return this.userRepository.All().FirstOrDefault(x => x.Id == userId).VirtualBalance;
+            return this.userRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == userId).VirtualBalance;
         }
 
         public UserViewModel GetUser(string userId)

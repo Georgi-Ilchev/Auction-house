@@ -27,11 +27,16 @@
         [Authorize]
         public async Task<ActionResult<CurrentBidViewModel>> Bid(MakeBidInputModel input)
         {
-            //var canUserMakeBid = this.bidsService.CanUserMakeBid(userId, input.Bidding);
-
             if (this.bidsService.CheckForCorrectBid(input.Bidding))
             {
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var virtualBalance = this.bidsService.GetDbUserBalance(userId);
+
+                if (virtualBalance - input.Bidding < 0)
+                {
+                    return this.BadRequest();
+                }
+
                 var userEmail = this.User.FindFirst(ClaimTypes.Email).Value;
 
                 bool iamFirstBidder = this.bidsService.AmIFirstBidder(input.AuctionId);
@@ -79,7 +84,7 @@
                     userBidsAmount = this.bidsService.GetUserBids(userId, input.AuctionId);
                 }
 
-                var virtualBalance = this.bidsService.GetDbUserBalance(userId);
+                virtualBalance = this.bidsService.GetDbUserBalance(userId);
 
                 var currentBidView = new CurrentBidViewModel
                 {
