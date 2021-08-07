@@ -2,21 +2,11 @@
 {
     using System;
     using System.Threading.Tasks;
-    using AuctionHouse.Web.ViewModels.Bids;
+
     using Microsoft.AspNetCore.SignalR;
 
     public class BidHub : Hub
     {
-        //public async Task SendUpdates(CurrentBidViewModel model)
-        //{
-        //    await this.Clients.All.SendAsync("RefreshBids", model);
-        //}
-
-        //public async Task SendUpdates2()
-        //{
-        //    await this.Clients.All.SendAsync("RefreshBids");
-        //}
-
         public async Task Send(string currentBid, string lastBidder)
         {
             try
@@ -31,5 +21,21 @@
                 throw;
             }
         }
+
+        public async Task JoinGroup(string group)
+        {
+            await this.Groups.AddToGroupAsync(this.Context.ConnectionId, group);
+        }
+
+        public async Task SendToGroup(string group, string currentBid, string lastBidder)
+        {
+            await this.Clients.Group(group).SendAsync("RefreshBids", currentBid, lastBidder);
+        }
+
+        //public override Task OnConnectedAsync()
+        //{
+        //    Environments.ConnectionId = this.Context.ConnectionId;
+        //    return base.OnConnectedAsync();
+        //}
     }
 }

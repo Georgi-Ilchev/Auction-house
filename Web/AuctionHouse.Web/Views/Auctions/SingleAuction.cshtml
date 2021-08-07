@@ -150,12 +150,11 @@
 
             <hr />
 
-            <div class="row">
-                <div class="col-6">
-                    <ul id="messagesList"></ul>
-                </div>
-            </div>
-
+            @*<div class="row">
+                    <div class="col-6">
+                        <ul id="messagesList"></ul>
+                    </div>
+                </div>*@
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
@@ -213,6 +212,14 @@
                                         }
                                     </div>
                                 </ul>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul id="messagesList">
+                                        <span id="emptyLi" class="h5 ml-n5"></span>
+                                    </ul>
+                                </div>
                             </div>
                         }
                         else
@@ -300,9 +307,7 @@
                 });
 
         connection.on("RefreshBids", function (currentBid, lastBidder) {
-            var li = document.createElement("li");
-            document.getElementById("messagesList").appendChild(li);
-            li.textContent = `${lastBidder} bid to ${currentBid}`;
+            document.getElementById("emptyLi").textContent = `${lastBidder} bid to $${currentBid} | For better experience refresh your page`;
         });
 
         connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
