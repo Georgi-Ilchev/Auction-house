@@ -150,6 +150,12 @@
 
             <hr />
 
+            <div class="row">
+                <div class="col-6">
+                    <ul id="messagesList"></ul>
+                </div>
+            </div>
+
             @{
                 var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
                 var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
@@ -252,10 +258,12 @@
     <script>
         var connection = new signalR
             .HubConnectionBuilder()
-            .withUrl("/bids")
+            .withUrl("/bidHub")
             .build();
 
-        connection.start();
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
 
                 $("li[data-vote]").each(function (el) {
                     $(this).click(function () {
@@ -286,32 +294,32 @@
 
                                 checkButtons(containerAsArray, data.virtualBalance, data.currentPrice, data.userbidsAmount, startPrice);
 
-                                //connection.on("RefreshBids", model => {
-                                //    data.currentBid;
-                                //});
+                                connection.on("RefreshBids", function (currentBid, lastBidder) {
+                                    var li = document.createElement("li");
+                                    document.getElementById("messagesList").appendChild(li);
+                                    li.textContent = `${lastBidder} bid to ${currentBid}`;
+                                });
 
-                                //connection.invoke("SendUpdates").catch(function (err) {
+                                //connection.start()
+                                ////    .then(function () {
+                                ////    document.getElementById("li[data - vote]").disabled = false;
+                                //.catch(function (err) {
                                 //    return console.error(err.toString());
                                 //});
+
+                                connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
+                                    return console.error(err.toString());
+                                });
+                                event.preventDefault();
                             },
                             contentType: 'application/json',
                         })
-                            .done(function (result) {
-                                var bidToSend = result.currentPrice;
-                                var lastBidderToSend = result.lastBidder;
-                                SendUpdates(bidToSend, lastBidderToSend);
-                        });
                     })
                 });
 
     </script>
 
     <script type="text/javascript">
-
-        function SendUpdates(bidToSend, lastBidderToSend) {
-            connection.server.send(JSON.stringify(bidToSend), JSON.stringify(lastBidderToSend));
-        }
-
         function checkButtons(containerAsArray, currentBalance, currentPrice, userBidsSum) {
             containerAsArray.map((element) => {
                 let currElement = Number(element.textContent);
@@ -322,7 +330,6 @@
                 }
             });
         }
-
     </script>
 }
 

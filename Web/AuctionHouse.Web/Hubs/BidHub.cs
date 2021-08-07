@@ -5,7 +5,7 @@
     using AuctionHouse.Web.ViewModels.Bids;
     using Microsoft.AspNetCore.SignalR;
 
-    public class BidsHub : Hub
+    public class BidHub : Hub
     {
         //public async Task SendUpdates(CurrentBidViewModel model)
         //{

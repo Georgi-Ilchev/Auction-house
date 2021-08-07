@@ -15,9 +15,9 @@
     public class BidsController : BaseController
     {
         private readonly IBidsService bidsService;
-        private readonly IHubContext<BidsHub> hubContext;
+        private readonly IHubContext<BidHub> hubContext;
 
-        public BidsController(IBidsService bidsService, IHubContext<BidsHub> hubContext)
+        public BidsController(IBidsService bidsService, IHubContext<BidHub> hubContext)
         {
             this.bidsService = bidsService;
             this.hubContext = hubContext;
