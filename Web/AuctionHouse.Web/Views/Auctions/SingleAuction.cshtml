@@ -293,29 +293,22 @@
                                 $('#bidsSum').html(sign + (data.userbidsAmount) + digits);
 
                                 checkButtons(containerAsArray, data.virtualBalance, data.currentPrice, data.userbidsAmount, startPrice);
-
-                                connection.on("RefreshBids", function (currentBid, lastBidder) {
-                                    var li = document.createElement("li");
-                                    document.getElementById("messagesList").appendChild(li);
-                                    li.textContent = `${lastBidder} bid to ${currentBid}`;
-                                });
-
-                                //connection.start()
-                                ////    .then(function () {
-                                ////    document.getElementById("li[data - vote]").disabled = false;
-                                //.catch(function (err) {
-                                //    return console.error(err.toString());
-                                //});
-
-                                connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
-                                    return console.error(err.toString());
-                                });
-                                event.preventDefault();
                             },
                             contentType: 'application/json',
                         })
                     })
                 });
+
+        connection.on("RefreshBids", function (currentBid, lastBidder) {
+            var li = document.createElement("li");
+            document.getElementById("messagesList").appendChild(li);
+            li.textContent = `${lastBidder} bid to ${currentBid}`;
+        });
+
+        connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
 
     </script>
 
