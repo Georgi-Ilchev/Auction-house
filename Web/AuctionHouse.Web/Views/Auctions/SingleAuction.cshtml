@@ -13,6 +13,8 @@
     var userBalance = this.ViewBag.VirtualBalance;
     var supportingBids = this.ViewBag.SupportingBids;
     var userBidsSum = this.ViewBag.UserBidsSum;
+    var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+    var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
 }
 
 <h1 class="text-info text-monospace mt-3 ml-5">@this.ViewData["Title"]</h1>
@@ -150,15 +152,7 @@
 
             <hr />
 
-            @*<div class="row">
-                    <div class="col-6">
-                        <ul id="messagesList"></ul>
-                    </div>
-                </div>*@
             @{
-                var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
-                var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
-
                 if (userId == this.Model.UserId)
                 {
                     if (this.Model.LastBidder == "No bids yet")
