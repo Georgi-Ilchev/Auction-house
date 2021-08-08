@@ -32,6 +32,7 @@
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 var virtualBalance = this.bidsService.GetDbUserBalance(userId);
 
+                // TODO: Improve the if state for positive balance
                 if (virtualBalance - input.Bidding < 0)
                 {
                     return this.BadRequest();
