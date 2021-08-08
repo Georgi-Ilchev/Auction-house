@@ -24,6 +24,8 @@
 
         decimal GetSumBids(int auctionId);
 
+        decimal GetDbUserStaticBalance(string userId);
+
         decimal GetDbUserBalance(string userId);
 
         decimal GetUserBids(string userId, int auctionId);

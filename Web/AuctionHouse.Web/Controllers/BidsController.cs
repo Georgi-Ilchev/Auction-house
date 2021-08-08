@@ -30,10 +30,11 @@
             if (this.bidsService.CheckForCorrectBid(input.Bidding))
             {
                 var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var balance = this.bidsService.GetDbUserStaticBalance(userId);
                 var virtualBalance = this.bidsService.GetDbUserBalance(userId);
+                var auctionPrice = this.bidsService.GetAuctionPrice(input.AuctionId);
 
-                // TODO: Improve the if state for positive balance
-                if (virtualBalance - input.Bidding < 0)
+                if (virtualBalance - input.Bidding < 0 || balance < auctionPrice + input.Bidding)
                 {
                     return this.BadRequest();
                 }
@@ -42,7 +43,6 @@
 
                 bool iamFirstBidder = this.bidsService.AmIFirstBidder(input.AuctionId);
                 bool iamLastBidder = this.bidsService.AmILastBidder(userId, input.AuctionId);
-                var auctionPrice = this.bidsService.GetAuctionPrice(input.AuctionId);
 
                 if (iamFirstBidder)
                 {

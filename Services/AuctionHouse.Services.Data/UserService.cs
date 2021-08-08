@@ -45,7 +45,7 @@
 
         public decimal GetUserBalance(string userId)
         {
-            return this.userRepository.All().FirstOrDefault(x => x.Id == userId).Balance;
+            return this.userRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == userId).Balance;
         }
 
         public decimal GetVirtualUserBalance(string userId)

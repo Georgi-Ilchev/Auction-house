@@ -201,6 +201,13 @@
             return userBalance;
         }
 
+        public decimal GetDbUserStaticBalance(string userId)
+        {
+            var userBalance = this.userService.GetUserBalance(userId);
+
+            return userBalance;
+        }
+
         public decimal GetUserBids(string userId, int auctionId)
         {
             var history = this.historiesRepository.All()
