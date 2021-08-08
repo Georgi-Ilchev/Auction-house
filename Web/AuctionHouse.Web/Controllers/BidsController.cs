@@ -94,7 +94,9 @@
                     UserbidsAmount = userBidsAmount,
                 };
 
-                await this.hubContext.Clients.All.SendAsync("RefreshBids", auctionPriceAfterBid.ToString(), latestBidder.Email);
+                var groupName = input.AuctionId.ToString();
+
+                await this.hubContext.Clients.Group(groupName).SendAsync("RefreshBids", auctionPriceAfterBid.ToString(), latestBidder.Email);
 
                 return currentBidView;
             }

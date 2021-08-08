@@ -8,10 +8,12 @@
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Data;
+    using AuctionHouse.Web.Hubs;
     using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SignalR;
 
     public class AuctionsController : Controller
     {
@@ -20,6 +22,8 @@
         private readonly IWebHostEnvironment environment;
         private readonly IUserService userService;
         private readonly IBidsService bidsService;
+        //private readonly IHubContext<BidHub> hubContext;
+
         private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
         private readonly IRepository<History> historiesRepository;
@@ -30,6 +34,7 @@
             IWebHostEnvironment environment,
             IUserService userService,
             IBidsService bidsService,
+            //IHubContext<BidHub> hubContext,
             IRepository<History> historiesRepository)
         {
             this.categoriesService = categoriesService;
@@ -37,6 +42,7 @@
             this.environment = environment;
             this.userService = userService;
             this.bidsService = bidsService;
+            //this.hubContext = hubContext;
             this.historiesRepository = historiesRepository;
         }
 
@@ -320,6 +326,11 @@
             this.ViewBag.VirtualBalance = user.VirtualBalance;
             this.ViewBag.SupportingBids = this.bids;
             this.ViewBag.UserBidsSum = userBidsAmount;
+            this.ViewBag.ConnectionId = this.HttpContext.Connection.Id;
+
+            var groupName = auctionId.ToString();
+
+            //await this.hubContext.Groups.AddToGroupAsync(this.HttpContext.Connection.Id, groupName);
 
             return this.View(auction);
         }

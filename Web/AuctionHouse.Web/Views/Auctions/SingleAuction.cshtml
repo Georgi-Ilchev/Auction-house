@@ -15,6 +15,7 @@
     var userBidsSum = this.ViewBag.UserBidsSum;
     var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
     var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
+    var asd = this.ViewBag.ConnectionId;
 }
 
 <h1 class="text-info text-monospace mt-3 ml-5">@this.ViewData["Title"]</h1>
@@ -257,12 +258,18 @@
 <form method="post" id="antiForgeryForm"></form>
 @section Scripts {
     <script>
+        var auctionId = @Model.Id;
+        auctionId = auctionId.toString();
+
         var connection = new signalR
             .HubConnectionBuilder()
             .withUrl("/bidHub")
             .build();
 
-        connection.start().catch(function (err) {
+        connection.start().then(res => {
+            connection.invoke("JoinGroup", auctionId)
+                .catch(err => console.log(err));
+        }).catch (function (err) {
             return console.error(err.toString());
         });
 
@@ -301,7 +308,7 @@
                 });
 
         connection.on("RefreshBids", function (currentBid, lastBidder) {
-            document.getElementById("emptyLi").textContent = `${lastBidder} bid to $${currentBid} | For better experience refresh your page`;
+            document.getElementById("emptyLi").textContent = `${lastBidder} bid to $${currentBid} ★ For better experience refresh your page`;
         });
 
         connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
