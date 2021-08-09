@@ -5,7 +5,6 @@
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Data.Models;
-    using AuctionHouse.Web.ViewModels.Home;
 
     public class GetCountsService : IGetCountsService
     {

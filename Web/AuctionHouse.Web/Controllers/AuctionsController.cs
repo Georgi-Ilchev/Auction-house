@@ -22,7 +22,6 @@
         private readonly IWebHostEnvironment environment;
         private readonly IUserService userService;
         private readonly IBidsService bidsService;
-        //private readonly IHubContext<BidHub> hubContext;
 
         private readonly int[] bids = new[] { 10, 20, 50, 100, 200, 300, 500, 1000, 3000, 5000 };
 
@@ -34,7 +33,6 @@
             IWebHostEnvironment environment,
             IUserService userService,
             IBidsService bidsService,
-            //IHubContext<BidHub> hubContext,
             IRepository<History> historiesRepository)
         {
             this.categoriesService = categoriesService;
@@ -42,7 +40,6 @@
             this.environment = environment;
             this.userService = userService;
             this.bidsService = bidsService;
-            //this.hubContext = hubContext;
             this.historiesRepository = historiesRepository;
         }
 
@@ -189,7 +186,7 @@
         }
 
         [Authorize]
-        public async Task<IActionResult> All1(int id = 1)
+        public async Task<IActionResult> All(int category, int id = 1, int searchId = 1)
         {
             const int ItemsPerPage = 8;
 
@@ -198,18 +195,44 @@
                 return this.NotFound();
             }
 
-            var viewModel = new ListAuctionsViewModel
+            // TODO: think for categoryId check
+            var auctionsCount = 0;
+            var viewModel = new ListAuctionsViewModel();
+
+            if (category == 0)
             {
-                ItemsPerPage = ItemsPerPage,
-                PageNumber = id,
-                Auctions = await this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
-                Count = this.auctionService.GetAuctionsCount(),
-            };
+                auctionsCount = this.auctionService.GetAuctionsCount();
+                viewModel = new ListAuctionsViewModel
+                {
+                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                    ItemsPerPage = ItemsPerPage,
+                    PageNumber = id,
+                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
+                    Count = auctionsCount,
+                };
+            }
+            else
+            {
+                auctionsCount = this.auctionService.GetAuctionsCountByCategory(category);
+                viewModel = new ListAuctionsViewModel
+                {
+                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                    ItemsPerPage = ItemsPerPage,
+                    PageNumber = searchId,
+                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, searchId, ItemsPerPage),
+                    Count = auctionsCount,
+                };
+            }
 
             //foreach (var auction in viewModel.Auctions)
             //{
             //    await this.auctionService.UpdateDbAuction(auction.Id);
             //}
+
+            if (category != 0)
+            {
+                this.ViewBag.CurrentCategory = category;
+            }
 
             return this.View(viewModel);
         }
@@ -326,9 +349,9 @@
             this.ViewBag.VirtualBalance = user.VirtualBalance;
             this.ViewBag.SupportingBids = this.bids;
             this.ViewBag.UserBidsSum = userBidsAmount;
-            this.ViewBag.ConnectionId = this.HttpContext.Connection.Id;
+            //this.ViewBag.ConnectionId = this.HttpContext.Connection.Id;
 
-            var groupName = auctionId.ToString();
+            //var groupName = auctionId.ToString();
 
             //await this.hubContext.Groups.AddToGroupAsync(this.HttpContext.Connection.Id, groupName);
 
@@ -349,10 +372,9 @@
         }
 
 
-
         // testing
         [Authorize]
-        public async Task<IActionResult> All(int category, int id = 1, int searchId = 1)
+        public async Task<IActionResult> All1(int id = 1)
         {
             const int ItemsPerPage = 8;
 
@@ -361,44 +383,18 @@
                 return this.NotFound();
             }
 
-            // TODO: think for categoryId check
-            var auctionsCount = 0;
-            var viewModel = new ListAuctionsViewModel();
-
-            if (category == 0)
+            var viewModel = new ListAuctionsViewModel
             {
-                auctionsCount = this.auctionService.GetAuctionsCount();
-                viewModel = new ListAuctionsViewModel
-                {
-                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
-                    ItemsPerPage = ItemsPerPage,
-                    PageNumber = id,
-                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, id, ItemsPerPage),
-                    Count = auctionsCount,
-                };
-            }
-            else
-            {
-                auctionsCount = this.auctionService.GetAuctionsCountByCategory(category);
-                viewModel = new ListAuctionsViewModel
-                {
-                    CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
-                    ItemsPerPage = ItemsPerPage,
-                    PageNumber = searchId,
-                    Auctions = await this.auctionService.GetAllForSearch<ListAuctionViewModel>(category, searchId, ItemsPerPage),
-                    Count = auctionsCount,
-                };
-            }
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = await this.auctionService.GetAll<ListAuctionViewModel>(id, ItemsPerPage),
+                Count = this.auctionService.GetAuctionsCount(),
+            };
 
             //foreach (var auction in viewModel.Auctions)
             //{
             //    await this.auctionService.UpdateDbAuction(auction.Id);
             //}
-
-            if (category != 0)
-            {
-                this.ViewBag.CurrentCategory = category;
-            }
 
             return this.View(viewModel);
         }

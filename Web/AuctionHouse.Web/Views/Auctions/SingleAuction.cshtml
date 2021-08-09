@@ -15,7 +15,6 @@
     var userBidsSum = this.ViewBag.UserBidsSum;
     var userId = this.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
     var userEmail = this.User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value;
-    var asd = this.ViewBag.ConnectionId;
 }
 
 <h1 class="text-info text-monospace mt-3 ml-5">@this.ViewData["Title"]</h1>
@@ -210,12 +209,12 @@
                             </div>
 
                             @*<div class="row">
-                                <div class="col-12">
-                                    <ul id="messagesList">
-                                        <span id="emptyLi" class="h5 ml-n5"></span>
-                                    </ul>
-                                </div>
-                            </div>*@
+                            <div class="col-12">
+                                <ul id="messagesList">
+                                    <span id="emptyLi" class="h5 ml-n5"></span>
+                                </ul>
+                            </div>
+                        </div>*@
                         }
                         else
                         {
