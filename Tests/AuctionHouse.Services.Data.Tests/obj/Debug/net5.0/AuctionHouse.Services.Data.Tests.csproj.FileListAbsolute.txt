@@ -442,8 +442,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Da
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\refs\System.Xml.XPath.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\refs\System.Xml.XPath.XDocument.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\refs\WindowsBase.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Hangfire.Core.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Hangfire.MemoryStorage.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
@@ -475,11 +473,6 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Da
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\System.Composition.Hosting.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\System.Composition.Runtime.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\System.Composition.TypedParts.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\es\Hangfire.Core.resources.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\nl\Hangfire.Core.resources.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\pt-BR\Hangfire.Core.resources.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\zh-TW\Hangfire.Core.resources.dll
-C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\zh\Hangfire.Core.resources.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Tests\AuctionHouse.Services.Data.Tests\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll

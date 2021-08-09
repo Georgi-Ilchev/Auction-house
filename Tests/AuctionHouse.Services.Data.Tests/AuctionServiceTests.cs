@@ -13,73 +13,57 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using AuctionHouse.Services.Mapping;
+using AuctionHouse.Web.ViewModels;
 
 namespace AuctionHouse.Services.Data.Tests
 {
     public class AuctionServiceTests
     {
-        private readonly Mock<IDeletableEntityRepository<Auction>> auctionRepository;
-        private readonly Mock<IDeletableEntityRepository<Category>> categoryRepository;
+        private ApplicationDbContext db;
+        private DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder;
+        private EfDeletableEntityRepository<Auction> auctionRepository;
+        private EfDeletableEntityRepository<Category> categoryRepository;
+        private IAuctionService auctionService;
 
         public AuctionServiceTests()
         {
-            this.auctionRepository = new Mock<IDeletableEntityRepository<Auction>>();
-            this.categoryRepository = new Mock<IDeletableEntityRepository<Category>>();
+            this.optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(Guid.NewGuid().ToString());
+            this.db = new ApplicationDbContext(this.optionsBuilder.Options);
+
+            this.auctionRepository = new EfDeletableEntityRepository<Auction>(this.db);
+            this.categoryRepository = new EfDeletableEntityRepository<Category>(this.db);
+
+            this.auctionService = new AuctionService(this.auctionRepository, this.categoryRepository);
 
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionViewModel).Assembly, typeof(Auction).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetType().Assembly);
         }
 
         [Fact]
-        public async Task GetAll_ShouldReturnEmpty_WhenAuctionsDoesntExist()
+        public async Task CreateAsync_ShouldCreateAuction()
         {
-            var service = new AuctionService(this.auctionRepository.Object, this.categoryRepository.Object);
+            this.categoryRepository.AddAsync(new Category { Name = "Travel", Id = 1 });
 
-            var auctions = await service.GetAll<ListAuctionViewModel>(1, 8);
+            var viewAuction = new CreateAuctionInputModel()
+            {
+                Name = "new auction",
+                Description = "random description",
+                ActiveDays = 2,
+                CategoryId = 1,
+            };
 
-            Assert.Empty(auctions);
+            await this.auctionService.CreateAsync(viewAuction, "userId", "imagePath");
+
+            var auction = this.db.Auctions.FirstOrDefault(x => x.UserId == "userId" && x.Name == "new auction");
+
+            Assert.Equal("new auction", auction.Name);
+            Assert.Equal("random description", auction.UserId);
         }
 
-        //[Fact]
-        //public async Task GetAll_ShouldReturnAuctions()
-        //{
-        //    this.auctionRepository.Setup(x => x.AllAsNoTracking())
-        //        .Returns(new List<Auction>
-        //        {
-        //            new Auction
-        //            {
-        //                Name = "auction",
-        //            },
-        //        }.AsQueryable());
-
-        //    var service = new AuctionService(this.auctionRepository.Object, this.categoryRepository.Object);
-
-        //    var auctions = await service.GetAll<ListAuctionViewModel>(1, 8);
-
-        //    Assert.Equal(1, auctions)
-        //}
-
         [Fact]
-        public void GetWeeklyAuctions_ShouldGetOnlyWeeklyAuctions()
+        public async Task GetAuctionsCount_ShouldGetAuctionsCount()
         {
-            this.auctionRepository.Setup(x => x.AllAsNoTracking())
-                .Returns(new List<Auction>
-                {
-                    new Auction
-                    {
-                        Id = 1,
-                        Name = "auction",
-                        IsAuctionOfTheWeek = false,
-                    },
-                    new Auction
-                    {
-                        Id = 2,
-                        Name = "another auction",
-                        IsAuctionOfTheWeek = true,
-                    },
-                }.AsQueryable());
-
-            var service = new AuctionService(this.auctionRepository.Object, this.categoryRepository.Object);
-            //var actual = service.GetWeeklyAuctions();
+            this.auctionService.GetAuctionsCount();
         }
     }
 }

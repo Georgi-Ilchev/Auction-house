@@ -36,7 +36,6 @@
           "AuctionHouse.Data": "1.0.0",
           "AuctionHouse.Services.Data": "1.0.0",
           "AuctionHouse.Web": "1.0.0",
-          "Hangfire.MemoryStorage": "1.7.0",
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.6",
           "Microsoft.NET.Test.Sdk": "16.9.4",
           "Moq": "4.16.1",
@@ -364,51 +363,6 @@
         },
         "compile": {
           "lib/netstandard1.5/Castle.Core.dll": {}
-        }
-      },
-      "Hangfire.Core/1.7.9": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Hangfire.Core.dll": {
-            "assemblyVersion": "1.7.9.0",
-            "fileVersion": "1.7.9.0"
-          }
-        },
-        "resources": {
-          "lib/netstandard2.0/es/Hangfire.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/netstandard2.0/nl/Hangfire.Core.resources.dll": {
-            "locale": "nl"
-          },
-          "lib/netstandard2.0/pt-BR/Hangfire.Core.resources.dll": {
-            "locale": "pt-BR"
-          },
-          "lib/netstandard2.0/zh-TW/Hangfire.Core.resources.dll": {
-            "locale": "zh-TW"
-          },
-          "lib/netstandard2.0/zh/Hangfire.Core.resources.dll": {
-            "locale": "zh"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Hangfire.Core.dll": {}
-        }
-      },
-      "Hangfire.MemoryStorage/1.7.0": {
-        "dependencies": {
-          "Hangfire.Core": "1.7.9"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Hangfire.MemoryStorage.dll": {
-            "assemblyVersion": "1.7.0.0",
-            "fileVersion": "1.7.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard1.3/Hangfire.MemoryStorage.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -4776,20 +4730,6 @@
       "sha512": "sha512-b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
       "path": "castle.core/4.4.0",
       "hashPath": "castle.core.4.4.0.nupkg.sha512"
-    },
-    "Hangfire.Core/1.7.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CmJ5MRUn7pxUUtuqcLubzzXktcPRQiV3S98jtin0x0a+Lvflm5evBJpTD3/6Do9u88y4gfij6aCR7WRGCVL5Hg==",
-      "path": "hangfire.core/1.7.9",
-      "hashPath": "hangfire.core.1.7.9.nupkg.sha512"
-    },
-    "Hangfire.MemoryStorage/1.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-g4hBdD8CaePScNWDOtRlR0GCxRyCK3KaItPcmABurlUZ8hs0YrpGUAYWgSWUSw6RXuPf1ZUK0l4REpV+sKYm/w==",
-      "path": "hangfire.memorystorage/1.7.0",
-      "hashPath": "hangfire.memorystorage.1.7.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
