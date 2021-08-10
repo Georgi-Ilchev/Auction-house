@@ -79,13 +79,33 @@ namespace AuctionHouse.Services.Data.Tests
         [Fact]
         public async Task GetAll_ShouldGetAllCommentsByAuctionId()
         {
-            await this.commentService.CreateAsync(1, "userId", "content");
-            await this.commentService.CreateAsync(2, "userId", "otherContent");
+            var comments = new List<Comment>();
 
-            //var comments = this.commentRepository.AllAsNoTracking().Where(x => x.AuctionId == 1).Count();
-            var result = this.commentService.GetAll(1, 1, 8);
+            comments.Add(new Comment
+            {
+                Id = 1,
+                AuctionId = 1,
+                UserId = "userId",
+                Content = "content",
+            });
 
-            //Assert.Equal(1, test);
+            comments.Add(new Comment
+            {
+                Id = 2,
+                AuctionId = 2,
+                UserId = "userId",
+                Content = "otherContent",
+            });
+
+            await this.db.Comments.AddRangeAsync(comments);
+            await this.db.SaveChangesAsync();
+
+            //await this.commentService.CreateAsync(1, "userId", "content");
+            //await this.commentService.CreateAsync(2, "userId", "otherContent");
+
+            var result = this.commentRepository.AllAsNoTracking().Where(x => x.AuctionId == 1);
+            //var result = this.commentService.GetAll(1, 1, 8);
+
             Assert.Contains(result, c => c.Content == "content" && c.AuctionId == 1);
         }
 
@@ -112,6 +132,19 @@ namespace AuctionHouse.Services.Data.Tests
             var result = this.commentService.OwnedByUser("anotherId", 3);
 
             Assert.True(result);
+        }
+
+        [Fact]
+        public async Task OwnedByUser_ShouldReturnFalseIfUserIsNotOwner()
+        {
+            await this.commentService.CreateAsync(1, "userId", "content");
+            await this.commentService.CreateAsync(1, "userId", "other content");
+            await this.commentService.CreateAsync(1, "anotherId", "other content btw");
+            await this.commentService.CreateAsync(2, "anotherId", "content btw");
+
+            var result = this.commentService.OwnedByUser("anotherId", 1);
+
+            Assert.False(result);
         }
     }
 }
