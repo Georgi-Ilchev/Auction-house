@@ -2,11 +2,10 @@
 
 # :pencil2: Home Services and Solutions
 This is my defense project for **ASP.NET Core MVC** course at [SoftUni](https://softuni.bg).
-Project Template:
-Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
+Project Template: Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
 
 # :memo: Overview
-**Alpha Auction House** is a platform for service delivering. The main idea is to gather client, administration and team features in one place. The services are categorized into recursive categories. Visitation frequency of a service can be once, daily, weekly or monthly.
+**Alpha Auction House** is a platform for ...
 
   Administrators can ...
 
