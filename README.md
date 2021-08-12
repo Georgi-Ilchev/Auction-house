@@ -2,10 +2,9 @@
 
 # :pencil2: Home Services and Solutions
 This is my defense project for **ASP.NET Core MVC** course at [SoftUni](https://softuni.bg).
-Project Template: Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
+- Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
 
 # :memo: Overview
-EN
 **Alpha Auction House** is an online bidding platform which is free for buyers and sellers and is protecting them from fraud. You need to register only.
 Anyone can take part in buying/selling/bidding of auctions.
 
@@ -22,7 +21,6 @@ Information regarding the buyer - it goes to 'my purchases' section.
 User's balance is the money of the user wich can go up and down only if a purchase is successful.
 User's virtual balance is the money wich can go up and down when the user has bid for a particular auction and then go back if another user has bid for the same auction.
   
-BG
 **Alpha Auction House** е платформа за онлайн търгове, която е безплатна за купувачите и продавачите. Нужна е само регистрация.
 Всеки може да вземе участие в купуването/продаването/наддаването на аукциони.
 
