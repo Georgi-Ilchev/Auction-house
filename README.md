@@ -5,6 +5,7 @@ This is my defense project for **ASP.NET Core MVC** course at [SoftUni](https://
 Project Template: Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
 
 # :memo: Overview
+EN
 **Alpha Auction House** is an online bidding platform which is free for buyers and sellers and is protecting them from fraud. You need to register only.
 Anyone can take part in buying/selling/bidding of auctions.
 
@@ -21,6 +22,20 @@ Information regarding the buyer - it goes to 'my purchases' section.
 User's balance is the money of the user wich can go up and down only if a purchase is successful.
 User's virtual balance is the money wich can go up and down when the user has bid for a particular auction and then go back if another user has bid for the same auction.
   
+BG
+**Alpha Auction House** е платформа за онлайн търгове, която е безплатна за купувачите и продавачите. Нужна е само регистрация.
+Всеки може да вземе участие в купуването/продаването/наддаването на аукциони.
+
+  Администраторите имат право да виждат всички регистрирани потребители и да добавят пари към техните акаунти. Могат да добавят, променят или трият дадена обява и да я правят 'аукцион на седмицата'. Също така могат да добавят или премахват категории.
+  
+  Клиентите могат да купуват и да продават аукциони. При създаването на аукцион се отбелязва колко дни ще бъде активен той. След изтичането на това време, аукционът става неактивен и никой не може да наддава за него.
+След като аукционът е качен - за собственика - отива в секция 'мои аукциони', за другите потребители - отива в общия лист с аукциони. 
+Само собственика може да променя дадени полета (без цената), може да добавя коментар, може да изтрие обявата, освен ако все още никой не участва в наддаването и не е наддал. 
+След като активността на аукциона приключи, последният наддал получава правото да вземе покупката си (съответно да заплати наддадената стойност на собственика).
+След успешно продаване на аукцион - за собственика - отива в секция 'продадени', за спечелилият - в секция 'закупени'.
+Парите на потребителят - баланс, с който разполага, който се учеличава или намаля само при успешно закупуване или продажба.
+Виртуални пари - или пари в движение, които намалят, когато потребителя наддаде за даден аукцион и се връщат, когато друг наддаде над неговата стойност.
+
 URL: <https://myapphere.azurewebsites.net/>
 
 **Test Accounts**:
@@ -34,7 +49,7 @@ Password: 123456
 Username: Client  
 Password: 123456
 
-## :hammer: Built With
+# :hammer: Built With
 - ASP.NET Core
 - MS SQL Server
 - Entity Framework Core
