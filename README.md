@@ -34,7 +34,7 @@ User's virtual balance is the money wich can go up and down when the user has bi
 Парите на потребителят - баланс, с който разполага, който се учеличава или намаля само при успешно закупуване или продажба.
 Виртуални пари - или пари в движение, които намалят, когато потребителя наддаде за даден аукцион и се връщат, когато друг наддаде над неговата стойност.
 
-URL: <https://myapphere.azurewebsites.net/>
+URL: <https://auctionshouse.azurewebsites.net/>
 
 **Test Accounts**:
 
@@ -44,7 +44,7 @@ Password: 123456
 Username: Client  
 Password: 123456  
 
-Username: Client  
+Username: Test  
 Password: 123456
 
 # :hammer: Built With
