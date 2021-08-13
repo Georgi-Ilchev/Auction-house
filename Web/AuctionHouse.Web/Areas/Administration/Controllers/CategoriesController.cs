@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AuctionHouse.Data;
     using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using Microsoft.AspNetCore.Mvc;

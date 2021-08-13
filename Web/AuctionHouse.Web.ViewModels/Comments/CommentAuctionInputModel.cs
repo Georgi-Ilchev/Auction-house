@@ -7,6 +7,7 @@
 
     public class CommentAuctionInputModel : CommentViewModel, IMapFrom<Auction>
     {
+        // test / not in use
         public IEnumerable<CommitCommentViewModel> Comments { get; set; }
     }
 }

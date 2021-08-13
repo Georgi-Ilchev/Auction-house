@@ -20,12 +20,5 @@
         public string Content { get; set; }
 
         public DateTime PostedOn { get; set; }
-
-        ////[Required]
-        //public string UserId { get; set; }
-
-        //public int AuctionId { get; set; }
-
-        //public string UserUserName { get; set; }
     }
 }

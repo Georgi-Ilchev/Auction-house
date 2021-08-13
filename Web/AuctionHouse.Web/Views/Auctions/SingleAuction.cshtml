@@ -141,7 +141,6 @@
                 {
                     Model.LastBidder = "No bids yet";
                 }
-
             }
 
             <ul class="list-group">
@@ -207,14 +206,6 @@
                                     </div>
                                 </ul>
                             </div>
-
-                            @*<div class="row">
-                            <div class="col-12">
-                                <ul id="messagesList">
-                                    <span id="emptyLi" class="h5 ml-n5"></span>
-                                </ul>
-                            </div>
-                        </div>*@
                         }
                         else
                         {
@@ -307,8 +298,6 @@
                 });
 
         connection.on("RefreshBids", function (currentBid, lastBidder) {
-            //document.getElementById("emptyLi").textContent = `★${lastBidder} bid to $${currentBid}`;
-
             document.getElementById("currentPrice").textContent = `$${currentBid}`;
             document.getElementById("lastBidder").textContent = `${lastBidder}`;
         });

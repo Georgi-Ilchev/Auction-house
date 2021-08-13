@@ -90,14 +90,6 @@
                     this.cache.Set(indexViewModel, model, cacheOptions);
                 }
 
-                //var counts = this.getCountsService.GetCounts();
-                //var viewModel = new IndexViewModel
-                //{
-                //    AuctionsCount = counts.AuctionsCount,
-                //    CategoriesCount = counts.CategoriesCount,
-                //    WeeklyAuctions = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>(),
-                //};
-
                 return this.View(model);
             }
         }
