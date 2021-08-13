@@ -1,0 +1,9 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\bin\Release\netstandard2.1\AuctionHouse.Services.Messaging.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\bin\Release\netstandard2.1\AuctionHouse.Services.Messaging.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\bin\Release\netstandard2.1\AuctionHouse.Services.Messaging.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Messaging\obj\Release\netstandard2.1\AuctionHouse.Services.Messaging.pdb

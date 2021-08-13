@@ -1,0 +1,9 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\bin\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\bin\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\bin\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web.Infrastructure\obj\Release\netstandard2.1\AuctionHouse.Web.Infrastructure.pdb

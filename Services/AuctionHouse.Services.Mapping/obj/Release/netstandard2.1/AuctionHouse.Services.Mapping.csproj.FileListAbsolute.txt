@@ -1,0 +1,9 @@
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\bin\Release\netstandard2.1\AuctionHouse.Services.Mapping.deps.json
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\bin\Release\netstandard2.1\AuctionHouse.Services.Mapping.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\bin\Release\netstandard2.1\AuctionHouse.Services.Mapping.pdb
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.csprojAssemblyReference.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.AssemblyInfoInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.AssemblyInfo.cs
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.csproj.CoreCompileInputs.cache
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.dll
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Services\AuctionHouse.Services.Mapping\obj\Release\netstandard2.1\AuctionHouse.Services.Mapping.pdb
