@@ -85,25 +85,14 @@ namespace AuctionHouse.Services.Data.Tests
         [Fact]
         public async Task AddBidToHistory_ShouldAddNewBidHistory()
         {
-            //await this.bidsService.AddBidAsync("userId", 1, 20);
-            //await this.bidsService.AddBidAsync("userId", 1, 20);
-           
+            var auction = this.AddAuction();
 
             await this.bidsService.AddBidToHistory("userId", 1, 40);
+            await this.bidsService.AddBidToHistory("userId", 1, 60);
 
-            //var history = new History
-            //{
-            //    UserId = "userId",
-            //    AuctionId = 1,
-            //    BidAmount = 20,
-            //};
+            var history = this.db.Histories.FirstOrDefault(x => x.AuctionId == 1 && x.UserId == "userId");
 
-            //await this.db.Histories.AddAsync(history);
-            //await this.db.SaveChangesAsync();
-
-            var history1 = this.db.Histories.FirstOrDefault(x => x.AuctionId == 1 && x.UserId == "userId");
-
-            Assert.Equal(40, history1.BidAmount);
+            Assert.Equal(100, history.BidAmount);
         }
 
         [Fact]
@@ -116,6 +105,52 @@ namespace AuctionHouse.Services.Data.Tests
             var sum = this.bidsService.GetSumBids(1);
 
             Assert.Equal(100, sum);
+        }
+
+        private Auction AddAuction()
+        {
+            var auction = new Auction()
+            {
+                Name = "old saxophone",
+                Description = "description",
+                Price = 10,
+                CurrentPrice = 10,
+                ActiveTo = DateTime.UtcNow.AddDays(2),
+                User = this.AddUser(),
+                CategoryId = 1,
+            };
+
+            this.db.Auctions.Add(auction);
+            this.db.SaveChanges();
+
+            return auction;
+        }
+
+        private ApplicationUser AddUser()
+        {
+            var user = new ApplicationUser()
+            {
+                Id = "userId",
+                Email = "user@gmail.com",
+                IsDeleted = false,
+                PasswordHash = "UnhashedPass2021",
+                UserName = "user@gmail.com",
+                CreatedOn = DateTime.UtcNow,
+                NormalizedUserName = "USER@GMAIL.COM",
+                NormalizedEmail = "USER@GMAIL.COM",
+                EmailConfirmed = false,
+                SecurityStamp = "SecurityStamp",
+                ConcurrencyStamp = "ConcurrencyStamp",
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnabled = true,
+                AccessFailedCount = 0,
+            };
+
+            this.db.Users.Add(user);
+            this.db.SaveChanges();
+
+            return user;
         }
     }
 }

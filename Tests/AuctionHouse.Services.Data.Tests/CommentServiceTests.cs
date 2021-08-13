@@ -1,20 +1,18 @@
-﻿using AuctionHouse.Data;
-using AuctionHouse.Data.Common.Repositories;
-using AuctionHouse.Data.Models;
-using AuctionHouse.Data.Repositories;
-using AuctionHouse.Services.Mapping;
-using AuctionHouse.Web.ViewModels.Comments;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace AuctionHouse.Services.Data.Tests
+﻿namespace AuctionHouse.Services.Data.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using AuctionHouse.Data;
+    using AuctionHouse.Data.Models;
+    using AuctionHouse.Data.Repositories;
+    using AuctionHouse.Services.Mapping;
+    using AuctionHouse.Web.ViewModels;
+    using AuctionHouse.Web.ViewModels.Comments;
+    using Microsoft.EntityFrameworkCore;
+    using Xunit;
+
     public class CommentServiceTests
     {
         private EfDeletableEntityRepository<Comment> commentRepository;
@@ -30,6 +28,7 @@ namespace AuctionHouse.Services.Data.Tests
             this.commentService = new CommentService(this.commentRepository);
 
             AutoMapperConfig.RegisterMappings(typeof(CommentViewModel).Assembly, typeof(Comment).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetType().Assembly);
         }
 
         [Fact]
@@ -77,34 +76,27 @@ namespace AuctionHouse.Services.Data.Tests
         }
 
         [Fact]
+        public async Task GetAll_ShouldGetAllCommentsByAuctionIdCount()
+        {
+            var user = this.AddUser();
+
+            await this.commentService.CreateAsync(1, user.Id, "content");
+            await this.commentService.CreateAsync(2, user.Id, "otherContent");
+
+            var result = this.commentService.GetAll(1, 1, 8).Count();
+
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
         public async Task GetAll_ShouldGetAllCommentsByAuctionId()
         {
-            var comments = new List<Comment>();
+            var user = this.AddUser();
 
-            comments.Add(new Comment
-            {
-                Id = 1,
-                AuctionId = 1,
-                UserId = "userId",
-                Content = "content",
-            });
+            await this.commentService.CreateAsync(1, user.Id, "content");
+            await this.commentService.CreateAsync(2, user.Id, "otherContent");
 
-            comments.Add(new Comment
-            {
-                Id = 2,
-                AuctionId = 2,
-                UserId = "userId",
-                Content = "otherContent",
-            });
-
-            await this.db.Comments.AddRangeAsync(comments);
-            await this.db.SaveChangesAsync();
-
-            //await this.commentService.CreateAsync(1, "userId", "content");
-            //await this.commentService.CreateAsync(2, "userId", "otherContent");
-
-            var result = this.commentRepository.AllAsNoTracking().Where(x => x.AuctionId == 1);
-            //var result = this.commentService.GetAll(1, 1, 8);
+            var result = this.commentService.GetAll(1, 1, 8);
 
             Assert.Contains(result, c => c.Content == "content" && c.AuctionId == 1);
         }
@@ -145,6 +137,33 @@ namespace AuctionHouse.Services.Data.Tests
             var result = this.commentService.OwnedByUser("anotherId", 1);
 
             Assert.False(result);
+        }
+
+        private ApplicationUser AddUser()
+        {
+            var user = new ApplicationUser()
+            {
+                Id = "userId",
+                Email = "user@gmail.com",
+                IsDeleted = false,
+                PasswordHash = "UnhashedPass2021",
+                UserName = "user@gmail.com",
+                CreatedOn = DateTime.UtcNow,
+                NormalizedUserName = "USER@GMAIL.COM",
+                NormalizedEmail = "USER@GMAIL.COM",
+                EmailConfirmed = false,
+                SecurityStamp = "SecurityStamp",
+                ConcurrencyStamp = "ConcurrencyStamp",
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnabled = true,
+                AccessFailedCount = 0,
+            };
+
+            this.db.Users.Add(user);
+            this.db.SaveChanges();
+
+            return user;
         }
     }
 }

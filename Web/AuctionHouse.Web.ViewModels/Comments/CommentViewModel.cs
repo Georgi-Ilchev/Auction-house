@@ -2,7 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Globalization;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Mapping;
 
@@ -21,6 +21,9 @@
         public string Content { get; set; }
 
         public DateTime PostedOn { get; set; }
+
+        public string PostedOnAsString
+            => this.PostedOn.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.GetCultureInfo("bg-BG"));
 
         [Required]
         public string UserId { get; set; }

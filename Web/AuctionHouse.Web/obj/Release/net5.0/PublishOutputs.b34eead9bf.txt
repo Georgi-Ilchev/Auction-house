@@ -100,6 +100,7 @@ C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Relea
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5845ddc6-ddd5-40f4-848a-de440bade9f8.jpg
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5888027f-f87c-4f93-ab7f-4bb61c9ebf7d.PNG
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\59d244fc-ad47-47ed-b5cf-734e16821f26.JPG
+C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5a1275a0-e9f6-45c2-869f-093dde2b5a42.png
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5a6c597f-bcff-4775-a548-9a90a978041b.JPG
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5a9443da-6819-4acc-b69f-591c3355d09b.JPG
 C:\Users\Goshicha\Desktop\gitFolder\Auction-house\Web\AuctionHouse.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\auctions\5e8abf39-0d35-409b-b330-bb3ee6ec0167.jpg

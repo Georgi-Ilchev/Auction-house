@@ -1,5 +1,6 @@
 ﻿namespace AuctionHouse.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -24,6 +25,8 @@
                 Content = content,
                 UserId = userId,
                 AuctionId = auctionId,
+                CreatedOn = DateTime.UtcNow.ToLocalTime(),
+                PostedOn = DateTime.UtcNow.ToLocalTime(),
             };
 
             await this.commentsRepository.AddAsync(comment);
@@ -50,7 +53,7 @@
                     AuctionId = x.AuctionId,
                     Content = x.Content,
                     UserId = x.UserId,
-                    PostedOn = x.CreatedOn.ToLocalTime(),
+                    PostedOn = x.PostedOn,
                     UserUserName = x.User.Email,
                 })
                 .Skip((page - 1) * itemsPerPage)
