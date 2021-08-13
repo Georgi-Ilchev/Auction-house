@@ -302,10 +302,10 @@
             document.getElementById("lastBidder").textContent = `${lastBidder}`;
         });
 
-        connection.invoke("RefreshBids", JSON.stringify(data.currentPrice), JSON.stringify(data.lastBidder)).catch(function (err) {
-            return console.error(err.toString());
-        });
-        event.preventDefault();
+        //connection.invoke("RefreshBids", JSON.stringify(currentBid), JSON.stringify(lastBidder)).catch(function (err) {
+        //    return console.error(err.toString());
+        //});
+        //event.preventDefault();
 
     </script>
 
