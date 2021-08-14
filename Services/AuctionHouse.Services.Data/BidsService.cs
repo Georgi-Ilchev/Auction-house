@@ -144,9 +144,9 @@
                 .Include(x => x.Histories)
                 .FirstOrDefault(x => x.Id == auctionId);
 
-            var auctionsCount = auction.Histories.Count();
+            var auctionHistories = auction.Histories.Count();
 
-            if (auctionsCount == 2)
+            if (auctionHistories == 2)
             {
                 var history = this.historiesRepository.All()
                     .FirstOrDefault(x => x.AuctionId == auctionId && x.UserId != userId);
