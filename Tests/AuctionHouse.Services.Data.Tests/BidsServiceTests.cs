@@ -1,6 +1,7 @@
 ﻿namespace AuctionHouse.Services.Data.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -168,11 +169,11 @@
             // todo
             var auction = this.AddAuction();
 
-            await this.bidsService.AddBidToHistoryPlusPrice("userId", 1, 40, 10);
-            await this.bidsService.AddBidToHistoryPlusPrice("userId", 1, 50, 10);
-            await this.bidsService.AddBidToHistoryPlusPrice("anotherId", 1, 50, 10);
+            await this.bidsService.AddBidToHistoryPlusPrice("userId", auction.Id, 40, 10);
+            await this.bidsService.AddBidToHistoryPlusPrice("userId", auction.Id, 50, 10);
+            await this.bidsService.AddBidToHistoryPlusPrice("anotherId", auction.Id, 50, 10);
 
-            await this.bidsService.ReturnBids("anotherId", 1);
+            await this.bidsService.ReturnBids("anotherId", auction.Id);
 
         }
 
