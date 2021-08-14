@@ -27,6 +27,8 @@
                 AuctionId = auctionId,
                 CreatedOn = DateTime.UtcNow.ToLocalTime(),
                 PostedOn = DateTime.UtcNow.ToLocalTime(),
+                //CreatedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local),
+                //PostedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local),
             };
 
             await this.commentsRepository.AddAsync(comment);

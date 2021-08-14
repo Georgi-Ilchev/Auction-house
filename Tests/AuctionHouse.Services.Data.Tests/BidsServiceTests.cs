@@ -1,17 +1,16 @@
-﻿using AuctionHouse.Data;
-using AuctionHouse.Data.Models;
-using AuctionHouse.Data.Repositories;
-using AuctionHouse.Web.ViewModels.Bids;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace AuctionHouse.Services.Data.Tests
+﻿namespace AuctionHouse.Services.Data.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using AuctionHouse.Data;
+    using AuctionHouse.Data.Models;
+    using AuctionHouse.Data.Repositories;
+    using AuctionHouse.Web.ViewModels.Bids;
+    using Microsoft.EntityFrameworkCore;
+    using Xunit;
+
     public class BidsServiceTests
     {
         private DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder;
@@ -34,8 +33,8 @@ namespace AuctionHouse.Services.Data.Tests
             this.historyRepository = new EfDeletableEntityRepository<History>(this.db);
             this.userRepository = new EfDeletableEntityRepository<ApplicationUser>(this.db);
 
-            this.userService = new UserService(userRepository, auctionRepository);
-            this.bidsService = new BidsService(bidRepository, auctionRepository, historyRepository, userService);
+            this.userService = new UserService(this.userRepository, this.auctionRepository);
+            this.bidsService = new BidsService(this.bidRepository, this.auctionRepository, this.historyRepository, this.userService);
         }
 
         [Fact]
@@ -166,14 +165,15 @@ namespace AuctionHouse.Services.Data.Tests
         [Fact]
         public async Task ReturnBids_ShouldDeleteHistoryAfterReturnBidToUser()
         {
+            // todo
             var auction = this.AddAuction();
 
-            await this.bidsService.AddBidToHistory("userId", 1, 40);
-            await this.bidsService.AddBidToHistory("anotherId", 1, 60);
-            await this.bidsService.ReturnBids("anotherId", 1);
-            var history = this.db.Histories.Select(x => x.AuctionId == 1).Count();
+            await this.bidsService.AddBidToHistoryPlusPrice("userId", 1, 40, 10);
+            await this.bidsService.AddBidToHistoryPlusPrice("userId", 1, 50, 10);
+            await this.bidsService.AddBidToHistoryPlusPrice("anotherId", 1, 50, 10);
 
-            Assert.Equal(1, history);
+            await this.bidsService.ReturnBids("anotherId", 1);
+
         }
 
         [Fact]
@@ -191,10 +191,13 @@ namespace AuctionHouse.Services.Data.Tests
         public async Task GetMoneyFromDbUser_ShouldGoDownVirtualBalanceAtCurrentUser()
         {
             var user = this.AddUserFTW();
+            this.db.ChangeTracker.Clear();
 
             await this.bidsService.GetMoneyFromDbUser(user.Id, 50);
 
-            Assert.Equal(2950, user.VirtualBalance);
+            var userAfterUpdate = this.userRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == user.Id).VirtualBalance;
+
+            Assert.Equal(2950, userAfterUpdate);
         }
 
         [Fact]
