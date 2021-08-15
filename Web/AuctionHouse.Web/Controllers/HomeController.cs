@@ -33,13 +33,13 @@
 
         public IActionResult Index()
         {
-            const string allWeeklyAukctions = "LatesAuctionsCount";
+            const string allWeeklyAuctions = "LatesAuctionsCount";
             const string indexViewModel = "IndexViewModel";
             const string auctionsAndCategories = "AuctionsAndCategories";
 
             if (this.User.Identity.IsAuthenticated)
             {
-                var weeklyAuctions = this.cache.Get<List<IndexPageAuctionViewModel>>(allWeeklyAukctions);
+                var weeklyAuctions = this.cache.Get<List<IndexPageAuctionViewModel>>(allWeeklyAuctions);
                 var counts = this.cache.Get<CountsDto>(auctionsAndCategories);
 
                 if (weeklyAuctions == null)
@@ -48,7 +48,7 @@
 
                     var cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(15));
 
-                    this.cache.Set(allWeeklyAukctions, weeklyAuctions, cacheOptions);
+                    this.cache.Set(allWeeklyAuctions, weeklyAuctions, cacheOptions);
                 }
 
                 if (counts == null)

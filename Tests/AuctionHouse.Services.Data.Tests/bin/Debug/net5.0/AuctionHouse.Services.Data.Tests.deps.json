@@ -36,9 +36,10 @@
           "AuctionHouse.Data": "1.0.0",
           "AuctionHouse.Services.Data": "1.0.0",
           "AuctionHouse.Web": "1.0.0",
-          "Microsoft.EntityFrameworkCore.InMemory": "5.0.6",
-          "Microsoft.NET.Test.Sdk": "16.9.4",
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.9",
+          "Microsoft.NET.Test.Sdk": "16.11.0",
           "Moq": "4.16.1",
+          "MyTested.AspNetCore.Mvc.Universe": "5.0.0",
           "StyleCop.Analyzers": "1.2.0-beta.312",
           "xunit": "2.4.1",
           "xunit.runner.visualstudio": "2.4.3",
@@ -123,7 +124,7 @@
           "Microsoft.Extensions.Caching.Abstractions.Reference": "5.0.0.0",
           "Microsoft.Extensions.Caching.Memory.Reference": "5.0.0.0",
           "Microsoft.Extensions.Configuration.Abstractions.Reference": "5.0.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "5.0.0.0",
+          "Microsoft.Extensions.Configuration.Binder.Reference": "5.0.0.0",
           "Microsoft.Extensions.Configuration.CommandLine": "5.0.0.0",
           "Microsoft.Extensions.Configuration.Reference": "5.0.0.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "5.0.0.0",
@@ -403,7 +404,7 @@
       },
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/5.0.6": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.6"
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.8"
         },
         "runtime": {
           "lib/net5.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
@@ -437,7 +438,7 @@
       },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/5.0.6": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.6",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.8",
           "Microsoft.Extensions.Identity.Stores": "5.0.6"
         },
         "runtime": {
@@ -470,35 +471,46 @@
           "lib/net5.0/Microsoft.AspNetCore.Identity.UI.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.6": {
+      "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.8": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "5.0.6",
-          "Microsoft.CodeAnalysis.Razor": "5.0.6"
+          "Microsoft.AspNetCore.Razor.Language": "5.0.8",
+          "Microsoft.CodeAnalysis.Razor": "5.0.8"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.22305"
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31805"
           }
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.6": {
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.8": {
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "5.0.6",
-          "Microsoft.CodeAnalysis.Razor": "5.0.6",
+          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "5.0.8",
+          "Microsoft.CodeAnalysis.Razor": "5.0.8",
           "Microsoft.Extensions.DependencyModel": "5.0.0"
         },
         "runtime": {
           "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.22305"
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31805"
           }
         },
         "compile": {
           "lib/net5.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning/5.0.0": {
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.7710.5690"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor/2.2.0": {
@@ -506,11 +518,11 @@
           "Microsoft.AspNetCore.Html.Abstractions": "2.2.0"
         }
       },
-      "Microsoft.AspNetCore.Razor.Language/5.0.6": {
+      "Microsoft.AspNetCore.Razor.Language/5.0.8": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.22305"
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31805"
           }
         },
         "compile": {
@@ -521,6 +533,20 @@
         "dependencies": {
           "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Razor": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.TestHost/5.0.8": {
+        "dependencies": {
+          "System.IO.Pipelines": "5.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.TestHost.dll": {
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31805"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.TestHost.dll": {}
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -709,16 +735,16 @@
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {}
         }
       },
-      "Microsoft.CodeAnalysis.Razor/5.0.6": {
+      "Microsoft.CodeAnalysis.Razor/5.0.8": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "5.0.6",
+          "Microsoft.AspNetCore.Razor.Language": "5.0.8",
           "Microsoft.CodeAnalysis.CSharp": "3.8.0",
           "Microsoft.CodeAnalysis.Common": "3.8.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.22305"
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31805"
           }
         },
         "compile": {
@@ -782,11 +808,11 @@
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.Workspaces.dll": {}
         }
       },
-      "Microsoft.CodeCoverage/16.9.4": {
+      "Microsoft.CodeCoverage/16.11.0": {
         "runtime": {
           "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "16.900.21.15801"
+            "fileVersion": "16.1000.21.27002"
           }
         },
         "compile": {
@@ -875,12 +901,23 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/5.0.6": {
+      "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31604"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore/5.0.9": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "5.0.6",
-          "Microsoft.EntityFrameworkCore.Analyzers": "5.0.6",
+          "Microsoft.EntityFrameworkCore.Abstractions": "5.0.9",
+          "Microsoft.EntityFrameworkCore.Analyzers": "5.0.9",
           "Microsoft.Extensions.Caching.Memory": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
           "Microsoft.Extensions.Logging": "5.0.0",
           "System.Collections.Immutable": "5.0.0",
           "System.ComponentModel.Annotations": "5.0.0",
@@ -888,31 +925,31 @@
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.21307"
+            "assemblyVersion": "5.0.9.0",
+            "fileVersion": "5.0.921.36501"
           }
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/5.0.6": {
+      "Microsoft.EntityFrameworkCore.Abstractions/5.0.9": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.21307"
+            "assemblyVersion": "5.0.9.0",
+            "fileVersion": "5.0.921.36501"
           }
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/5.0.6": {},
+      "Microsoft.EntityFrameworkCore.Analyzers/5.0.9": {},
       "Microsoft.EntityFrameworkCore.Design/5.0.6": {
         "dependencies": {
           "Humanizer.Core": "2.8.26",
           "Microsoft.CSharp": "4.7.0",
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.6"
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.8"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Design.dll": {
@@ -924,29 +961,29 @@
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Design.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.InMemory/5.0.6": {
+      "Microsoft.EntityFrameworkCore.InMemory/5.0.9": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.6"
+          "Microsoft.EntityFrameworkCore": "5.0.9"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.21307"
+            "assemblyVersion": "5.0.9.0",
+            "fileVersion": "5.0.921.36501"
           }
         },
         "compile": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/5.0.6": {
+      "Microsoft.EntityFrameworkCore.Relational/5.0.8": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.6",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "assemblyVersion": "5.0.6.0",
-            "fileVersion": "5.0.621.21307"
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.821.31512"
           }
         },
         "compile": {
@@ -956,7 +993,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer/5.0.6": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.6"
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.8"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.SqlServer.dll": {
@@ -993,6 +1030,11 @@
           "Microsoft.Extensions.Primitives": "5.0.1"
         }
       },
+      "Microsoft.Extensions.Configuration.Binder/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0"
+        }
+      },
       "Microsoft.Extensions.Configuration.FileExtensions/5.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "5.0.0",
@@ -1018,14 +1060,14 @@
           "Microsoft.Extensions.FileProviders.Physical": "5.0.0"
         }
       },
-      "Microsoft.Extensions.DependencyInjection/5.0.1": {
+      "Microsoft.Extensions.DependencyInjection/5.0.2": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "runtime": {
           "lib/net5.0/Microsoft.Extensions.DependencyInjection.dll": {
             "assemblyVersion": "5.0.0.1",
-            "fileVersion": "5.0.120.57516"
+            "fileVersion": "5.0.821.31504"
           }
         },
         "compile": {
@@ -1105,7 +1147,7 @@
       },
       "Microsoft.Extensions.Logging/5.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0"
@@ -1221,122 +1263,122 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
-      "Microsoft.NET.Test.Sdk/16.9.4": {
+      "Microsoft.NET.Test.Sdk/16.11.0": {
         "dependencies": {
-          "Microsoft.CodeCoverage": "16.9.4",
-          "Microsoft.TestPlatform.TestHost": "16.9.4"
+          "Microsoft.CodeCoverage": "16.11.0",
+          "Microsoft.TestPlatform.TestHost": "16.11.0"
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
-      "Microsoft.TestPlatform.ObjectModel/16.9.4": {
+      "Microsoft.TestPlatform.ObjectModel/16.11.0": {
         "dependencies": {
           "NuGet.Frameworks": "5.0.0",
           "System.Reflection.Metadata": "5.0.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.TestPlatform.CoreUtilities.dll": {
+          "lib/netcoreapp2.1/Microsoft.TestPlatform.CoreUtilities.dll": {
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "15.0.0.0"
           },
-          "lib/netstandard2.0/Microsoft.TestPlatform.PlatformAbstractions.dll": {
+          "lib/netcoreapp2.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "15.0.0.0"
           },
-          "lib/netstandard2.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {
+          "lib/netcoreapp2.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "15.0.0.0"
           }
         },
         "resources": {
-          "lib/netstandard2.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "cs"
           },
-          "lib/netstandard2.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "cs"
           },
-          "lib/netstandard2.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/de/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "de"
           },
-          "lib/netstandard2.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "de"
           },
-          "lib/netstandard2.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/es/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "es"
           },
-          "lib/netstandard2.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "es"
           },
-          "lib/netstandard2.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "fr"
           },
-          "lib/netstandard2.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "fr"
           },
-          "lib/netstandard2.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/it/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "it"
           },
-          "lib/netstandard2.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "it"
           },
-          "lib/netstandard2.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "ja"
           },
-          "lib/netstandard2.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "ja"
           },
-          "lib/netstandard2.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "ko"
           },
-          "lib/netstandard2.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "ko"
           },
-          "lib/netstandard2.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "pl"
           },
-          "lib/netstandard2.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "pl"
           },
-          "lib/netstandard2.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/netstandard2.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/netstandard2.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "ru"
           },
-          "lib/netstandard2.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "ru"
           },
-          "lib/netstandard2.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "tr"
           },
-          "lib/netstandard2.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "tr"
           },
-          "lib/netstandard2.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/netstandard2.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/netstandard2.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
+          "lib/netcoreapp2.1/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll": {
             "locale": "zh-Hant"
           },
-          "lib/netstandard2.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
+          "lib/netcoreapp2.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll": {
             "locale": "zh-Hant"
           }
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.TestPlatform.CoreUtilities.dll": {},
-          "lib/netstandard2.0/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
-          "lib/netstandard2.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {}
+          "lib/netcoreapp2.1/Microsoft.TestPlatform.CoreUtilities.dll": {},
+          "lib/netcoreapp2.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {},
+          "lib/netcoreapp2.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {}
         }
       },
-      "Microsoft.TestPlatform.TestHost/16.9.4": {
+      "Microsoft.TestPlatform.TestHost/16.11.0": {
         "dependencies": {
-          "Microsoft.TestPlatform.ObjectModel": "16.9.4",
+          "Microsoft.TestPlatform.ObjectModel": "16.11.0",
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
@@ -1493,7 +1535,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration/5.0.2": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore": "5.0.2"
         },
         "runtime": {
@@ -1523,7 +1565,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Core/5.0.2": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "5.0.2",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1579,10 +1621,10 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Templating/5.0.2": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "5.0.6",
+          "Microsoft.AspNetCore.Razor.Language": "5.0.8",
           "Microsoft.AspNetCore.Razor.Runtime": "2.2.0",
           "Microsoft.CodeAnalysis.CSharp": "3.8.0",
-          "Microsoft.CodeAnalysis.Razor": "5.0.6",
+          "Microsoft.CodeAnalysis.Razor": "5.0.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Utils": "5.0.2"
         },
         "runtime": {
@@ -1661,6 +1703,462 @@
         },
         "compile": {
           "lib/netstandard2.1/Moq.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Core": "5.0.0",
+          "MyTested.AspNetCore.Mvc.DependencyInjection": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Options": "5.0.0",
+          "MyTested.AspNetCore.Mvc.ViewFeatures": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Abstractions/5.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.TestHost": "5.0.8",
+          "Microsoft.CSharp": "4.7.0",
+          "Microsoft.DotNet.PlatformAbstractions": "3.1.6",
+          "Microsoft.Extensions.Configuration.Json": "5.0.0",
+          "Microsoft.Extensions.DependencyModel": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Configuration": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Abstractions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Abstractions.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Authentication/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Http": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Authentication.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Authentication.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Caching/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Caching.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Caching.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Configuration/5.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Configuration.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Configuration.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Controllers/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Controllers.ActionResults/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.ActionResults.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.ActionResults.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Controllers.Attributes/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Attributes.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Attributes.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Controllers.Views/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Views.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Views.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers.Views": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Core/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Controllers.ActionResults": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Controllers.Attributes": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Models": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Pipeline": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Routing": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Core.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.DataAnnotations/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Core": "5.0.0",
+          "MyTested.AspNetCore.Mvc.ModelState": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.DataAnnotations.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.DataAnnotations.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.DependencyInjection/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.DependencyInjection.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.DependencyInjection.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.EntityFrameworkCore/5.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.9",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.8",
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.EntityFrameworkCore.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.EntityFrameworkCore.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Helpers/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers.ActionResults": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults": "5.0.0",
+          "MyTested.AspNetCore.Mvc.DataAnnotations": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Models": "5.0.0",
+          "MyTested.AspNetCore.Mvc.ViewComponents.Results": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Helpers.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Helpers.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Http/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Http.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Http.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Models/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Models.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Models.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.ModelState/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ModelState.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ModelState.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Options/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Options.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Options.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Pipeline/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Routing": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Pipeline.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Pipeline.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.8",
+          "MyTested.AspNetCore.Mvc.ViewFeatures": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Routing/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Http": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Routing.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Routing.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Session/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Session.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Session.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.TempData/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.TempData.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.TempData.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Universe/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Authentication": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Caching": "5.0.0",
+          "MyTested.AspNetCore.Mvc.EntityFrameworkCore": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Session": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Versioning": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Universe.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Universe.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.Versioning/5.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Versioning.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.Versioning.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.ViewComponents/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewComponents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewComponents.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.ViewComponents.Results/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.ViewComponents": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewComponents.Results.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewComponents.Results.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.ViewData/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Abstractions": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewData.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewData.dll": {}
+        }
+      },
+      "MyTested.AspNetCore.Mvc.ViewFeatures/5.0.0": {
+        "dependencies": {
+          "MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults": "5.0.0",
+          "MyTested.AspNetCore.Mvc.DataAnnotations": "5.0.0",
+          "MyTested.AspNetCore.Mvc.Helpers": "5.0.0",
+          "MyTested.AspNetCore.Mvc.TempData": "5.0.0",
+          "MyTested.AspNetCore.Mvc.ViewComponents.Results": "5.0.0",
+          "MyTested.AspNetCore.Mvc.ViewData": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewFeatures.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/MyTested.AspNetCore.Mvc.ViewFeatures.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -2981,7 +3479,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "5.0.6",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.6",
           "Microsoft.AspNetCore.Identity.UI": "5.0.6",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.6",
+          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.8",
           "Microsoft.EntityFrameworkCore.Design": "5.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
@@ -3532,7 +4030,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Configuration.Binder/5.0.0.0": {
+      "Microsoft.Extensions.Configuration.Binder.Reference/5.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Configuration.Binder.dll": {}
         },
@@ -4787,19 +5285,26 @@
       "path": "microsoft.aspnetcore.identity.ui/5.0.6",
       "hashPath": "microsoft.aspnetcore.identity.ui.5.0.6.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.6": {
+    "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yygv2vC+GejwDytyW+AfX3zXb4/j1+980S5IoIVvidPh967yDfI5ZSy04O/0KAI72BdsLCchNfM6LFx4bCC27A==",
-      "path": "microsoft.aspnetcore.mvc.razor.extensions/5.0.6",
-      "hashPath": "microsoft.aspnetcore.mvc.razor.extensions.5.0.6.nupkg.sha512"
+      "sha512": "sha512-FK4xcp01egmu2W86IgnKsmTxOqf3YiwMw9UUXWwxFug6bDFi5DO90NnfgNSkZWpa3ebpGxpzlD+z+f0Hser9aQ==",
+      "path": "microsoft.aspnetcore.mvc.razor.extensions/5.0.8",
+      "hashPath": "microsoft.aspnetcore.mvc.razor.extensions.5.0.8.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.6": {
+    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TvAUI37XKXCBJc17bCWJLFa7ljA9w1wT4mdr+l9t+r76HYL6j4pNX/4UCbkAryqh4htJlbOBQRUFNZK2PUqhhg==",
-      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/5.0.6",
-      "hashPath": "microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.6.nupkg.sha512"
+      "sha512": "sha512-DdlYmTLeOolF6kv1ylutVh1A3yXh8KfUiFxSlVe4hDjRRVBhT/ETknuYxSeNJ7YYLcNA/jiDe7kuv2ogGC4HVQ==",
+      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/5.0.8",
+      "hashPath": "microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.8.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mN9IARvNpHMBD2/oGmp5Bxp1Dg45Hfcp+LWaAyTtL2HisWLMOIcf0Ox1qW9IvCvdbHM+2A9dWEInhiqBsNxsJA==",
+      "path": "microsoft.aspnetcore.mvc.versioning/5.0.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor/2.2.0": {
       "type": "package",
@@ -4808,12 +5313,12 @@
       "path": "microsoft.aspnetcore.razor/2.2.0",
       "hashPath": "microsoft.aspnetcore.razor.2.2.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Razor.Language/5.0.6": {
+    "Microsoft.AspNetCore.Razor.Language/5.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nrkAnHCRt6DrxCJ7DwZX+PjBJffR8GAL6IkXcZIAlJ61rBKC2vzobk5STDhnL0PU7PwpRZMShilmTqWOvPxFbQ==",
-      "path": "microsoft.aspnetcore.razor.language/5.0.6",
-      "hashPath": "microsoft.aspnetcore.razor.language.5.0.6.nupkg.sha512"
+      "sha512": "sha512-opc7TklkNPU7emp7mWP39EOR4H2Lz1j7bVJJ9PPQ25SB5QHo/LC2h7wjz/v820Ev8T/U9FtZ8ncrrJ1D1oJ72g==",
+      "path": "microsoft.aspnetcore.razor.language/5.0.8",
+      "hashPath": "microsoft.aspnetcore.razor.language.5.0.8.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Runtime/2.2.0": {
       "type": "package",
@@ -4821,6 +5326,13 @@
       "sha512": "sha512-7YqK+H61lN6yj9RiQUko7oaOhKtRR9Q/kBcoWNRemhJdTIWOh1OmdvJKzZrMWOlff3BAjejkPQm+0V0qXk+B1w==",
       "path": "microsoft.aspnetcore.razor.runtime/2.2.0",
       "hashPath": "microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.TestHost/5.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PUTE7mCmB5Eg5UL381zh//cIcU5+nBtpBYzKMJ2JpqEraeit1RD4gIJk3BKwhLtE4fguJ5SYqVttzzC6zCK3cQ==",
+      "path": "microsoft.aspnetcore.testhost/5.0.8",
+      "hashPath": "microsoft.aspnetcore.testhost.5.0.8.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",
@@ -4857,12 +5369,12 @@
       "path": "microsoft.codeanalysis.csharp.workspaces/3.8.0",
       "hashPath": "microsoft.codeanalysis.csharp.workspaces.3.8.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Razor/5.0.6": {
+    "Microsoft.CodeAnalysis.Razor/5.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gY95qNMQarYTokEB4q5hYkXcwIziqdjhzsweuYw0TSYZ3rpN5OmduGXpCNQ6JU5Z3dWxWHy6dRqeO2b83OHYmw==",
-      "path": "microsoft.codeanalysis.razor/5.0.6",
-      "hashPath": "microsoft.codeanalysis.razor.5.0.6.nupkg.sha512"
+      "sha512": "sha512-6lacrb2OYN2cuf6Y/9LapPjM/hxo8IdViCJpgb78uHYxW9RWIu0vzwgJJ6bfh0PyuJKlRKV4VoX3ywl7d3qWMw==",
+      "path": "microsoft.codeanalysis.razor/5.0.8",
+      "hashPath": "microsoft.codeanalysis.razor.5.0.8.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Workspaces.Common/3.8.0": {
       "type": "package",
@@ -4871,12 +5383,12 @@
       "path": "microsoft.codeanalysis.workspaces.common/3.8.0",
       "hashPath": "microsoft.codeanalysis.workspaces.common.3.8.0.nupkg.sha512"
     },
-    "Microsoft.CodeCoverage/16.9.4": {
+    "Microsoft.CodeCoverage/16.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-N/RYB07gJkPZ1nJiq0QGxFIL+X5vVl4GI99PiTYXpbfI30NTZMRJgZ+4jYLFYLDQqj9o1Juhv+3iiymd7lozrA==",
-      "path": "microsoft.codecoverage/16.9.4",
-      "hashPath": "microsoft.codecoverage.16.9.4.nupkg.sha512"
+      "sha512": "sha512-wf6lpAeCqP0KFfbDVtfL50lr7jY1gq0+0oSphyksfLOEygMDXqnaxHK5LPFtMEhYSEtgXdNyXNnEddOqQQUdlQ==",
+      "path": "microsoft.codecoverage/16.11.0",
+      "hashPath": "microsoft.codecoverage.16.11.0.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -4899,26 +5411,33 @@
       "path": "microsoft.data.sqlclient.sni.runtime/2.0.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore/5.0.6": {
+    "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uEqAprroH469aPCZm4iPA1oD8/YDqEQT9QjINkq4HWFA2kRh7Dm2lXX4uZ4MAzpcxoWCqKni2KbLqG8I0KnGqw==",
-      "path": "microsoft.entityframeworkcore/5.0.6",
-      "hashPath": "microsoft.entityframeworkcore.5.0.6.nupkg.sha512"
+      "sha512": "sha512-jek4XYaQ/PGUwDKKhwR8K47Uh1189PFzMeLqO83mXrXQVIpARZCcfuDedH50YDTepBkfijCZN5U/vZi++erxtg==",
+      "path": "microsoft.dotnet.platformabstractions/3.1.6",
+      "hashPath": "microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/5.0.6": {
+    "Microsoft.EntityFrameworkCore/5.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mZCwrwaiE3dSfJZZLihPueGJ2L5/vPU8VPpz21lErYIMmtZmxfSqocXe65bLlwMQ6EO/OcW7P+tvHWPsrAzMTg==",
-      "path": "microsoft.entityframeworkcore.abstractions/5.0.6",
-      "hashPath": "microsoft.entityframeworkcore.abstractions.5.0.6.nupkg.sha512"
+      "sha512": "sha512-mA+W/zpJZMp802xt2D+qBXrme4VFN+FlsrHdU6WG5HKDAnezClRksJhJicUR8XojnSPp9SgZKa1aIAasB5G67g==",
+      "path": "microsoft.entityframeworkcore/5.0.9",
+      "hashPath": "microsoft.entityframeworkcore.5.0.9.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/5.0.6": {
+    "Microsoft.EntityFrameworkCore.Abstractions/5.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PhcaRr/5NgTVjm43ITSPSYQGYCUkyuBV1gEDipLnDZI+VsYwyr2HH8pHXDUaY1E6dkZoiWNRt+XNMAsK3qDIKQ==",
-      "path": "microsoft.entityframeworkcore.analyzers/5.0.6",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.5.0.6.nupkg.sha512"
+      "sha512": "sha512-csbpDaXe9iQUkvDS3JZRAFfkgcRA7BlHE3u8feBLlYervmTAS1WIWPBZKMtH0a2GO5njwAABU3j+hZMCPYBrzQ==",
+      "path": "microsoft.entityframeworkcore.abstractions/5.0.9",
+      "hashPath": "microsoft.entityframeworkcore.abstractions.5.0.9.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Analyzers/5.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eyuPLRFjcF7VWH8qy1uUuMrO02W15n9EXAXnYjCTWgH0SDIeZAa2XZXMZ9U3dvOPtvllMBy0obYA5SSbnpaNoQ==",
+      "path": "microsoft.entityframeworkcore.analyzers/5.0.9",
+      "hashPath": "microsoft.entityframeworkcore.analyzers.5.0.9.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Design/5.0.6": {
       "type": "package",
@@ -4927,19 +5446,19 @@
       "path": "microsoft.entityframeworkcore.design/5.0.6",
       "hashPath": "microsoft.entityframeworkcore.design.5.0.6.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.InMemory/5.0.6": {
+    "Microsoft.EntityFrameworkCore.InMemory/5.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LT6jAvzOpwDWAva4VR4G6fdZCBivJPOPiHxt7ObAiPlynFQ9lvgqzxONNHXwVTasJt2P6M0i8ZuWUMPUD5jpGQ==",
-      "path": "microsoft.entityframeworkcore.inmemory/5.0.6",
-      "hashPath": "microsoft.entityframeworkcore.inmemory.5.0.6.nupkg.sha512"
+      "sha512": "sha512-OKlzsZppmrKoJmLc40Fg4wkoMED3G2OHZJfmtulAw6MkMWxe9SV6bKSAeftc4ZTVYIHhym9SJz1p2YCTP0xJDw==",
+      "path": "microsoft.entityframeworkcore.inmemory/5.0.9",
+      "hashPath": "microsoft.entityframeworkcore.inmemory.5.0.9.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Relational/5.0.6": {
+    "Microsoft.EntityFrameworkCore.Relational/5.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zzmO/cAcvsFeU3Ey6643GiLl4hCgGpWdcCW8LHsHP35zmfTirnjm2PrB+wf1wYQlPNyGT9+uypbVSoOopg58Mg==",
-      "path": "microsoft.entityframeworkcore.relational/5.0.6",
-      "hashPath": "microsoft.entityframeworkcore.relational.5.0.6.nupkg.sha512"
+      "sha512": "sha512-TGXfQdij08bjxpXNzC/LxOf1Q18eLdACZZpWUCHcVKssk6750ElE0MhX3eBmvRnSof1FrjsWJkYEchV6PSjGOg==",
+      "path": "microsoft.entityframeworkcore.relational/5.0.8",
+      "hashPath": "microsoft.entityframeworkcore.relational.5.0.8.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.SqlServer/5.0.6": {
       "type": "package",
@@ -4976,6 +5495,13 @@
       "path": "microsoft.extensions.configuration.abstractions/5.0.0",
       "hashPath": "microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration.Binder/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Of1Irt1+NzWO+yEYkuDh5TpT4On7LKl98Q9iLqCdOZps6XXEWDj3AKtmyvzJPVXZe4apmkJJIiDL7rR1yC+hjQ==",
+      "path": "microsoft.extensions.configuration.binder/5.0.0",
+      "hashPath": "microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.FileExtensions/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -4997,12 +5523,12 @@
       "path": "microsoft.extensions.configuration.usersecrets/5.0.0",
       "hashPath": "microsoft.extensions.configuration.usersecrets.5.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.DependencyInjection/5.0.1": {
+    "Microsoft.Extensions.DependencyInjection/5.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-//mDNrYeiJ0eh/awFhDFJQzkRVra/njU5Y4fyK7X29g5HScrzbUkKOKlyTtygthcGFt4zNC8G5CFCjb/oizomA==",
-      "path": "microsoft.extensions.dependencyinjection/5.0.1",
-      "hashPath": "microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512"
+      "sha512": "sha512-xzFW00AZEvOXM1OX+0+AYH5op/Hf3u//e6wszBd/rK72sypD+jx5CtsHxM4BVuFBEs8SajfO4QzSJtrQaHDr4A==",
+      "path": "microsoft.extensions.dependencyinjection/5.0.2",
+      "hashPath": "microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
       "type": "package",
@@ -5130,12 +5656,12 @@
       "path": "microsoft.identitymodel.tokens/5.6.0",
       "hashPath": "microsoft.identitymodel.tokens.5.6.0.nupkg.sha512"
     },
-    "Microsoft.NET.Test.Sdk/16.9.4": {
+    "Microsoft.NET.Test.Sdk/16.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-M/k16vmS7Hz/+Kuy3p6XE743XPjYYMzfN5ZvpSLY44Ngh5IBMk0Je5Qed8oq6/kvzJA2DTrXa7YrfceHhbQKeQ==",
-      "path": "microsoft.net.test.sdk/16.9.4",
-      "hashPath": "microsoft.net.test.sdk.16.9.4.nupkg.sha512"
+      "sha512": "sha512-f4mbG1SUSkNWF5p7B3Y8ZxMsvKhxCmpZhdl+w6tMtLSUGE7Izi1syU6TkmKOvB2BV66pdbENConFAISOix4ohQ==",
+      "path": "microsoft.net.test.sdk/16.11.0",
+      "hashPath": "microsoft.net.test.sdk.16.11.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -5151,19 +5677,19 @@
       "path": "microsoft.netcore.targets/1.1.3",
       "hashPath": "microsoft.netcore.targets.1.1.3.nupkg.sha512"
     },
-    "Microsoft.TestPlatform.ObjectModel/16.9.4": {
+    "Microsoft.TestPlatform.ObjectModel/16.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-t43y1MZYshZFfc/g8nzy4o86PW2WfFcoQ+MjgYUlfj1pptKHc7Xr+R6sFBODA+y1I+Mc+Ujzme/c2cGX2AuOwQ==",
-      "path": "microsoft.testplatform.objectmodel/16.9.4",
-      "hashPath": "microsoft.testplatform.objectmodel.16.9.4.nupkg.sha512"
+      "sha512": "sha512-EiknJx9N9Z30gs7R+HHhki7fA8EiiM3pwD1vkw3bFsBC8kdVq/O7mHf1hrg5aJp+ASO6BoOzQueD2ysfTOy/Bg==",
+      "path": "microsoft.testplatform.objectmodel/16.11.0",
+      "hashPath": "microsoft.testplatform.objectmodel.16.11.0.nupkg.sha512"
     },
-    "Microsoft.TestPlatform.TestHost/16.9.4": {
+    "Microsoft.TestPlatform.TestHost/16.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3YuJ7OSb1YPk+OTZfpa8U7I+TUZRH/nCeOWcN+TERp1SUZrcGeG2IGBZvVZ9CbKuQ+7wLiwsfcIgKIu+kbvibg==",
-      "path": "microsoft.testplatform.testhost/16.9.4",
-      "hashPath": "microsoft.testplatform.testhost.16.9.4.nupkg.sha512"
+      "sha512": "sha512-/Q+R0EcCJE8JaYCk+bGReicw/xrB0HhecrYrUcLbn95BnAlaTJrZhoLkUhvtKTAVtqX/AIKWXYtutiU/Q6QUgg==",
+      "path": "microsoft.testplatform.testhost/16.11.0",
+      "hashPath": "microsoft.testplatform.testhost.16.11.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/5.0.2": {
       "type": "package",
@@ -5255,6 +5781,216 @@
       "sha512": "sha512-bw3R9q8cVNhWXNpnvWb0OGP4HadS4zvClq+T1zf7AF+tLY1haZ2AvbHidQekf4PDv1T40c6brZeT/V0IBq7cEQ==",
       "path": "moq/4.16.1",
       "hashPath": "moq.4.16.1.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KSNGDB1u2EsDrCUxOmF8u4f3c/bvGis28XX78cqLJ3sEZ8mikmHotDaaCLLKFl5eIxqzElaKeZoTD2SYI0Qq0Q==",
+      "path": "mytested.aspnetcore.mvc/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Abstractions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cFkFE6VETUELCQDJIaN89HpHDo8q2LMTmLXLAlbKHsllgiA02SnFHvuZI6gDvIrAugjZL8HQN1oWeK/+AhWZ9g==",
+      "path": "mytested.aspnetcore.mvc.abstractions/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.abstractions.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Authentication/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ur+45LhSMisIxnh5prMC6jE5/SSduwOCMQnviwzcOAZrefhouFl3bTVQCUmenqoNfZYBjFjTV+CIz1XefaIgIw==",
+      "path": "mytested.aspnetcore.mvc.authentication/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.authentication.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Caching/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-my+zAVFs96VwWwF54oRCrNYCzgxYy9Ej+daa5WNvbPEMRg0MF4CEENJE3h8D+Argx2mxMGTllLdHH3q7KXDkXw==",
+      "path": "mytested.aspnetcore.mvc.caching/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.caching.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Configuration/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aHKDvxEWnwBedO+48I4T3Q4e3IyKv2vNRjKZ9z4InSCd+CRKq8rriwFZ20O017/LDf5OlgK5EWlnAWo/IM6LLg==",
+      "path": "mytested.aspnetcore.mvc.configuration/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.configuration.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Controllers/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cGBG+EPr8reFBY9ikiDiTPyG9Axsu49vysFQUxQ5YwFo5mVa3I7VRgonDP+1UWnkMvNe7i2QDrsnQbmZMEWt5A==",
+      "path": "mytested.aspnetcore.mvc.controllers/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.controllers.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Controllers.ActionResults/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z866ceocSrX5fpGmwIc1qfhjzMmzHbkyxqf1oYLSr3LLUmZ6iQtrBI/Dye5WJcFIfArCQj7KJLIAWqXw/zyJRw==",
+      "path": "mytested.aspnetcore.mvc.controllers.actionresults/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.controllers.actionresults.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Controllers.Attributes/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0wdAXRBskqCOWL1utNxyd5r476yaF2WzcyOaSJRltl83xzQTqZrrfJmPhs1/vB/pByVVUSeJeZCDVmPt7hRhow==",
+      "path": "mytested.aspnetcore.mvc.controllers.attributes/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.controllers.attributes.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Controllers.Views/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+ay5Rt4gF6S616l1BRuKb5+K1tt37e1nP8QPhM4UZudOL2ACfjQCYtNu3rr9mlaa4jeTJP+5/ioJWDKWatQRYg==",
+      "path": "mytested.aspnetcore.mvc.controllers.views/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.controllers.views.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Controllers.Views.ActionResults/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JWhTvooWROzlK7ftSRbbtY0p9io3DrFE/6V1amiaQIjJ/9j0cj03zVrzpsLRKOyrbdzHI3xw5Smh5uOiRhDNhg==",
+      "path": "mytested.aspnetcore.mvc.controllers.views.actionresults/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.controllers.views.actionresults.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Core/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R0cS3j6q1L7DmRrzj3WFBlvT7sWcZiZYKLyf3+rb6KR054jqMfWzlr1+AtaQMCKN9hASXyoB4rzC6oO7IQFSDg==",
+      "path": "mytested.aspnetcore.mvc.core/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.core.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.DataAnnotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uE/aUeb/Ir4zHTAUZUbI5J2dxhmUCJlhhLRlhrGjphRktd/2aYGZfz2y5yfcrUIHrv6T4A0fP0BFVlqWvNFkxg==",
+      "path": "mytested.aspnetcore.mvc.dataannotations/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.dataannotations.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.DependencyInjection/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BV0O3XnA6UhMjGfK/655i/lV4Hu5OuC6cctTmXO1kmaJ0PDw69ww8AKPmme4IJIrmzIpxFFm6fhy52oHSOK5ZQ==",
+      "path": "mytested.aspnetcore.mvc.dependencyinjection/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.dependencyinjection.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.EntityFrameworkCore/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bj7t7XfvDSbQZTMUyr6DJ8GhWF8TyQTkHuhtBM/HIOn1IWYjfgm6yCFR7yl1MtntVTrTsGXD5rqoieSxAX62GQ==",
+      "path": "mytested.aspnetcore.mvc.entityframeworkcore/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.entityframeworkcore.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Helpers/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4B+npubNnGy7i7AuJl0vjyT8lR4DM/xrexLr4XG76odBvWEfiakMj6ml5RyCR5pa3dHzlXPU9utCLtwMuszRTA==",
+      "path": "mytested.aspnetcore.mvc.helpers/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.helpers.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Http/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8DoVyVQuKKN647vpuikqA8eISqC7JK9u0MDWJCa5uRAVAdy1XPD7TLa5DnYem8kWf8qNq/byj3iI3qNtGZBWRg==",
+      "path": "mytested.aspnetcore.mvc.http/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.http.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Models/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q5WrzpA/5zm2hKzAbbeHczH706MPcOHtSqKYCRPsJ9FtqoRwbxt9gL4nMox9mUetULywLo5D2qcK74yqTSF+WQ==",
+      "path": "mytested.aspnetcore.mvc.models/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.models.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.ModelState/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+keuBopYkF3J5OnnP9u3s52vS2GGEsrava8yYbyPxOJC0DI+hMNtajf6u63Mnx2wgPCmKt2oJVlL0USnAnWpvA==",
+      "path": "mytested.aspnetcore.mvc.modelstate/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.modelstate.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Options/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6n5kE4SVKVGnyNbtrCPttZmzpkUMBHvtOOYXC3oCEWg831IQ9fbGCFSEAesNMAn/c8AolM9ctDCerzCinLIf7w==",
+      "path": "mytested.aspnetcore.mvc.options/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.options.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Pipeline/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OysXpn27YUdXcbRZ6QEakIH66XE5Vbv4KnQV2niN2sHKkkfKDwIzH7tHrX5+KK4pGv98L8YEP0WYqoEVHvyGxw==",
+      "path": "mytested.aspnetcore.mvc.pipeline/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.pipeline.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+28HsLPsxyPfgLNyJ6EXqu0HoupXsKLOvMDHiYTPJCz2d2OwOCeA6y0lfZdB0Zdcaj7W1H4vV5gzCrm0FDDVmg==",
+      "path": "mytested.aspnetcore.mvc.razor.runtimecompilation/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.razor.runtimecompilation.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Routing/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q15gOzyhoX+JSQ8Q2/hEiTR3vkcF2nixgQsJbLlumGrcC7oKrvKlab4LxHceqke6bgLGa/NWhDaRfnMa62DqxA==",
+      "path": "mytested.aspnetcore.mvc.routing/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.routing.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Session/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EuOczxGfYpiqx0Va+qYsNM+u731dIwq4zUozZghsmC5cLeYFPjay/fqO3MpVa3/rU9mqWxH4IwqTmlj/rWI4sA==",
+      "path": "mytested.aspnetcore.mvc.session/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.session.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.TempData/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/qvbLjjcQvX7P+rIsIV7CQD5fMns70Bts1TFmLHUs0//Y2r75d+Ew8vaijIFx63wMM/V3pVwjV6NGRqr/CY+bA==",
+      "path": "mytested.aspnetcore.mvc.tempdata/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.tempdata.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Universe/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VmfKCSWhqd2LLlH2GWFkK4M/gsf0fNd4RwYIMtDeeBL41jElQFPSiST5H182RykoSJ9XXFoWhiGXmrnZTBuKfA==",
+      "path": "mytested.aspnetcore.mvc.universe/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.universe.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.Versioning/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lREyIo3vPvOnYVrWULj5Rzc5vAwqqnKERSMepnMBT8A+/M3qBT9+Pqy4RcEDS52innIDiC2XyTfH1dQ+y9jRQg==",
+      "path": "mytested.aspnetcore.mvc.versioning/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.ViewComponents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vH3QaJbX7iN7DCDBLib+fSAh326hNbFjlxqoPk+a0il6YpiN3HtP99P2K2+Jmm68dy2+pFqgyL6vEH1YY+1zaw==",
+      "path": "mytested.aspnetcore.mvc.viewcomponents/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.viewcomponents.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.ViewComponents.Results/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cI69s7rwe9PPXfXpa3YO1/MZclOnDyFuPMKZYUxU32hmlatp/5lB4gi1R00K48ib+wM1bhKSbzLSbQ02BK51Eg==",
+      "path": "mytested.aspnetcore.mvc.viewcomponents.results/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.viewcomponents.results.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.ViewData/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MYzIcnLroxoJ1PSozJzaW7tivw2k9bEqh6OR8TxUz82gO6sk2gahVmv5t2C0uhTkO86+1xzq8Odd9FA5eNN1zw==",
+      "path": "mytested.aspnetcore.mvc.viewdata/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.viewdata.5.0.0.nupkg.sha512"
+    },
+    "MyTested.AspNetCore.Mvc.ViewFeatures/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bu8vbHJt3oflgOCsmcvrWv8bi5FrdiPyJ2ew50b5jiIbDD0kKk6gd+oxka/jkrt/BIz5JwhXqrn45qeu82gBtQ==",
+      "path": "mytested.aspnetcore.mvc.viewfeatures/5.0.0",
+      "hashPath": "mytested.aspnetcore.mvc.viewfeatures.5.0.0.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
@@ -6594,7 +7330,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Configuration.Binder/5.0.0.0": {
+    "Microsoft.Extensions.Configuration.Binder.Reference/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

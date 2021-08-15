@@ -25,8 +25,10 @@
                 Content = content,
                 UserId = userId,
                 AuctionId = auctionId,
-                CreatedOn = DateTime.UtcNow.ToLocalTime(),
-                PostedOn = DateTime.UtcNow.ToLocalTime(),
+                //CreatedOn = DateTime.UtcNow.ToLocalTime(),
+                //PostedOn = DateTime.UtcNow.ToLocalTime(),
+                CreatedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")),
+                PostedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")),
                 //CreatedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local),
                 //PostedOn = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local),
             };

@@ -6,7 +6,7 @@
   "compilationOptions": {
     "defines": [
       "TRACE",
-      "DEBUG",
+      "RELEASE",
       "NET",
       "NET5_0",
       "NETCOREAPP",
@@ -23,7 +23,7 @@
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
-    "optimize": false,
+    "optimize": true,
     "keyFile": "",
     "emitEntryPoint": true,
     "xmlDoc": false,

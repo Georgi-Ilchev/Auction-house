@@ -619,15 +619,19 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[16.9.4, )"
+              "version": "[16.11.0, )"
             },
             "Moq": {
               "target": "Package",
               "version": "[4.16.1, )"
+            },
+            "MyTested.AspNetCore.Mvc.Universe": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",

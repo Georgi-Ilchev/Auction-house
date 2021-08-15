@@ -5,9 +5,9 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)xunit.core\2.4.1\build\xunit.core.targets" Condition="Exists('$(NuGetPackageRoot)xunit.core\2.4.1\build\xunit.core.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.codecoverage\16.9.4\build\netstandard1.0\Microsoft.CodeCoverage.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codecoverage\16.9.4\build\netstandard1.0\Microsoft.CodeCoverage.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.net.test.sdk\16.9.4\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.net.test.sdk\16.9.4\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\5.0.6\buildTransitive\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\5.0.6\buildTransitive\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\5.0.8\buildTransitive\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\5.0.8\buildTransitive\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codecoverage\16.11.0\build\netstandard1.0\Microsoft.CodeCoverage.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codecoverage\16.11.0\build\netstandard1.0\Microsoft.CodeCoverage.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.net.test.sdk\16.11.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.net.test.sdk\16.11.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\5.0.6\buildTransitive\Microsoft.AspnetCore.Identity.UI.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\5.0.6\buildTransitive\Microsoft.AspnetCore.Identity.UI.targets')" />
   </ImportGroup>
 </Project>
