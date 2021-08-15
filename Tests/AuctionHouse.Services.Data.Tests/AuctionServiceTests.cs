@@ -1,22 +1,19 @@
-﻿using AuctionHouse.Data;
-using AuctionHouse.Data.Common.Repositories;
-using AuctionHouse.Data.Models;
-using AuctionHouse.Data.Repositories;
-using AuctionHouse.Web.ViewModels.Auctions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using AuctionHouse.Services.Mapping;
-using AuctionHouse.Web.ViewModels;
-
-namespace AuctionHouse.Services.Data.Tests
+﻿namespace AuctionHouse.Services.Data.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using AuctionHouse.Data;
+    using AuctionHouse.Data.Models;
+    using AuctionHouse.Data.Repositories;
+    using AuctionHouse.Services.Mapping;
+    using AuctionHouse.Web.ViewModels;
+    using AuctionHouse.Web.ViewModels.Auctions;
+    using AuctionHouse.Web.ViewModels.Home;
+    using Microsoft.EntityFrameworkCore;
+    using Xunit;
+
     public class AuctionServiceTests
     {
         private ApplicationDbContext db;
@@ -36,6 +33,7 @@ namespace AuctionHouse.Services.Data.Tests
             this.auctionService = new AuctionService(this.auctionRepository, this.categoryRepository);
 
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionViewModel).Assembly, typeof(Auction).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(ListAuctionsViewModel).Assembly, typeof(Auction).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetType().Assembly);
         }
 
@@ -237,9 +235,9 @@ namespace AuctionHouse.Services.Data.Tests
         [Fact]
         public void GetWeeklyAuctions_ShouldReturnListOfWeeklyAuctions()
         {
-            this.AddAnotherAuctionWithLastBidder();
+            this.AddAuctionForUpdate();
 
-            var result = this.auctionService.GetWeeklyAuctions<ListAuctionViewModel>();
+            var result = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>();
 
             Assert.Equal(null, result);
         }
@@ -248,6 +246,124 @@ namespace AuctionHouse.Services.Data.Tests
         public void GetById_ShouldGetCurrentAuctionById()
         {
             // todo
+        }
+
+        [Fact]
+        public async Task PromoteAuctionOfWeek_ShouldPromoteCurrentAuctonToWeekly()
+        {
+            this.AddAuction();
+            var promoteEnd = DateTime.UtcNow.ToLocalTime().AddDays(2);
+
+            await this.auctionService.PromoteAuctionOfWeek(promoteEnd, 1);
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 1);
+
+            Assert.True(auction.IsAuctionOfTheWeek);
+            Assert.Equal(promoteEnd, auction.EndPromoted);
+        }
+
+        [Fact]
+        public async Task UnPromoteAuctionOfWeek_ShouldUnPromoteCurrentAuctionFromWeekly()
+        {
+            this.AddAnotherAuction();
+
+            await this.auctionService.UnPromoteAuctionOfWeek(2);
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 2);
+
+            Assert.False(auction.IsAuctionOfTheWeek);
+            Assert.Null(auction.StartPromoted);
+            Assert.Null(auction.EndPromoted);
+        }
+
+        [Fact]
+        public async Task Delete_ShouldDeleteCurrentAuctionById()
+        {
+            this.AddAuction();
+            this.AddAnotherAuction();
+
+            await this.auctionService.Delete(1);
+
+            var result = this.auctionRepository.AllAsNoTracking().Count();
+
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public async Task Delete_ShouldDeleteCurrentAuctionByIdCorrect()
+        {
+            this.AddAuction();
+            this.AddAnotherAuction();
+
+            await this.auctionService.Delete(1);
+
+            var result = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 1);
+
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async Task UpdateDbAuction_ShouldUpdateAuctionActiveToFalse()
+        {
+            this.AddAuctionForUpdate();
+            this.db.ChangeTracker.Clear();
+            await this.auctionService.UpdateDbAuction(4);
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 4);
+
+            Assert.False(auction.IsActive);
+        }
+
+        [Fact]
+        public async Task UpdateDbAuction_ShouldUpdateAuctionIsSoldToTrue()
+        {
+            this.AddAuctionForUpdate();
+            this.db.ChangeTracker.Clear();
+            await this.auctionService.UpdateDbAuction(4);
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 4);
+
+            Assert.True(auction.IsSold);
+        }
+
+        [Fact]
+        public async Task UpdateDbAuction_ShouldUpdateAuctionWeeklyStatusToFalse()
+        {
+            this.AddAuctionForUpdate();
+            this.db.ChangeTracker.Clear();
+            await this.auctionService.UpdateDbAuction(4);
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 4);
+
+            Assert.Null(auction.StartPromoted);
+            Assert.Null(auction.EndPromoted);
+            Assert.False(auction.IsAuctionOfTheWeek);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_ShouldUpdateAuctionByInput()
+        {
+            this.AddCategory();
+            this.db.ChangeTracker.Clear();
+            this.AddAnotherCategory();
+            this.AddAuctionForUpdate();
+
+            await this.auctionService.UpdateAsync(4, this.AddEditModel());
+
+            var auction = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == 4);
+
+            Assert.Equal(2, auction.CategoryId);
+        }
+
+        [Fact]
+        public async Task GetUserAuctions_ShouldReturnCurrentUsersAuctionsById()
+        {
+            this.AddAuction();
+
+            var result = this.auctionService.GetUserAuctions<ListAuctionsViewModel>("userId", 1);
+            var auctions = result as ListAuctionsViewModel[] ?? result.ToArray();
+
+            Assert.Equal(null, auctions);
         }
 
         private Auction AddAuction()
@@ -284,6 +400,7 @@ namespace AuctionHouse.Services.Data.Tests
                 User = this.AddAnotherUser(),
                 CategoryId = 1,
                 IsPaid = false,
+                IsAuctionOfTheWeek = true,
             };
 
             this.db.Auctions.Add(auction);
@@ -306,6 +423,32 @@ namespace AuctionHouse.Services.Data.Tests
                 CategoryId = 1,
                 IsPaid = true,
                 IsAuctionOfTheWeek = true,
+                LastBidder = "lastBidder@gmail.com",
+            };
+
+            this.db.Auctions.Add(auction);
+            this.db.SaveChanges();
+
+            return auction;
+        }
+
+        private Auction AddAuctionForUpdate()
+        {
+            var auction = new Auction()
+            {
+                Id = 4,
+                Name = "new saxophone",
+                Description = "description",
+                Price = 10,
+                CurrentPrice = 10,
+                ActiveTo = DateTime.UtcNow,
+                User = this.AddAnotherUser(),
+                CategoryId = 1,
+                IsPaid = false,
+                IsAuctionOfTheWeek = true,
+                IsActive = true,
+                IsSold = false,
+                EndPromoted = DateTime.UtcNow,
                 LastBidder = "lastBidder@gmail.com",
             };
 
@@ -371,6 +514,41 @@ namespace AuctionHouse.Services.Data.Tests
             this.db.SaveChanges();
 
             return user;
+        }
+
+        private EditAuctionInputModel AddEditModel()
+        {
+            var model = new EditAuctionInputModel()
+            {
+                Id = 4,
+                Description = "new description",
+                Name = "new name for auctionId4",
+                CategoryId = 2,
+            };
+
+            return model;
+        }
+
+        private Category AddCategory()
+        {
+            var category = new Category()
+            {
+                Id = 2,
+                Name = "new category",
+            };
+
+            return category;
+        }
+
+        private Category AddAnotherCategory()
+        {
+            var category = new Category()
+            {
+                Id = 1,
+                Name = "neww category",
+            };
+
+            return category;
         }
     }
 }
