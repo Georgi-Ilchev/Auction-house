@@ -1,31 +1,22 @@
 ﻿namespace AuctionHouse.Services.Data.Tests.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
 
-    using AuctionHouse.Data.Models;
     using AuctionHouse.Web.Controllers;
     using AuctionHouse.Web.ViewModels;
     using AuctionHouse.Web.ViewModels.Home;
     using MyTested.AspNetCore.Mvc;
     using Xunit;
 
+    using static AuctionHouse.Services.Data.Tests.Data.Auctions;
+    using static AuctionHouse.Services.Data.Tests.Data.Categories;
+    using static AuctionHouse.Services.Data.Tests.Data.Users;
+
     public class HomeControllerTests
     {
         [Fact]
         public void Index_ShouldReturnViewWithCorrectModelAndDataForAuctions()
         {
-            //return MyMvc
-            //    .Pipeline()
-            //    .ShouldMap("/")
-            //    .To<HomeController>(c => c.Index())
-            //    .Which(controller => controller
-            //        .WithData(AddAuctions()))
-            //    .ShouldReturn()
-            //    .View(view => view
-            //        .WithModelOfType<IndexViewModel>()
-            //        .Passing(m => m.AuctionsCount.HaveCount(3)));
-
             MyController<HomeController>
                .Instance(controller => controller
                    .WithData(AddAuctions()))
@@ -122,27 +113,16 @@
                    .WithModelOfType<ErrorViewModel>());
         }
 
-        private static IEnumerable<Auction> AddAuctions()
+        [Fact]
+        public void Error_ShouldReturnView()
         {
-            return Enumerable.Range(0, 10).Select(i => new Auction());
-        }
-
-        private static IEnumerable<Auction> AddWeeklyAuctions()
-        {
-            return Enumerable.Range(0, 10).Select(i => new Auction()
-            {
-                IsAuctionOfTheWeek = true,
-            });
-        }
-
-        private static IEnumerable<Category> AddCategories()
-        {
-            return Enumerable.Range(0, 10).Select(i => new Category());
-        }
-
-        private static IEnumerable<ApplicationUser> AddUser()
-        {
-            return Enumerable.Range(0, 10).Select(i => new ApplicationUser());
+            MyMvc
+                .Pipeline()
+                .ShouldMap("/Home/Error")
+                .To<HomeController>(c => c.Error())
+                .Which()
+                .ShouldReturn()
+                .View();
         }
     }
 }
