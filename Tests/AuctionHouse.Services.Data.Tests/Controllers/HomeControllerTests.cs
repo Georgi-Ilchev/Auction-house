@@ -104,6 +104,15 @@
         }
 
         [Fact]
+        public void Privacy_RouteShouldBeMapped()
+        {
+            MyRouting
+                .Configuration()
+                .ShouldMap("/Home/Privacy")
+                .To<HomeController>(c => c.Privacy());
+        }
+
+        [Fact]
         public void Error_ShouldReturnCorrectView()
         {
             MyController<HomeController>

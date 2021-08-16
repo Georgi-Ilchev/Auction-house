@@ -13,6 +13,11 @@
             return Enumerable.Range(0, 10).Select(i => new Auction());
         }
 
+        public static IEnumerable<Auction> AddAuction()
+        {
+            return Enumerable.Range(0, 1).Select(i => new Auction() { Id = 1, UserId = "UserId", LastBidder = "lastBider@gmail.com", IsPaid = true });
+        }
+
         public static IEnumerable<Auction> AddWeeklyAuctions()
         {
             return Enumerable.Range(0, 10).Select(i => new Auction()

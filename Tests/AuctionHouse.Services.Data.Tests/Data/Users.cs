@@ -11,5 +11,10 @@
         {
             return Enumerable.Range(0, 10).Select(i => new ApplicationUser());
         }
+
+        public static IEnumerable<ApplicationUser> AddSingleUser()
+        {
+            return Enumerable.Range(0, 1).Select(i => new ApplicationUser() { Id = "UserId", Email = "lastBider@gmail.com" });
+        }
     }
 }

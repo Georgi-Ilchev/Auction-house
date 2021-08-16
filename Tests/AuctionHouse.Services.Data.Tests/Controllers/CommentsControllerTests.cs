@@ -37,7 +37,7 @@
                .ShouldReturn()
                .View(view => view
                    .WithModelOfType<ListCommentsViewModel>()
-                   .Passing(m => m.Comments.Count() == 0));
+                   .Passing(m => m.Comments.Count() == 10));
         }
 
         [Fact]

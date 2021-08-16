@@ -34,6 +34,7 @@
 
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionViewModel).Assembly, typeof(Auction).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionsViewModel).Assembly, typeof(Auction).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(IndexPageAuctionViewModel).Assembly, typeof(Auction).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetType().Assembly);
         }
 
@@ -235,11 +236,11 @@
         [Fact]
         public void GetWeeklyAuctions_ShouldReturnListOfWeeklyAuctions()
         {
-            this.AddAuctionForUpdate();
+            this.AddAnotherAuction();
+            //var result = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.IsAuctionOfTheWeek == true).Id;
+            var result = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>().Count();
 
-            var result = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>();
-
-            Assert.Equal(null, result);
+            Assert.Equal(1, result);
         }
 
         [Fact]
