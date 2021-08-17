@@ -138,7 +138,7 @@
                 return this.NotFound();
             }
 
-            if (!this.auctionService.IsThereLastBidder(auctionId))
+            if (this.auctionService.IsThereLastBidder(auctionId))
             {
                 return this.Unauthorized();
             }
