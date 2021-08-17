@@ -131,7 +131,7 @@
 
         public IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8)
         {
-            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().AsQueryable();
+            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().Where(x => x.IsPaid == false).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
             {
