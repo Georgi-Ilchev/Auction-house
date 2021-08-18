@@ -1,8 +1,9 @@
 # Auction-house
 
 # :pencil2: Home Services and Solutions
-This is my defense project for **ASP.NET Core MVC** course at [SoftUni](https://softuni.bg).
+This is my defence project for **ASP.NET Core MVC** course at [SoftUni](https://softuni.bg).
 - Niki Kostov's Template: https://github.com/NikolayIT/ASP.NET-Core-Template
+- Ivaylo Kenov's Test Library: https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc
 
 # :memo: Overview
 **Alpha Auction House** is an online bidding platform which is free for buyers and sellers and is protecting them from fraud. You need to register only.
@@ -55,5 +56,6 @@ Password: 123456
 - Bootstrap
 - jQuery
 - xUnit
+- MyTested.AspNetCore.Mvc
 - Moq
 - SignalR -> Real-Time Bidding
