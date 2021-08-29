@@ -1,17 +1,21 @@
 ﻿namespace AuctionHouse.Services.Data.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using AuctionHouse.Data;
+    using AuctionHouse.Data.Common.Repositories;
     using AuctionHouse.Data.Models;
     using AuctionHouse.Data.Repositories;
+    using AuctionHouse.Services.Data.Tests.Models;
     using AuctionHouse.Services.Mapping;
     using AuctionHouse.Web.ViewModels;
     using AuctionHouse.Web.ViewModels.Auctions;
     using AuctionHouse.Web.ViewModels.Home;
     using Microsoft.EntityFrameworkCore;
+    using Moq;
     using Xunit;
 
     public class AuctionServiceTests
@@ -35,6 +39,7 @@
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionViewModel).Assembly, typeof(Auction).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(ListAuctionsViewModel).Assembly, typeof(Auction).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(IndexPageAuctionViewModel).Assembly, typeof(Auction).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(Auction).Assembly, typeof(WeeklyAuctionModel).Assembly);
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetType().Assembly);
         }
 
@@ -46,7 +51,13 @@
             await this.auctionRepository.AddAsync(this.AddAnotherAuction());
             this.db.ChangeTracker.Clear();
             await this.auctionRepository.SaveChangesAsync();
-            var result = await this.auctionService.GetAll<ListAuctionViewModel>(1);
+
+            //var result = await this.auctionService.GetAll<ListAuctionViewModel>(1);
+            var result = this.auctionRepository.AllAsNoTracking()
+                .Where(x => x.IsPaid == false)
+                .OrderByDescending(x => x.Id)
+               .To<ListAuctionViewModel>()
+               .ToList();
 
             Assert.Contains(result, c => c.Name == "old saxophone" && c.Price == 10);
         }
@@ -54,7 +65,8 @@
         [Fact]
         public async Task CreateAsync_ShouldCreateAuction()
         {
-            this.categoryRepository.AddAsync(new Category { Name = "Travel", Id = 1 });
+            await this.categoryRepository.AddAsync(new Category { Name = "Travel", Id = 1 });
+            await this.categoryRepository.SaveChangesAsync();
 
             var viewAuction = new CreateAuctionInputModel()
             {
@@ -62,9 +74,11 @@
                 Description = "random description",
                 ActiveDays = 2,
                 CategoryId = 1,
+                Price = 10m,
+                ActiveTo = DateTime.UtcNow.ToLocalTime().AddDays(1),
             };
 
-            await this.auctionService.CreateAsync(viewAuction, "userId", "imagePath");
+            await this.auctionService.CreateAsync(viewAuction, "userId", "C:\\Users\\Goshicha\\Desktop\\gitFolder\\Auction-house\\Web\\AuctionHouse.Web\\wwwroot/images");
 
             var auction = this.db.Auctions.FirstOrDefault(x => x.UserId == "userId" && x.Name == "new auction");
 
@@ -234,19 +248,55 @@
         }
 
         [Fact]
-        public void GetWeeklyAuctions_ShouldReturnListOfWeeklyAuctions()
+        public async Task GetWeeklyAuctions_ShouldReturnListOfWeeklyAuctions()
         {
-            this.AddAnotherAuction();
-            //var result = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.IsAuctionOfTheWeek == true).Id;
-            var result = this.auctionService.GetWeeklyAuctions<IndexPageAuctionViewModel>().Count();
+            //this.AddAnotherAuction();
+            ////var result = this.auctionRepository.AllAsNoTracking().FirstOrDefault(x => x.IsAuctionOfTheWeek == true).Id;
+            //var result = this.auctionService.GetWeeklyAuctions<Auction>().ToList();
 
-            Assert.Equal(1, result);
+            ////Assert.Equal(1, result);
+            //Assert.Contains(result, c => c.Name == "new saxophone" && c.Price == 10);
+
+            var mockAuction = new Mock<IDeletableEntityRepository<Auction>>();
+            var mockCategory = new Mock<IDeletableEntityRepository<Category>>();
+
+            mockAuction.Setup(x =>
+                x.AllAsNoTracking()).Returns(new List<Auction>()
+                {
+                    new ()
+                    {
+                        Id = 1,
+                        Name = "basketball ball",
+                        Description = "some descr",
+                        IsAuctionOfTheWeek = true,
+                    },
+                }.AsQueryable());
+
+            mockCategory.Setup(x =>
+                x.AllAsNoTracking()).Returns(new List<Category>()
+                {
+                    new ()
+                    {
+                        Id = 1,
+                        Name = "category",
+                    },
+                }.AsQueryable());
+
+            var service = new AuctionService(mockAuction.Object, mockCategory.Object);
+
+            List<WeeklyAuctionModel> auction = service.GetWeeklyAuctions<WeeklyAuctionModel>();
+
+            Assert.Equal(1, auction.Count);
         }
 
         [Fact]
         public void GetById_ShouldGetCurrentAuctionById()
         {
-            // todo
+            this.AddAuction();
+
+            var result = this.auctionService.GetById<Auction>(1).Name;
+
+            Assert.Equal("old saxophone", result);
         }
 
         [Fact]
@@ -359,7 +409,8 @@
         [Fact]
         public async Task GetUserAuctions_ShouldReturnCurrentUsersAuctionsById()
         {
-            this.AddAuction();
+            // this.AddAuction();
+            await this.auctionRepository.AddAsync(this.AddAuction());
 
             var result = this.auctionService.GetUserAuctions<ListAuctionsViewModel>("userId", 1);
             var auctions = result as ListAuctionsViewModel[] ?? result.ToArray();
@@ -550,6 +601,12 @@
             };
 
             return category;
+        }
+
+
+        private IEnumerable<Category> AddBids()
+        {
+            return Enumerable.Range(0, 10).Select(i => new Category() { Id = i++, Name = "category" });
         }
     }
 }

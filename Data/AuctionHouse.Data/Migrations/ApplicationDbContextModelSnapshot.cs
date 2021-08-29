@@ -263,9 +263,6 @@ namespace AuctionHouse.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -283,8 +280,6 @@ namespace AuctionHouse.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("IsDeleted");
 
@@ -521,7 +516,7 @@ namespace AuctionHouse.Data.Migrations
             modelBuilder.Entity("AuctionHouse.Data.Models.Auction", b =>
                 {
                     b.HasOne("AuctionHouse.Data.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Auctions")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -552,13 +547,6 @@ namespace AuctionHouse.Data.Migrations
                     b.Navigation("Auction");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AuctionHouse.Data.Models.Category", b =>
-                {
-                    b.HasOne("AuctionHouse.Data.Models.Category", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Comment", b =>
@@ -691,7 +679,7 @@ namespace AuctionHouse.Data.Migrations
 
             modelBuilder.Entity("AuctionHouse.Data.Models.Category", b =>
                 {
-                    b.Navigation("Categories");
+                    b.Navigation("Auctions");
                 });
 #pragma warning restore 612, 618
         }
