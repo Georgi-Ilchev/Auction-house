@@ -9,14 +9,22 @@
                 <h3 class="card-title">@auction.Name</h3>
                 <p class="card-text">Category: @auction.CategoryName</p>
                 <p class="card-text">
-                    @if (auction.IsActive == true)
+                    @if (auction.IsPending)
                     {
-                        <span class="h4 text-success">Active</span>
+                        <span class="h4 text-warning">Pending</span>
                     }
                     else
                     {
-                        <span class="h4 text-danger">Inactive</span>
+                        if (auction.IsActive == true)
+                        {
+                            <span class="h4 text-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="h4 text-danger">Inactive</span>
+                        }
                     }
+
                 </p>
             </div>
             <ul class="list-group list-group-flush">
@@ -25,7 +33,7 @@
                 <li class="list-group-item"><span class="font-weight-bold">Owner: </span>@auction.UserUserName</li>
             </ul>
             <div class="card-body">
-                <a asp-action="SingleAuction" asp-route-auctionId="@auction.Id" class="btn btn-success viewBtn">View</a>
+                <a asp-area="Administration" asp-action="ApproveAuction" asp-route-auctionId="@auction.Id" class="btn btn-success viewBtn">View</a>
             </div>
         </div>
     }

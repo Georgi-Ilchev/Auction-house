@@ -23,7 +23,7 @@
         {
             var data = new CountsDto
             {
-                AuctionsCount = this.auctions.All().Where(x => x.IsPaid == false).Count(),
+                AuctionsCount = this.auctions.All().Where(x => x.IsPaid == false && x.IsPending == false).Count(),
                 CategoriesCount = this.categories.All().Count(),
             };
 

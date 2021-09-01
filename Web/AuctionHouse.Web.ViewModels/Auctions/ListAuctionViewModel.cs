@@ -35,6 +35,8 @@
 
         public bool IsSold { get; set; }
 
+        public bool IsPending { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Auction, ListAuctionViewModel>()

@@ -12,6 +12,8 @@
 
         Task<IEnumerable<ListAuctionViewModel>> GetAllForSearch<TListAuctionViewModel>(int category, int page, int itemsPerPage = 8);
 
+        Task<IEnumerable<ListAuctionViewModel>> GetAllPending<TListAuctionViewModel>(int page, int itemsPerPage = 8);
+
         IEnumerable<T> GetUserAuctions<T>(string userId, int page, int itemsPerPage = 8);
 
         IEnumerable<T> GetAllUserPurchases<T>(string userEmail, int page, int itemsPerPage = 8);
@@ -23,6 +25,8 @@
         List<T> GetWeeklyAuctions<T>();
 
         int GetAuctionsCount();
+
+        int GetPendingAuctionsCount();
 
         int GetAuctionsCountByCategory(int category);
 
@@ -53,5 +57,7 @@
         Task Delete(int auctionId);
 
         Task UpdateDbAuction(int auctionId);
+
+        Task ApproveAuction(int auctionId);
     }
 }

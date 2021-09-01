@@ -42,6 +42,8 @@
 
         public bool IsPaid { get; set; }
 
+        public bool IsPending { get; set; }
+
         public DateTime? StartPromoted { get; set; }
 
         public DateTime? EndPromoted { get; set; }

@@ -1,0 +1,184 @@
+﻿@model AuctionHouse.Web.ViewModels.Auctions.SingleAuctionViewModel
+@{
+    this.ViewData["Title"] = @Model.Name;
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <partial name="_AlertPartial" />
+}
+
+<h1 class="text-info text-monospace mt-3 ml-5">@this.ViewData["Title"]</h1>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @for (var i = 1; i <= this.Model.Images.Count(); i++)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" @(i == 1 ? "class='active'" : "")></li>
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @{ var counter = 1;}
+                    @foreach (var image in Model.Images)
+                    {
+                        var id = image.Id;
+                        var extension = image.Extension;
+
+                        var imageUrl = "/images/auctions/" + id + "." + extension;
+
+                        <div class="carousel-@(counter == 1 ? "item active" : "item")">
+                            <img src="@imageUrl" class="d-block w-100" alt="..." style="height: 500px;">
+                        </div>
+
+                        counter++;
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-primary">
+                    <span class="label label-primary">By: </span>
+                    <span class="monospaced">@Model.UserUserName</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="category">Category: @Model.CategoryName</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="timestamp">@Model.Description</p>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">Created on: @Model.CreatedOnAsString</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">Active to: @Model.ActiveToAsString</p>
+                </div>
+            </div>
+
+            @{
+                var status = string.Empty;
+                var activeOrNo = string.Empty;
+                if (this.Model.IsPending)
+                {
+                    status = "Pending";
+                    activeOrNo = "text-warning";
+                }
+                else
+                {
+                    if (this.Model.IsActive == true)
+                    {
+                        status = "Active";
+                        activeOrNo = "text-success";
+                    }
+                    else
+                    {
+                        status = "Inactive";
+                        activeOrNo = "text-danger";
+                    }
+                }
+
+                var isSold = string.Empty;
+                if (this.Model.IsActive == false && this.Model.IsSold == true)
+                {
+                    isSold = "Sold!";
+                }
+                else if (this.Model.IsActive == false && this.Model.IsSold == false)
+                {
+                    isSold = "No buyer was found for this auction";
+                }
+            }
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">Status: <span class="@activeOrNo">@status</span></p>
+                </div>
+            </div>
+
+            @if (this.Model.IsActive == false)
+            {
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="description h5 text-center">@isSold</p>
+                    </div>
+                </div>
+            }
+
+            @{
+                if (Model.LastBidder == null)
+                {
+                    Model.LastBidder = "No bids yet";
+                }
+            }
+
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Starting price - </span>$@Model.Price</li>
+                <li class="list-group-item"><span class="font-weight-bold">Current price - <span class="font-weight-normal" id="currentPrice">$@Model.CurrentPrice</span></span></li>
+                <li class="list-group-item"><span class="font-weight-bold">Highest bidder - <span class="font-weight-normal" id="lastBidder">@Model.LastBidder</span></span></li>
+            </ul>
+
+            <hr />
+
+            @if (this.Model.IsPending)
+            {
+                <td>
+                    <form method="post" id="approveForm" asp-area="Administration" asp-controller="Auctions" asp-action="Approve" asp-route-auctionId="@Model.Id"></form>
+                    <a class="btn btn-block btn-success text-white mb-3" data-toggle="modal" data-target="#approveModal">Approve</a>
+                </td>
+            }
+
+        </div>
+    </div>
+</div>
+
+<!-- Approve Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Approve</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to approve this auction?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="approveForm.submit()">Approve</button>
+            </div>
+        </div>
+    </div>
+</div>

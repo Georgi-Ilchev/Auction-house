@@ -187,6 +187,9 @@ namespace AuctionHouse.Data.Migrations
                     b.Property<bool>("IsPaid")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsPending")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsSold")
                         .HasColumnType("bit");
 

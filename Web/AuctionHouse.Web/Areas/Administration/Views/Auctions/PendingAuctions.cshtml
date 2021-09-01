@@ -1,0 +1,18 @@
+﻿@model AuctionHouse.Web.ViewModels.Auctions.ListAuctionsViewModel
+@{
+    this.ViewData["Title"] = "Pending Auction list";
+}
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <partial name="_AlertPartial" />
+}
+
+<h1 class="text-center text-monospace text-info mt-3">@this.ViewData["Title"] - @this.Model.Count</h1>
+
+<hr />
+<br />
+
+<partial name="_AuctionsPendingListPartial" model="@Model" />
+<hr />
+<partial name="_PagingSearchPartial" model="@Model" />

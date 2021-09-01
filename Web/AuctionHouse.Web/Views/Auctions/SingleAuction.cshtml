@@ -98,15 +98,23 @@
             @{
                 var status = string.Empty;
                 var activeOrNo = string.Empty;
-                if (this.Model.IsActive == true)
+                if (this.Model.IsPending)
                 {
-                    status = "Active";
-                    activeOrNo = "text-success";
+                    status = "Pending";
+                    activeOrNo = "text-warning";
                 }
                 else
                 {
-                    status = "Inactive";
-                    activeOrNo = "text-danger";
+                    if (this.Model.IsActive == true)
+                    {
+                        status = "Active";
+                        activeOrNo = "text-success";
+                    }
+                    else
+                    {
+                        status = "Inactive";
+                        activeOrNo = "text-danger";
+                    }
                 }
 
                 var isSold = string.Empty;

@@ -30,7 +30,7 @@
         public async Task<IEnumerable<ListAuctionViewModel>> GetAll<TListAuctionViewModel>(int page, int itemsPerPage = 8)
         {
             var auctions = this.auctionsRepository.AllAsNoTracking()
-                .Where(x => x.IsPaid == false)
+                .Where(x => x.IsPaid == false && x.IsPending == false)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -65,7 +65,7 @@
             }
 
             var auctions = auctionsQuery
-                .Where(x => x.IsPaid == false)
+                .Where(x => x.IsPaid == false && x.IsPending == false)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -82,6 +82,29 @@
                 if (auction.IsActive == false && auction.LastBidder != null)
                 {
                     auction.IsSold = true;
+                }
+            }
+
+            await this.auctionsRepository.SaveChangesAsync();
+
+            return auctions;
+        }
+
+        public async Task<IEnumerable<ListAuctionViewModel>> GetAllPending<TListAuctionViewModel>(int page, int itemsPerPage = 8)
+        {
+            var auctions = this.auctionsRepository.AllAsNoTracking()
+                .Where(x => x.IsPending == true)
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<ListAuctionViewModel>()
+                .ToList();
+
+            foreach (var auction in auctions)
+            {
+                if (auction.IsActive == true && DateTime.UtcNow.ToLocalTime() > auction.ActiveTo)
+                {
+                    auction.IsActive = false;
                 }
             }
 
@@ -131,7 +154,7 @@
 
         public IEnumerable<T> GetSearch<T>(string search, int page, int itemsPerPage = 8)
         {
-            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().Where(x => x.IsPaid == false).AsQueryable();
+            var auctionsQuery = this.auctionsRepository.AllAsNoTracking().Where(x => x.IsPaid == false && x.IsPending == false).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
             {
@@ -151,14 +174,21 @@
         public int GetAuctionsCount()
         {
             return this.auctionsRepository.All()
-                .Where(x => x.IsPaid == false)
+                .Where(x => x.IsPaid == false && x.IsPending == false)
+                .Count();
+        }
+
+        public int GetPendingAuctionsCount()
+        {
+            return this.auctionsRepository.All()
+                .Where(x => x.IsPending == true)
                 .Count();
         }
 
         public int GetAuctionsCountByCategory(int category)
         {
             return this.auctionsRepository.All()
-                .Where(x => x.CategoryId == category && x.IsPaid == false)
+                .Where(x => x.CategoryId == category && x.IsPaid == false && x.IsPending == false)
                 .Count();
         }
 
@@ -227,6 +257,7 @@
                 IsActive = true,
                 IsSold = false,
                 IsPaid = false,
+                IsPending = true,
             };
 
             if (!this.categoriesRepository.All().Any(c => c.Id == input.CategoryId))
@@ -345,6 +376,17 @@
             }
 
             this.auctionsRepository.Update(dbAuction);
+            await this.auctionsRepository.SaveChangesAsync();
+        }
+
+        public async Task ApproveAuction(int auctionId)
+        {
+            var auction = this.auctionsRepository.All()
+                .FirstOrDefault(a => a.Id == auctionId);
+
+            auction.IsPending = false;
+
+            this.auctionsRepository.Update(auction);
             await this.auctionsRepository.SaveChangesAsync();
         }
 

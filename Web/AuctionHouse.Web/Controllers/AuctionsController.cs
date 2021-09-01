@@ -76,9 +76,9 @@
                 return this.View(input);
             }
 
-            this.TempData["Message"] = "The auction was successfully created.";
+            this.TempData["Message"] = "The auction was successfully created and is waiting for the admin's approval.";
 
-            return this.Redirect("/Auctions/All");
+            return this.RedirectToAction(nameof(this.AuctionByUser));
         }
 
         [Authorize]
@@ -147,7 +147,7 @@
 
             this.TempData["Message"] = "The auction was successfully deleted.";
 
-            return this.Redirect("/Auctions/All");
+            return this.RedirectToAction(nameof(this.AuctionByUser));
         }
 
         [Authorize]
@@ -182,7 +182,7 @@
 
             this.TempData["Message"] = "You have successfully paid";
 
-            return this.Redirect("/Auctions/UserPurchases");
+            return this.RedirectToAction(nameof(this.UserPurchases));
         }
 
         [Authorize]

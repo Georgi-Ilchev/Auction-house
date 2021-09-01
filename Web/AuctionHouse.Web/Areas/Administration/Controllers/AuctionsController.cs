@@ -7,6 +7,7 @@
     using AuctionHouse.Data.Models;
     using AuctionHouse.Services.Data;
     using AuctionHouse.Web.ViewModels.Administration.Auctions;
+    using AuctionHouse.Web.ViewModels.Auctions;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
@@ -200,6 +201,44 @@
         {
             await this.auctionService.UnPromoteAuctionOfWeek(auctionId);
             return this.Redirect("/Administration/Auctions/Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PendingAuctions(int id = 1)
+        {
+            const int ItemsPerPage = 8;
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            var viewModel = new ListAuctionsViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                Auctions = await this.auctionService.GetAllPending<ListAuctionViewModel>(id, ItemsPerPage),
+                Count = this.auctionService.GetPendingAuctionsCount(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult ApproveAuction(int auctionId)
+        {
+            var auction = this.auctionService.GetById<SingleAuctionViewModel>(auctionId);
+
+            return this.View(auction);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Approve(int auctionId)
+        {
+            await this.auctionService.ApproveAuction(auctionId);
+            this.TempData["Message"] = "The auction was successfully approved.";
+
+            return this.RedirectToAction(nameof(this.PendingAuctions));
         }
     }
 }

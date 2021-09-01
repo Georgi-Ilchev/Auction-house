@@ -37,6 +37,8 @@
 
         public bool IsPaid { get; set; }
 
+        public bool IsPending { get; set; }
+
         public bool CanUserBid { get; set; }
 
         public bool IsAuctionOfTheWeek { get; set; }
